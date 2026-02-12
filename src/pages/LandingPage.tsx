@@ -27,7 +27,7 @@ const LandingPage = () => (
     />
 
     <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 py-16 text-center lg:flex-row lg:text-left lg:gap-12">
-      {/* Mentor figure */}
+      {/* Mentor figure
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -41,7 +41,7 @@ const LandingPage = () => (
             className="h-full w-full object-cover object-top"
           />
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Copy */}
       <div className="flex flex-col items-center lg:items-start">
