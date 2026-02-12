@@ -1,13 +1,44 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { motion } from "framer-motion";
+import ModuleCard from "@/components/ModuleCard";
+import PageTransition from "@/components/PageTransition";
+import { modules } from "@/data/modules";
+import { useProgress } from "@/hooks/useProgress";
 
 const Index = () => {
+  const { getModuleProgress } = useProgress();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <PageTransition>
+      <div className="mx-auto max-w-3xl px-4 py-10">
+        {/* Hero */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-10 space-y-3"
+        >
+          <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
+            Think before you share.
+          </h1>
+          <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
+            Build your media literacy skills across six interactive modules.
+            Learn to spot disinformation, understand your biases, and protect your community.
+          </p>
+        </motion.div>
+
+        {/* Module Grid */}
+        <div className="grid gap-4 sm:grid-cols-2">
+          {modules.map((module, index) => (
+            <ModuleCard
+              key={module.id}
+              module={module}
+              progress={getModuleProgress(module.id, module.subtopics.length)}
+              index={index}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </PageTransition>
   );
 };
 
