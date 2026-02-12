@@ -33,9 +33,9 @@ const Header = () => {
             </motion.div>
           )}
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-display text-lg font-bold text-foreground">
+            {/* <span className="font-display text-lg font-bold text-foreground">
               Ms. <span className="text-accent">Informed</span>
-            </span>
+            </span> */}
           </Link>
         </div>
       </div>

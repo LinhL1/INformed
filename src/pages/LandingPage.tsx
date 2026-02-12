@@ -60,7 +60,7 @@ const LandingPage = () => (
           transition={{ duration: 0.5, delay: 0.35 }}
           className="mt-4 max-w-lg text-lg leading-relaxed text-muted-foreground"
         >
-          Disinformation doesn't just mislead — it threatens national security.
+          Disinformation doesn't just mislead, it threatens national security.
           Sharpen your critical thinking, learn to spot manipulation tactics, and
           become the strongest link in the chain of defense. Your awareness is your armor.
         </motion.p>

@@ -20,7 +20,7 @@ export interface Module {
   title: string;
   description: string;
   color: string;
-  icon: string;
+  //icon: string;
   subtopics: Subtopic[];
 }
 
@@ -31,7 +31,7 @@ export const modules: Module[] = [
     title: "Understanding Disinformation",
     description: "Learn the fundamentals of misinformation, disinformation, and malinformation — and why it matters.",
     color: "hsl(var(--module-1))",
-    icon: "🔍",
+    //icon: "",
     subtopics: [
       {
         id: "what-is-disinfo",
@@ -53,7 +53,7 @@ export const modules: Module[] = [
         sections: [
           { type: "text", title: "Introduction", content: "Disinformation is not new. From ancient war propaganda to modern social media campaigns, the tools change but the tactics remain remarkably similar." },
           { type: "text", title: "From Print to Digital", content: "Template: Add historical examples of disinformation campaigns across different eras and media." },
-          { type: "callout", content: "📜 The term 'dezinformatsiya' was coined by the Soviet Union in the 1920s." },
+          { type: "callout", content: "The term 'dezinformatsiya' was coined by the Soviet Union in the 1920s." },
           { type: "quiz", title: "Quick Check", content: "Template: Add a quiz question about historical disinformation.", options: ["Option A", "Option B", "Option C", "Option D"], correctIndex: 0 },
         ],
       },
@@ -87,7 +87,7 @@ export const modules: Module[] = [
     title: "Tactics & Techniques",
     description: "Identify the common strategies used to spread false narratives and manipulate public opinion.",
     color: "hsl(var(--module-2))",
-    icon: "🎭",
+    //icon: "",
     subtopics: [
       {
         id: "emotional-manipulation",
@@ -150,7 +150,7 @@ export const modules: Module[] = [
     title: "Digital Literacy Skills",
     description: "Build practical skills to evaluate sources, verify claims, and navigate the digital landscape.",
     color: "hsl(var(--module-3))",
-    icon: "🛠️",
+    //icon: "",
     subtopics: [
       {
         id: "source-evaluation",
@@ -201,7 +201,7 @@ export const modules: Module[] = [
     title: "Cognitive Biases",
     description: "Understand the mental shortcuts that make us vulnerable to manipulation.",
     color: "hsl(var(--module-4))",
-    icon: "🧠",
+    //icon: "",
     subtopics: [
       {
         id: "confirmation-bias",
@@ -252,7 +252,7 @@ export const modules: Module[] = [
     title: "AI & Deepfakes",
     description: "Navigate the emerging threats posed by artificial intelligence in disinformation campaigns.",
     color: "hsl(var(--module-5))",
-    icon: "🤖",
+    //icon: "",
     subtopics: [
       {
         id: "what-are-deepfakes",
@@ -303,7 +303,7 @@ export const modules: Module[] = [
     title: "Building Resilience",
     description: "Develop lasting habits and strategies to protect yourself and your community.",
     color: "hsl(var(--module-6))",
-    icon: "🛡️",
+    //icon: "",
     subtopics: [
       {
         id: "personal-habits",
