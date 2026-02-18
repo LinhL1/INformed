@@ -24,7 +24,6 @@ const ModulePage = () => {
           className="mb-8 space-y-3"
         >
           <div className="flex items-center gap-3">
-            <span className="text-3xl">{module.icon}</span>
             <span
               className="rounded-full px-3 py-1 text-xs font-medium text-primary-foreground"
               style={{ backgroundColor: module.color }}
