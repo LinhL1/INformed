@@ -40,7 +40,7 @@ const LessonPage = () => {
           className="mb-8 space-y-2"
         >
           <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            <span style={{ color: module.color }}>{module.icon}</span>
+            <span style={{ color: module.color }}></span>
             <span>Module {module.number}</span>
             <span>·</span>
             <span>Lesson {subtopicIndex + 1} of {module.subtopics.length}</span>
