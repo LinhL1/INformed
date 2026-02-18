@@ -9,6 +9,7 @@ const Index = () => {
 
   return (
     <PageTransition>
+      
       <div className="mx-auto max-w-3xl px-4 py-10">
         {/* Hero */}
         <motion.div
@@ -18,11 +19,10 @@ const Index = () => {
           className="mb-10 space-y-3"
         >
           <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
-            Think before you share.
-          </h1>
+            Stay Sharp. Stay Informed.          </h1>
           <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
             Build your media literacy skills across six interactive modules.
-            Learn to spot disinformation, understand your biases, and protect your community.
+            Navigating the digital landscape. Learn to spot disinformation, protect yourself and your community.
           </p>
         </motion.div>
 

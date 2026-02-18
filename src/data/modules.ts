@@ -26,16 +26,16 @@ export interface Module {
 
 export const modules: Module[] = [
   {
-    id: "understanding-disinfo",
+    id: "introduction",
     number: 1,
-    title: "Understanding Disinformation",
-    description: "Learn the fundamentals of misinformation, disinformation, and malinformation — and why it matters.",
+    title: "Introduction to Misinformation & Media Literacy",
+    description: "Learn the fundamentals of misinformation, disinformation, malinformation, and why it matters.",
     color: "hsl(var(--module-1))",
     //icon: "",
     subtopics: [
       {
         id: "what-is-disinfo",
-        title: "What Is Disinformation?",
+        title: "What Is Misinformation?",
         description: "Defining misinformation, disinformation, and malinformation.",
         estimatedMinutes: 8,
         sections: [
@@ -47,7 +47,7 @@ export const modules: Module[] = [
       },
       {
         id: "history-of-disinfo",
-        title: "A Brief History",
+        title: "Importance of critical thinking: what is it and how to develop it",
         description: "How disinformation has evolved through the ages.",
         estimatedMinutes: 10,
         sections: [
@@ -70,7 +70,7 @@ export const modules: Module[] = [
       },
       {
         id: "info-ecosystem",
-        title: "The Information Ecosystem",
+        title: "Bias and Perspective",
         description: "How information flows and where it breaks down.",
         estimatedMinutes: 9,
         sections: [
@@ -82,10 +82,10 @@ export const modules: Module[] = [
     ],
   },
   {
-    id: "tactics-techniques",
+    id: "source-eval",
     number: 2,
-    title: "Tactics & Techniques",
-    description: "Identify the common strategies used to spread false narratives and manipulate public opinion.",
+    title: "Source Evaluation",
+    description: "Learn to identify credible sources and recognize fake or biased information.",
     color: "hsl(var(--module-2))",
     //icon: "",
     subtopics: [
@@ -145,10 +145,10 @@ export const modules: Module[] = [
     ],
   },
   {
-    id: "digital-literacy",
+    id: "visual-deception",
     number: 3,
-    title: "Digital Literacy Skills",
-    description: "Build practical skills to evaluate sources, verify claims, and navigate the digital landscape.",
+    title: "Visual Deception",
+    description: "Detect manipulated visuals and misleading media content.",
     color: "hsl(var(--module-3))",
     //icon: "",
     subtopics: [
@@ -196,10 +196,10 @@ export const modules: Module[] = [
     ],
   },
   {
-    id: "cognitive-biases",
+    id: "national-security",
     number: 4,
-    title: "Cognitive Biases",
-    description: "Understand the mental shortcuts that make us vulnerable to manipulation.",
+    title: "National Security",
+    description: "Understand how misinformation impacts society, politics, and security.",
     color: "hsl(var(--module-4))",
     //icon: "",
     subtopics: [
@@ -247,10 +247,10 @@ export const modules: Module[] = [
     ],
   },
   {
-    id: "ai-deepfakes",
+    id: "social-media",
     number: 5,
-    title: "AI & Deepfakes",
-    description: "Navigate the emerging threats posed by artificial intelligence in disinformation campaigns.",
+    title: "Social Media",
+    description: "Use social media wisely, spot manipulation, and protect your attention.",
     color: "hsl(var(--module-5))",
     //icon: "",
     subtopics: [
@@ -300,8 +300,8 @@ export const modules: Module[] = [
   {
     id: "building-resilience",
     number: 6,
-    title: "Building Resilience",
-    description: "Develop lasting habits and strategies to protect yourself and your community.",
+    title: "Building Resilience: Fact Check Strats/Resources",
+    description: "Equip yourself with tools and strategies to verify and debunk information.",
     color: "hsl(var(--module-6))",
     //icon: "",
     subtopics: [
