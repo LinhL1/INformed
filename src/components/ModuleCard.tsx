@@ -27,7 +27,6 @@ const ModuleCard = ({ module, progress, index }: ModuleCardProps) => {
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
-                <span className="text-2xl">{module.icon}</span>
                 <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
                   Module {module.number}
                 </span>
