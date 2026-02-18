@@ -1,11 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const Header = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const isModules = location.pathname === "/modules";
+  const { theme, setTheme } = useTheme();
 
   const getBackPath = () => {
     if (location.pathname.includes("/lesson/")) {
@@ -32,12 +34,18 @@ const Header = () => {
               </Link>
             </motion.div>
           )}
-          <Link to="/" className="flex items-center gap-2">
-            {/* <span className="font-display text-lg font-bold text-foreground">
-              Ms. <span className="text-accent">Informed</span>
-            </span> */}
-          </Link>
+          <Link to="/" className="flex items-center gap-2" />
         </div>
+
+        {/* Theme toggle */}
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-secondary text-muted-foreground transition-colors hover:text-foreground hover:bg-muted"
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+        </motion.button>
       </div>
     </header>
   );
