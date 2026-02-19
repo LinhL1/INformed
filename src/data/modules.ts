@@ -35,7 +35,7 @@ export const modules: Module[] = [
     subtopics: [
       {
         id: "what-is-disinfo",
-        title: "What Is Misinformation?",
+        title: "What is Misinformation?",
         description: "Defining misinformation, disinformation, and malinformation.",
         estimatedMinutes: 8,
         sections: [
