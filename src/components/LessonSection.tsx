@@ -101,13 +101,21 @@ const LessonSectionComponent = ({ section, index }: Props) => {
             })}
           </div>
           {selectedAnswer !== null && (
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className={`text-sm font-medium ${isCorrect ? "text-success" : "text-destructive"}`}
+              className="flex items-center justify-between"
             >
-              {isCorrect ? "Correct! Well done." : "Not quite. Review the lesson and try again."}
-            </motion.p>
+              <p className={`text-sm font-medium ${isCorrect ? "text-success" : "text-destructive"}`}>
+                {isCorrect ? "Correct! Well done." : "Not quite. Review the lesson and try again."}
+              </p>
+              <button
+                onClick={() => setSelectedAnswer(null)}
+                className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2"
+              >
+                Try Again
+              </button>
+            </motion.div>
           )}
         </div>
       )}
