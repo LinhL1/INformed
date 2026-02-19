@@ -4,16 +4,9 @@ import { ArrowLeft, Sun, Moon, Radio } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const tickerItems = [
-  "96% of people overestimate their ability to spot fake news",
-  "False news spreads 6x faster than the truth on social media",
-  "Disinformation campaigns have influenced elections in 27+ countries",
-  "Only 2% of students can identify a sponsored news article",
-  "The average person encounters up to 10,000 ads & messages daily",
-  "Bot accounts generate 66% of tweeted links to fake news sites",
-  "Critical thinking is a trainable skill — and your best defense",
-  "Deepfakes increased by 900% between 2019 and 2023",
-  "Media literacy is now considered a national security priority",
-  "60% of people share articles without reading beyond the headline",
+  "False information spreads faster, farther, deeper, and more broadly than true information",
+  "On average, false news is ~70% more likely to be retweeted than true news",
+  "False news spreads 6× faster on Twitter than truthful news"
 ];
 
 const Header = () => {
@@ -83,7 +76,7 @@ const Header = () => {
       {/* Back nav — only shown on inner pages, slim */}
       {!isHome && !isModules && (
         <div className="border-b border-border bg-background/80 backdrop-blur-md">
-          <div className="mx-auto flex h-10 max-w-3xl items-center px-4">
+          <div className="mx-auto flex h-12 max-w-3xl items-center px-4">
             <motion.div initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }}>
               <Link
                 to={getBackPath()}
