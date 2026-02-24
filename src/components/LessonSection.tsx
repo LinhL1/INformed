@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle, Lightbulb, BookOpen, Gamepad2 } from "lucide-react";
+import { CheckCircle2, XCircle, Lightbulb, BookOpen, Gamepad2, List, Key } from "lucide-react";
 import type { LessonSection as LessonSectionType } from "@/data/modules";
 
 interface Props {
@@ -36,6 +36,46 @@ const LessonSectionComponent = ({ section, index }: Props) => {
         <div className="rounded-xl border border-accent/30 bg-accent/10 p-4 flex items-start gap-3">
           <Lightbulb className="h-5 w-5 text-accent mt-0.5 shrink-0" />
           <p className="text-sm text-foreground leading-relaxed">
+            {section.content}
+          </p>
+        </div>
+      )}
+
+      {section.type === "bullets" && (
+        <div className="space-y-2">
+          {section.title && (
+            <div className="flex items-center gap-2">
+              <List className="h-5 w-5 text-accent shrink-0" />
+              <h3 className="font-display text-lg font-semibold text-foreground">
+                {section.title}
+              </h3>
+            </div>
+          )}
+          {section.content && (
+            <p className="text-muted-foreground text-sm leading-relaxed">{section.content}</p>
+          )}
+          {section.items && (
+            <ul className="space-y-1.5 pl-4">
+              {section.items.map((item, i) => (
+                <li key={i} className="text-[15px] text-muted-foreground leading-relaxed flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+
+      {section.type === "key-term" && (
+        <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 space-y-1">
+          <div className="flex items-center gap-2">
+            <Key className="h-4 w-4 text-primary shrink-0" />
+            <h3 className="font-display text-base font-bold text-primary">
+              {section.term}
+            </h3>
+          </div>
+          <p className="text-sm text-foreground leading-relaxed pl-6">
             {section.content}
           </p>
         </div>
