@@ -1,11 +1,13 @@
 import { ReactNode } from "react";
 
 export interface LessonSection {
-  type: "text" | "callout" | "quiz" | "activity" | "image" | "bullets" | "key-term";
+  type: "text" | "callout" | "quiz" | "activity" | "image" | "bullets" | "key-term" | "video";
   title?: string;
   content: string | ReactNode;
   items?: string[];
   term?: string;
+  src?: string;
+  alt?: string;
   options?: string[];
   correctIndex?: number;
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle, Lightbulb, BookOpen, Gamepad2, List, Key } from "lucide-react";
+import { CheckCircle2, XCircle, Lightbulb, BookOpen, Gamepad2, List, Quote } from "lucide-react";
 import type { LessonSection as LessonSectionType } from "@/data/modules";
 
 interface Props {
@@ -68,16 +68,51 @@ const LessonSectionComponent = ({ section, index }: Props) => {
       )}
 
       {section.type === "key-term" && (
-        <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 space-y-1">
-          <div className="flex items-center gap-2">
-            <Key className="h-4 w-4 text-primary shrink-0" />
-            <h3 className="font-display text-base font-bold text-primary">
-              {section.term}
-            </h3>
-          </div>
-          <p className="text-sm text-foreground leading-relaxed pl-6">
+        <div className="border-l-4 border-accent bg-accent/5 rounded-r-xl py-3 px-5 space-y-1">
+          <p className="font-display text-base font-bold text-foreground italic flex items-start gap-2">
+            <Quote className="h-4 w-4 text-accent mt-1 shrink-0" />
+            {section.term}
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed pl-6">
             {section.content}
           </p>
+        </div>
+      )}
+
+      {section.type === "image" && (
+        <div className="space-y-2">
+          {section.title && (
+            <h4 className="font-display text-base font-semibold text-foreground">{section.title}</h4>
+          )}
+          <img
+            src={section.src}
+            alt={section.alt || (typeof section.content === "string" ? section.content : "Lesson image")}
+            className="w-full rounded-xl border border-border object-cover"
+            loading="lazy"
+          />
+          {section.content && (
+            <p className="text-xs text-muted-foreground text-center italic">{section.content}</p>
+          )}
+        </div>
+      )}
+
+      {section.type === "video" && (
+        <div className="space-y-2">
+          {section.title && (
+            <h4 className="font-display text-base font-semibold text-foreground">{section.title}</h4>
+          )}
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-border">
+            <iframe
+              src={section.src}
+              title={section.title || "Embedded video"}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full"
+            />
+          </div>
+          {section.content && (
+            <p className="text-xs text-muted-foreground text-center italic">{section.content}</p>
+          )}
         </div>
       )}
 
