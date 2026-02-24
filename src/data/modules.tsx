@@ -70,6 +70,12 @@ export const modules: Module[] = [
               </>
             ),
           },
+          { 
+            type: "video", 
+            title: "How False News Can Spread", 
+            src: "https://www.youtube.com/embed/hz6GULbowAk", 
+            content: "A TED-Ed explainer on how false news spreads and why it's so hard to stop." 
+          },
           { type: "quiz", title: "Check Your Understanding", content: "Which term describes intentionally false information spread to deceive?", options: ["Misinformation", "Disinformation", "Malinformation", "Propaganda"], correctIndex: 1 },
         ],
       },
