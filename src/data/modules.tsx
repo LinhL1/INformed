@@ -1,9 +1,11 @@
 import { ReactNode } from "react";
 
 export interface LessonSection {
-  type: "text" | "callout" | "quiz" | "activity" | "image";
+  type: "text" | "callout" | "quiz" | "activity" | "image" | "bullets" | "key-term";
   title?: string;
   content: string | ReactNode;
+  items?: string[];
+  term?: string;
   options?: string[];
   correctIndex?: number;
 }
@@ -46,6 +48,13 @@ export const modules: Module[] = [
           { type: "text", title: "Misinformation", content: "is incorrect (or false information) but shared unintentionally. The person spreading it may genuinely believe it is true." },
           { type: "text", title: "Disinformation", content: "is false information spread deliberately, with the intent to deceive. When disinformation is coordinated by foreign actors to interfere with democratic processes like elections, it is called foreign information manipulation and interference." },
           { type: "text", title: "How Does Misinformation Spread?", content: "Misinformation spreads easily because it often feels credible. It can come from sources we trust, align with things we already believe, or trigger strong emotional reactions that make us less likely to stop and question it. Understanding this is key to catching it." },
+          { type: "key-term", term: "Malinformation", content: "True information shared with the intent to cause harm, such as leaking private data to damage someone's reputation." },
+          { type: "bullets", title: "Key Takeaways", content: "", items: [
+            "Misinformation is false but shared without harmful intent",
+            "Disinformation is deliberately crafted to deceive",
+            "Malinformation is true but weaponized to cause harm",
+            "Context and intent are what distinguish these categories",
+          ]},
           
           { 
             type: "text",
