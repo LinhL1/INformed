@@ -20,7 +20,7 @@ const LandingPage = () => (
           transition={{ duration: 0.6, delay: 0.15 }}
           className="font-display text-5xl font-bold text-foreground sm:text-6xl"
         >
-        Be <span className="text-accent italic">Informed</span>.
+        Be <span className="text-accent italic">INformed</span>.
         </motion.h1>
 
         <motion.p

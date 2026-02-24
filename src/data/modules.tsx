@@ -1,7 +1,9 @@
+import { ReactNode } from "react";
+
 export interface LessonSection {
   type: "text" | "callout" | "quiz" | "activity" | "image";
   title?: string;
-  content: string;
+  content: string | ReactNode;
   options?: string[];
   correctIndex?: number;
 }
@@ -39,9 +41,24 @@ export const modules: Module[] = [
         description: "Defining misinformation, disinformation, and malinformation.",
         estimatedMinutes: 8,
         sections: [
-          { type: "text", title: "Introduction", content: "Disinformation is deliberately false information spread to deceive. This lesson covers the key differences between misinformation (unintentional), disinformation (intentional), and malinformation (true but used to harm)." },
-          { type: "callout", content: "💡 Key Insight: Not all false information is disinformation — intent matters." },
-          { type: "text", title: "The Spectrum of False Information", content: "Understanding where different types of false information fall on the spectrum from honest mistakes to deliberate manipulation is critical to building your media literacy skills." },
+          { type: "callout", content: "Not all false information is the same. It helps to understand the distinctions." },
+          { type: "text", title: "Information", content: "Information is content that accurately represents facts or events as they are understood to be true." },
+          { type: "text", title: "Misinformation", content: "is incorrect (or false information) but shared unintentionally. The person spreading it may genuinely believe it is true." },
+          { type: "text", title: "Disinformation", content: "is false information spread deliberately, with the intent to deceive. When disinformation is coordinated by foreign actors to interfere with democratic processes like elections, it is called foreign information manipulation and interference." },
+          { type: "text", title: "How Does Misinformation Spread?", content: "Misinformation spreads easily because it often feels credible. It can come from sources we trust, align with things we already believe, or trigger strong emotional reactions that make us less likely to stop and question it. Understanding this is key to catching it." },
+          
+          { 
+            type: "text",
+            title: "Resources",
+            content: (
+              <>
+                Learn more at{" "}
+                <a href="https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/misinformation-and-disinformation-both-prebunking-and-debunking-work-fighting-it-2024-10-25_en" target="_blank" rel="noopener noreferrer">
+                Misinformation and disinformation: both prebunking and debunking work for fighting it
+                </a>.
+              </>
+            ),
+          },
           { type: "quiz", title: "Check Your Understanding", content: "Which term describes intentionally false information spread to deceive?", options: ["Misinformation", "Disinformation", "Malinformation", "Propaganda"], correctIndex: 1 },
         ],
       },
