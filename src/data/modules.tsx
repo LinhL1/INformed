@@ -50,12 +50,11 @@ export const modules: Module[] = [
           { type: "text", title: "Misinformation", content: "is incorrect (or false information) but shared unintentionally. The person spreading it may genuinely believe it is true." },
           { type: "text", title: "Disinformation", content: "is false information spread deliberately, with the intent to deceive. When disinformation is coordinated by foreign actors to interfere with democratic processes like elections, it is called foreign information manipulation and interference." },
           { type: "text", title: "How Does Misinformation Spread?", content: "Misinformation spreads easily because it often feels credible. It can come from sources we trust, align with things we already believe, or trigger strong emotional reactions that make us less likely to stop and question it. Understanding this is key to catching it." },
-          { type: "key-term", term: "Malinformation", content: "True information shared with the intent to cause harm, such as leaking private data to damage someone's reputation." },
+          { type: "key-term", term: "Debunking", content: "showing that a piece of information is untrue and showing what is true" },
           { type: "bullets", title: "Key Takeaways", content: "", items: [
-            "Misinformation is false but shared without harmful intent",
+            "Misinformation is false or innaccurate but shared without harmful intent",
             "Disinformation is deliberately crafted to deceive",
-            "Malinformation is true but weaponized to cause harm",
-            "Context and intent are what distinguish these categories",
+            "Malinformation is true but weaponized or taken out of context to cause harm",
           ]},
           
           { 
@@ -74,21 +73,42 @@ export const modules: Module[] = [
             type: "video", 
             title: "How False News Can Spread", 
             src: "https://www.youtube.com/embed/hz6GULbowAk", 
-            content: "A TED-Ed explainer on how false news spreads and why it's so hard to stop." 
+            content: "A TED-Ed that explains on how false news spreads and why it's so hard to stop." 
           },
           { type: "quiz", title: "Check Your Understanding", content: "Which term describes intentionally false information spread to deceive?", options: ["Misinformation", "Disinformation", "Malinformation", "Propaganda"], correctIndex: 1 },
         ],
       },
       {
-        id: "history-of-disinfo",
-        title: "Importance of critical thinking: what is it and how to develop it",
+        id: "critical-thinking",
+        title: "Importance of Critical Thinking: What It Is and How to Develop It",
         description: "How disinformation has evolved through the ages.",
         estimatedMinutes: 10,
         sections: [
-          { type: "text", title: "Introduction", content: "Disinformation is not new. From ancient war propaganda to modern social media campaigns, the tools change but the tactics remain remarkably similar." },
-          { type: "text", title: "From Print to Digital", content: "Template: Add historical examples of disinformation campaigns across different eras and media." },
-          { type: "callout", content: "The term 'dezinformatsiya' was coined by the Soviet Union in the 1920s." },
-          { type: "quiz", title: "Quick Check", content: "Template: Add a quiz question about historical disinformation.", options: ["Option A", "Option B", "Option C", "Option D"], correctIndex: 0 },
+          { type: "callout", content: "The point of modern propaganda isn't only to misinform or push an agenda. It is to exhaust your critical thinking, to annihilate truth. — Garry Kasparov" },
+          { type: "text", title: "Critical thinking...What is it?", content: "Critical thinking is the ability to think clearly and independently." },
+          { type: "text", title: "Why It Matters", content: "The danger of these types is heightened by the extinction of local news; as of 2023, daily local newspapers were disappearing at a rate of two per week, leaving over 200 counties with no local news outlets at all. This lack of access, particularly in high-poverty areas, allows nearly 1,300 biased websites to fill the gap by masquerading as local news while pushing specific political agendas." },
+          { type: "bullets", title: "It isn't just thinking hard; it is a structured process of:", content: "", items: [
+            "Considering multiple perspectives",
+            "Being mindful and actively checking your own biases",
+            "Understanding the detailed context of a problem",
+          ]},
+          { type: "bullets", title: "Key Eements of Critical Thinking:", content: "", items: [
+            "Identify the premises and conclusions by breaking the argument into clear logical parts",
+            "Clarify the argument by finding ambiguity or unclear statements",
+            "Check the facts and evidence to see if the argument is accurate and complete",
+            "Evaluate the logic and reasoning (inductive or deductive) to determine if the conclusion is supported",
+            "Making a final judgment by weighing the argument against the evidence",
+          ]},
+
+          { type: "text", title: "Resources", content: (
+              <>
+                Learn more at{" "}
+                <a href="https://www.snhu.edu/about-us/newsroom/education/importance-of-critical-thinking-skills" target="_blank" rel="noopener noreferrer">
+                The Importance of Critical Thinking Skills, For Students and Ourselves
+                </a>.
+              </>
+            ), },
+          { type: "quiz", title: "Quick Check", content: "Which critical thinking habit helps a person evaluate information more accurately before forming a conclusion?", options: ["Accepting the first explanation that sounds convincing", "Sharing information immediately without verification", "Relying only on personal opinions and experiences", "Questioning assumptions and examining evidence carefully"], correctIndex: 3 },
         ],
       },
       {
