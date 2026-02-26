@@ -45,7 +45,6 @@ const LessonSectionComponent = ({ section, index }: Props) => {
         <div className="space-y-2">
           {section.title && (
             <div className="flex items-center gap-2">
-              <List className="h-5 w-5 text-accent shrink-0" />
               <h3 className="font-display text-lg font-semibold text-foreground">
                 {section.title}
               </h3>
