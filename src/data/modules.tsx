@@ -92,6 +92,13 @@ export const modules: Module[] = [
             "Being mindful and actively checking your own biases",
             "Understanding the detailed context of a problem",
           ]},
+          { 
+            type: "image", 
+            src: "/assets/critical-thinking-diagram.jpg", 
+            alt: "Description of the image", 
+            title: "",
+            content: "" 
+          },
           { type: "bullets", title: "Key Eements of Critical Thinking:", content: "", items: [
             "Identify the premises and conclusions by breaking the argument into clear logical parts",
             "Clarify the argument by finding ambiguity or unclear statements",
@@ -112,27 +119,158 @@ export const modules: Module[] = [
         ],
       },
       {
-        id: "why-it-matters",
-        title: "Why It Matters",
-        description: "The real-world impact of disinformation on society.",
-        estimatedMinutes: 7,
+        id: "emotional-manipulation",
+        title: "Emotional Manipulation",
+        description: "How emotions are weaponized to bypass critical thinking.",
+        estimatedMinutes: 8,
         sections: [
-          { type: "text", title: "Introduction", content: "Template: Explain the societal, political, and personal impacts of disinformation." },
-          { type: "callout", content: "⚠️ Template: Add a striking statistic about disinformation's impact." },
-          { type: "text", title: "National Security Implications", content: "Template: Discuss how disinformation threatens democratic institutions and national security." },
-        ],
+          {
+            type: "callout",
+            content: "If a headline makes you feel a strong emotion before you've even read the article, that's intentional. Emotional reactions are a feature, not a bug, of manipulative content."
+          },
+          {
+            type: "text",
+            title: "What Is Emotional Manipulation in Media?",
+            content: "Emotional manipulation occurs when content is designed to trigger a strong feeling (fear, outrage, pride, or sympathy) in order to bypass your rational thinking. When we're flooded with emotion, we're less likely to stop and ask: Is this true? Where did this come from? What's missing from this story?"
+          },
+          {
+            type: "key-term",
+            term: "Emotional Override",
+            content: "when an emotional response is so strong that it short-circuits critical evaluation of information, making us more likely to accept and share content without verifying it"
+          },
+          {
+            type: "bullets",
+            title: "Common Emotional Manipulation Tactics",
+            content: "",
+            items: [
+              "Fear-mongering: Exaggerating threats to make an issue feel urgent and dangerous, pushing you toward panic rather than careful analysis",
+              "Outrage bait: Framing stories to provoke anger, which increases engagement and sharing even when the underlying facts are incomplete or misleading",
+              "Sentimentality: Using emotional stories or images (children, animals, tragedy) to generate sympathy that overrides skepticism",
+              "Us vs. Them framing: Portraying issues as a battle between groups to trigger tribal loyalty and distrust of the 'other side'",
+              "False urgency: Creating a sense that you must act or share immediately, before you have time to think critically"
+            ]
+          },
+          {
+            type: "text",
+            title: "Why It Works",
+            content: "Our brains are wired to prioritize emotional information, it helped our ancestors survive real threats. Manipulators exploit this by packaging false or misleading content in emotionally charged language, images, and headlines. Studies show that content triggering anger or anxiety spreads significantly faster on social media than neutral, factual reporting."
+          },
+          {
+            type: "bullets",
+            title: "Warning Signs to Watch For",
+            content: "",
+            items: [
+              "The headline uses extreme language like 'shocking', 'destroyed', 'terrifying', or 'you won't believe'",
+              "You feel a strong urge to share before finishing the article",
+              "The story confirms something you already strongly believe or fear",
+              "There are no named sources, expert quotes, or links to original data",
+              "The content is designed to make one group look entirely evil or entirely heroic"
+            ]
+          },
+           { type: "text", title: "Resources", content: (
+              <>
+                Learn more at{" "}
+                <a href="https://www.snhu.edu/about-us/newsroom/education/importance-of-critical-thinking-skills" target="_blank" rel="noopener noreferrer">
+                The Importance of Critical Thinking Skills, For Students and Ourselves
+                </a>.
+              </>
+            ), },
+          {
+            type: "activity",
+            title: "Pause & Reflect",
+            content: "The next time a news story triggers a strong emotional reaction, pause before sharing. Ask yourself: What emotion am I feeling right now? Is this emotion making me want to skip fact-checking? Can I find this story reported by at least two other independent sources? Taking 60 seconds to ask these questions can prevent you from spreading manipulative content."
+          },
+          {
+            type: "quiz",
+            title: "Spot the Tactic",
+            content: "A news headline reads: 'TERRIFYING: They Are Coming for Your Children. Share Before This Gets Deleted.' Which emotional manipulation tactic is primarily being used?",
+            options: [
+              "Fear-mongering and false urgency",
+              "Sentimentality",
+              "Bandwagon effect",
+              "Anchoring bias"
+            ],
+            correctIndex: 0
+          }
+        ]
       },
-      {
-        id: "info-ecosystem",
-        title: "Bias and Perspective",
-        description: "How information flows and where it breaks down.",
-        estimatedMinutes: 9,
-        sections: [
-          { type: "text", title: "Introduction", content: "Template: Map out the modern information ecosystem — from creation to consumption." },
-          { type: "text", title: "Gatekeepers and Algorithms", content: "Template: Explain the role of algorithms and platform design in information spread." },
-          { type: "activity", title: "Reflection Activity", content: "Template: Describe an interactive activity where users map their own information sources." },
-        ],
-      },
+      // {
+      //   id: "info-consumer",
+      //   title: "The Information Consumers (Your) Role",
+      //   description: "Importance of being responsible and informed information consumer",
+      //   estimatedMinutes: 9,
+      //   sections: [
+      //     {
+      //       type: "callout",
+      //       content: "Every piece of information you consume passed through a chain of decisions: who created it, who published it, what platform surfaced it, and why. Understanding that chain makes you a harder target to manipulate."
+      //     },
+      //     {
+      //       type: "text",
+      //       title: "Introduction",
+      //       content: "Information doesn't appear in your feed by accident. It travels through an entire ecosystem, from the person or organization that created it, through publishers and platforms, to you. At every step, decisions are made about what gets amplified, what gets buried, and what gets distorted. As the final stop in that chain, you play a more powerful role than you might think."
+      //     },
+      //     {
+      //       type: "key-term",
+      //       term: "Information Ecosystem",
+      //       content: "the interconnected network of people, platforms, institutions, and technologies that produce, distribute, and consume information, including news outlets, social media, search engines, and individual users"
+      //     },
+      //     {
+      //       type: "text",
+      //       title: "From Creation to Consumption",
+      //       content: "Information begins with a source: a journalist, researcher, government agency, or random social media user. It then passes through editors, publishers, or platforms before reaching an audience. At each stage, the information can be filtered, reframed, stripped of context, or amplified based on what generates the most engagement rather than what is most accurate."
+      //     },
+      //     {
+      //       type: "text",
+      //       title: "Gatekeepers and Algorithms",
+      //       content: "Traditionally, editors and journalists acted as gatekeepers, deciding what was newsworthy and verifying facts before publication. Today, algorithms play that role for most people. Platforms like Facebook, YouTube, and TikTok use engagement signals (clicks, shares, watch time) to decide what you see. The problem is that emotionally charged, sensational, or outrage-inducing content tends to perform best, meaning the algorithm can reward misinformation just as readily as accurate reporting."
+      //     },
+      //     {
+      //       type: "bullets",
+      //       title: "What Responsible Information Consumers Do",
+      //       content: "",
+      //       items: [
+      //         "Seek out original sources rather than relying on headlines or secondhand summaries",
+      //         "Diversify their information diet by reading across multiple outlets and perspectives",
+      //         "Pause before sharing, ask whether they've verified the claim and considered the source",
+      //         "Recognize when an algorithm is serving content based on engagement rather than accuracy",
+      //         "Actively search for information that challenges their existing beliefs, not just confirms them"
+      //       ]
+      //     },
+      //     {
+      //       type: "text",
+      //       title: "Your Role in the Ecosystem",
+      //       content: "When you share, like, or even just spend time reading a piece of content, you send a signal to the algorithm that this content is worth spreading. That means every individual decision you make as a consumer either amplifies good information or bad information. Being a responsible consumer isn't passive, it's an active, ongoing choice that has real consequences for the people around you."
+      //     },
+      //     {
+      //       type: "callout",
+      //       content: "A 2018 MIT study found that false news spreads six times faster than true news on social media, largely because it tends to be more novel and emotionally provocative. Algorithms don't fact-check; they follow engagement."
+      //     },
+      //     {
+      //       type: "bullets",
+      //       title: "Red Flags That Should Slow You Down",
+      //       content: "",
+      //       items: [
+      //         "The story is only being reported by one outlet with no corroboration",
+      //         "The content makes you feel an immediate, strong emotional reaction",
+      //         "You were served the content by a recommendation algorithm rather than seeking it out",
+      //         "The headline is designed to provoke rather than inform",
+      //         "There are no named authors, dates, or links to primary sources"
+      //       ]
+      //     },
+      //     {
+      //       type: "quiz",
+      //       title: "Check Your Understanding",
+      //       content: "A friend shares an article that perfectly confirms something you already believe. What is the most responsible first step?",
+      //       options: [
+      //         "Share it immediately since it aligns with what you know to be true",
+      //         "Like it to help spread accurate information",
+      //         "Verify the claim with at least one additional independent source before sharing",
+      //         "Ignore it since your friend already did the research"
+      //       ],
+      //       correctIndex: 2
+      //     }
+      //   ]
+      // },
     ],
   },
   {

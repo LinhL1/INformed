@@ -118,7 +118,6 @@ const LessonSectionComponent = ({ section, index }: Props) => {
       {section.type === "activity" && (
         <div className="rounded-xl border-2 border-dashed border-border bg-secondary/50 p-5 space-y-2">
           <div className="flex items-center gap-2">
-            <Gamepad2 className="h-5 w-5 text-muted-foreground" />
             {section.title && (
               <h4 className="font-display text-base font-semibold text-foreground">
                 {section.title}

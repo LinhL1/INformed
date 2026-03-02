@@ -4,11 +4,6 @@ import { Shield, Brain, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mentorImage from "@/assets/ms-informed-mentor.png";
 
-const pillars = [
-  { icon: Shield, label: "National Security" },
-  { icon: Brain, label: "Critical Thinking" },
-  { icon: Eye, label: "Media Literacy" },
-];
 
 const LandingPage = () => (
   <div className="relative min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center overflow-hidden px-4">
@@ -33,24 +28,6 @@ const LandingPage = () => (
           Sharpen your critical thinking, learn to spot manipulation tactics, and
           become the strongest link in the chain of defense. Your awareness is your armor.
         </motion.p>
-
-        {/* Pillars */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.55 }}
-          className="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start"
-        >
-          {pillars.map(({ icon: Icon, label }) => (
-            <span
-              key={label}
-              className="flex items-center gap-1.5 rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-medium text-foreground"
-            >
-              <Icon className="h-3.5 w-3.5 text-accent" />
-              {label}
-            </span>
-          ))}
-        </motion.div>
 
         {/* CTA */}
         <motion.div
