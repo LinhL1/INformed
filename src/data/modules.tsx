@@ -167,6 +167,14 @@ export const modules: Module[] = [
               "The content is designed to make one group look entirely evil or entirely heroic"
             ]
           },
+           { type: "text", title: "Resources", content: (
+              <>
+                Learn more at{" "}
+                <a href="https://www.snhu.edu/about-us/newsroom/education/importance-of-critical-thinking-skills" target="_blank" rel="noopener noreferrer">
+                The Importance of Critical Thinking Skills, For Students and Ourselves
+                </a>.
+              </>
+            ), },
           {
             type: "activity",
             title: "Pause & Reflect",
@@ -186,83 +194,83 @@ export const modules: Module[] = [
           }
         ]
       },
-      {
-        id: "info-consumer",
-        title: "The Information Consumers (Your) Role",
-        description: "Importance of being responsible and informed information consumer",
-        estimatedMinutes: 9,
-        sections: [
-          {
-            type: "callout",
-            content: "Every piece of information you consume passed through a chain of decisions: who created it, who published it, what platform surfaced it, and why. Understanding that chain makes you a harder target to manipulate."
-          },
-          {
-            type: "text",
-            title: "Introduction",
-            content: "Information doesn't appear in your feed by accident. It travels through an entire ecosystem — from the person or organization that created it, through publishers and platforms, to you. At every step, decisions are made about what gets amplified, what gets buried, and what gets distorted. As the final stop in that chain, you play a more powerful role than you might think."
-          },
-          {
-            type: "key-term",
-            term: "Information Ecosystem",
-            content: "the interconnected network of people, platforms, institutions, and technologies that produce, distribute, and consume information, including news outlets, social media, search engines, and individual users"
-          },
-          {
-            type: "text",
-            title: "From Creation to Consumption",
-            content: "Information begins with a source: a journalist, researcher, government agency, or random social media user. It then passes through editors, publishers, or platforms before reaching an audience. At each stage, the information can be filtered, reframed, stripped of context, or amplified based on what generates the most engagement rather than what is most accurate."
-          },
-          {
-            type: "text",
-            title: "Gatekeepers and Algorithms",
-            content: "Traditionally, editors and journalists acted as gatekeepers, deciding what was newsworthy and verifying facts before publication. Today, algorithms play that role for most people. Platforms like Facebook, YouTube, and TikTok use engagement signals (clicks, shares, watch time) to decide what you see. The problem is that emotionally charged, sensational, or outrage-inducing content tends to perform best, meaning the algorithm can reward misinformation just as readily as accurate reporting."
-          },
-          {
-            type: "bullets",
-            title: "What Responsible Information Consumers Do",
-            content: "",
-            items: [
-              "Seek out original sources rather than relying on headlines or secondhand summaries",
-              "Diversify their information diet by reading across multiple outlets and perspectives",
-              "Pause before sharing, ask whether they've verified the claim and considered the source",
-              "Recognize when an algorithm is serving content based on engagement rather than accuracy",
-              "Actively search for information that challenges their existing beliefs, not just confirms them"
-            ]
-          },
-          {
-            type: "text",
-            title: "Your Role in the Ecosystem",
-            content: "When you share, like, or even just spend time reading a piece of content, you send a signal to the algorithm that this content is worth spreading. That means every individual decision you make as a consumer either amplifies good information or bad information. Being a responsible consumer isn't passive, it's an active, ongoing choice that has real consequences for the people around you."
-          },
-          {
-            type: "callout",
-            content: "A 2018 MIT study found that false news spreads six times faster than true news on social media, largely because it tends to be more novel and emotionally provocative. Algorithms don't fact-check; they follow engagement."
-          },
-          {
-            type: "bullets",
-            title: "Red Flags That Should Slow You Down",
-            content: "",
-            items: [
-              "The story is only being reported by one outlet with no corroboration",
-              "The content makes you feel an immediate, strong emotional reaction",
-              "You were served the content by a recommendation algorithm rather than seeking it out",
-              "The headline is designed to provoke rather than inform",
-              "There are no named authors, dates, or links to primary sources"
-            ]
-          },
-          {
-            type: "quiz",
-            title: "Check Your Understanding",
-            content: "A friend shares an article that perfectly confirms something you already believe. What is the most responsible first step?",
-            options: [
-              "Share it immediately since it aligns with what you know to be true",
-              "Like it to help spread accurate information",
-              "Verify the claim with at least one additional independent source before sharing",
-              "Ignore it since your friend already did the research"
-            ],
-            correctIndex: 2
-          }
-        ]
-      },
+      // {
+      //   id: "info-consumer",
+      //   title: "The Information Consumers (Your) Role",
+      //   description: "Importance of being responsible and informed information consumer",
+      //   estimatedMinutes: 9,
+      //   sections: [
+      //     {
+      //       type: "callout",
+      //       content: "Every piece of information you consume passed through a chain of decisions: who created it, who published it, what platform surfaced it, and why. Understanding that chain makes you a harder target to manipulate."
+      //     },
+      //     {
+      //       type: "text",
+      //       title: "Introduction",
+      //       content: "Information doesn't appear in your feed by accident. It travels through an entire ecosystem, from the person or organization that created it, through publishers and platforms, to you. At every step, decisions are made about what gets amplified, what gets buried, and what gets distorted. As the final stop in that chain, you play a more powerful role than you might think."
+      //     },
+      //     {
+      //       type: "key-term",
+      //       term: "Information Ecosystem",
+      //       content: "the interconnected network of people, platforms, institutions, and technologies that produce, distribute, and consume information, including news outlets, social media, search engines, and individual users"
+      //     },
+      //     {
+      //       type: "text",
+      //       title: "From Creation to Consumption",
+      //       content: "Information begins with a source: a journalist, researcher, government agency, or random social media user. It then passes through editors, publishers, or platforms before reaching an audience. At each stage, the information can be filtered, reframed, stripped of context, or amplified based on what generates the most engagement rather than what is most accurate."
+      //     },
+      //     {
+      //       type: "text",
+      //       title: "Gatekeepers and Algorithms",
+      //       content: "Traditionally, editors and journalists acted as gatekeepers, deciding what was newsworthy and verifying facts before publication. Today, algorithms play that role for most people. Platforms like Facebook, YouTube, and TikTok use engagement signals (clicks, shares, watch time) to decide what you see. The problem is that emotionally charged, sensational, or outrage-inducing content tends to perform best, meaning the algorithm can reward misinformation just as readily as accurate reporting."
+      //     },
+      //     {
+      //       type: "bullets",
+      //       title: "What Responsible Information Consumers Do",
+      //       content: "",
+      //       items: [
+      //         "Seek out original sources rather than relying on headlines or secondhand summaries",
+      //         "Diversify their information diet by reading across multiple outlets and perspectives",
+      //         "Pause before sharing, ask whether they've verified the claim and considered the source",
+      //         "Recognize when an algorithm is serving content based on engagement rather than accuracy",
+      //         "Actively search for information that challenges their existing beliefs, not just confirms them"
+      //       ]
+      //     },
+      //     {
+      //       type: "text",
+      //       title: "Your Role in the Ecosystem",
+      //       content: "When you share, like, or even just spend time reading a piece of content, you send a signal to the algorithm that this content is worth spreading. That means every individual decision you make as a consumer either amplifies good information or bad information. Being a responsible consumer isn't passive, it's an active, ongoing choice that has real consequences for the people around you."
+      //     },
+      //     {
+      //       type: "callout",
+      //       content: "A 2018 MIT study found that false news spreads six times faster than true news on social media, largely because it tends to be more novel and emotionally provocative. Algorithms don't fact-check; they follow engagement."
+      //     },
+      //     {
+      //       type: "bullets",
+      //       title: "Red Flags That Should Slow You Down",
+      //       content: "",
+      //       items: [
+      //         "The story is only being reported by one outlet with no corroboration",
+      //         "The content makes you feel an immediate, strong emotional reaction",
+      //         "You were served the content by a recommendation algorithm rather than seeking it out",
+      //         "The headline is designed to provoke rather than inform",
+      //         "There are no named authors, dates, or links to primary sources"
+      //       ]
+      //     },
+      //     {
+      //       type: "quiz",
+      //       title: "Check Your Understanding",
+      //       content: "A friend shares an article that perfectly confirms something you already believe. What is the most responsible first step?",
+      //       options: [
+      //         "Share it immediately since it aligns with what you know to be true",
+      //         "Like it to help spread accurate information",
+      //         "Verify the claim with at least one additional independent source before sharing",
+      //         "Ignore it since your friend already did the research"
+      //       ],
+      //       correctIndex: 2
+      //     }
+      //   ]
+      // },
     ],
   },
   {
