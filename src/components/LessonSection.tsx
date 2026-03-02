@@ -6,9 +6,10 @@ import type { LessonSection as LessonSectionType } from "@/data/modules";
 interface Props {
   section: LessonSectionType;
   index: number;
+  onQuizCorrect?: () => void;
 }
 
-const LessonSectionComponent = ({ section, index }: Props) => {
+const LessonSectionComponent = ({ section, index, onQuizCorrect }: Props) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const isCorrect = selectedAnswer === section.correctIndex;
 
@@ -150,7 +151,14 @@ const LessonSectionComponent = ({ section, index }: Props) => {
               return (
                 <button
                   key={i}
-                  onClick={() => selectedAnswer === null && setSelectedAnswer(i)}
+                  onClick={() => {
+                    if (selectedAnswer === null) {
+                      setSelectedAnswer(i);
+                      if (i === section.correctIndex && onQuizCorrect) {
+                        onQuizCorrect();
+                      }
+                    }
+                  }}
                   disabled={selectedAnswer !== null}
                   className={`text-left rounded-lg border p-3 text-sm transition-all duration-200 ${
                     showResult && isCorrectOption
