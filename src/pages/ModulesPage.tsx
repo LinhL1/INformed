@@ -35,13 +35,12 @@ const ModulesPage = () => {
           className="mb-10 space-y-4"
         >
           <div className="flex items-center gap-3">
-            <Shield className="h-7 w-7 text-accent" />
             <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
-              Investigation Board
+              Stay Sharp. Stay Informed. 
             </h1>
           </div>
           <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
-            Crack each case to unlock the next. Build your media literacy skills and level up your detective rank.
+            Work through each module to unlock the next. Build your media literacy skills and level up your detective rank.
           </p>
 
           {/* XP & Level Card */}
@@ -107,7 +106,7 @@ const ModulesPage = () => {
         {/* Detective Map — Vertical Path */}
         <div className="relative">
           {/* Vertical connector line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border sm:left-10" />
+          <div className="absolute sm:left-10 top-12 bottom-0 w-1 bg-border left-8" />
 
           <div className="space-y-0">
             {modules.map((module, index) => {
@@ -124,14 +123,14 @@ const ModulesPage = () => {
                   className="relative flex gap-5 pb-8 sm:gap-7"
                 >
                   {/* Map node */}
-                  <div className="relative z-10 flex flex-col items-center">
+                  <div className="relative mt-12 z-10 flex flex-col items-center">
                     <div
                       className={`flex h-16 w-16 items-center justify-center rounded-full border-[3px] text-lg font-bold transition-all sm:h-20 sm:w-20 ${
                         completed
-                          ? "border-success bg-success/15 text-success"
+                          ? "border-success bg-success text-success-foreground" //completed (nodes)
                           : unlocked
-                          ? "border-accent bg-accent/15 text-accent shadow-lg shadow-accent/20"
-                          : "border-border bg-secondary text-muted-foreground"
+                          ? "border-accent bg-accent text-success-foreground shadow-lg shadow-accent/20" //in progress 
+                          : "border-border bg-secondary text-success-foreground" //locked
                       }`}
                     >
                       {completed ? (
@@ -142,14 +141,6 @@ const ModulesPage = () => {
                         <Lock className="h-6 w-6 sm:h-7 sm:w-7" />
                       )}
                     </div>
-                    {/* Dashed connector between nodes */}
-                    {index < modules.length - 1 && (
-                      <div
-                        className={`mt-1 h-full w-0.5 ${
-                          completed ? "bg-success/40" : "border-l-2 border-dashed border-border"
-                        }`}
-                      />
-                    )}
                   </div>
 
                   {/* Card */}
@@ -177,7 +168,7 @@ const ModulesPage = () => {
                               </span>
                               {completed && (
                                 <span className="flex items-center gap-1 rounded-full bg-success/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-success">
-                                  <Sparkles className="h-3 w-3" /> Solved
+                                  Solved
                                 </span>
                               )}
                             </div>

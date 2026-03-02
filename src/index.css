@@ -97,8 +97,8 @@
     --sidebar-ring: 213 94% 60%;
 
     /* Custom tokens */
-    --success: 152 60% 42%;
-    --success-foreground: 0 0% 100%;
+    --success: 152 35% 50%;         /* Muted, softer green */
+    --success-foreground: 0 0% 100%; /* Keep white text for contrast */
     --module-1: 213 94% 60%;
     --module-2: 262 60% 65%;
     --module-3: 172 66% 50%;
