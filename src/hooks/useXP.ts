@@ -63,12 +63,12 @@ export const STORY_UNLOCKS: StoryUnlock[] = [
 ];
 
 export const BADGES: Badge[] = [
-  { id: "first-clue", title: "First Contact", icon: "🔎", description: "Complete your first lesson", requiredLevel: 1 },
-  { id: "sharp-eye", title: "Sharp Eye", icon: "👁️", description: "Get 3 quizzes correct on first try", requiredLevel: 2 },
-  { id: "fact-checker", title: "Fact Checker", icon: "✅", description: "Reach Analyst rank", requiredLevel: 3 },
-  { id: "truth-seeker", title: "Truth Seeker", icon: "🔦", description: "Reach Senior Operative rank", requiredLevel: 4 },
-  { id: "media-guardian", title: "Cyber Sentinel", icon: "🛡️", description: "Reach Commander rank", requiredLevel: 5 },
-  { id: "master-decoder", title: "Guardian of Veritás", icon: "🏆", description: "Reach Guardian rank", requiredLevel: 6 },
+  // { id: "first-clue", title: "First Contact", icon: "🔎", description: "Complete your first lesson", requiredLevel: 1 },
+  // { id: "sharp-eye", title: "Sharp Eye", icon: "👁️", description: "Get 3 quizzes correct on first try", requiredLevel: 2 },
+  // { id: "fact-checker", title: "Fact Checker", icon: "✅", description: "Reach Analyst rank", requiredLevel: 3 },
+  // { id: "truth-seeker", title: "Truth Seeker", icon: "🔦", description: "Reach Senior Operative rank", requiredLevel: 4 },
+  // { id: "media-guardian", title: "Cyber Sentinel", icon: "🛡️", description: "Reach Commander rank", requiredLevel: 5 },
+  // { id: "master-decoder", title: "Guardian of Veritás", icon: "🏆", description: "Reach Guardian rank", requiredLevel: 6 },
 ];
 
 function loadXP(): XPState {
