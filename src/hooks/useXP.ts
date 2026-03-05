@@ -8,42 +8,75 @@ export interface Badge {
   requiredLevel: number;
 }
 
+export interface AvatarUpgrade {
+  level: number;
+  name: string;
+  avatar: string;
+  description: string;
+}
+
+export interface StoryUnlock {
+  level: number;
+  title: string;
+  content: string;
+  icon: string;
+}
+
 export interface XPState {
   totalXP: number;
   earnedBadges: string[];
-  quizBonuses: { [key: string]: boolean }; // track per-quiz bonus
+  quizBonuses: { [key: string]: boolean };
+  activityBonuses: { [key: string]: boolean };
 }
 
 const STORAGE_KEY = "ms-informed-xp";
 
 const XP_PER_LESSON = 25;
 const XP_PER_QUIZ_CORRECT = 15;
+const XP_PER_ACTIVITY = 20;
 const XP_PER_MODULE_COMPLETE = 50;
 
 export const LEVELS = [
-  { level: 1, title: "Rookie Analyst", xpRequired: 0, avatar: "🔍" },
-  { level: 2, title: "Junior Detective", xpRequired: 75, avatar: "🕵️" },
-  { level: 3, title: "Field Investigator", xpRequired: 200, avatar: "📋" },
-  { level: 4, title: "Senior Agent", xpRequired: 400, avatar: "🛡️" },
-  { level: 5, title: "Chief Intelligence Officer", xpRequired: 650, avatar: "⭐" },
-  { level: 6, title: "Master Decoder", xpRequired: 1000, avatar: "🏆" },
+  { level: 1, title: "Recruit", xpRequired: 0, avatar: "🔰" },
+  { level: 2, title: "Field Agent", xpRequired: 75, avatar: "🕵️" },
+  { level: 3, title: "Analyst", xpRequired: 200, avatar: "📡" },
+  { level: 4, title: "Senior Operative", xpRequired: 400, avatar: "🛡️" },
+  { level: 5, title: "Commander", xpRequired: 650, avatar: "⚔️" },
+  { level: 6, title: "Guardian of Veritás", xpRequired: 1000, avatar: "🏛️" },
+];
+
+export const AVATAR_UPGRADES: AvatarUpgrade[] = [
+  { level: 1, name: "Recruit Badge", avatar: "🔰", description: "Your journey begins. Welcome to the Corps." },
+  { level: 2, name: "Agent Shades", avatar: "🕵️", description: "You've earned your field agent disguise." },
+  { level: 3, name: "Satellite Uplink", avatar: "📡", description: "Access to advanced intelligence tools." },
+  { level: 4, name: "Defense Shield", avatar: "🛡️", description: "Your mental defenses are hardening." },
+  { level: 5, name: "Commander's Sword", avatar: "⚔️", description: "Leading the fight against misinformation." },
+  { level: 6, name: "Guardian Crown", avatar: "🏛️", description: "You are the Guardian of Veritás." },
+];
+
+export const STORY_UNLOCKS: StoryUnlock[] = [
+  { level: 2, title: "Classified Dossier: The Origins", icon: "📁", content: "Veritás was founded in 2019 after the Great Disinfo Wave. A coalition of journalists, researchers, and technologists came together to build a city where truth is the highest value." },
+  { level: 3, title: "Agent Profile: The Architect", icon: "🧠", content: "The Architect is the mysterious figure who designed Veritás's information defenses. No one knows their true identity, but their protocols have protected millions." },
+  { level: 4, title: "Intel Report: The Shadow Network", icon: "🌐", content: "Intelligence suggests a coordinated network of troll farms, AI content generators, and amplification bots operating across 47 countries. Codename: ECHO." },
+  { level: 5, title: "Secret File: Operation Looking Glass", icon: "🔮", content: "Operation Looking Glass is Veritás's counter-disinformation program. It uses the same tools as the enemy — AI, social networks, virality — but in service of truth." },
+  { level: 6, title: "The Guardian's Archive", icon: "📜", content: "Welcome to the inner sanctum. As a Guardian, you now have access to the complete archive of every disinformation campaign ever detected and neutralized by the Corps." },
 ];
 
 export const BADGES: Badge[] = [
-  { id: "first-clue", title: "First Clue", icon: "🔎", description: "Complete your first lesson", requiredLevel: 1 },
+  { id: "first-clue", title: "First Contact", icon: "🔎", description: "Complete your first lesson", requiredLevel: 1 },
   { id: "sharp-eye", title: "Sharp Eye", icon: "👁️", description: "Get 3 quizzes correct on first try", requiredLevel: 2 },
-  { id: "fact-checker", title: "Fact Checker", icon: "✅", description: "Reach Level 3", requiredLevel: 3 },
-  { id: "truth-seeker", title: "Truth Seeker", icon: "🔦", description: "Reach Level 4", requiredLevel: 4 },
-  { id: "media-guardian", title: "Media Guardian", icon: "🛡️", description: "Reach Level 5", requiredLevel: 5 },
-  { id: "master-decoder", title: "Master Decoder", icon: "🏆", description: "Reach Level 6", requiredLevel: 6 },
+  { id: "fact-checker", title: "Fact Checker", icon: "✅", description: "Reach Analyst rank", requiredLevel: 3 },
+  { id: "truth-seeker", title: "Truth Seeker", icon: "🔦", description: "Reach Senior Operative rank", requiredLevel: 4 },
+  { id: "media-guardian", title: "Cyber Sentinel", icon: "🛡️", description: "Reach Commander rank", requiredLevel: 5 },
+  { id: "master-decoder", title: "Guardian of Veritás", icon: "🏆", description: "Reach Guardian rank", requiredLevel: 6 },
 ];
 
 function loadXP(): XPState {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : { totalXP: 0, earnedBadges: [], quizBonuses: {} };
+    return stored ? JSON.parse(stored) : { totalXP: 0, earnedBadges: [], quizBonuses: {}, activityBonuses: {} };
   } catch {
-    return { totalXP: 0, earnedBadges: [], quizBonuses: {} };
+    return { totalXP: 0, earnedBadges: [], quizBonuses: {}, activityBonuses: {} };
   }
 }
 
@@ -59,12 +92,8 @@ export function getLevel(xp: number) {
   }
   const nextLevel = LEVELS.find((l) => l.xpRequired > xp);
   const xpToNext = nextLevel ? nextLevel.xpRequired - xp : 0;
-  const xpInLevel = nextLevel
-    ? xp - current.xpRequired
-    : 0;
-  const xpForLevel = nextLevel
-    ? nextLevel.xpRequired - current.xpRequired
-    : 1;
+  const xpInLevel = nextLevel ? xp - current.xpRequired : 0;
+  const xpForLevel = nextLevel ? nextLevel.xpRequired - current.xpRequired : 1;
   return { ...current, nextLevel, xpToNext, progressPercent: nextLevel ? Math.round((xpInLevel / xpForLevel) * 100) : 100 };
 }
 
@@ -75,7 +104,6 @@ export function useXP() {
     let gained = amount;
     setState((prev) => {
       const next = { ...prev, totalXP: prev.totalXP + amount };
-      // Check for new level-based badges
       const level = getLevel(next.totalXP);
       const newBadges = BADGES.filter(
         (b) => level.level >= b.requiredLevel && !prev.earnedBadges.includes(b.id)
@@ -94,7 +122,6 @@ export function useXP() {
   }, [addXP]);
 
   const awardQuizXP = useCallback((quizKey: string) => {
-    // Only award bonus once per quiz
     if (state.quizBonuses[quizKey]) return 0;
     setState((prev) => {
       const next = {
@@ -115,6 +142,27 @@ export function useXP() {
     return XP_PER_QUIZ_CORRECT;
   }, [state.quizBonuses]);
 
+  const awardActivityXP = useCallback((activityKey: string) => {
+    if (state.activityBonuses?.[activityKey]) return 0;
+    setState((prev) => {
+      const next = {
+        ...prev,
+        totalXP: prev.totalXP + XP_PER_ACTIVITY,
+        activityBonuses: { ...prev.activityBonuses, [activityKey]: true },
+      };
+      const level = getLevel(next.totalXP);
+      const newBadges = BADGES.filter(
+        (b) => level.level >= b.requiredLevel && !prev.earnedBadges.includes(b.id)
+      );
+      if (newBadges.length > 0) {
+        next.earnedBadges = [...prev.earnedBadges, ...newBadges.map((b) => b.id)];
+      }
+      saveXP(next);
+      return next;
+    });
+    return XP_PER_ACTIVITY;
+  }, [state.activityBonuses]);
+
   const awardModuleCompleteXP = useCallback(() => {
     return addXP(XP_PER_MODULE_COMPLETE);
   }, [addXP]);
@@ -127,6 +175,7 @@ export function useXP() {
     earnedBadges: state.earnedBadges,
     awardLessonXP,
     awardQuizXP,
+    awardActivityXP,
     awardModuleCompleteXP,
     addXP,
   };

@@ -1,7 +1,7 @@
 import { useParams, Navigate, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, ArrowRight, Star } from "lucide-react";
+import { CheckCircle2, ArrowRight, Star, Shield } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import LessonSectionComponent from "@/components/LessonSection";
 import XPNotification from "@/components/XPNotification";
@@ -13,7 +13,7 @@ const LessonPage = () => {
   const { moduleId, lessonId } = useParams<{ moduleId: string; lessonId: string }>();
   const navigate = useNavigate();
   const { markComplete, isComplete } = useProgress();
-  const { awardLessonXP, awardQuizXP, totalXP, level } = useXP();
+  const { awardLessonXP, awardQuizXP, awardActivityXP, totalXP, level } = useXP();
   const [xpNotification, setXpNotification] = useState<{ amount: number; message: string } | null>(null);
 
   const module = modules.find((m) => m.id === moduleId);
@@ -38,11 +38,18 @@ const LessonPage = () => {
     }
   };
 
+  const handleActivityComplete = (activityKey: string) => {
+    const xp = awardActivityXP(activityKey);
+    if (xp > 0) {
+      showXPNotification(xp, "Activity mastered!");
+    }
+  };
+
   const handleComplete = () => {
     if (!completed) {
       markComplete(module.id, subtopic.id);
       const xp = awardLessonXP();
-      showXPNotification(xp, "Lesson complete!");
+      showXPNotification(xp, "Mission complete!");
     }
     setTimeout(() => {
       if (nextSubtopic) {
@@ -80,9 +87,9 @@ const LessonPage = () => {
         >
           <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">
             <span style={{ color: module.color }}></span>
-            <span>Case File {module.number}</span>
+            <span>{module.chapterTitle}</span>
             <span>·</span>
-            <span>Lead {subtopicIndex + 1} of {module.subtopics.length}</span>
+            <span>Mission {subtopicIndex + 1} of {module.subtopics.length}</span>
           </div>
           <h1 className="font-display text-3xl font-bold text-foreground">
             {subtopic.title}
@@ -111,6 +118,23 @@ const LessonPage = () => {
           </div>
         </motion.div>
 
+        {/* Story briefing */}
+        {subtopic.storyBriefing && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="mb-8 rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-5"
+          >
+            <div className="flex items-start gap-3">
+              <Shield className="h-5 w-5 text-accent mt-0.5 shrink-0" />
+              <p className="text-sm text-foreground leading-relaxed">
+                {subtopic.storyBriefing}
+              </p>
+            </div>
+          </motion.div>
+        )}
+
         {/* Sections */}
         <div className="space-y-6">
           {subtopic.sections.map((section, index) => (
@@ -121,6 +145,11 @@ const LessonPage = () => {
               onQuizCorrect={
                 section.type === "quiz"
                   ? () => handleQuizCorrect(`${module.id}-${subtopic.id}-${index}`)
+                  : undefined
+              }
+              onActivityComplete={
+                ["true-false", "sorting", "fill-blank", "scenario"].includes(section.type)
+                  ? () => handleActivityComplete(`${module.id}-${subtopic.id}-${index}`)
                   : undefined
               }
             />
@@ -145,11 +174,11 @@ const LessonPage = () => {
             {completed ? (
               <>
                 <CheckCircle2 className="h-4 w-4" />
-                Completed — {nextSubtopic ? "Next Lead" : "Back to Case"}
+                Completed — {nextSubtopic ? "Next Mission" : "Back to Chapter"}
               </>
             ) : (
               <>
-                Mark Complete & Continue
+                Mission Complete
                 <span className="flex items-center gap-1 rounded-full bg-white/20 px-2 py-0.5 text-xs">
                   <Star className="h-3 w-3" /> +25 XP
                 </span>

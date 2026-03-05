@@ -1,16 +1,15 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Lock, CheckCircle2, ChevronRight, Star, Shield, Sparkles } from "lucide-react";
+import { Lock, CheckCircle2, ChevronRight, Star, Shield, BookOpen } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
-import { useXP, getLevel, LEVELS, BADGES } from "@/hooks/useXP";
+import { useXP, getLevel, LEVELS, BADGES, AVATAR_UPGRADES, STORY_UNLOCKS } from "@/hooks/useXP";
 
 const ModulesPage = () => {
   const { getModuleProgress } = useProgress();
   const { totalXP, level, earnedBadges } = useXP();
 
-  // Module is unlocked if it's the first, or all lessons in previous module are complete
   const isModuleUnlocked = (index: number) => {
     if (index === 0) return true;
     const prevModule = modules[index - 1];
@@ -24,26 +23,30 @@ const ModulesPage = () => {
     return prog.completed === prog.total && prog.total > 0;
   };
 
+  const unlockedStory = STORY_UNLOCKS.filter((s) => level.level >= s.level);
+
   return (
     <PageTransition>
       <div className="mx-auto max-w-3xl px-4 py-10">
-        {/* Detective HQ Header */}
+        {/* Story Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="mb-10 space-y-4"
         >
-          <div className="flex items-center gap-3">
-            <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
-              Stay Sharp. Stay Informed. 
-            </h1>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-accent">
+            <Shield className="h-4 w-4" />
+            Cyber Defense Corps
           </div>
+          <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
+            Defend Veritás
+          </h1>
           <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
-            Work through each module to unlock the next. Build your media literacy skills and level up your detective rank.
+            The digital city is under siege. Complete each chapter to unlock the next mission. Build your skills, earn XP, and rise through the ranks.
           </p>
 
-          {/* XP & Level Card */}
+          {/* Agent Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -52,11 +55,16 @@ const ModulesPage = () => {
           >
             <div className="flex items-center justify-between gap-4 flex-wrap">
               <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/15 text-3xl">
-                  {level.avatar}
+                <div className="relative">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/15 text-3xl ring-2 ring-accent/30">
+                    {level.avatar}
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-accent-foreground">
+                    {level.level}
+                  </div>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Rank</p>
+                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Agent Rank</p>
                   <p className="font-display text-lg font-bold text-foreground">{level.title}</p>
                 </div>
               </div>
@@ -71,12 +79,12 @@ const ModulesPage = () => {
             {level.nextLevel && (
               <div className="mt-4 space-y-1.5">
                 <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>Level {level.level}</span>
-                  <span>{level.xpToNext} XP to Level {level.nextLevel.level}</span>
+                  <span>{level.title}</span>
+                  <span>{level.xpToNext} XP to {level.nextLevel.title}</span>
                 </div>
-                <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
+                <div className="h-2.5 w-full overflow-hidden rounded-full bg-secondary">
                   <motion.div
-                    className="h-full rounded-full bg-accent"
+                    className="h-full rounded-full bg-gradient-to-r from-accent to-accent/70"
                     initial={{ width: 0 }}
                     animate={{ width: `${level.progressPercent}%` }}
                     transition={{ duration: 0.8 }}
@@ -85,9 +93,29 @@ const ModulesPage = () => {
               </div>
             )}
 
+            {/* Avatar Upgrades Row */}
+            <div className="mt-4 flex gap-2">
+              {AVATAR_UPGRADES.map((upgrade) => {
+                const unlocked = level.level >= upgrade.level;
+                return (
+                  <div
+                    key={upgrade.level}
+                    className={`flex h-10 w-10 items-center justify-center rounded-full text-lg transition-all ${
+                      unlocked
+                        ? "bg-accent/15 ring-1 ring-accent/30"
+                        : "bg-secondary/50 opacity-30 grayscale"
+                    }`}
+                    title={unlocked ? `${upgrade.name}: ${upgrade.description}` : `Unlock at Level ${upgrade.level}`}
+                  >
+                    {upgrade.avatar}
+                  </div>
+                );
+              })}
+            </div>
+
             {/* Badges */}
             {earnedBadges.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-3 flex flex-wrap gap-2">
                 {BADGES.filter((b) => earnedBadges.includes(b.id)).map((badge) => (
                   <div
                     key={badge.id}
@@ -101,11 +129,41 @@ const ModulesPage = () => {
               </div>
             )}
           </motion.div>
+
+          {/* Story Unlocks */}
+          {unlockedStory.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="space-y-2"
+            >
+              <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                <BookOpen className="h-3.5 w-3.5" />
+                Classified Intel
+              </h3>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {unlockedStory.map((unlock) => (
+                  <div
+                    key={unlock.level}
+                    className="rounded-lg border border-border bg-secondary/30 p-3 space-y-1"
+                  >
+                    <p className="text-xs font-bold text-foreground flex items-center gap-1.5">
+                      <span>{unlock.icon}</span>
+                      {unlock.title}
+                    </p>
+                    <p className="text-[11px] text-muted-foreground leading-relaxed">
+                      {unlock.content}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </motion.div>
 
-        {/* Detective Map — Vertical Path */}
+        {/* Story Chapter Map */}
         <div className="relative">
-          {/* Vertical connector line */}
           <div className="absolute sm:left-10 top-12 bottom-0 w-1 bg-border left-8" />
 
           <div className="space-y-0">
@@ -127,10 +185,10 @@ const ModulesPage = () => {
                     <div
                       className={`flex h-16 w-16 items-center justify-center rounded-full border-[3px] text-lg font-bold transition-all sm:h-20 sm:w-20 ${
                         completed
-                          ? "border-success bg-success text-success-foreground" //completed (nodes)
+                          ? "border-success bg-success text-success-foreground"
                           : unlocked
-                          ? "border-accent bg-accent text-success-foreground shadow-lg shadow-accent/20" //in progress 
-                          : "border-border bg-secondary text-success-foreground" //locked
+                          ? "border-accent bg-accent text-accent-foreground shadow-lg shadow-accent/20"
+                          : "border-border bg-secondary text-muted-foreground"
                       }`}
                     >
                       {completed ? (
@@ -154,7 +212,6 @@ const ModulesPage = () => {
                           completed ? "border-success/30" : "border-border"
                         }`}
                       >
-                        {/* Color accent */}
                         <div
                           className="absolute top-0 left-0 h-1 w-full"
                           style={{ backgroundColor: module.color }}
@@ -163,12 +220,12 @@ const ModulesPage = () => {
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex-1 space-y-2 min-w-0">
                             <div className="flex items-center gap-2 flex-wrap">
-                              <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                                Case File {module.number}
+                              <span className="text-xs font-bold uppercase tracking-widest text-accent">
+                                {module.chapterTitle}
                               </span>
                               {completed && (
                                 <span className="flex items-center gap-1 rounded-full bg-success/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-success">
-                                  Solved
+                                  Complete
                                 </span>
                               )}
                             </div>
@@ -182,7 +239,7 @@ const ModulesPage = () => {
                             {/* Progress */}
                             <div className="pt-2 space-y-1.5">
                               <div className="flex items-center justify-between text-xs text-muted-foreground">
-                                <span>{module.subtopics.length} leads</span>
+                                <span>{module.subtopics.length} missions</span>
                                 <span>{progress.percent}%</span>
                               </div>
                               <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
@@ -204,14 +261,14 @@ const ModulesPage = () => {
                     <div className="flex-1 min-w-0">
                       <div className="relative overflow-hidden rounded-2xl border border-border bg-secondary/50 p-5 opacity-60">
                         <div className="space-y-2">
-                          <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                            Case File {module.number}
+                          <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                            {module.chapterTitle}
                           </span>
                           <h3 className="font-display text-xl font-semibold text-muted-foreground leading-tight">
                             {module.title}
                           </h3>
                           <p className="text-sm text-muted-foreground/70 leading-relaxed line-clamp-2">
-                            Complete the previous case to unlock this investigation.
+                            Complete the previous chapter to unlock this mission.
                           </p>
                           <div className="flex items-center gap-2 pt-1 text-xs text-muted-foreground">
                             <Lock className="h-3.5 w-3.5" />
