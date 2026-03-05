@@ -36,11 +36,9 @@ const ModulesPage = () => {
           className="mb-10 space-y-4"
         >
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-accent">
-            <Shield className="h-4 w-4" />
-            Cyber Defense Corps
           </div>
           <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
-            Defend Veritás
+            Stay sharp. Stay informed.
           </h1>
           <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
             The digital city is under siege. Complete each chapter to unlock the next mission. Build your skills, earn XP, and rise through the ranks.
