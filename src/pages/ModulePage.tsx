@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CheckCircle2, Clock, ChevronRight } from "lucide-react";
+import { CheckCircle2, Clock, ChevronRight, Shield } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
@@ -25,10 +25,10 @@ const ModulePage = () => {
         >
           <div className="flex items-center gap-3">
             <span
-              className="rounded-full px-3 py-1 text-xs font-medium text-primary-foreground"
+              className="rounded-full px-3 py-1 text-xs font-bold text-primary-foreground uppercase tracking-wider"
               style={{ backgroundColor: module.color }}
             >
-              Module {module.number}
+              {module.chapterTitle}
             </span>
           </div>
           <h1 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
@@ -37,6 +37,23 @@ const ModulePage = () => {
           <p className="text-muted-foreground leading-relaxed">
             {module.description}
           </p>
+
+          {/* Story intro */}
+          {module.storyIntro && (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-5"
+            >
+              <div className="flex items-start gap-3">
+                <Shield className="h-5 w-5 text-accent mt-0.5 shrink-0" />
+                <p className="text-sm text-foreground leading-relaxed italic">
+                  {module.storyIntro}
+                </p>
+              </div>
+            </motion.div>
+          )}
 
           {/* Progress */}
           <div className="flex items-center gap-3 pt-2">
@@ -50,12 +67,12 @@ const ModulePage = () => {
               />
             </div>
             <span className="text-sm font-medium text-muted-foreground">
-              {progress.completed}/{progress.total}
+              {progress.completed}/{progress.total} missions
             </span>
           </div>
         </motion.div>
 
-        {/* Subtopics */}
+        {/* Missions */}
         <div className="space-y-3">
           {module.subtopics.map((subtopic, index) => {
             const completed = isComplete(module.id, subtopic.id);

@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle, Lightbulb, BookOpen, Gamepad2, List, Quote } from "lucide-react";
+import { CheckCircle2, XCircle, Lightbulb, BookOpen, Quote } from "lucide-react";
 import type { LessonSection as LessonSectionType } from "@/data/modules";
+import TrueFalseActivity from "@/components/activities/TrueFalseActivity";
+import SortingActivity from "@/components/activities/SortingActivity";
+import FillBlankActivity from "@/components/activities/FillBlankActivity";
+import ScenarioActivity from "@/components/activities/ScenarioActivity";
 
 interface Props {
   section: LessonSectionType;
   index: number;
   onQuizCorrect?: () => void;
+  onActivityComplete?: (score: number) => void;
 }
 
-const LessonSectionComponent = ({ section, index, onQuizCorrect }: Props) => {
+const LessonSectionComponent = ({ section, index, onQuizCorrect, onActivityComplete }: Props) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const isCorrect = selectedAnswer === section.correctIndex;
 
@@ -45,11 +50,9 @@ const LessonSectionComponent = ({ section, index, onQuizCorrect }: Props) => {
       {section.type === "bullets" && (
         <div className="space-y-2">
           {section.title && (
-            <div className="flex items-center gap-2">
-              <h3 className="font-display text-lg font-semibold text-foreground">
-                {section.title}
-              </h3>
-            </div>
+            <h3 className="font-display text-lg font-semibold text-foreground">
+              {section.title}
+            </h3>
           )}
           {section.content && (
             <p className="text-muted-foreground text-sm leading-relaxed">{section.content}</p>
@@ -188,7 +191,7 @@ const LessonSectionComponent = ({ section, index, onQuizCorrect }: Props) => {
               className="flex items-center justify-between"
             >
               <p className={`text-sm font-medium ${isCorrect ? "text-success" : "text-destructive"}`}>
-                {isCorrect ? "Correct! Well done." : "Not quite. Review the lesson and try again."}
+                {isCorrect ? "Correct! Well done, agent." : "Not quite. Review the intel and try again."}
               </p>
               <button
                 onClick={() => setSelectedAnswer(null)}
@@ -199,6 +202,56 @@ const LessonSectionComponent = ({ section, index, onQuizCorrect }: Props) => {
             </motion.div>
           )}
         </div>
+      )}
+
+      {/* New interactive section types */}
+      {section.type === "true-false" && section.trueFalseItems && (
+        <TrueFalseActivity
+          title={section.title}
+          items={section.trueFalseItems}
+          onComplete={(score) => {
+            if (score === section.trueFalseItems!.length && onActivityComplete) {
+              onActivityComplete(score);
+            }
+          }}
+        />
+      )}
+
+      {section.type === "sorting" && section.sortingCategories && section.sortingItems && (
+        <SortingActivity
+          title={section.title}
+          categories={section.sortingCategories}
+          items={section.sortingItems}
+          onComplete={(score) => {
+            if (score === section.sortingItems!.length && onActivityComplete) {
+              onActivityComplete(score);
+            }
+          }}
+        />
+      )}
+
+      {section.type === "fill-blank" && section.fillBlankItems && (
+        <FillBlankActivity
+          title={section.title}
+          items={section.fillBlankItems}
+          onComplete={(score) => {
+            if (score === section.fillBlankItems!.length && onActivityComplete) {
+              onActivityComplete(score);
+            }
+          }}
+        />
+      )}
+
+      {section.type === "scenario" && section.scenarioData && (
+        <ScenarioActivity
+          title={section.title}
+          scenario={section.scenarioData}
+          onComplete={(optimal) => {
+            if (optimal && onActivityComplete) {
+              onActivityComplete(1);
+            }
+          }}
+        />
       )}
     </motion.div>
   );
