@@ -40,7 +40,7 @@ const LandingPage = () => (
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mt-8"
         >
-          <Button asChild size="lg" className="gap-2 text-base">
+            <Button asChild size="lg" className="gap-2 text-base bg-accent text-foreground hover:bg-accent/80">
             <Link to="/modules">
               Begin
               <motion.span
