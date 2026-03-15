@@ -1,4 +1,8 @@
 import { useState, useCallback } from "react";
+import avatar1 from "@/assets/avatars/1.png";
+import avatar2 from "@/assets/avatars/2.png";
+import avatar3 from "@/assets/avatars/3.png";
+import avatar4 from "@/assets/avatars/4.png";
 
 export interface Badge {
   id: string;
@@ -36,20 +40,21 @@ const XP_PER_QUIZ_CORRECT = 15;
 const XP_PER_ACTIVITY = 20;
 const XP_PER_MODULE_COMPLETE = 50;
 
+
 export const LEVELS = [
-  { level: 1, title: "Recruit", xpRequired: 0, avatar: "🔰" },
-  { level: 2, title: "Field Agent", xpRequired: 75, avatar: "🕵️" },
-  { level: 3, title: "Analyst", xpRequired: 200, avatar: "📡" },
-  { level: 4, title: "Senior Operative", xpRequired: 400, avatar: "🛡️" },
+  { level: 1, title: "Recruit", xpRequired: 0, avatar: avatar1 },
+  { level: 2, title: "Field Agent", xpRequired: 75, avatar: avatar2 },
+  { level: 3, title: "Analyst", xpRequired: 200, avatar: avatar3 },
+  { level: 4, title: "Senior Operative", xpRequired: 400, avatar: avatar4 },
   { level: 5, title: "Commander", xpRequired: 650, avatar: "⚔️" },
   { level: 6, title: "Guardian of Veritás", xpRequired: 1000, avatar: "🏛️" },
 ];
 
 export const AVATAR_UPGRADES: AvatarUpgrade[] = [
-  { level: 1, name: "Recruit Badge", avatar: "🔰", description: "Your journey begins. Welcome to the Corps." },
-  { level: 2, name: "Agent Shades", avatar: "🕵️", description: "You've earned your field agent disguise." },
-  { level: 3, name: "Satellite Uplink", avatar: "📡", description: "Access to advanced intelligence tools." },
-  { level: 4, name: "Defense Shield", avatar: "🛡️", description: "Your mental defenses are hardening." },
+  { level: 1, name: "Recruit Badge", avatar: avatar1, description: "Your journey begins. Welcome to the Corps." },
+  { level: 2, name: "Agent Shades", avatar: avatar2, description: "You've earned your field agent disguise." },
+  { level: 3, name: "Satellite Uplink", avatar: avatar3, description: "Access to advanced intelligence tools." },
+  { level: 4, name: "Defense Shield", avatar: avatar4, description: "Your mental defenses are hardening." },
   { level: 5, name: "Commander's Sword", avatar: "⚔️", description: "Leading the fight against misinformation." },
   { level: 6, name: "Guardian Crown", avatar: "🏛️", description: "You are the Guardian of Veritás." },
 ];

@@ -60,9 +60,13 @@ const ModulesPage = () => {
             <div className="flex items-center justify-between gap-4 flex-wrap">
               <div className="flex items-center gap-4">
                 <div className="relative">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/15 text-3xl ring-2 ring-accent/30">
-                    {level.avatar}
-                  </div>
+                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/15 ring-2 ring-accent/30 overflow-hidden">
+                {typeof level.avatar === "string" && level.avatar.startsWith("/") || level.avatar.includes(".png") ? (
+                  <img src={level.avatar} alt={level.title} className="h-full w-full object-cover" />
+                ) : (
+                  <span className="text-3xl">{level.avatar}</span>
+                )}
+              </div>
                   <div className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-accent-foreground">
                     {level.level}
                   </div>
@@ -111,7 +115,11 @@ const ModulesPage = () => {
                     }`}
                     title={unlocked ? `${upgrade.name}: ${upgrade.description}` : `Unlock at Level ${upgrade.level}`}
                   >
-                    {upgrade.avatar}
+                    {upgrade.avatar.includes(".png") ? (
+                    <img src={upgrade.avatar} alt={upgrade.name} className="h-full w-full object-cover rounded-full" />
+                  ) : (
+                    upgrade.avatar
+                  )}
                   </div>
                 );
               })}
