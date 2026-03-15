@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import { Shield, Brain, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mentorImage from "@/assets/ms-informed-mentor.png";
+import bg from "@/assets/informed-bg.png";
 
 
 const LandingPage = () => (
-  <div className="relative min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center overflow-hidden px-4">
-    <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 py-16 text-center lg:flex-row lg:text-left lg:gap-12">
+<div
+  className="relative min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center overflow-hidden px-4 bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: `url(${bg})` }}
+>
+      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 py-16 text-center lg:flex-row lg:text-left lg:gap-12">
       <div className="flex flex-col items-center lg:items-start">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -36,7 +40,7 @@ const LandingPage = () => (
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mt-8"
         >
-          <Button asChild size="lg" className="gap-2 text-base">
+            <Button asChild size="lg" className="gap-2 text-base bg-accent text-foreground hover:bg-accent/80">
             <Link to="/modules">
               Begin
               <motion.span

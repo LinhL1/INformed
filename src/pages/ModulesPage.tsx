@@ -5,6 +5,8 @@ import PageTransition from "@/components/PageTransition";
 import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
 import { useXP, getLevel, LEVELS, BADGES, AVATAR_UPGRADES, STORY_UNLOCKS } from "@/hooks/useXP";
+import modulesBg from "@/assets/modules-bg.png";
+
 
 const ModulesPage = () => {
   const { getModuleProgress } = useProgress();
@@ -27,8 +29,12 @@ const ModulesPage = () => {
 
   return (
     <PageTransition>
-      <div className="mx-auto max-w-3xl px-4 py-10">
-        {/* Story Header */}
+    <div
+      className="min-h-screen"
+      style={{ backgroundImage: `url(${modulesBg})`, backgroundSize: "cover", backgroundPosition: "top" }}
+    >
+    <div className="mx-auto max-w-3xl px-4 py-10">        
+    {/* Story Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -281,6 +287,7 @@ const ModulesPage = () => {
             })}
           </div>
         </div>
+      </div>
       </div>
     </PageTransition>
   );
