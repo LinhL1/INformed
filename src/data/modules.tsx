@@ -57,9 +57,9 @@ export const modules: Module[] = [
         title: "What is Misinformation?",
         description: "Defining misinformation, disinformation, and malinformation.",
         estimatedMinutes: 8,
-        storyBriefing: "🎯 Mission Briefing: Veritás HQ has intercepted suspicious data packets. Before you can fight the threat, you need to understand what you're dealing with. Learn to classify the types of false information.",
+        storyBriefing: "Your first task is deceptively simple, sort a pile of flagged posts into categories. Except nothing is labeled. And some of the false ones look more credible than the true ones. You begin to wonder if there is a disinction between the different types of false information? What defines misinformation? What is malinformation? Why should we care?",
         sections: [
-          { type: "callout", content: "Agent, not all false information is the same. Understanding the distinctions is your first line of defense." },
+          { type: "callout", content: "It's important to note that not all false information is the same. Understanding the distinctions is your first line of defense." },
           { type: "text", title: "Information", content: "Information is content that accurately represents facts or events as they are understood to be true." },
           { type: "text", title: "Misinformation", content: "is incorrect (or false information) but shared unintentionally. The person spreading it may genuinely believe it is true." },
           { type: "text", title: "Disinformation", content: "is false information spread deliberately, with the intent to deceive. When disinformation is coordinated by foreign actors to interfere with democratic processes like elections, it is called foreign information manipulation and interference." },
