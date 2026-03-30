@@ -47,10 +47,10 @@ export const modules: Module[] = [
     id: "introduction",
     number: 1,
     title: "Introduction to Misinformation & Media Literacy",
-    description: "Your first day at the Cyber Defense Corps. Learn to identify the threats lurking in the information landscape.",
+    description: "Your first task is deceptively simple, sort a pile of flagged posts into categories. Except nothing is labeled. And some of the false ones look more credible than the true ones. Not everything false is a lie. And not every lie is the same kind of lie.",
     color: "hsl(var(--module-1))",
-    chapterTitle: "Chapter 1: The Awakening",
-    storyIntro: "Welcome, recruit. The digital city of Veritás is under siege — waves of misinformation are flooding its networks. You've been selected to join the Cyber Defense Corps. Your training begins now.",
+    chapterTitle: "Chapter 1: Eye of the Analyst",
+    storyIntro: "On your first day at INformed, you dive into the digital wilds, spotting patterns in what people share and realizing that mastering how information spreads is the only way to stay one step ahead of deception.",
     subtopics: [
       {
         id: "what-is-disinfo",
