@@ -175,7 +175,7 @@ const ModulesPage = () => {
           )}
         </motion.div>
 
-        <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
+        <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
           You're a newly recruited junior analyst at CIPHER, fresh out of university. You got flagged by a professor who noticed your pattern recognition, skepticism, curiosity, and saw potential. 
           You have no field experience. No intelligence background. Just sharp eyes and a willingness to learn.
           Your first assignment is supposed to be low-stakes: monitor youth-facing online spaces, gaming forums, student subreddits, social platforms, for coordinated inauthentic behavior and notice the spreading of misinformation. 
