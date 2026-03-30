@@ -150,8 +150,10 @@ export function useXP() {
   }, []);
 
   const awardActivityXP = useCallback((activityKey: string) => {
-    if (state.activityBonuses?.[activityKey]) return 0;
+    let gained = 0;
     setState((prev) => {
+      if (prev.activityBonuses?.[activityKey]) return prev;
+      gained = XP_PER_ACTIVITY;
       const next = {
         ...prev,
         totalXP: prev.totalXP + XP_PER_ACTIVITY,
@@ -167,8 +169,8 @@ export function useXP() {
       saveXP(next);
       return next;
     });
-    return XP_PER_ACTIVITY;
-  }, [state.activityBonuses]);
+    return gained;
+  }, []);
 
   const awardModuleCompleteXP = useCallback(() => {
     return addXP(XP_PER_MODULE_COMPLETE);
