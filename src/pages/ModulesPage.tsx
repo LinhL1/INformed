@@ -143,36 +143,6 @@ const ModulesPage = () => {
             )}
           </motion.div>
 
-          {/* Story Unlocks */}
-          {unlockedStory.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="space-y-2"
-            >
-              <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                <BookOpen className="h-3.5 w-3.5" />
-                Classified Intel
-              </h3>
-              <div className="grid gap-2 sm:grid-cols-2">
-                {unlockedStory.map((unlock) => (
-                  <div
-                    key={unlock.level}
-                    className="rounded-lg border border-border bg-secondary/30 p-3 space-y-1"
-                  >
-                    <p className="text-xs font-bold text-foreground flex items-center gap-1.5">
-                      <span>{unlock.icon}</span>
-                      {unlock.title}
-                    </p>
-                    <p className="text-[11px] text-muted-foreground leading-relaxed">
-                      {unlock.content}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
         </motion.div>
 
         <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
