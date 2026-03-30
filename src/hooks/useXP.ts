@@ -127,8 +127,10 @@ export function useXP() {
   }, [addXP]);
 
   const awardQuizXP = useCallback((quizKey: string) => {
-    if (state.quizBonuses[quizKey]) return 0;
+    let gained = 0;
     setState((prev) => {
+      if (prev.quizBonuses[quizKey]) return prev;
+      gained = XP_PER_QUIZ_CORRECT;
       const next = {
         ...prev,
         totalXP: prev.totalXP + XP_PER_QUIZ_CORRECT,
@@ -144,8 +146,8 @@ export function useXP() {
       saveXP(next);
       return next;
     });
-    return XP_PER_QUIZ_CORRECT;
-  }, [state.quizBonuses]);
+    return gained;
+  }, []);
 
   const awardActivityXP = useCallback((activityKey: string) => {
     if (state.activityBonuses?.[activityKey]) return 0;
