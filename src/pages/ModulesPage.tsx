@@ -6,6 +6,8 @@ import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
 import { useXP, getLevel, LEVELS, BADGES, AVATAR_UPGRADES, STORY_UNLOCKS } from "@/hooks/useXP";
 import modulesBg from "@/assets/modules-bg.png";
+import welcomeImg from '../assets/welcome.png'
+
 
 
 const ModulesPage = () => {
@@ -146,11 +148,24 @@ const ModulesPage = () => {
         </motion.div>
 
         <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
-          You're a newly recruited junior analyst at CIPHER, fresh out of university. You got flagged by a professor who noticed your pattern recognition, skepticism, curiosity, and saw potential. 
+          You're a newly recruited junior analyst at INformed, fresh out of university. You got flagged by a professor who noticed your pattern recognition, skepticism, curiosity, and saw potential. 
           You have no field experience. No intelligence background. Just sharp eyes and a willingness to learn.
+        </p>
+
+        <img src={welcomeImg} alt="Welcome" className="w-full max-w-3xl ml-auto mb-6 rounded-lg" />
+
+
+        <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
           Your first assignment is supposed to be low-stakes: monitor youth-facing online spaces, gaming forums, student subreddits, social platforms, for coordinated inauthentic behavior and notice the spreading of misinformation. 
-          Across dozens of platforms, social media outlets, digital spaces where people share and gather information, you begin to notice a shift/trend in news and media being pushed and the rise of misinformation being spread. The challenging thing is with the rise of AI and the speeds at which information can spread, there is the concern of how these false stories erode trust among your community. Along with the rise in patterns and behaviors that reward cynicism and punish nuance, you find it harder to look away because looking at the bigger picture, these acts arent targeting systems or servers. They're targeting how people think
+          Across dozens of platforms, social media outlets, digital spaces where people share and gather information, you begin to notice a shift/trend in news and media being pushed and the rise of misinformation being spread. The challenging thing is with the rise of AI and the speeds at which information can spread, there is the concern of how these false stories erode trust among your community. Along with the rise in patterns and behaviors that reward cynicism and punish nuance, you find it harder to look away because looking at the bigger picture, these acts arent targeting systems or servers. They're targeting how people think.
+        </p>
+
+        <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
           No single piece of content is alarming. But the pattern is.
+        </p>
+
+        <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
+          In a world where information spreads faster than thought, your job isn’t just to decide what’s true or false, but to understand why something spreads, who it reaches, and what it makes people feel. The most effective misinformation doesn’t look wrong, it feels right. So before you react, pause and ask: why does this want me to believe it?
         </p>
 
         {/* Story Chapter Map */}
