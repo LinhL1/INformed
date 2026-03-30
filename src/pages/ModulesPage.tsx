@@ -57,6 +57,7 @@ const ModulesPage = () => {
             transition={{ delay: 0.2 }}
             className="rounded-2xl border border-border bg-card p-5"
           >
+          
             <div className="flex items-center justify-between gap-4 flex-wrap">
               <div className="flex items-center gap-4">
                 <div className="relative">
@@ -173,6 +174,14 @@ const ModulesPage = () => {
             </motion.div>
           )}
         </motion.div>
+
+        <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
+          You're a newly recruited junior analyst at CIPHER, fresh out of university. You got flagged by a professor who noticed your pattern recognition, skepticism, curiosity, and saw potential. 
+          You have no field experience. No intelligence background. Just sharp eyes and a willingness to learn.
+          Your first assignment is supposed to be low-stakes: monitor youth-facing online spaces, gaming forums, student subreddits, social platforms, for coordinated inauthentic behavior and notice the spreading of misinformation. 
+          Across dozens of platforms, social media outlets, digital spaces where people share and gather information, you begin to notice a shift/trend in news and media being pushed and the rise of misinformation being spread. The challenging thing is with the rise of AI and the speeds at which information can spread, there is the concern of how these false stories erode trust among your community. Along with the rise in patterns and behaviors that reward cynicism and punish nuance, you find it harder to look away because looking at the bigger picture, these acts arent targeting systems or servers. They're targeting how people think
+          No single piece of content is alarming. But the pattern is.
+        </p>
 
         {/* Story Chapter Map */}
         <div className="relative">
