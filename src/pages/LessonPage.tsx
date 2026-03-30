@@ -79,19 +79,19 @@ const LessonPage = () => {
   const [currentPhaseIndex, setCurrentPhaseIndex] = useState(0);
 
   const module = modules.find((m) => m.id === moduleId);
-  if (!module) return <Navigate to="/" replace />;
+  const subtopicIndex = module ? module.subtopics.findIndex((s) => s.id === lessonId) : -1;
+  const subtopic = module ? module.subtopics[subtopicIndex] : undefined;
 
-  const subtopicIndex = module.subtopics.findIndex((s) => s.id === lessonId);
-  const subtopic = module.subtopics[subtopicIndex];
+  const phases = useMemo(
+    () => subtopic ? buildPhases(subtopic.sections, !!subtopic.storyBriefing) : [],
+    [subtopic]
+  );
+
+  if (!module) return <Navigate to="/" replace />;
   if (!subtopic) return <Navigate to={`/module/${moduleId}`} replace />;
 
   const completed = isComplete(module.id, subtopic.id);
   const nextSubtopic = module.subtopics[subtopicIndex + 1];
-
-  const phases = useMemo(
-    () => buildPhases(subtopic.sections, !!subtopic.storyBriefing),
-    [subtopic]
-  );
 
   const activePhaseTypes = phases.map((p) => p.type);
   const currentPhase = phases[currentPhaseIndex];
