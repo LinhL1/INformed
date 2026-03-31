@@ -4,6 +4,7 @@ import { CheckCircle2, Clock, ChevronRight, Shield } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
+import mod1Bg from "@/assets/mod1-bg.png";
 
 const ModulePage = () => {
   const { moduleId } = useParams<{ moduleId: string }>();
@@ -16,6 +17,14 @@ const ModulePage = () => {
 
   return (
     <PageTransition>
+      <div
+        className="min-h-screen"
+        style={
+          module.id === "introduction"
+            ? { backgroundImage: `url(${mod1Bg})`, backgroundSize: "cover", backgroundPosition: "top" }
+            : {}
+        }
+      >
       <div className="mx-auto max-w-3xl px-4 py-10">
         {/* Header */}
         <motion.div
@@ -122,6 +131,7 @@ const ModulePage = () => {
               </motion.div>
             );
           })}
+        </div>
         </div>
       </div>
     </PageTransition>

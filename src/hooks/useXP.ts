@@ -3,6 +3,8 @@ import avatar1 from "@/assets/avatars/1.png";
 import avatar2 from "@/assets/avatars/2.png";
 import avatar3 from "@/assets/avatars/3.png";
 import avatar4 from "@/assets/avatars/4.png";
+import avatar5 from "@/assets/avatars/5.png";
+import avatar6 from "@/assets/avatars/6.png";
 
 export interface Badge {
   id: string;
@@ -46,8 +48,8 @@ export const LEVELS = [
   { level: 2, title: "Field Agent", xpRequired: 75, avatar: avatar2 },
   { level: 3, title: "Analyst", xpRequired: 200, avatar: avatar3 },
   { level: 4, title: "Senior Operative", xpRequired: 400, avatar: avatar4 },
-  { level: 5, title: "Commander", xpRequired: 650, avatar: "⚔️" },
-  { level: 6, title: "Guardian of Veritás", xpRequired: 1000, avatar: "🏛️" },
+  { level: 5, title: "Commander", xpRequired: 650, avatar: avatar5 },
+  { level: 6, title: "Guardian of Veritás", xpRequired: 1000, avatar: avatar6 },
 ];
 
 export const AVATAR_UPGRADES: AvatarUpgrade[] = [
@@ -55,8 +57,8 @@ export const AVATAR_UPGRADES: AvatarUpgrade[] = [
   { level: 2, name: "Agent Shades", avatar: avatar2, description: "You've earned your field agent disguise." },
   { level: 3, name: "Satellite Uplink", avatar: avatar3, description: "Access to advanced intelligence tools." },
   { level: 4, name: "Defense Shield", avatar: avatar4, description: "Your mental defenses are hardening." },
-  { level: 5, name: "Commander's Sword", avatar: "⚔️", description: "Leading the fight against misinformation." },
-  { level: 6, name: "Guardian Crown", avatar: "🏛️", description: "You are the Guardian of Veritás." },
+  { level: 5, name: "Commander's Sword", avatar: avatar5, description: "Leading the fight against misinformation." },
+  { level: 6, name: "Guardian Crown", avatar: avatar6, description: "You are the Guardian of Veritás." },
 ];
 
 export const STORY_UNLOCKS: StoryUnlock[] = [
