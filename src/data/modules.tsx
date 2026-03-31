@@ -229,14 +229,33 @@ export const modules: Module[] = [
         estimatedMinutes: 8,
         storyBriefing: "As an analyst, it's essential that you understand the importance of where you source and verify all of the news and information you encounter. Not all sources are created equal: some are deliberately misleading, some are biased, and others are simply incomplete. Developing a critical eye for source reliability is your first line of defense against misinformation.",
         sections: [
-          { type: "text", title: "What is fake news?", content: "Fabricated content is entirely made up — there's no factual basis. It's designed to look legitimate by mimicking the format of real news: professional layouts, fake author names, and convincing headlines." },
-          { type: "bullets", title: "Red Flags of Fabricated Content", content: "", items: [
-            "No author byline or a fake-sounding author name",
-            "The website domain is a slight misspelling of a known outlet",
-            "No other news outlets are reporting the same story",
-            "The 'About Us' page is missing or vague",
-            "Sensational claims with no linked sources or evidence",
+          { type: "text", title: "What is fake news?", content: "“Fake news” refers to information that is presented as legitimate news but is actually false, misleading, or lacks reliable evidence. Fake news can take many forms, including satire that is mistaken for real reporting, manipulated images or information, and entirely fabricated stories designed to deceive. It is often spread for reasons such as political influence, financial gain through clicks and advertising, propaganda, or entertainment. The rapid growth of social media, along with technologies like bots and artificial intelligence, has made it easier for fake news to spread quickly and widely, making it increasingly important for individuals to think critically and verify information before believing or sharing it." },
+          { type: "bullets", title: "The Significance of Evaluating Where Your Information Comes From", content: "", items: [
+            "The source behind a claim determines whether it's reliable, biased, or entirely fabricated",
+            "Cross-referencing claims across multiple independent sources is one of the most reliable habits you can build",
+            "Evaluating sources protects you from making decisions based on false or incomplete information, whether in your personal life, health choices, or civic participation",
+            "In an era where anyone can publish anything online, source evaluation is no longer optional...it's a basic survival skill for navigating the information landscape",
           ]},
+          { 
+            type: "image", 
+            src: "/assets/fake-news.jpg", 
+            alt: "Critical thinking process diagram", 
+            title: "",
+            content: "" 
+          },
+          { type: "text", title: "Resources", content: (
+              <>
+                Learn more at{" "}
+                <a href="https://guides.library.cornell.edu/evaluate_news/infographic" target="_blank" rel="noopener noreferrer">
+                Misinformation, Disinformation, and Propaganda: Fake News Infographic
+                </a>.
+                <br></br>
+                <a href="https://guides.lib.umich.edu/fakenews" target="_blank" rel="noopener noreferrer">
+                "Fake News," Lies, and Misinformation
+                </a>
+              </>
+        
+            ), },
           {
             type: "true-false",
             title: "Intel Verification Drill",
@@ -258,7 +277,31 @@ export const modules: Module[] = [
         estimatedMinutes: 7,
         storyBriefing: "Not all sources are created equal, and as a new analyst, you quickly learn that trusting the wrong one can send you down a rabbit hole. Identifying credibility means looking beyond flashy headlines or viral traction, it’s about asking who’s behind the information, why it’s being shared, and whether it holds up under scrutiny. In a digital landscape designed to reward clicks over accuracy, your judgment becomes your most powerful tool.",
         sections: [
-          { type: "text", title: "The Anatomy of Fake Stories", content: "Fabricated stories follow predictable patterns. They use emotional language, lack specific details, cite unnamed experts, and often include a call to urgency. Learning these patterns is like learning to read enemy code." },
+          { type: "text", title: "Identifying Reliable Sources", content: "Identifying credible sources is an essential part of research because not all information available online or in print is accurate, reliable, or useful. A credible source is one that is based on evidence, written by a knowledgeable author, and published by a trustworthy organization. While this is common in research, consumers should also me mindful when consuming media and news." },
+          { type: "bullets", title: "Methods and Techniques", content: "", items: [
+            "Check the author’s credibility",
+            "Evaluate the publication/source",
+            "Examine the purpose and bias",
+            "Look for evidence and citations",
+            "Cross-check with other sources",
+            "Review domain and URL",
+            "Verify accuracy of details"
+          ]},
+          { 
+            type: "video", 
+            title: "Wonder How You Can Tell if a Source is Credible?", 
+            src: "https://www.youtube.com/embed/8AgCPuUh78s", 
+            content: "A video explains how you can tell if a source is credible by evaluating a range of factors." 
+          },
+           { type: "text", title: "Resources", content: (
+              <>
+                Learn more at{" "}
+                <a href="https://www.purdueglobal.edu/blog/online-learning/credible-academic-sources" target="_blank" rel="noopener noreferrer">
+                How to Know if a Source Is Credible
+                </a>
+              </>
+        
+            ), },
           {
             type: "sorting",
             title: "Signal vs. Noise",
@@ -297,25 +340,48 @@ export const modules: Module[] = [
         description: "Understand what lateral reading is and how you can apply it in your life.",
         estimatedMinutes: 8,
         storyBriefing: "Sometimes, checking a source isn’t enough…you have to read sideways. Lateral reading teaches you to step outside a single page, explore multiple perspectives, and verify claims across the web. For someone just starting at INformed, it feels like detective work: tracing breadcrumbs, connecting accounts, spotting inconsistencies. Mastering this skill means you can see the bigger picture, even when misinformation tries to hide in plain sight.",
+        
         sections: [
-          { type: "text", title: "What is Misleading Context?", content: "Misleading context is when genuine content — a real photo, a real quote, real data — is shared with false or incomplete context that changes its meaning entirely. This is one of the most effective disinformation techniques because the underlying content IS real." },
-          { type: "bullets", title: "Common Context Manipulation Techniques", content: "", items: [
-            "Sharing an old photo as if it's from a current event",
-            "Quoting someone accurately but removing the surrounding context",
-            "Using real statistics but comparing them incorrectly",
-            "Showing a real video clip but claiming it's from a different location",
+          { type: "text", title: "What is Lateral Reading?", content: "Lateral reading is a research strategy used by expert fact-checkers that involves leaving a website and opening new tabs to investigate what other reliable sources say about it, rather than relying only on the site itself. Instead of trusting a source at face value, you check who created it, what their intentions might be, and whether other credible organizations confirm the information. This method is important because it helps you quickly identify bias, misinformation, or lack of credibility by comparing multiple sources, making it a more effective and reliable way to evaluate information online." },
+          { 
+            type: "image", 
+            src: "/assets/lat-reading.png", 
+            alt: "Lateral reading diagram", 
+            title: "",
+            content: "" 
+          },
+          { type: "bullets", title: "Steps:", content: "", items: [
+            "When examining a source, open a new browser tab to check through these factors to ensure your information is trustworthy. ",
+            "Find out who runs the site: Determine the ownership and organization/background, Visit the “About” page or use domain lookup tools.",
+            "Identify potential bias: Check for viewpoints, affiliations, and funding sources.",
+            "Evaluate claims and evidence:",
+            "Ask critical questions: Consider who is behind the information, what their intentions are, the type of content being created, and whether the evidence is credible.",
           ]},
+          { type: "text", title: "Resources", content: (
+              <>
+                Diagram from at{" "}
+                <a href="https://guides.library.charlotte.edu/c.php?g=1499262&p=11329376" target="_blank" rel="noopener noreferrer">
+                Understanding and Evaluating Sources
+                </a>
+                <br></br>
+                <a href="https://libguides.princeton.edu/medialiteracy/lateralreading" target="_blank" rel="noopener noreferrer">
+                What is Lateral Reading
+                </a>
+              </>
+        
+            ), },
+
           {
             type: "fill-blank",
             title: "Decode the Intel",
             content: "",
             fillBlankItems: [
-              { textBefore: "When real content is shared with false framing, it's called", textAfter: ".", correctAnswer: "misleading context", acceptableAnswers: ["misleading context"], hint: "type of manipulation" },
-              { textBefore: "Sharing a photo from 2015 and claiming it shows a", textAfter: "event is a common tactic.", correctAnswer: "current", acceptableAnswers: ["current", "recent", "2024", "present"], hint: "timeframe" },
-              { textBefore: "The most effective defense against misleading context is to trace content back to its", textAfter: ".", correctAnswer: "original source", acceptableAnswers: ["original source", "source", "origin"], hint: "where it came from" },
+              { textBefore: "When evaluating a source by checking other sites instead of trusting it directly, this is called", textAfter: ".", correctAnswer: "lateral reading", acceptableAnswers: ["lateral reading"], hint: "" },
+              { textBefore: "Opening a new tab to research a website or claim and comparing it with", textAfter: ".", correctAnswer: "trusted sources", acceptableAnswers: ["trusted sources", "reliable source", "credible source", "verified source"], hint: "" },
+              { textBefore: "Investigating a website’s “About” page or using a domain lookup tool helps determine the", textAfter: "of the source.", correctAnswer: "ownership", acceptableAnswers: ["ownership", "credibility"], hint: "" },
             ],
           },
-          { type: "quiz", title: "Context Check", content: "A photo of a long line of cars at a gas station is shared with the caption 'Fuel crisis hits [your city] TODAY!' After investigation, you find the photo is from a hurricane evacuation 3 years ago. What type of manipulation is this?", options: ["Fabricated content", "Misleading context", "Satire", "Impersonation"], correctIndex: 1 },
+          { type: "quiz", title: "Context Check", content: "Why is it important to open new tabs instead of staying on the original site?", options: ["To increase page views", "To see if other sources confirm or dispute the information", "To read the site faster", "It enables you to bypass embedded advertisements"], correctIndex: 1 },
         ],
       },
     ],
