@@ -168,6 +168,10 @@ const ModulesPage = () => {
           In a world where information spreads faster than thought, your job isn’t just to decide what’s true or false, but to understand why something spreads, who it reaches, and what it makes people feel. The most effective misinformation doesn’t look wrong, it feels right. So before you react, pause and ask: why does this want me to believe it?
         </p>
 
+        <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
+          Venture through the modules to learn more and build your skill set
+        </p>
+
         {/* Story Chapter Map */}
         <div className="relative">
           <div className="absolute sm:left-10 top-12 bottom-0 w-1 bg-border left-8" />

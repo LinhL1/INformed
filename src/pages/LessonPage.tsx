@@ -9,6 +9,7 @@ import LessonPhaseIndicator, { type PhaseType } from "@/components/LessonPhaseIn
 import { modules, type LessonSection } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
 import { useXP } from "@/hooks/useXP";
+import mod1Bg from "@/assets/submod1-bg.png"; 
 
 // Classify a section into a phase
 function classifySection(section: LessonSection): "story" | "learn" | "practice" {
@@ -141,6 +142,14 @@ const LessonPage = () => {
 
   return (
     <PageTransition>
+      <div
+        className="min-h-screen"
+        style={
+          module.id === "introduction"
+            ? { backgroundImage: `url(${mod1Bg})`, backgroundSize: "cover", backgroundPosition: "center 0%", backgroundAttachment: "fixed" }
+            : {}
+        }
+      >
       <div className="mx-auto max-w-2xl px-4 py-10">
         {/* XP bar */}
         <motion.div
@@ -365,6 +374,7 @@ const LessonPage = () => {
         xpGained={xpNotification?.amount ?? null}
         message={xpNotification?.message}
       />
+      </div>
     </PageTransition>
   );
 };
