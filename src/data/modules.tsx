@@ -107,7 +107,7 @@ export const modules: Module[] = [
         title: "Importance of Critical Thinking",
         description: "How to develop the mental firewall every agent needs.",
         estimatedMinutes: 10,
-        storyBriefing: "🎯 Mission Briefing: Our analysts have detected a new wave of sophisticated attacks. Your standard training isn't enough — you need to develop critical thinking, the mental firewall that protects against manipulation.",
+        storyBriefing: "Our analysts have detected a new wave of sophisticated attacks. Your standard training isn't enough, you need to develop critical thinking, the mental firewall that protects against manipulation.",
         sections: [
           { type: "callout", content: "\"The point of modern propaganda isn't only to misinform or push an agenda. It is to exhaust your critical thinking, to annihilate truth.\" — Garry Kasparov" },
           { type: "text", title: "Critical thinking...What is it?", content: "Critical thinking is the ability to think clearly and independently." },
@@ -160,7 +160,7 @@ export const modules: Module[] = [
         title: "Emotional Manipulation",
         description: "How emotions are weaponized to bypass your defenses.",
         estimatedMinutes: 8,
-        storyBriefing: "🎯 Mission Briefing: Alert! Enemy operatives are deploying emotional payloads — content designed to bypass your rational defenses. Learn to recognize and neutralize emotional manipulation tactics.",
+        storyBriefing: "Alert! A post crosses your feed. It's about something that affects your community directly. You’re hit with a huge emotional wave of anger. Then you stop. And you ask: why did that hit so fast? Why did I stop thinking and start feeling?",
         sections: [
           { type: "callout", content: "If a headline makes you feel a strong emotion before you've even read the article, that's intentional. Emotional reactions are a feature, not a bug, of manipulative content." },
           { type: "text", title: "What Is Emotional Manipulation in Media?", content: "Emotional manipulation occurs when content is designed to trigger a strong feeling (fear, outrage, pride, or sympathy) in order to bypass your rational thinking. When we're flooded with emotion, we're less likely to stop and ask: Is this true? Where did this come from? What's missing from this story?" },
