@@ -43,13 +43,15 @@ const ModulesPage = () => {
           transition={{ duration: 0.5 }}
           className="mb-10 space-y-4"
         >
+
+          
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-accent">
           </div>
           <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
             Stay sharp. Stay informed.
           </h1>
           <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
-            The digital city is under siege. Complete each chapter to unlock the next mission. Build your skills, earn XP, and rise through the ranks.
+            Complete each chapter to unlock the next mission. Build your skills, earn XP, and rise through the ranks.
           </p>
 
           {/* Agent Card */}

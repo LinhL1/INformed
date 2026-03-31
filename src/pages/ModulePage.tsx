@@ -5,6 +5,13 @@ import PageTransition from "@/components/PageTransition";
 import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
 import mod1Bg from "@/assets/mod1-bg.png";
+import mod2Bg from "@/assets/mod2-bg.png"; 
+
+const moduleBackgrounds = {
+  introduction: mod1Bg,
+  "source-eval": mod2Bg,
+
+};
 
 const ModulePage = () => {
   const { moduleId } = useParams<{ moduleId: string }>();
@@ -20,8 +27,12 @@ const ModulePage = () => {
       <div
         className="min-h-screen"
         style={
-          module.id === "introduction"
-            ? { backgroundImage: `url(${mod1Bg})`, backgroundSize: "cover", backgroundPosition: "top" }
+          moduleBackgrounds[module.id]
+            ? {
+                backgroundImage: `url(${moduleBackgrounds[module.id]})`,
+                backgroundSize: "cover",
+                backgroundPosition: "top",
+              }
             : {}
         }
       >

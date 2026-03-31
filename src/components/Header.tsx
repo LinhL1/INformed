@@ -58,9 +58,9 @@ const Header = () => {
         </div>
 
         {/* Right-edge fade overlay so text disappears cleanly before the button */}
-        <div className="pointer-events-none absolute right-12 top-0 h-full w-16 bg-gradient-to-r from-transparent to-background/60" />
+        <div className="pointer-events-none absolute top-0 h-full w-16 bg-gradient-to-r from-transparent to-background/60" />
 
-        {/* Theme toggle — pinned to far right */}
+        {/* Theme toggle — pinned to far right
         <div className="relative z-10 shrink-0 border-l border-border bg-background/80 px-3 h-full flex items-center">
           <motion.button
             whileTap={{ scale: 0.9 }}
@@ -70,7 +70,7 @@ const Header = () => {
           >
             {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
           </motion.button>
-        </div>
+        </div> */}
       </div>
 
       {/* Back nav — only shown on inner pages, slim */}
