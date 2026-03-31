@@ -146,7 +146,7 @@ const LessonPage = () => {
         className="min-h-screen"
         style={
           module.id === "introduction"
-            ? { backgroundImage: `url(${mod1Bg})`, backgroundSize: "cover", backgroundPosition: "center 0%", backgroundAttachment: "fixed" }
+            ? { backgroundImage: `url(${mod1Bg})`, backgroundSize: "cover", backgroundPosition: "center 40px" }
             : {}
         }
       >
