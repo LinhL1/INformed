@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { AlertTriangle, CheckCircle2 } from "lucide-react";
 
 export interface ScenarioChoice {
   text: string;
@@ -32,7 +32,7 @@ const ScenarioActivity = ({ title, scenario, onComplete }: Props) => {
   return (
     <div className="rounded-xl border-2 border-accent/20 bg-gradient-to-br from-card to-accent/5 p-5 space-y-4">
       <div className="flex items-center gap-2">
-        <Shield className="h-5 w-5 text-accent" />
+        
         <h4 className="font-display text-base font-semibold text-foreground">
           {title || "Decision Point"}
         </h4>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, BookOpen, Swords, Trophy } from "lucide-react";
+import { BookOpen, Swords, Trophy } from "lucide-react";
 
 export type PhaseType = "story" | "learn" | "practice" | "complete";
 
@@ -10,7 +10,7 @@ interface Phase {
 }
 
 const PHASES: Phase[] = [
-  { type: "story", label: "Briefing", icon: <Shield className="h-4 w-4" /> },
+  { type: "story", label: "Briefing", icon:"" },
   { type: "learn", label: "Intel", icon: <BookOpen className="h-4 w-4" /> },
   { type: "practice", label: "Training", icon: <Swords className="h-4 w-4" /> },
   { type: "complete", label: "Debrief", icon: <Trophy className="h-4 w-4" /> },

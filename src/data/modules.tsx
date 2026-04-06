@@ -390,148 +390,196 @@ export const modules: Module[] = [
     id: "visual-deception",
     number: 3,
     title: "Visual Deception",
-    description: "The enemy is deploying visual weapons — doctored images, deepfakes, and manipulated media. Time to train your eyes.",
+    description: "After getting familiar with the fundamentals of misinformation, source evaluation, and its significance in today’s world, you begin to look into visual deception and the role it can play in misinformation.",
     color: "hsl(var(--module-3))",
     chapterTitle: "Chapter 3: The Visual Front",
-    storyIntro: "Agent, the battlefield has shifted. The enemy is now weaponizing visual media — doctored photos, out-of-context videos, and AI-generated imagery. Your eyes are your best defense, but only if trained properly.",
+    storyIntro: "Images and videos can be more convincing than words. They grab attention, trigger emotions, and shape beliefs almost instantly. But in a world of manipulated visuals, deepfakes, and misleading graphics, your eyes can’t always be trusted. As a junior analyst at INformed, your job is to learn not just to see, but to question what you see, and recognize when perception has been engineered.",
     subtopics: [
       {
-        id: "source-evaluation",
-        title: "The SIFT Method",
+        id: "deepfakes",
+        title: "Manipulated Images and Deepfakes",
         description: "Your field manual for rapid source evaluation.",
         estimatedMinutes: 10,
-        storyBriefing: "🎯 Mission Briefing: HQ has developed a rapid evaluation protocol — codename SIFT. Master this technique to assess any source in under 60 seconds.",
+        storyBriefing: "A single image can tell a thousand lies. From subtly edited photos to AI-generated deepfakes, these manipulations can appear surprisingly real. As people are increasingly getting their news from social media, as an analyst you’re gonna learn ways to note the hallmarks of fakery, and accept that your instincts aren’t enough, what looks real can be fake. Recognizing these tricks early helps prevent misinformation from spreading unchecked.",
+        
         sections: [
-          { type: "text", title: "What is SIFT?", content: "SIFT is a four-step method developed by digital literacy expert Mike Caulfield. It's designed to help you quickly evaluate online claims without falling down rabbit holes." },
-          { type: "bullets", title: "The SIFT Protocol", content: "", items: [
-            "S — Stop: Pause before engaging with or sharing content",
-            "I — Investigate the source: Who created this? What's their reputation?",
-            "F — Find better coverage: What do other reliable sources say about this claim?",
-            "T — Trace claims: Find the original source of the claim, not just who shared it",
+          { type: "text", title: "What are Deepfakes?", content: "Deepfakes are videos, audio, or images that have been manipulated or created using artificial intelligence (AI) tools. These generated forms of media are often created to replace, alter faces, or synthesize speech. As AI has become more accessible and technologically advanced, deepfakes can seem authentic to the human eye and ear and are becoming more challenging to distinguish." },
+           { type: "bullets", title: "Where can we encounter them?", content: "", items: [
+            "Manipulated media = images, videos, or audio that have been altered.",
+            "Deepfakes = a specific type of manipulated media created using artificial intelligence (AI).",
           ]},
+          { type: "bullets", title: "Where can we encounter them?", content: "", items: [
+            "Social Media Platforms: Instagram, YouTube, TicTok, X (Twitter)",
+            "Online News & Blog Posts: Online forums, shared articles",
+            "Professional Platforms: LinkedIn, emails, communication channels",
+            "...Essentially anywhere digital media can exist",
+          ]},
+          { 
+            type: "video", 
+            title: "Overview of Deepfakes", 
+            src: "https://www.youtube.com/embed/hz6GULbowAk", 
+            content: "A TED-Ed that explains on how false news spreads and why it's so hard to stop." 
+          },
+          // EXAMPLE of real world deepfakes: ICE, Politics/trump, etc
+          { 
+            type: "image", 
+            src: "/assets/critical-thinking-diagram.jpg", 
+            alt: "Critical thinking process diagram", 
+            title: "",
+            content: "" 
+          },
+
+            { type: "text", title: "Resources", content: (
+              <>
+                Diagram from at{" "}
+                <a href="https://guides.library.charlotte.edu/c.php?g=1499262&p=11329376" target="_blank" rel="noopener noreferrer">
+                Understanding and Evaluating Sources
+                </a>
+                <br></br>
+                <a href="https://libguides.princeton.edu/medialiteracy/lateralreading" target="_blank" rel="noopener noreferrer">
+                What is Lateral Reading
+                </a>
+              </>
+        
+            ), },
+
+          {
+            type: "true-false",
+            title: "Intel Verification Drill",
+            content: "",
+            trueFalseItems: [
+              { statement: "Deepfakes can be used in professional or workplace scams.", isTrue: true, explanation: "As highlighted in LinkedIn and workplace security discussions, deepfakes can impersonate executives in video calls or voice messages to commit fraud." },
+              { statement: "If a story appears on multiple social media accounts, it must be true.", isTrue: false, explanation: "Coordinated sharing campaigns can make fabricated stories appear widespread. Always check for independent original reporting." },
+              { statement: "If a video or image triggers a strong emotional reaction, you should pause before trusting it.", isTrue: true, explanation: "Deepfakes and manipulated media are often designed to provoke strong emotions (anger, fear, shock) to encourage rapid sharing. Being mindful and slowing down is one of the best defenses." },
+              { statement: "A realistic-looking video of a public figure is strong evidence that the event actually happened.", isTrue: false, explanation: "Deepfakes can create highly realistic videos of people saying or doing things they never did. According to U.S. GAO research, AI-generated media can convincingly mimic real individuals, making visual evidence alone unreliable." },
+            ],
+          },
+
           {
             type: "scenario",
-            title: "Apply SIFT in the Field",
+            title: "Apply your knowledge in action",
             content: "",
             scenarioData: {
-              situation: "You see a tweet with a dramatic photo claiming 'Massive explosion rocks downtown — government covering it up!' The tweet has 15,000 retweets. How do you apply SIFT?",
+              situation: "You’re scrolling on Instagram and see a reel going viral. The footage shows a well-known politician speaking at a podium, clearly saying something controversial. At first glance the video looks normal but the statements are absurd, what do you do?",
               choices: [
-                { text: "Stop and retweet it to warn people", outcome: "You skipped the most important step — stopping to evaluate. Retweeting amplified an unverified claim to your entire network.", isOptimal: false },
-                { text: "Stop, check who posted it, search for the story on news sites, and reverse-image-search the photo", outcome: "Perfect SIFT execution. The reverse image search reveals the photo is from a factory fire in another country two years ago. No explosion occurred downtown.", isOptimal: true },
-                { text: "Comment asking if it's real", outcome: "While questioning is good, you're relying on others to do your verification. The SIFT method empowers you to investigate independently.", isOptimal: false },
+                { text: "Like and share it since it looks real and other people believe it", outcome: "This is how deepfakes spread. The video looks convincing, but that’s exactly the point of AI-generated content. By not stopping to verify, you may be amplifying false or manipulated information to your network.", isOptimal: false },
+                { text: "Pause, check who originally posted it, search if major news outlets are reporting it, and look for signs the video may be altered", outcome: "Wise choice. The video was later revealed to be AI generated. By being mindful and cautious it helped you avoid being misled and prevented spreading misinformation.", isOptimal: true },
+                { text: "Comment “Is this real?” and wait for responses", outcome: "While questioning is good, you're relying on others to do your verification. In fast-moving situations, comments can spread confusion just as quickly as the original post.", isOptimal: false },
               ],
             },
           },
-          {
-            type: "fill-blank",
-            title: "SIFT Protocol Check",
-            content: "",
-            fillBlankItems: [
-              { textBefore: "The S in SIFT stands for", textAfter: "— the first thing you should do before engaging with content.", correctAnswer: "Stop", hint: "pause" },
-              { textBefore: "The I stands for", textAfter: "the source to learn about who created the content.", correctAnswer: "Investigate", hint: "look into" },
-              { textBefore: "The T stands for", textAfter: "claims back to their original source.", correctAnswer: "Trace", acceptableAnswers: ["Trace", "Tracing"], hint: "follow back" },
-            ],
-          },
-          { type: "quiz", title: "Practice SIFT", content: "When applying SIFT, what should you do FIRST when you encounter a suspicious claim?", options: ["Share it with a warning label", "Stop and resist the urge to engage immediately", "Find the original source right away", "Comment that it might be fake"], correctIndex: 1 },
         ],
       },
       {
-        id: "fact-checking",
-        title: "Fact-Checking Arsenal",
-        description: "Tools and techniques for verifying any claim.",
+        id: "out-of-context",
+        title: "Out-of-context Videos and Content",
+        description: "Real facts and information, but misleading context",
         estimatedMinutes: 8,
-        storyBriefing: "🎯 Mission Briefing: Every agent needs their toolkit. Here are the weapons-grade fact-checking tools that will help you verify any claim in the field.",
+        storyBriefing: "Sometimes the content itself isn’t fake, it’s the story around it. A video clipped, a quote truncated, a post repurposed, suddenly, context is missing, and meaning is twisted. You discover that misinformation doesn’t always need fabrication; it often rides on selective framing. Spotting when content is out of context is like reading between the lines of a conversation you weren’t meant to see.",
         sections: [
-          { type: "text", title: "Your Verification Toolkit", content: "Professional fact-checkers use a combination of tools and techniques. As a Cyber Defense agent, you need to know these tools and when to deploy them." },
-          { type: "bullets", title: "Essential Fact-Checking Tools", content: "", items: [
-            "Snopes.com — One of the oldest and most comprehensive fact-checking sites",
-            "FactCheck.org — Nonpartisan, nonprofit focused on U.S. political claims",
-            "Google Reverse Image Search — Verify where images actually originate",
-            "Wayback Machine (web.archive.org) — See previous versions of web pages",
-            "AllSides.com — Compare how different outlets cover the same story",
+          { type: "text", title: "What is “Out-of-Context” Content?", content: "Out-of-context media is real information, data, images, etc. that are oulled from their orginal context and shared with incorrect or misleading information to dostort understanding." },
+          { type: "bullets", title: "Common tactics:", content: "", items: [
+            "Snippets of a video, not showing the entire footage",
+            "False, misleading captions",
+            "Cropped photos and images",
+            "Using old/outdated footage",
           ]},
-          {
-            type: "sorting",
-            title: "Match the Tool to the Task",
-            content: "",
-            sortingCategories: [
-              { name: "🖼️ Image Verification" },
-              { name: "📰 Claim Checking" },
-              { name: "🕐 Historical Research" },
-            ],
-            sortingItems: [
-              { text: "Google Reverse Image Search", correctCategory: 0 },
-              { text: "Snopes.com", correctCategory: 1 },
-              { text: "Wayback Machine", correctCategory: 2 },
-              { text: "TinEye", correctCategory: 0 },
-              { text: "FactCheck.org", correctCategory: 1 },
-              { text: "Web Archive", correctCategory: 2 },
-            ],
+          { type: "text", title: "How this Differs from Deepfakes", content: "Deepfakes involve AI-generated or altered content that isn’t real, while out-of-context content uses real media but presents it in a misleading way. In short, deepfakes change reality, while out-of-context content changes how you interpret it." },
+
+          // EXAMPLE of real world out-of-context footage: linkedin AND GRAPHS/STATS!!
+          { 
+            type: "image", 
+            src: "/assets/critical-thinking-diagram.jpg", 
+            alt: "Critical thinking process diagram", 
+            title: "",
+            content: "" 
           },
-          { type: "activity", title: "Fact-Check Challenge", content: "Pick a viral claim you've seen recently on social media. Using at least two of the tools above, try to verify or debunk the claim. What did you find? How long did it take?" },
+          { type: "text", title: "Misleading Data and Graphs", content: "Even numbers and stats can lie too. Skewed axes, cherry-picked data points, and deceptive infographics can make anything look true. Understanding these visual traps helps you spot misinformation before it infects public perception." },
+
+          { type: "text", title: "Resources", content: (
+              <>
+                Diagram from at{" "}
+                <a href="https://guides.library.charlotte.edu/c.php?g=1499262&p=11329376" target="_blank" rel="noopener noreferrer">
+                Understanding and Evaluating Sources
+                </a>
+                <br></br>
+                <a href="https://libguides.princeton.edu/medialiteracy/lateralreading" target="_blank" rel="noopener noreferrer">
+                What is Lateral Reading
+                </a>
+              </>
+        
+            ), },
+
+
+         {
+          type: "sorting",
+          title: "Choose the Right Move to Check Context",
+          content: "",
+          sortingCategories: [
+            { name: "🔍 Trace the Original Source" },
+            { name: "🧾 Check the Story Being Told" },
+            { name: "📅 Verify Time & Place" },
+          ],
+          sortingItems: [
+            { text: "Run a reverse image search to find earlier versions", correctCategory: 0 },
+            { text: "Look for the full, uncropped version of the video", correctCategory: 0 },
+            { text: "Search if trusted news outlets are reporting the same claim", correctCategory: 1 },
+            { text: "Use fact-checking sites like Snopes or FactCheck.org", correctCategory: 1 },
+            { text: "Check when the image or video first appeared online", correctCategory: 2 },
+            { text: "Check archived pages to confirm the original date and context of the content", correctCategory: 2 },          ],
+        },
         ],
       },
+      
       {
-        id: "reverse-image",
-        title: "Visual Forensics",
-        description: "Techniques for verifying images and detecting manipulation.",
-        estimatedMinutes: 6,
-        storyBriefing: "🎯 Mission Briefing: The visual front is the most deceptive. Images can be doctored, AI-generated, or taken completely out of context. Train your forensic eye.",
-        sections: [
-          { type: "text", title: "The Power of Reverse Image Search", content: "Reverse image search allows you to find where an image first appeared online, whether it's been edited, and whether it's being used in the wrong context. It's one of the most powerful verification tools available." },
-          { type: "bullets", title: "Signs of Image Manipulation", content: "", items: [
-            "Unnatural lighting or shadows that don't match the scene",
-            "Blurred edges around people or objects (signs of editing)",
-            "Text in the image doesn't match the claimed location or language",
-            "The image resolution varies in different areas (pasted elements)",
-            "Metadata (EXIF data) doesn't match the claimed date or location",
-          ]},
-          {
-            type: "true-false",
-            title: "Visual Forensics Drill",
-            content: "",
-            trueFalseItems: [
-              { statement: "Reverse image search can always detect AI-generated images.", isTrue: false, explanation: "AI-generated images are brand new and won't appear in search results. You need other techniques to detect AI imagery." },
-              { statement: "EXIF data in a photo can reveal when and where it was taken.", isTrue: true, explanation: "EXIF metadata often contains date, time, camera info, and sometimes GPS coordinates — but it can be stripped or modified." },
-              { statement: "A high-resolution image is more likely to be authentic.", isTrue: false, explanation: "AI can generate high-resolution images, and manipulated photos can also be high quality. Resolution alone doesn't indicate authenticity." },
-            ],
-          },
-          { type: "quiz", title: "Image Verification", content: "You see a dramatic photo claimed to be from a protest in your city yesterday. What's the best first step to verify it?", options: ["Check if it looks realistic", "Run a reverse image search to find its original source", "Ask the poster where they got it", "Check if the weather matches yesterday's forecast"], correctIndex: 1 },
-        ],
-      },
-      {
-        id: "url-analysis",
-        title: "URL & Domain Intelligence",
-        description: "Reading URLs to unmask suspicious websites.",
+        id: "rev-img",
+        title: "Reverse Image Searching and Tools",
+        description: "Using reverse image search and other tools to help find original sources and identify deepfakes.",
         estimatedMinutes: 7,
-        storyBriefing: "🎯 Mission Briefing: The enemy creates convincing website clones with subtle URL differences. Learn to read URLs like an agent reads a coded message.",
+        storyBriefing: "Not every visual deception can be spotted by looking alone. Reverse image searching becomes your detective tool: tracing the origin of a photo, uncovering prior contexts, verifying authenticity. It’s like following a trail of breadcrumbs left in pixels. Explore this module to learn more.",
         sections: [
-          { type: "text", title: "Decoding URLs", content: "A URL is like a digital address. Learning to read it properly can instantly reveal whether a website is legitimate or a clever impersonation." },
-          { type: "bullets", title: "URL Red Flags", content: "", items: [
+          { type: "text", title: "What is Resverse Image Search?", content: "A URL is like a digital address. Learning to read it properly can instantly reveal whether a website is legitimate or a clever impersonation." },
+          { type: "bullets", title: "Common Tools for Reverse Image Search:", content: "", items: [
+            "Google's build in reverse image search",
+            "Tineye.com: reverse image search engine"
+          ]},
+          { type: "bullets", title: "Additional Tools for Deepfake Detection:", content: "", items: [
             "Misspelled domain names (gogle.com, faceb00k.com)",
             "Extra subdomains (login.bank.suspicious-site.com)",
             "Unusual domain extensions (.info, .xyz for news sites)",
             "Very long URLs with random characters",
             "HTTP instead of HTTPS on sites that should be secure",
           ]},
+
+          { type: "text", title: "Resources", content: (
+              <>
+                Diagram from at{" "}
+                <a href="https://guides.library.charlotte.edu/c.php?g=1499262&p=11329376" target="_blank" rel="noopener noreferrer">
+                Understanding and Evaluating Sources
+                </a>
+                <br></br>
+                <a href="https://libguides.princeton.edu/medialiteracy/lateralreading" target="_blank" rel="noopener noreferrer">
+                What is Lateral Reading
+                </a>
+              </>
+        
+            ), },
+
           {
             type: "sorting",
-            title: "URL Classification",
+            title: "Real or Manipulated?",
             content: "",
             sortingCategories: [
-              { name: "✅ Legitimate" },
-              { name: "🚨 Suspicious" },
+              { name: "✅ Likely Authentic" },
+              { name: "🚨 Likely Fake/Manipulated" },
             ],
             sortingItems: [
-              { text: "www.reuters.com/article/...", correctCategory: 0 },
-              { text: "www.reut3rs-news.com/breaking/...", correctCategory: 1 },
-              { text: "www.bbc.co.uk/news/...", correctCategory: 0 },
-              { text: "www.bbc-breaking-news.info/...", correctCategory: 1 },
-              { text: "www.apnews.com/article/...", correctCategory: 0 },
-              { text: "www.ap-news-daily.xyz/urgent/...", correctCategory: 1 },
+              { text: "Reverse image search shows photo matches original news agency upload from 3 years ago", correctCategory: 0 },
+              { text: "Reverse image search finds same face appearing in profiles with 6 different names", correctCategory: 1 },
+              { text: "TinEye finds zero results: image appears to be an original, unpublished photo", correctCategory: 0 },
+              { text: "Profile photo returns results from a stock photo site when reverse searched", correctCategory: 1 },
             ],
           },
-          { type: "quiz", title: "Spot the Fake URL", content: "Which URL is most likely a legitimate news source?", options: ["breaking-news-today.info/urgent-alert", "www.reuters.com/world/article-12345", "cnn-exclusive-report.com/shocking", "news-wire-global.xyz/latest"], correctIndex: 1 },
         ],
       },
     ],

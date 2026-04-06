@@ -1,7 +1,7 @@
 import { useParams, Navigate, useNavigate, Link } from "react-router-dom";
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, ArrowRight, ArrowLeft, Star, Shield } from "lucide-react";
+import { CheckCircle2, ArrowRight, ArrowLeft, Star } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import LessonSectionComponent from "@/components/LessonSection";
 import XPNotification from "@/components/XPNotification";
@@ -11,6 +11,8 @@ import { useProgress } from "@/hooks/useProgress";
 import { useXP } from "@/hooks/useXP";
 import mod1Bg from "@/assets/submod1-bg.png"; 
 import mod2Bg from "@/assets/submod2-bg.png"; 
+import mod3Bg from "@/assets/submod3-bg.png"; 
+
 
 const moduleBgs: Record<string, { backgroundImage: string; backgroundSize: string; backgroundPosition: string }> = {
   introduction: {
@@ -20,6 +22,11 @@ const moduleBgs: Record<string, { backgroundImage: string; backgroundSize: strin
   },
   "source-eval": {
     backgroundImage: `url(${mod2Bg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
+  "visual-deception": {
+    backgroundImage: `url(${mod3Bg})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
   },
@@ -257,7 +264,6 @@ const LessonPage = () => {
                 className="rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-6"
               >
                 <div className="flex items-start gap-3">
-                  <Shield className="h-6 w-6 text-accent mt-0.5 shrink-0" />
                   <div className="space-y-3">
                     <p className="text-foreground leading-relaxed">
                       {subtopic.storyBriefing}
