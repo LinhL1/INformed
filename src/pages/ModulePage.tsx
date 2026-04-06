@@ -1,15 +1,18 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CheckCircle2, Clock, ChevronRight, Shield } from "lucide-react";
+import { CheckCircle2, Clock, ChevronRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
 import mod1Bg from "@/assets/mod1-bg.png";
 import mod2Bg from "@/assets/mod2-bg.png"; 
+import mod3Bg from "@/assets/mod3-bg.png"; 
+
 
 const moduleBackgrounds = {
   introduction: mod1Bg,
   "source-eval": mod2Bg,
+  "visual-deception": mod3Bg,
 
 };
 
@@ -67,7 +70,6 @@ const ModulePage = () => {
               className="rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-5"
             >
               <div className="flex items-start gap-3">
-                <Shield className="h-5 w-5 text-accent mt-0.5 shrink-0" />
                 <p className="text-sm text-foreground leading-relaxed italic">
                   {module.storyIntro}
                 </p>
