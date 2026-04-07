@@ -412,33 +412,55 @@ export const modules: Module[] = [
             "Social Media Platforms: Instagram, YouTube, TicTok, X (Twitter)",
             "Online News & Blog Posts: Online forums, shared articles",
             "Professional Platforms: LinkedIn, emails, communication channels",
-            "...Essentially anywhere digital media can exist",
+            "...essentially anywhere digital media can exist",
           ]},
           { 
             type: "video", 
             title: "Overview of Deepfakes", 
-            src: "https://www.youtube.com/embed/hz6GULbowAk", 
+            src: "https://www.youtube.com/embed/o5k6UdOQBoU", 
             content: "A TED-Ed that explains on how false news spreads and why it's so hard to stop." 
           },
-          // EXAMPLE of real world deepfakes: ICE, Politics/trump, etc
-          { 
-            type: "image", 
-            src: "/assets/critical-thinking-diagram.jpg", 
-            alt: "Critical thinking process diagram", 
-            title: "",
-            content: "" 
-          },
-
-            { type: "text", title: "Resources", content: (
+          
+          { type: "text", title: "Real World Cases:", content: "Deepfakes include a range of videos, audio, or images, check out some examples collected from surfing the media." },
+          { type: "text", title: "NPR: AI images and internet rumors spread confusion about ICE agent involved in shooting", content: (
               <>
-                Diagram from at{" "}
-                <a href="https://guides.library.charlotte.edu/c.php?g=1499262&p=11329376" target="_blank" rel="noopener noreferrer">
-                Understanding and Evaluating Sources
+                <a href="https://www.npr.org/transcripts/nx-s1-5671740" target="_blank" rel="noopener noreferrer">
+                Read about it here
                 </a>
                 <br></br>
-                <a href="https://libguides.princeton.edu/medialiteracy/lateralreading" target="_blank" rel="noopener noreferrer">
-                What is Lateral Reading
+              </>
+        
+            ), },
+          // VISUAL EXAMPLE of real world deepfakes: ICE, Politics/trump, etc      
+          { type: "text", title: "Deepfake image example", content: "" },
+    
+          { 
+            type: "image", 
+            src: "/assets/df.png", 
+            alt: "Original photo compared to a deepfake", 
+            title: "",
+            content: "A side by side comparision of how its increasingly more challenging to distinguish between real photos and deepfakes." 
+          },
+          { 
+            type: "video", 
+            title: "An AI Deepfake video example", 
+            src: "https://www.youtube.com/embed/oxXpB9pSETo", 
+            content: "A short video clip from 2022 depicting AI deepfake video capabilities. It's important to note that modern tools have further advanced deepfakes." 
+          },
+
+            { type: "text", title: "References and Additional Resources", content: (
+              <>
+                Deepfake image example from at{" "}
+                <a href="https://www.frontiersin.org/journals/sociology/articles/10.3389/fsoc.2022.907199/full" target="_blank" rel="noopener noreferrer">
+                Using deepfakes for experiments in the social sciences - A pilot study
                 </a>
+                <br></br>
+                <a href="https://www.gao.gov/products/gao-24-107292" target="_blank" rel="noopener noreferrer">
+                Science & Tech Spotlight: Combating Deepfakes | U.S. GAO                 
+                </a>
+                <br></br>
+                <a href=" https://mass.pbslearningmedia.org/resource/nvair-sci-deepfake/manipulating-reality-deepfake-videos-and-generated-images-nova/" target="_blank" rel="noopener noreferrer">
+                Manipulating Reality: Deepfake Videos and Generated Images | NOVA                </a>
               </>
         
             ), },
@@ -487,24 +509,32 @@ export const modules: Module[] = [
           { type: "text", title: "How this Differs from Deepfakes", content: "Deepfakes involve AI-generated or altered content that isn’t real, while out-of-context content uses real media but presents it in a misleading way. In short, deepfakes change reality, while out-of-context content changes how you interpret it." },
 
           // EXAMPLE of real world out-of-context footage: linkedin AND GRAPHS/STATS!!
+         
+          { type: "text", title: "Misleading Data and Graphs", content: "Even numbers and stats can lie too. Skewed axes, cherry-picked data points, and deceptive infographics can make anything look true. Understanding these visual traps helps you spot misinformation before it infects public perception." },
           { 
             type: "image", 
-            src: "/assets/critical-thinking-diagram.jpg", 
-            alt: "Critical thinking process diagram", 
+            src: "/assets/mis-data1.png", 
+            alt: "Diagram of robberies in the U.S from 2014 to 2016", 
             title: "",
-            content: "" 
+            content: "At first glace this graph looks like its showing a steady increase...However, pay attention to the scaling." 
           },
-          { type: "text", title: "Misleading Data and Graphs", content: "Even numbers and stats can lie too. Skewed axes, cherry-picked data points, and deceptive infographics can make anything look true. Understanding these visual traps helps you spot misinformation before it infects public perception." },
+                    { 
+            type: "image", 
+            src: "/assets/mis-data2.png", 
+            alt: "Diagram of robberies in the U.S from 2014 to 2016", 
+            title: "",
+            content: "By adjusting the scale, this is a much more accurate depiction of the same data, yet it tells a different story." 
+          },
 
           { type: "text", title: "Resources", content: (
               <>
-                Diagram from at{" "}
-                <a href="https://guides.library.charlotte.edu/c.php?g=1499262&p=11329376" target="_blank" rel="noopener noreferrer">
+                Graphs from {" "}
+                <a href="https://web.stevenson.edu/mbranson/m4tp/version1/fake-news-misleading-graphs.html" target="_blank" rel="noopener noreferrer">
                 Understanding and Evaluating Sources
                 </a>
                 <br></br>
-                <a href="https://libguides.princeton.edu/medialiteracy/lateralreading" target="_blank" rel="noopener noreferrer">
-                What is Lateral Reading
+                <a href="https://www.pbs.org/newshour/science/out-of-context-photos-are-a-powerful-low-tech-form-of-misinformation" target="_blank" rel="noopener noreferrer">
+                Out-of-context photos are a powerful low-tech form of misinformation
                 </a>
               </>
         
@@ -543,24 +573,19 @@ export const modules: Module[] = [
             "Google's build in reverse image search",
             "Tineye.com: reverse image search engine"
           ]},
-          { type: "bullets", title: "Additional Tools for Deepfake Detection:", content: "", items: [
+          { type: "bullets", title: "Additional Tools for Deepfake Detection and Sites They Are Found on:", content: "", items: [
             "Misspelled domain names (gogle.com, faceb00k.com)",
+            "Pay attention to unrealistic motions and actions in videos",
             "Extra subdomains (login.bank.suspicious-site.com)",
-            "Unusual domain extensions (.info, .xyz for news sites)",
+            "Unusual domain extensions",
             "Very long URLs with random characters",
             "HTTP instead of HTTPS on sites that should be secure",
           ]},
 
           { type: "text", title: "Resources", content: (
               <>
-                Diagram from at{" "}
-                <a href="https://guides.library.charlotte.edu/c.php?g=1499262&p=11329376" target="_blank" rel="noopener noreferrer">
-                Understanding and Evaluating Sources
-                </a>
-                <br></br>
-                <a href="https://libguides.princeton.edu/medialiteracy/lateralreading" target="_blank" rel="noopener noreferrer">
-                What is Lateral Reading
-                </a>
+                <a href="https://www.clearvoice.com/resources/reverse-image-search-tools/" target="_blank" rel="noopener noreferrer">
+                The Top 7 Reverse Image Search Tools and How to Use Them                </a>
               </>
         
             ), },

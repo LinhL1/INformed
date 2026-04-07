@@ -135,26 +135,32 @@ const LessonPage = () => {
     if (xp > 0) showXPNotification(xp, "Activity mastered!");
   };
 
-  const handleNext = () => {
-    if (isLastPhase) {
-      // Complete the lesson
-      if (!completed) {
-        markComplete(module.id, subtopic.id);
-        const xp = awardLessonXP();
-        showXPNotification(xp, "Mission complete!");
-      }
-      setTimeout(() => {
-        if (nextSubtopic) {
-          navigate(`/module/${module.id}/lesson/${nextSubtopic.id}`);
-        } else {
-          navigate(`/module/${module.id}`);
-        }
-      }, completed ? 0 : 800);
-    } else {
-      setCurrentPhaseIndex((prev) => Math.min(prev + 1, phases.length - 1));
-      window.scrollTo({ top: 0, behavior: "smooth" });
+const handleNext = () => {
+  if (isLastPhase) {
+    // Complete the lesson
+    if (!completed) {
+      markComplete(module.id, subtopic.id);
+      const xp = awardLessonXP();
+      showXPNotification(xp, "Mission complete!");
     }
-  };
+    setTimeout(() => {
+      const isLastLesson = subtopicIndex === module.subtopics.length - 1;
+      
+      if (isLastLesson) {
+        // Last lesson - go back to module overview: FIX the completed mission bug
+        navigate(`/module/${module.id}`);
+      } else {
+        // Go to FIRST PHASE of next lesson
+        navigate(`/module/${module.id}/lesson/${nextSubtopic.id}`);
+        // Resets phase index for the new lesson
+        setCurrentPhaseIndex(0);
+      }
+    }, completed ? 0 : 800);
+  } else {
+    setCurrentPhaseIndex((prev) => Math.min(prev + 1, phases.length - 1));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+};
 
   const handlePrev = () => {
     setCurrentPhaseIndex((prev) => Math.max(prev - 1, 0));

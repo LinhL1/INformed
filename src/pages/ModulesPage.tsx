@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Lock, CheckCircle2, ChevronRight, Star, Shield, BookOpen } from "lucide-react";
+import { Lock, CheckCircle2, ChevronRight, Star, BookOpen } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";

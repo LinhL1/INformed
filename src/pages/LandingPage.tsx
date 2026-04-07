@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Shield, Brain, Eye } from "lucide-react";
+import { Brain, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mentorImage from "@/assets/ms-informed-mentor.png";
 import bg from "@/assets/informed-bg.png";
