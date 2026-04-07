@@ -509,24 +509,32 @@ export const modules: Module[] = [
           { type: "text", title: "How this Differs from Deepfakes", content: "Deepfakes involve AI-generated or altered content that isn’t real, while out-of-context content uses real media but presents it in a misleading way. In short, deepfakes change reality, while out-of-context content changes how you interpret it." },
 
           // EXAMPLE of real world out-of-context footage: linkedin AND GRAPHS/STATS!!
+         
+          { type: "text", title: "Misleading Data and Graphs", content: "Even numbers and stats can lie too. Skewed axes, cherry-picked data points, and deceptive infographics can make anything look true. Understanding these visual traps helps you spot misinformation before it infects public perception." },
           { 
             type: "image", 
-            src: "/assets/critical-thinking-diagram.jpg", 
-            alt: "Critical thinking process diagram", 
+            src: "/assets/mis-data1.png", 
+            alt: "Diagram of robberies in the U.S from 2014 to 2016", 
             title: "",
-            content: "" 
+            content: "At first glace this graph looks like its showing a steady increase...However, pay attention to the scaling." 
           },
-          { type: "text", title: "Misleading Data and Graphs", content: "Even numbers and stats can lie too. Skewed axes, cherry-picked data points, and deceptive infographics can make anything look true. Understanding these visual traps helps you spot misinformation before it infects public perception." },
+                    { 
+            type: "image", 
+            src: "/assets/mis-data2.png", 
+            alt: "Diagram of robberies in the U.S from 2014 to 2016", 
+            title: "",
+            content: "By adjusting the scale, this is a much more accurate depiction of the same data, yet it tells a different story." 
+          },
 
           { type: "text", title: "Resources", content: (
               <>
-                Diagram from at{" "}
-                <a href="https://guides.library.charlotte.edu/c.php?g=1499262&p=11329376" target="_blank" rel="noopener noreferrer">
+                Graphs from {" "}
+                <a href="https://web.stevenson.edu/mbranson/m4tp/version1/fake-news-misleading-graphs.html" target="_blank" rel="noopener noreferrer">
                 Understanding and Evaluating Sources
                 </a>
                 <br></br>
-                <a href="https://libguides.princeton.edu/medialiteracy/lateralreading" target="_blank" rel="noopener noreferrer">
-                What is Lateral Reading
+                <a href="https://www.pbs.org/newshour/science/out-of-context-photos-are-a-powerful-low-tech-form-of-misinformation" target="_blank" rel="noopener noreferrer">
+                Out-of-context photos are a powerful low-tech form of misinformation
                 </a>
               </>
         
