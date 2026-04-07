@@ -573,24 +573,19 @@ export const modules: Module[] = [
             "Google's build in reverse image search",
             "Tineye.com: reverse image search engine"
           ]},
-          { type: "bullets", title: "Additional Tools for Deepfake Detection:", content: "", items: [
+          { type: "bullets", title: "Additional Tools for Deepfake Detection and Sites They Are Found on:", content: "", items: [
             "Misspelled domain names (gogle.com, faceb00k.com)",
+            "Pay attention to unrealistic motions and actions in videos",
             "Extra subdomains (login.bank.suspicious-site.com)",
-            "Unusual domain extensions (.info, .xyz for news sites)",
+            "Unusual domain extensions",
             "Very long URLs with random characters",
             "HTTP instead of HTTPS on sites that should be secure",
           ]},
 
           { type: "text", title: "Resources", content: (
               <>
-                Diagram from at{" "}
-                <a href="https://guides.library.charlotte.edu/c.php?g=1499262&p=11329376" target="_blank" rel="noopener noreferrer">
-                Understanding and Evaluating Sources
-                </a>
-                <br></br>
-                <a href="https://libguides.princeton.edu/medialiteracy/lateralreading" target="_blank" rel="noopener noreferrer">
-                What is Lateral Reading
-                </a>
+                <a href="https://www.clearvoice.com/resources/reverse-image-search-tools/" target="_blank" rel="noopener noreferrer">
+                The Top 7 Reverse Image Search Tools and How to Use Them                </a>
               </>
         
             ), },
