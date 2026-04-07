@@ -412,33 +412,55 @@ export const modules: Module[] = [
             "Social Media Platforms: Instagram, YouTube, TicTok, X (Twitter)",
             "Online News & Blog Posts: Online forums, shared articles",
             "Professional Platforms: LinkedIn, emails, communication channels",
-            "...Essentially anywhere digital media can exist",
+            "...essentially anywhere digital media can exist",
           ]},
           { 
             type: "video", 
             title: "Overview of Deepfakes", 
-            src: "https://www.youtube.com/embed/hz6GULbowAk", 
+            src: "https://www.youtube.com/embed/o5k6UdOQBoU", 
             content: "A TED-Ed that explains on how false news spreads and why it's so hard to stop." 
           },
-          // EXAMPLE of real world deepfakes: ICE, Politics/trump, etc
-          { 
-            type: "image", 
-            src: "/assets/critical-thinking-diagram.jpg", 
-            alt: "Critical thinking process diagram", 
-            title: "",
-            content: "" 
-          },
-
-            { type: "text", title: "Resources", content: (
+          
+          { type: "text", title: "Real World Cases:", content: "Deepfakes include a range of videos, audio, or images, check out some examples collected from surfing the media." },
+          { type: "text", title: "NPR: AI images and internet rumors spread confusion about ICE agent involved in shooting", content: (
               <>
-                Diagram from at{" "}
-                <a href="https://guides.library.charlotte.edu/c.php?g=1499262&p=11329376" target="_blank" rel="noopener noreferrer">
-                Understanding and Evaluating Sources
+                <a href="https://www.npr.org/transcripts/nx-s1-5671740" target="_blank" rel="noopener noreferrer">
+                Read about it here
                 </a>
                 <br></br>
-                <a href="https://libguides.princeton.edu/medialiteracy/lateralreading" target="_blank" rel="noopener noreferrer">
-                What is Lateral Reading
+              </>
+        
+            ), },
+          // VISUAL EXAMPLE of real world deepfakes: ICE, Politics/trump, etc      
+          { type: "text", title: "Deepfake image example", content: "" },
+    
+          { 
+            type: "image", 
+            src: "/assets/df.png", 
+            alt: "Original photo compared to a deepfake", 
+            title: "",
+            content: "A side by side comparision of how its increasingly more challenging to distinguish between real photos and deepfakes." 
+          },
+          { 
+            type: "video", 
+            title: "An AI Deepfake video example", 
+            src: "https://www.youtube.com/embed/oxXpB9pSETo", 
+            content: "A short video clip from 2022 depicting AI deepfake video capabilities. It's important to note that modern tools have further advanced deepfakes." 
+          },
+
+            { type: "text", title: "References and Additional Resources", content: (
+              <>
+                Deepfake image example from at{" "}
+                <a href="https://www.frontiersin.org/journals/sociology/articles/10.3389/fsoc.2022.907199/full" target="_blank" rel="noopener noreferrer">
+                Using deepfakes for experiments in the social sciences - A pilot study
                 </a>
+                <br></br>
+                <a href="https://www.gao.gov/products/gao-24-107292" target="_blank" rel="noopener noreferrer">
+                Science & Tech Spotlight: Combating Deepfakes | U.S. GAO                 
+                </a>
+                <br></br>
+                <a href=" https://mass.pbslearningmedia.org/resource/nvair-sci-deepfake/manipulating-reality-deepfake-videos-and-generated-images-nova/" target="_blank" rel="noopener noreferrer">
+                Manipulating Reality: Deepfake Videos and Generated Images | NOVA                </a>
               </>
         
             ), },
