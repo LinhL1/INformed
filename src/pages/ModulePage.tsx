@@ -47,12 +47,11 @@ const ModulePage = () => {
           className="mb-8 space-y-3"
         >
           <div className="flex items-center gap-3">
-            <span
-              className="rounded-full px-3 py-1 text-xs font-bold text-primary-foreground uppercase tracking-wider"
-              style={{ backgroundColor: module.color }}
-            >
-              {module.chapterTitle}
-            </span>
+          <span
+            className="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider bg-gray-400"
+          >
+            {module.chapterTitle}
+          </span>
           </div>
           <h1 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
             {module.title}
