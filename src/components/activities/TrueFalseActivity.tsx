@@ -54,7 +54,7 @@ const TrueFalseActivity = ({ title, items, onComplete }: Props) => {
         className="rounded-xl border border-accent/30 bg-card p-6 text-center space-y-3"
       >
         <Zap className="h-8 w-8 text-accent mx-auto" />
-        <h4 className="font-display text-lg font-bold text-foreground">Rapid Fire Complete!</h4>
+        <h4 className="text-lg font-bold text-foreground">Rapid Fire Complete!</h4>
         <p className="text-2xl font-bold text-foreground">
           {correctCount}/{items.length}
         </p>
@@ -85,7 +85,7 @@ const TrueFalseActivity = ({ title, items, onComplete }: Props) => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Zap className="h-5 w-5 text-accent" />
-          <h4 className="font-display text-base font-semibold text-foreground">
+          <h4 className="text-base font-semibold text-foreground">
             {title || "Rapid Fire"}
           </h4>
         </div>

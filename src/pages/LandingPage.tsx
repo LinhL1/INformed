@@ -70,7 +70,7 @@ const LandingPage = () => (
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-10 font-display text-11xl font-bold text-foreground sm:text-9xl"
         >
-          Stay <br></br><span className="text-accent italic">Informed</span>.
+        <h1>  Be <br></br><span className="text-accent italic">Informed.</span></h1>
         </motion.h1>
 
         <motion.p

@@ -53,8 +53,8 @@ const ModulePage = () => {
             {module.chapterTitle}
           </span>
           </div>
-          <h1 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
-            {module.title}
+          <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
+          <h1>  {module.title} </h1>
           </h1>
           <p className="text-muted-foreground leading-relaxed">
             {module.description}
