@@ -80,8 +80,8 @@ const LandingPage = () => (
           className="mt-4 max-w-lg text-lg leading-relaxed text-muted-foreground"
         >
           Disinformation doesn't just mislead, it threatens national security.
-          Sharpen your critical thinking, learn to spot manipulation tactics, and
-          become the strongest link in the chain of defense. Your awareness is your armor.
+          As a newly recruited analyst at INformed, begin your advanture to learning the best ways to
+          nagivate the new era of digital media. 
         </motion.p>
       </div>
     </div>
