@@ -16,6 +16,12 @@ const moduleBackgrounds = {
 
 };
 
+const moduleColorMap = {
+  introduction: 1,
+  "source-eval": 2,
+  "visual-deception": 3,
+};
+
 const ModulePage = () => {
   const { moduleId } = useParams<{ moduleId: string }>();
   const module = modules.find((m) => m.id === moduleId);
@@ -48,7 +54,10 @@ const ModulePage = () => {
         >
           <div className="flex items-center gap-3">
           <span
-            className="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider bg-gray-400"
+            style={{
+              backgroundColor: `hsl(var(--module-${moduleColorMap[module.id]}))`
+            }}
+            className="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-white"
           >
             {module.chapterTitle}
           </span>
@@ -63,7 +72,7 @@ const ModulePage = () => {
           {/* Story intro */}
           {module.storyIntro && (
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 1, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-5"

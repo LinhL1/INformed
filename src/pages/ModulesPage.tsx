@@ -47,7 +47,7 @@ const ModulesPage = () => {
           
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-accent">
           </div>
-          <h1 className="text-4xl font-bold sm:text-5xl">
+          <h1 className="text-8xl font-bold sm:text-5xl">
             Stay sharp. Stay <span className="text-blue-500">informed</span>.
           </h1>
           <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">

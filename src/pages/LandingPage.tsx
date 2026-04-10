@@ -32,17 +32,22 @@ const LandingPage = () => (
     >
       <Link to="/modules">
         <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="relative"
-        >
-          {/* Glow effect */}
-          <motion.div
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute inset-0 rounded-full bg-accent/30 blur-xl"
-          />
-          
+        whileHover="hover"
+        whileTap={{ scale: 0.95 }}
+        initial="initial"
+        animate="initial"
+        className="relative"
+      >
+        {/* Glow effect */}
+        <motion.div
+          variants={{
+            initial: { opacity: 0.5, scale: 1 },
+            hover: { opacity: 1.8, scale: 1.8 }
+          }}
+          transition={{ duration: 0.25 }}
+          className="absolute inset-0 rounded-full bg-accent/60 blur-2xl"
+        />
+             
           {/* Image instead of icon */}
           <img 
             src={lightbulbImage} 
