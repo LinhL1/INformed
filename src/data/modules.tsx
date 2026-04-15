@@ -612,18 +612,18 @@ export const modules: Module[] = [
   {
     id: "national-security",
     number: 4,
-    title: "The Mind Games",
-    description: "The most dangerous weapon is already inside your head. Understand the cognitive biases that make you vulnerable.",
+    title: "National Security",
+    description: "With a better understanding of how facts, news, and visuals can be manipulated, you’ll now explore the role of information and narratives on a larger scale and investigate how they influence the way people think and act. From domestic movements to foreign influence plans, misinformation can be strategically crafted and shared. Propaganda and coordinated campaigns can be used to amplify conflicts, impact trust, and shape public opinion.",
     color: "hsl(var(--module-4))",
-    chapterTitle: "Chapter 4: Mind Games",
-    storyIntro: "Agent, the hardest truth in cyber defense: your own brain can be your greatest vulnerability. Cognitive biases are blind spots that attackers exploit. This chapter is about knowing yourself so the enemy can't use you against yourself.",
+    chapterTitle: "Chapter 4: The Big Picture",
+    storyIntro: "As an analyst, you begin to look into the impacts of misinformation and media on society. You’ll see how misleading narratives spread, uncover motives, and learn ways to be aware and better navigate news and media.",
     subtopics: [
       {
-        id: "confirmation-bias",
-        title: "Confirmation Bias",
-        description: "The most exploited vulnerability in your mental armor.",
-        estimatedMinutes: 8,
-        storyBriefing: "🎯 Mission Briefing: Our psychological profiling reveals that confirmation bias is the #1 exploited weakness. It makes you seek information that confirms what you already believe — and reject what doesn't.",
+        id: "narratives-propaganda",
+        title: "Narratives and Propaganda",
+        description: "Understand how stories, framing, and persuasive techniques are used to shape perception and influence beliefs.",
+        estimatedMinutes: 15,
+        storyBriefing: "The way information is framed can influence how it’s understood, from which details are emphasized, and what’s left out entirely. The emotional appeals to selective storytelling, propaganda techniques are designed to guide perception without you realizing it.",
         sections: [
           { type: "text", title: "Your Blind Spot", content: "Confirmation bias is the tendency to search for, interpret, and remember information in a way that confirms your pre-existing beliefs. It's not a character flaw — it's how human brains are wired. But attackers know this, and they exploit it." },
           { type: "key-term", term: "Confirmation Bias", content: "the tendency to favor information that confirms existing beliefs while ignoring or dismissing contradicting evidence, regardless of its quality" },
@@ -654,11 +654,11 @@ export const modules: Module[] = [
         ],
       },
       {
-        id: "bandwagon-effect",
-        title: "The Bandwagon Effect",
-        description: "When everyone's doing it, it must be right... right?",
-        estimatedMinutes: 7,
-        storyBriefing: "🎯 Mission Briefing: The enemy knows that humans are social creatures. They create the illusion of consensus to make their lies seem like popular truth. Learn to recognize manufactured agreement.",
+        id: "influence-ops",
+        title: "Influence Operations",
+        description: "Explore how organized networks use coordinated tactics to spread narratives and manipulate public opinion at scale.",
+        estimatedMinutes: 15,
+        storyBriefing: "Some information campaigns are carefully coordinated efforts designed to influence public opinion on a large scale. Foreign actors and organized groups may use fake accounts, bots, and targeted messaging to amplify specific narratives and support the dissemination of certain beliefs.",
         sections: [
           { type: "text", title: "The Power of the Crowd", content: "The bandwagon effect is a cognitive bias where people adopt beliefs or behaviors because they perceive that 'everyone else' is doing it. Social media has supercharged this bias — like counts, share numbers, and trending topics create powerful social proof." },
           { type: "key-term", term: "Social Proof", content: "the psychological phenomenon where people look to the actions and opinions of others to determine what is correct, especially in situations of uncertainty" },
@@ -689,11 +689,11 @@ export const modules: Module[] = [
         ],
       },
       {
-        id: "anchoring",
-        title: "Anchoring & Framing",
-        description: "The first thing you hear shapes everything after.",
+        id: "misinfo-demo",
+        title: "Misinformation, Democracy, and Trust",
+        description: "Learn how misinformation around elections can impact public confidence and influence democratic participation.",
         estimatedMinutes: 8,
-        storyBriefing: "🎯 Mission Briefing: The enemy plants 'anchor' information early in a news cycle, knowing that first impressions shape all subsequent judgments. Learn to recognize when you're being anchored.",
+        storyBriefing: "In a democracy, trust in the process is everything. Misinformation around elections and politics, whether about voting procedures, results, or security, can create confusion and discourage participation.",
         sections: [
           { type: "text", title: "The Anchor Effect", content: "Anchoring bias occurs when the first piece of information you encounter about a topic disproportionately influences your thinking. Even if that first piece is wrong, it creates a mental anchor that's hard to move away from." },
           { type: "text", title: "Framing in Media", content: "Framing is how information is presented — the words chosen, what's emphasized, and what's omitted. The same facts can be framed to tell very different stories. For example: '90% survival rate' vs '10% death rate' — same statistic, very different emotional impact." },
@@ -718,29 +718,7 @@ export const modules: Module[] = [
           { type: "quiz", title: "Framing Check", content: "A headline reads: 'New policy could cost taxpayers $2 billion.' An alternative headline for the same policy reads: 'New policy projected to generate $8 billion in economic growth.' What's happening here?", options: ["One headline is lying", "Both headlines are using framing to emphasize different aspects", "The first headline is always more accurate", "Headlines don't affect how people interpret news"], correctIndex: 1 },
         ],
       },
-      {
-        id: "dunning-kruger",
-        title: "The Dunning-Kruger Effect",
-        description: "When you don't know what you don't know.",
-        estimatedMinutes: 7,
-        storyBriefing: "🎯 Mission Briefing: Our most dangerous vulnerability: overconfidence. When agents think they're experts, they stop checking. The Dunning-Kruger effect explains why the least competent are often the most confident.",
-        sections: [
-          { type: "text", title: "The Confidence Trap", content: "The Dunning-Kruger effect is a cognitive bias where people with limited knowledge in an area overestimate their competence. Conversely, actual experts tend to underestimate theirs. This is extremely relevant to media literacy — people who know a little about a topic often feel most confident they can spot misinformation, when they're actually most vulnerable." },
-          { type: "key-term", term: "Dunning-Kruger Effect", content: "a cognitive bias where individuals with limited knowledge overestimate their ability, while experts tend to underestimate theirs — making the least informed the most confident" },
-          {
-            type: "true-false",
-            title: "Confidence Check",
-            content: "",
-            trueFalseItems: [
-              { statement: "People who score lowest on media literacy tests tend to rate their own abilities highest.", isTrue: true, explanation: "Research consistently shows that those with the least knowledge are the most overconfident — a hallmark of the Dunning-Kruger effect." },
-              { statement: "Once you complete a media literacy course, you're immune to misinformation.", isTrue: false, explanation: "Education helps, but no one is immune. The threat landscape constantly evolves, and overconfidence itself becomes a vulnerability." },
-              { statement: "Experts express more uncertainty because they understand the complexity of a topic.", isTrue: true, explanation: "Genuine expertise brings awareness of nuance, edge cases, and unknowns — leading to more cautious, qualified statements." },
-            ],
-          },
-          { type: "callout", content: "The best defense against the Dunning-Kruger effect: intellectual humility. The more you learn, the more you realize how much you don't know — and that awareness is a strength, not a weakness." },
-          { type: "quiz", title: "Self-Assessment", content: "Which statement best describes the Dunning-Kruger effect?", options: ["Experts are always right", "The less you know, the more confident you tend to be", "Intelligent people don't fall for misinformation", "Confidence always indicates competence"], correctIndex: 1 },
-        ],
-      },
+      
     ],
   },
   {
