@@ -625,33 +625,120 @@ export const modules: Module[] = [
         estimatedMinutes: 15,
         storyBriefing: "The way information is framed can influence how it’s understood, from which details are emphasized, and what’s left out entirely. The emotional appeals to selective storytelling, propaganda techniques are designed to guide perception without you realizing it.",
         sections: [
-          { type: "text", title: "Your Blind Spot", content: "Confirmation bias is the tendency to search for, interpret, and remember information in a way that confirms your pre-existing beliefs. It's not a character flaw — it's how human brains are wired. But attackers know this, and they exploit it." },
-          { type: "key-term", term: "Confirmation Bias", content: "the tendency to favor information that confirms existing beliefs while ignoring or dismissing contradicting evidence, regardless of its quality" },
+          { type: "text", title: "The Role Narratives Play in Shaping Perspectives", content: "Propaganda is more than the simple spread of misleading information and stories, it's about shaping public perception. At its core, propaganda uses selective information, emotional appeals, and repetition to influence how people think and feel about political issues, governments, or entire systems of belief. It operates across media platforms in all content forms. From comments, posts, to images, and videos, it's most effective when audiences are unaware of the influence and recognize the intent." },
+          { type: "text", content: "Narratives play a central role in shaping public opinion because they organize information into emotionally compelling stories. Rather than asking audiences to analyze evidence objectively, narratives provide ready-made interpretations of reality. They answer implicit questions like: Who is right? Who is wrong? What kind of world do we live in? Because of this, narratives often have greater persuasive power than factual accuracy alone."},
+          { type: "key-term", term: "Information Warfare", content: "Goes beyond isolated messaging and operates continuously across multiple platforms and channels. Is a sustained, strategic campaign using information to influence the beliefs, emotions, and behaviors of target audiences." },
+          { type: "key-term", term: "Propaganda", content: "The deliberate dissemination of information designed and shared to deliberately shape and influence public opinion to support a specific political agenda." },
+
+          { type: "text", title: "In the Real World", content: "For example, during the 2016 U.S. presidential election, Russian-linked groups used fake social media accounts and targeted ads to amplify political divisions and shape voter perceptions. Similarly, during the COVID-19 pandemic, competing narratives about the virus’s origins, vaccines, and government responses spread widely online, sometimes promoting public health, but often fueling confusion and distrust." },
+          
+          { type: "text", title: "References (Read more about it)", content: (
+              <>
+                
+                <a href="https://www.bbc.com/news/technology-46590890" target="_blank" rel="noopener noreferrer">
+                Russia 'meddled in all big social media' around US election                </a>
+                <br></br>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10655972/" target="_blank" rel="noopener noreferrer">
+                Trend analysis of COVID-19 mis/disinformation narratives–A 3-year study
+                </a>
+
+          
+              </>
+        
+            ), },
+
+           { 
+            type: "video", 
+            title: "Propaganda Explained", 
+            src: "https://www.youtube.com/embed/T8L8tGErQPs", 
+            content: "A TED-Ed that explains on how false news spreads and why it's so hard to stop." 
+          },
+
+         { 
+            "type": "bullets", 
+            "title": "Key Takeaways", 
+            "content": "", 
+            "items": [
+              "Propaganda is not just false information, it is the strategic use of messaging to shape perceptions and influence behavior",
+              "Narratives are often more powerful than facts because they provide meaning and emotional context",
+              "Modern information warfare is continuous and multi-platform, not limited to isolated campaigns",
+              "Authoritarian states like China and Russia actively manipulate the information environment to advance their interests",
+              "Disinformation can be used not only to persuade, but also to confuse and erode trust in truth itself",
+              "Digital platforms and social media have transformed how information spreads, prioritizing engagement over accuracy",
+              "Effective influence requires culturally relevant messaging tailored to specific audiences",
+              "In today’s world, shaping the narrative can be as important as military or economic power"
+            ]
+          },
+
+          { type: "text", title: "Resources", content: (
+              <>
+                <a href="https://alexanderhamiltonsociety.org/security-strategy/issue-five/winning-the-war-of-ideas-a-u-s-strategy-for-the-twenty-first-century-information-domain/" target="_blank" rel="noopener noreferrer">
+                Winning the War of Ideas: A U.S. Strategy for the Twenty-First-Century Information Domain
+                </a>
+              </>
+        
+          ), },
+
+
           {
-            type: "scenario",
-            title: "Bias in Action",
-            content: "",
-            scenarioData: {
-              situation: "You strongly believe that a certain health supplement is effective. You find an article that says it's been proven dangerous. The article cites peer-reviewed research. What do you do?",
-              choices: [
-                { text: "Dismiss it — you've had good experiences, so the research must be flawed", outcome: "This is confirmation bias in action. Personal experience, while valid, doesn't override systematic research. Dismissing evidence that contradicts your beliefs makes you vulnerable to manipulation.", isOptimal: false },
-                { text: "Read the study, check the methodology, and update your beliefs based on evidence", outcome: "This is exactly what a well-trained agent does. Evaluating evidence on its merits — regardless of whether it confirms your prior beliefs — is the core of critical thinking.", isOptimal: true },
-                { text: "Search online until you find an article that supports your original belief", outcome: "This is a classic confirmation bias behavior — cherry-picking sources. You can always find someone who agrees with you online; that doesn't make them right.", isOptimal: false },
-              ],
-            },
+            "type": "scenario",
+            "title": "Narratives in Action",
+            "content": "",
+            "scenarioData": {
+              "situation": "You come across a well-produced short video discussing protests in another country. It includes real footage, interviews, and statistics, but frames the situation as either a fight for freedom or evidence of instability—depending on interpretation. The video is shared by an account with unclear affiliations. What do you do?",
+              "choices": [
+                { 
+                  "text": "Accept the video’s framing since the footage and data appear real and credible", 
+                  "outcome": "Even accurate facts can be selectively framed to support a specific narrative. Information warfare often relies on shaping interpretation, not just spreading falsehoods.", 
+                  "isOptimal": false 
+                },
+                { 
+                  "text": "Analyze how the information is framed, compare it with other sources, and consider what perspective might be missing", 
+                  "outcome": "This reflects advanced critical thinking. Competing narratives often use the same facts but present them differently. Evaluating framing, omissions, and intent helps you better understand the full picture.", 
+                  "isOptimal": true 
+                },
+                { 
+                  "text": "Reject the video entirely because the source isn’t clearly trustworthy", 
+                  "outcome": "While source credibility matters, dismissing information outright can cause you to overlook real events. Information environments are complex, and not all influence relies on false content.", 
+                  "isOptimal": false 
+                }
+              ]
+            }
           },
           {
-            type: "true-false",
-            title: "Bias Awareness Drill",
-            content: "",
-            trueFalseItems: [
-              { statement: "Smart, well-educated people are immune to confirmation bias.", isTrue: false, explanation: "Research shows that higher intelligence can actually make people better at rationalizing biased positions, not better at avoiding bias." },
-              { statement: "Actively seeking out viewpoints you disagree with helps counter confirmation bias.", isTrue: true, explanation: "Deliberately exposing yourself to opposing perspectives is one of the most effective strategies against confirmation bias." },
-              { statement: "Confirmation bias only affects political beliefs.", isTrue: false, explanation: "It affects every domain — health decisions, financial choices, personal relationships, and scientific understanding." },
+            "type": "true-false",
+            "title": "Narrative Awareness Drill",
+            "content": "",
+            "trueFalseItems": [
+              { 
+                "statement": "Propaganda is always false or misleading information.", 
+                "isTrue": false, 
+                "explanation": "Propaganda often uses true information, but selectively frames or presents it to shape perceptions and advance a specific narrative." 
+              },
+              { 
+                "statement": "If multiple sources are reporting the same event, the narrative is likely unbiased.", 
+                "isTrue": false, 
+                "explanation": "Different actors can report the same facts but frame them in ways that support different narratives or agendas." 
+              },
+              { 
+                "statement": "Information warfare can aim to create confusion and distrust rather than persuade people of a single viewpoint.", 
+                "isTrue": true, 
+                "explanation": "Some strategies—like flooding the information space with conflicting claims—are designed to erode trust in objective reality itself." 
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "title": "Narrative Check",
+            "content": "A government spreads multiple conflicting explanations about a major event, making it difficult for people to determine what is true. What strategy is being used?",
+            "options": [
+              "Firehose of falsehood",
+              "Objective reporting",
+              "Neutral information sharing",
+              "Transparency campaign"
             ],
-          },
-          { type: "quiz", title: "Bias Check", content: "Someone who only follows news sources that align with their political views is exhibiting which bias?", options: ["Confirmation bias", "Anchoring bias", "Dunning-Kruger effect", "Bandwagon effect"], correctIndex: 0 },
-        ],
+            "correctIndex": 0
+          }],
       },
       {
         id: "influence-ops",
