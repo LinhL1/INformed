@@ -626,8 +626,10 @@ export const modules: Module[] = [
         storyBriefing: "The way information is framed can influence how it’s understood, from which details are emphasized, and what’s left out entirely. The emotional appeals to selective storytelling, propaganda techniques are designed to guide perception without you realizing it.",
         sections: [
           { type: "text", title: "The Role Narratives Play in Shaping Perspectives", content: "Propaganda is more than the simple spread of misleading information and stories, it's about shaping public perception. At its core, propaganda uses selective information, emotional appeals, and repetition to influence how people think and feel about political issues, governments, or entire systems of belief. It operates across media platforms in all content forms. From comments, posts, to images, and videos, it's most effective when audiences are unaware of the influence and recognize the intent." },
-          { type: "text", content: "Narratives play a central role in shaping public opinion because they organize information into emotionally compelling stories. Rather than asking audiences to analyze evidence objectively, narratives provide ready-made interpretations of reality. They answer implicit questions like: Who is right? Who is wrong? What kind of world do we live in? Because of this, narratives often have greater persuasive power than factual accuracy alone."},
+          
           { type: "key-term", term: "Information Warfare", content: "Goes beyond isolated messaging and operates continuously across multiple platforms and channels. Is a sustained, strategic campaign using information to influence the beliefs, emotions, and behaviors of target audiences." },
+          { type: "text", content: "Narratives play a central role in shaping public opinion because they organize information into emotionally compelling stories. Rather than asking audiences to analyze evidence objectively, narratives provide ready-made interpretations of reality. They answer implicit questions like: Who is right? Who is wrong? What kind of world do we live in? Because of this, narratives often have greater persuasive power than factual accuracy alone."},
+          
           { type: "key-term", term: "Propaganda", content: "The deliberate dissemination of information designed and shared to deliberately shape and influence public opinion to support a specific political agenda." },
 
           { type: "text", title: "In the Real World", content: "For example, during the 2016 U.S. presidential election, Russian-linked groups used fake social media accounts and targeted ads to amplify political divisions and shape voter perceptions. Similarly, during the COVID-19 pandemic, competing narratives about the virus’s origins, vaccines, and government responses spread widely online, sometimes promoting public health, but often fueling confusion and distrust." },
@@ -747,8 +749,44 @@ export const modules: Module[] = [
         estimatedMinutes: 15,
         storyBriefing: "Some information campaigns are carefully coordinated efforts designed to influence public opinion on a large scale. Foreign actors and organized groups may use fake accounts, bots, and targeted messaging to amplify specific narratives and support the dissemination of certain beliefs.",
         sections: [
-          { type: "text", title: "The Power of the Crowd", content: "The bandwagon effect is a cognitive bias where people adopt beliefs or behaviors because they perceive that 'everyone else' is doing it. Social media has supercharged this bias — like counts, share numbers, and trending topics create powerful social proof." },
-          { type: "key-term", term: "Social Proof", content: "the psychological phenomenon where people look to the actions and opinions of others to determine what is correct, especially in situations of uncertainty" },
+          { type: "text", title: "The Bigger Picture", content: "Influence operations are deliberate efforts to shape how people think, feel, and act, especially in political and social contexts. Unlike misinformation, which can spread accidentally, influence operations are purposeful campaigns designed to skew public perception." },
+          { type: "text", content: "Today, these operations are becoming more common and more sophisticated. A growing mix of state-backed actors, paid professionals, and ideologically motivated groups are targeting online spaces. They take advantage of social media platforms, weak moderation systems, and powerful digital tools to reach large audiences quickly." },
+          { type: "text", content: "These campaigns don’t always rely on false information. Sometimes, they amplify real but minor issues, making them seem far more important than they actually are. Other times, they spread misleading or false content to confuse audiences, deepen divisions, or discredit individuals and institutions." },
+
+          { type: "callout", content: "Influence operations often use misinformation as a tool, but they can also rely on selective truths, emotional framing, or strategic amplification." },
+
+         {
+            "type": "bullets",
+            "title": "Indicators of Coordinated Inauthentic Behavior",
+            "content": "",
+            "items": [
+              "Synchronized posting of identical or near-identical content within short time windows",
+              "Shared language patterns or templates across multiple accounts (similar wording, framing, or structure)",
+              "Dense cross-amplification between accounts that exceeds normal audience relationships",
+              "Unusual network behavior where accounts disproportionately interact with each other rather than organic audiences",
+              "Clusters of accounts showing coordinated activity that appears independent but is behaviorally linked",
+              "Account lifecycle anomalies such as sudden activation after dormancy or creation around specific events",
+              "Follower and engagement patterns that suggest artificial inflation or reciprocal boosting",
+              "Activity that forms behavioral clusters where combined signals are more meaningful than any single account",
+            ]
+          },
+          
+          { type: "text", title: "In the Real World", content: "" },
+          
+          { type: "text", title: "Resources", content: (
+                        <>
+                          <a href="https://rolli.ai/blog/how-to-detect-coordinated-inauthentic-behavior/" target="_blank" rel="noopener noreferrer">
+                          How to Detect Coordinated Inauthentic Behavior on Social Media
+                          </a>
+                          <br></br>
+                           <a href="https://www.thebureauinvestigates.com/stories/2023-07-27/what-are-influence-operations-and-why-are-we-investigating-them" target="_blank" rel="noopener noreferrer">
+                          What are influence operations and why are we investigating them?
+
+                          </a>
+                        </>
+                  
+          ), },
+
           {
             type: "fill-blank",
             title: "Decode the Psychology",
