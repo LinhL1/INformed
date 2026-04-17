@@ -612,56 +612,181 @@ export const modules: Module[] = [
   {
     id: "national-security",
     number: 4,
-    title: "The Mind Games",
-    description: "The most dangerous weapon is already inside your head. Understand the cognitive biases that make you vulnerable.",
+    title: "National Security",
+    description: "With a better understanding of how facts, news, and visuals can be manipulated, you’ll now explore the role of information and narratives on a larger scale and investigate how they influence the way people think and act. From domestic movements to foreign influence plans, misinformation can be strategically crafted and shared. Propaganda and coordinated campaigns can be used to amplify conflicts, impact trust, and shape public opinion.",
     color: "hsl(var(--module-4))",
-    chapterTitle: "Chapter 4: Mind Games",
-    storyIntro: "Agent, the hardest truth in cyber defense: your own brain can be your greatest vulnerability. Cognitive biases are blind spots that attackers exploit. This chapter is about knowing yourself so the enemy can't use you against yourself.",
+    chapterTitle: "Chapter 4: The Big Picture",
+    storyIntro: "As an analyst, you begin to look into the impacts of misinformation and media on society. You’ll see how misleading narratives spread, uncover motives, and learn ways to be aware and better navigate news and media.",
     subtopics: [
       {
-        id: "confirmation-bias",
-        title: "Confirmation Bias",
-        description: "The most exploited vulnerability in your mental armor.",
-        estimatedMinutes: 8,
-        storyBriefing: "🎯 Mission Briefing: Our psychological profiling reveals that confirmation bias is the #1 exploited weakness. It makes you seek information that confirms what you already believe — and reject what doesn't.",
+        id: "narratives-propaganda",
+        title: "Narratives and Propaganda",
+        description: "Understand how stories, framing, and persuasive techniques are used to shape perception and influence beliefs.",
+        estimatedMinutes: 15,
+        storyBriefing: "The way information is framed can influence how it’s understood, from which details are emphasized, and what’s left out entirely. The emotional appeals to selective storytelling, propaganda techniques are designed to guide perception without you realizing it.",
         sections: [
-          { type: "text", title: "Your Blind Spot", content: "Confirmation bias is the tendency to search for, interpret, and remember information in a way that confirms your pre-existing beliefs. It's not a character flaw — it's how human brains are wired. But attackers know this, and they exploit it." },
-          { type: "key-term", term: "Confirmation Bias", content: "the tendency to favor information that confirms existing beliefs while ignoring or dismissing contradicting evidence, regardless of its quality" },
+          { type: "text", title: "The Role Narratives Play in Shaping Perspectives", content: "Propaganda is more than the simple spread of misleading information and stories, it's about shaping public perception. At its core, propaganda uses selective information, emotional appeals, and repetition to influence how people think and feel about political issues, governments, or entire systems of belief. It operates across media platforms in all content forms. From comments, posts, to images, and videos, it's most effective when audiences are unaware of the influence and recognize the intent." },
+          
+          { type: "key-term", term: "Information Warfare", content: "Goes beyond isolated messaging and operates continuously across multiple platforms and channels. Is a sustained, strategic campaign using information to influence the beliefs, emotions, and behaviors of target audiences." },
+          { type: "text", content: "Narratives play a central role in shaping public opinion because they organize information into emotionally compelling stories. Rather than asking audiences to analyze evidence objectively, narratives provide ready-made interpretations of reality. They answer implicit questions like: Who is right? Who is wrong? What kind of world do we live in? Because of this, narratives often have greater persuasive power than factual accuracy alone."},
+          
+          { type: "key-term", term: "Propaganda", content: "The deliberate dissemination of information designed and shared to deliberately shape and influence public opinion to support a specific political agenda." },
+
+          { type: "text", title: "In the Real World", content: "For example, during the 2016 U.S. presidential election, Russian-linked groups used fake social media accounts and targeted ads to amplify political divisions and shape voter perceptions. Similarly, during the COVID-19 pandemic, competing narratives about the virus’s origins, vaccines, and government responses spread widely online, sometimes promoting public health, but often fueling confusion and distrust." },
+          
+          { type: "text", title: "References (Read more about it)", content: (
+              <>
+                
+                <a href="https://www.bbc.com/news/technology-46590890" target="_blank" rel="noopener noreferrer">
+                Russia 'meddled in all big social media' around US election                </a>
+                <br></br>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10655972/" target="_blank" rel="noopener noreferrer">
+                Trend analysis of COVID-19 mis/disinformation narratives–A 3-year study
+                </a>
+
+          
+              </>
+        
+            ), },
+
+           { 
+            type: "video", 
+            title: "Propaganda Explained", 
+            src: "https://www.youtube.com/embed/T8L8tGErQPs", 
+            content: "A TED-Ed that explains on how false news spreads and why it's so hard to stop." 
+          },
+
+         { 
+            "type": "bullets", 
+            "title": "Key Takeaways", 
+            "content": "", 
+            "items": [
+              "Propaganda is not just false information, it is the strategic use of messaging to shape perceptions and influence behavior",
+              "Narratives are often more powerful than facts because they provide meaning and emotional context",
+              "Modern information warfare is continuous and multi-platform, not limited to isolated campaigns",
+              "Authoritarian states like China and Russia actively manipulate the information environment to advance their interests",
+              "Disinformation can be used not only to persuade, but also to confuse and erode trust in truth itself",
+              "Digital platforms and social media have transformed how information spreads, prioritizing engagement over accuracy",
+              "Effective influence requires culturally relevant messaging tailored to specific audiences",
+              "In today’s world, shaping the narrative can be as important as military or economic power"
+            ]
+          },
+
+          { type: "text", title: "Resources", content: (
+              <>
+                <a href="https://alexanderhamiltonsociety.org/security-strategy/issue-five/winning-the-war-of-ideas-a-u-s-strategy-for-the-twenty-first-century-information-domain/" target="_blank" rel="noopener noreferrer">
+                Winning the War of Ideas: A U.S. Strategy for the Twenty-First-Century Information Domain
+                </a>
+              </>
+        
+          ), },
+
+
           {
-            type: "scenario",
-            title: "Bias in Action",
-            content: "",
-            scenarioData: {
-              situation: "You strongly believe that a certain health supplement is effective. You find an article that says it's been proven dangerous. The article cites peer-reviewed research. What do you do?",
-              choices: [
-                { text: "Dismiss it — you've had good experiences, so the research must be flawed", outcome: "This is confirmation bias in action. Personal experience, while valid, doesn't override systematic research. Dismissing evidence that contradicts your beliefs makes you vulnerable to manipulation.", isOptimal: false },
-                { text: "Read the study, check the methodology, and update your beliefs based on evidence", outcome: "This is exactly what a well-trained agent does. Evaluating evidence on its merits — regardless of whether it confirms your prior beliefs — is the core of critical thinking.", isOptimal: true },
-                { text: "Search online until you find an article that supports your original belief", outcome: "This is a classic confirmation bias behavior — cherry-picking sources. You can always find someone who agrees with you online; that doesn't make them right.", isOptimal: false },
-              ],
-            },
+            "type": "scenario",
+            "title": "Narratives in Action",
+            "content": "",
+            "scenarioData": {
+              "situation": "You come across a well-produced short video discussing protests in another country. It includes real footage, interviews, and statistics, but frames the situation as either a fight for freedom or evidence of instability—depending on interpretation. The video is shared by an account with unclear affiliations. What do you do?",
+              "choices": [
+                { 
+                  "text": "Accept the video’s framing since the footage and data appear real and credible", 
+                  "outcome": "Even accurate facts can be selectively framed to support a specific narrative. Information warfare often relies on shaping interpretation, not just spreading falsehoods.", 
+                  "isOptimal": false 
+                },
+                { 
+                  "text": "Analyze how the information is framed, compare it with other sources, and consider what perspective might be missing", 
+                  "outcome": "This reflects advanced critical thinking. Competing narratives often use the same facts but present them differently. Evaluating framing, omissions, and intent helps you better understand the full picture.", 
+                  "isOptimal": true 
+                },
+                { 
+                  "text": "Reject the video entirely because the source isn’t clearly trustworthy", 
+                  "outcome": "While source credibility matters, dismissing information outright can cause you to overlook real events. Information environments are complex, and not all influence relies on false content.", 
+                  "isOptimal": false 
+                }
+              ]
+            }
           },
           {
-            type: "true-false",
-            title: "Bias Awareness Drill",
-            content: "",
-            trueFalseItems: [
-              { statement: "Smart, well-educated people are immune to confirmation bias.", isTrue: false, explanation: "Research shows that higher intelligence can actually make people better at rationalizing biased positions, not better at avoiding bias." },
-              { statement: "Actively seeking out viewpoints you disagree with helps counter confirmation bias.", isTrue: true, explanation: "Deliberately exposing yourself to opposing perspectives is one of the most effective strategies against confirmation bias." },
-              { statement: "Confirmation bias only affects political beliefs.", isTrue: false, explanation: "It affects every domain — health decisions, financial choices, personal relationships, and scientific understanding." },
+            "type": "true-false",
+            "title": "Narrative Awareness Drill",
+            "content": "",
+            "trueFalseItems": [
+              { 
+                "statement": "Propaganda is always false or misleading information.", 
+                "isTrue": false, 
+                "explanation": "Propaganda often uses true information, but selectively frames or presents it to shape perceptions and advance a specific narrative." 
+              },
+              { 
+                "statement": "If multiple sources are reporting the same event, the narrative is likely unbiased.", 
+                "isTrue": false, 
+                "explanation": "Different actors can report the same facts but frame them in ways that support different narratives or agendas." 
+              },
+              { 
+                "statement": "Information warfare can aim to create confusion and distrust rather than persuade people of a single viewpoint.", 
+                "isTrue": true, 
+                "explanation": "Some strategies—like flooding the information space with conflicting claims—are designed to erode trust in objective reality itself." 
+              }
+            ]
+          },
+          {
+            "type": "quiz",
+            "title": "Narrative Check",
+            "content": "A government spreads multiple conflicting explanations about a major event, making it difficult for people to determine what is true. What strategy is being used?",
+            "options": [
+              "Firehose of falsehood",
+              "Objective reporting",
+              "Neutral information sharing",
+              "Transparency campaign"
             ],
-          },
-          { type: "quiz", title: "Bias Check", content: "Someone who only follows news sources that align with their political views is exhibiting which bias?", options: ["Confirmation bias", "Anchoring bias", "Dunning-Kruger effect", "Bandwagon effect"], correctIndex: 0 },
-        ],
+            "correctIndex": 0
+          }],
       },
       {
-        id: "bandwagon-effect",
-        title: "The Bandwagon Effect",
-        description: "When everyone's doing it, it must be right... right?",
-        estimatedMinutes: 7,
-        storyBriefing: "🎯 Mission Briefing: The enemy knows that humans are social creatures. They create the illusion of consensus to make their lies seem like popular truth. Learn to recognize manufactured agreement.",
+        id: "influence-ops",
+        title: "Influence Operations",
+        description: "Explore how organized networks use coordinated tactics to spread narratives and manipulate public opinion at scale.",
+        estimatedMinutes: 15,
+        storyBriefing: "Some information campaigns are carefully coordinated efforts designed to influence public opinion on a large scale. Foreign actors and organized groups may use fake accounts, bots, and targeted messaging to amplify specific narratives and support the dissemination of certain beliefs.",
         sections: [
-          { type: "text", title: "The Power of the Crowd", content: "The bandwagon effect is a cognitive bias where people adopt beliefs or behaviors because they perceive that 'everyone else' is doing it. Social media has supercharged this bias — like counts, share numbers, and trending topics create powerful social proof." },
-          { type: "key-term", term: "Social Proof", content: "the psychological phenomenon where people look to the actions and opinions of others to determine what is correct, especially in situations of uncertainty" },
+          { type: "text", title: "The Bigger Picture", content: "Influence operations are deliberate efforts to shape how people think, feel, and act, especially in political and social contexts. Unlike misinformation, which can spread accidentally, influence operations are purposeful campaigns designed to skew public perception." },
+          { type: "text", content: "Today, these operations are becoming more common and more sophisticated. A growing mix of state-backed actors, paid professionals, and ideologically motivated groups are targeting online spaces. They take advantage of social media platforms, weak moderation systems, and powerful digital tools to reach large audiences quickly." },
+          { type: "text", content: "These campaigns don’t always rely on false information. Sometimes, they amplify real but minor issues, making them seem far more important than they actually are. Other times, they spread misleading or false content to confuse audiences, deepen divisions, or discredit individuals and institutions." },
+
+          { type: "callout", content: "Influence operations often use misinformation as a tool, but they can also rely on selective truths, emotional framing, or strategic amplification." },
+
+         {
+            "type": "bullets",
+            "title": "Indicators of Coordinated Inauthentic Behavior",
+            "content": "",
+            "items": [
+              "Synchronized posting of identical or near-identical content within short time windows",
+              "Shared language patterns or templates across multiple accounts (similar wording, framing, or structure)",
+              "Dense cross-amplification between accounts that exceeds normal audience relationships",
+              "Unusual network behavior where accounts disproportionately interact with each other rather than organic audiences",
+              "Clusters of accounts showing coordinated activity that appears independent but is behaviorally linked",
+              "Account lifecycle anomalies such as sudden activation after dormancy or creation around specific events",
+              "Follower and engagement patterns that suggest artificial inflation or reciprocal boosting",
+              "Activity that forms behavioral clusters where combined signals are more meaningful than any single account",
+            ]
+          },
+          
+          { type: "text", title: "In the Real World", content: "" },
+          
+          { type: "text", title: "Resources", content: (
+                        <>
+                          <a href="https://rolli.ai/blog/how-to-detect-coordinated-inauthentic-behavior/" target="_blank" rel="noopener noreferrer">
+                          How to Detect Coordinated Inauthentic Behavior on Social Media
+                          </a>
+                          <br></br>
+                           <a href="https://www.thebureauinvestigates.com/stories/2023-07-27/what-are-influence-operations-and-why-are-we-investigating-them" target="_blank" rel="noopener noreferrer">
+                          What are influence operations and why are we investigating them?
+
+                          </a>
+                        </>
+                  
+          ), },
+
           {
             type: "fill-blank",
             title: "Decode the Psychology",
@@ -689,11 +814,11 @@ export const modules: Module[] = [
         ],
       },
       {
-        id: "anchoring",
-        title: "Anchoring & Framing",
-        description: "The first thing you hear shapes everything after.",
+        id: "misinfo-demo",
+        title: "Misinformation, Democracy, and Trust",
+        description: "Learn how misinformation around elections can impact public confidence and influence democratic participation.",
         estimatedMinutes: 8,
-        storyBriefing: "🎯 Mission Briefing: The enemy plants 'anchor' information early in a news cycle, knowing that first impressions shape all subsequent judgments. Learn to recognize when you're being anchored.",
+        storyBriefing: "In a democracy, trust in the process is everything. Misinformation around elections and politics, whether about voting procedures, results, or security, can create confusion and discourage participation.",
         sections: [
           { type: "text", title: "The Anchor Effect", content: "Anchoring bias occurs when the first piece of information you encounter about a topic disproportionately influences your thinking. Even if that first piece is wrong, it creates a mental anchor that's hard to move away from." },
           { type: "text", title: "Framing in Media", content: "Framing is how information is presented — the words chosen, what's emphasized, and what's omitted. The same facts can be framed to tell very different stories. For example: '90% survival rate' vs '10% death rate' — same statistic, very different emotional impact." },
@@ -718,29 +843,7 @@ export const modules: Module[] = [
           { type: "quiz", title: "Framing Check", content: "A headline reads: 'New policy could cost taxpayers $2 billion.' An alternative headline for the same policy reads: 'New policy projected to generate $8 billion in economic growth.' What's happening here?", options: ["One headline is lying", "Both headlines are using framing to emphasize different aspects", "The first headline is always more accurate", "Headlines don't affect how people interpret news"], correctIndex: 1 },
         ],
       },
-      {
-        id: "dunning-kruger",
-        title: "The Dunning-Kruger Effect",
-        description: "When you don't know what you don't know.",
-        estimatedMinutes: 7,
-        storyBriefing: "🎯 Mission Briefing: Our most dangerous vulnerability: overconfidence. When agents think they're experts, they stop checking. The Dunning-Kruger effect explains why the least competent are often the most confident.",
-        sections: [
-          { type: "text", title: "The Confidence Trap", content: "The Dunning-Kruger effect is a cognitive bias where people with limited knowledge in an area overestimate their competence. Conversely, actual experts tend to underestimate theirs. This is extremely relevant to media literacy — people who know a little about a topic often feel most confident they can spot misinformation, when they're actually most vulnerable." },
-          { type: "key-term", term: "Dunning-Kruger Effect", content: "a cognitive bias where individuals with limited knowledge overestimate their ability, while experts tend to underestimate theirs — making the least informed the most confident" },
-          {
-            type: "true-false",
-            title: "Confidence Check",
-            content: "",
-            trueFalseItems: [
-              { statement: "People who score lowest on media literacy tests tend to rate their own abilities highest.", isTrue: true, explanation: "Research consistently shows that those with the least knowledge are the most overconfident — a hallmark of the Dunning-Kruger effect." },
-              { statement: "Once you complete a media literacy course, you're immune to misinformation.", isTrue: false, explanation: "Education helps, but no one is immune. The threat landscape constantly evolves, and overconfidence itself becomes a vulnerability." },
-              { statement: "Experts express more uncertainty because they understand the complexity of a topic.", isTrue: true, explanation: "Genuine expertise brings awareness of nuance, edge cases, and unknowns — leading to more cautious, qualified statements." },
-            ],
-          },
-          { type: "callout", content: "The best defense against the Dunning-Kruger effect: intellectual humility. The more you learn, the more you realize how much you don't know — and that awareness is a strength, not a weakness." },
-          { type: "quiz", title: "Self-Assessment", content: "Which statement best describes the Dunning-Kruger effect?", options: ["Experts are always right", "The less you know, the more confident you tend to be", "Intelligent people don't fall for misinformation", "Confidence always indicates competence"], correctIndex: 1 },
-        ],
-      },
+      
     ],
   },
   {

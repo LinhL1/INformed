@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Playfair Display"', 'serif'],
+        //display: ['"Playfair Display"', 'serif'],
         body: ['"Inter"', 'sans-serif'],
       },
       colors: {

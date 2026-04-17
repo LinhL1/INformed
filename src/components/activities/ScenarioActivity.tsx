@@ -33,7 +33,7 @@ const ScenarioActivity = ({ title, scenario, onComplete }: Props) => {
     <div className="rounded-xl border-2 border-accent/20 bg-gradient-to-br from-card to-accent/5 p-5 space-y-4">
       <div className="flex items-center gap-2">
         
-        <h4 className="font-display text-base font-semibold text-foreground">
+        <h4 className="text-base font-semibold text-foreground">
           {title || "Decision Point"}
         </h4>
       </div>

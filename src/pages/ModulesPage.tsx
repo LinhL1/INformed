@@ -47,8 +47,8 @@ const ModulesPage = () => {
           
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-accent">
           </div>
-          <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
-            Stay sharp. Stay informed.
+          <h1 className="text-8xl font-bold sm:text-5xl">
+            Stay sharp. Stay <span className="text-blue-500">informed</span>.
           </h1>
           <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
             Complete each chapter to unlock the next mission. Build your skills, earn XP, and rise through the ranks.
@@ -72,18 +72,20 @@ const ModulesPage = () => {
                   <span className="text-3xl">{level.avatar}</span>
                 )}
               </div>
+            
                   <div className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-accent-foreground">
                     {level.level}
                   </div>
+             
                 </div>
                 <div>
                   <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Agent Rank</p>
-                  <p className="font-display text-lg font-bold text-foreground">{level.title}</p>
+                  <p className="text-lg font-bold text-foreground">{level.title}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <Star className="h-5 w-5 text-accent" />
-                <span className="font-display text-2xl font-bold text-foreground">{totalXP}</span>
+                <span className="text-2xl font-bold text-foreground">{totalXP}</span>
                 <span className="text-sm text-muted-foreground">XP</span>
               </div>
             </div>
@@ -149,33 +151,9 @@ const ModulesPage = () => {
 
         </motion.div>
 
-        <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
-          You're a newly recruited junior analyst at INformed, fresh out of university. You got flagged by a professor who noticed your pattern recognition, skepticism, curiosity, and saw potential. 
-          You have no field experience. No intelligence background. Just sharp eyes and a willingness to learn.
-        </p>
 
-        <img src={welcomeImg} alt="Welcome" className="w-full max-w-3xl ml-auto mb-6 rounded-lg" />
-
-
-        <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
-          Your first assignment is supposed to be low-stakes: monitor youth-facing online spaces, gaming forums, student subreddits, social platforms, for coordinated inauthentic behavior and notice the spreading of misinformation. 
-          Across dozens of platforms, social media outlets, digital spaces where people share and gather information, you begin to notice a shift/trend in news and media being pushed and the rise of misinformation being spread. The challenging thing is with the rise of AI and the speeds at which information can spread, there is the concern of how these false stories erode trust among your community. Along with the rise in patterns and behaviors that reward cynicism and punish nuance, you find it harder to look away because looking at the bigger picture, these acts arent targeting systems or servers. They're targeting how people think.
-        </p>
-
-        <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
-          No single piece of content is alarming. But the pattern is.
-        </p>
-
-        <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
-          In a world where information spreads faster than thought, your job isn’t just to decide what’s true or false, but to understand why something spreads, who it reaches, and what it makes people feel. The most effective misinformation doesn’t look wrong, it feels right. So before you react, pause and ask: why does this want me to believe it?
-        </p>
-
-        <p className="max-w-3xl text-lg text-muted-foreground leading-relaxed ml-auto mb-10">
-          Venture through the modules to learn more and build your skill set
-        </p>
-
-        {/* Story Chapter Map */}
-        <div className="relative">
+        {/* Modules Map */}
+        <div className="relative mt-20">
           <div className="absolute sm:left-10 top-12 bottom-0 w-1 bg-border left-8" />
 
           <div className="space-y-0">
@@ -206,7 +184,7 @@ const ModulesPage = () => {
                       {completed ? (
                         <CheckCircle2 className="h-7 w-7 sm:h-8 sm:w-8" />
                       ) : unlocked ? (
-                        <span className="font-display text-xl sm:text-2xl">{module.number}</span>
+                        <span className="text-xl sm:text-2xl">{module.number}</span>
                       ) : (
                         <Lock className="h-6 w-6 sm:h-7 sm:w-7" />
                       )}
@@ -241,7 +219,7 @@ const ModulesPage = () => {
                                 </span>
                               )}
                             </div>
-                            <h3 className="font-display text-xl font-semibold text-card-foreground leading-tight">
+                            <h3 className="text-xl font-semibold text-card-foreground leading-tight">
                               {module.title}
                             </h3>
                             <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
@@ -251,7 +229,7 @@ const ModulesPage = () => {
                             {/* Progress */}
                             <div className="pt-2 space-y-1.5">
                               <div className="flex items-center justify-between text-xs text-muted-foreground">
-                                <span>{module.subtopics.length} missions</span>
+                                <span><h1>{module.subtopics.length} missions</h1></span>
                                 <span>{progress.percent}%</span>
                               </div>
                               <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
@@ -276,7 +254,7 @@ const ModulesPage = () => {
                           <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
                             {module.chapterTitle}
                           </span>
-                          <h3 className="font-display text-xl font-semibold text-muted-foreground leading-tight">
+                          <h3 className="text-xl font-semibold text-muted-foreground leading-tight">
                             {module.title}
                           </h3>
                           <p className="text-sm text-muted-foreground/70 leading-relaxed line-clamp-2">

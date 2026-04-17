@@ -6,14 +6,24 @@ import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
 import mod1Bg from "@/assets/mod1-bg.png";
 import mod2Bg from "@/assets/mod2-bg.png"; 
-import mod3Bg from "@/assets/mod3-bg.png"; 
+import mod3Bg from "@/assets/mod3-bg.png";
+import mod4Bg from "@/assets/mod4-bg.png";
+
 
 
 const moduleBackgrounds = {
   introduction: mod1Bg,
   "source-eval": mod2Bg,
   "visual-deception": mod3Bg,
+  "national-security": mod4Bg
 
+};
+
+const moduleColorMap = {
+  introduction: 1,
+  "source-eval": 2,
+  "visual-deception": 3,
+  "national-security": 4
 };
 
 const ModulePage = () => {
@@ -48,13 +58,16 @@ const ModulePage = () => {
         >
           <div className="flex items-center gap-3">
           <span
-            className="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider bg-gray-400"
+            style={{
+              backgroundColor: `hsl(var(--module-${moduleColorMap[module.id]}))`
+            }}
+            className="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-white"
           >
             {module.chapterTitle}
           </span>
           </div>
-          <h1 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
-            {module.title}
+          <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl">
+          <h1>  {module.title} </h1>
           </h1>
           <p className="text-muted-foreground leading-relaxed">
             {module.description}
@@ -63,7 +76,7 @@ const ModulePage = () => {
           {/* Story intro */}
           {module.storyIntro && (
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 1, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-5"

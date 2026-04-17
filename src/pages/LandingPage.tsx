@@ -32,17 +32,22 @@ const LandingPage = () => (
     >
       <Link to="/modules">
         <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="relative"
-        >
-          {/* Glow effect */}
-          <motion.div
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute inset-0 rounded-full bg-accent/30 blur-xl"
-          />
-          
+        whileHover="hover"
+        whileTap={{ scale: 0.95 }}
+        initial="initial"
+        animate="initial"
+        className="relative"
+      >
+        {/* Glow effect */}
+        <motion.div
+          variants={{
+            initial: { opacity: 0.5, scale: 1 },
+            hover: { opacity: 1.8, scale: 1.8 }
+          }}
+          transition={{ duration: 0.25 }}
+          className="absolute inset-0 rounded-full bg-accent/60 blur-2xl"
+        />
+             
           {/* Image instead of icon */}
           <img 
             src={lightbulbImage} 
@@ -70,7 +75,7 @@ const LandingPage = () => (
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-10 font-display text-11xl font-bold text-foreground sm:text-9xl"
         >
-          Stay <br></br><span className="text-accent italic">Informed</span>.
+        <h1>  Be <br></br><span className="text-accent italic">Informed.</span></h1>
         </motion.h1>
 
         <motion.p
@@ -80,8 +85,8 @@ const LandingPage = () => (
           className="mt-4 max-w-lg text-lg leading-relaxed text-muted-foreground"
         >
           Disinformation doesn't just mislead, it threatens national security.
-          Sharpen your critical thinking, learn to spot manipulation tactics, and
-          become the strongest link in the chain of defense. Your awareness is your armor.
+          As a newly recruited analyst at INformed, begin your advanture to learning the best ways to
+          nagivate the new era of digital media. 
         </motion.p>
       </div>
     </div>

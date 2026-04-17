@@ -47,7 +47,7 @@ const FillBlankActivity = ({ title, items, onComplete }: Props) => {
     <div className="rounded-xl border border-border bg-card p-5 space-y-4">
       <div className="flex items-center gap-2">
         <PenLine className="h-5 w-5 text-accent" />
-        <h4 className="font-display text-base font-semibold text-foreground">
+        <h4 className="text-base font-semibold text-foreground">
           {title || "Fill in the Blanks"}
         </h4>
       </div>

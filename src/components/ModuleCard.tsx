@@ -32,7 +32,7 @@ const ModuleCard = ({ module, progress, index }: ModuleCardProps) => {
                 </span>
               </div>
 
-              <h3 className="font-display text-xl font-semibold text-card-foreground leading-tight" style={{ color: module.color }}>
+              <h3 className="text-xl font-semibold text-card-foreground leading-tight" style={{ color: module.color }}>
                 {module.title}
               </h3>
               

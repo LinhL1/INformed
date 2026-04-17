@@ -118,17 +118,50 @@
     font-family: 'Inter', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-  }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: 'Playfair Display', serif;
-  }
+ 
 
   .font-body {
     font-family: 'Inter', sans-serif;
   }
+}
+
+@font-face {
+  font-family: 'satoshi';
+  src: url('./assets/fonts/Satoshi_Complete/Satoshi-Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+ body, h1, span, div, p {
+    font-family: 'satoshi';
+  }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Deep blue (not too bright) */
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent) / 0.35);
+  border-radius: 999px;
+  transition: all 200ms ease;
+}
+
+/* Hover = richer blue */
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent) / 0.65);
+  box-shadow: 0 0 6px hsl(var(--accent) / 0.3);
+}
+
+/* Active = solid dark blue */
+::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--accent) / 0.9);
 }

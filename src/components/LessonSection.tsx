@@ -28,7 +28,7 @@ const LessonSectionComponent = ({ section, index, onQuizCorrect, onActivityCompl
       {section.type === "text" && (
         <div className="space-y-2">
           {section.title && (
-            <h3 className="font-display text-lg font-semibold text-foreground">
+            <h3 className="text-lg font-semibold text-foreground">
               {section.title}
             </h3>
           )}
@@ -50,7 +50,7 @@ const LessonSectionComponent = ({ section, index, onQuizCorrect, onActivityCompl
       {section.type === "bullets" && (
         <div className="space-y-2">
           {section.title && (
-            <h3 className="font-display text-lg font-semibold text-foreground">
+            <h3 className="text-lg font-semibold text-foreground">
               {section.title}
             </h3>
           )}
@@ -72,7 +72,7 @@ const LessonSectionComponent = ({ section, index, onQuizCorrect, onActivityCompl
 
       {section.type === "key-term" && (
         <div className="border-l-4 border-accent bg-accent/5 rounded-r-xl py-3 px-5 space-y-1">
-          <p className="font-display text-base font-bold text-foreground italic flex items-start gap-2">
+          <p className="text-base font-bold text-foreground italic flex items-start gap-2">
             <Quote className="h-4 w-4 text-accent mt-1 shrink-0" />
             {section.term}
           </p>
@@ -85,7 +85,7 @@ const LessonSectionComponent = ({ section, index, onQuizCorrect, onActivityCompl
       {section.type === "image" && (
         <div className="space-y-2">
           {section.title && (
-            <h4 className="font-display text-base font-semibold text-foreground">{section.title}</h4>
+            <h4 className="text-base font-semibold text-foreground">{section.title}</h4>
           )}
           <img
             src={section.src}
@@ -102,7 +102,7 @@ const LessonSectionComponent = ({ section, index, onQuizCorrect, onActivityCompl
       {section.type === "video" && (
         <div className="space-y-2">
           {section.title && (
-            <h4 className="font-display text-base font-semibold text-foreground">{section.title}</h4>
+            <h4 className="text-base font-semibold text-foreground">{section.title}</h4>
           )}
           <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-border">
             <iframe
@@ -123,7 +123,7 @@ const LessonSectionComponent = ({ section, index, onQuizCorrect, onActivityCompl
         <div className="rounded-xl border-2 border-dashed border-border bg-secondary/50 p-5 space-y-2">
           <div className="flex items-center gap-2">
             {section.title && (
-              <h4 className="font-display text-base font-semibold text-foreground">
+              <h4 className="text-base font-semibold text-foreground">
                 {section.title}
               </h4>
             )}
@@ -139,7 +139,7 @@ const LessonSectionComponent = ({ section, index, onQuizCorrect, onActivityCompl
           <div className="flex items-center gap-2">
             <BookOpen className="h-5 w-5 text-muted-foreground" />
             {section.title && (
-              <h4 className="font-display text-base font-semibold text-foreground">
+              <h4 className="text-base font-semibold text-foreground">
                 {section.title}
               </h4>
             )}
