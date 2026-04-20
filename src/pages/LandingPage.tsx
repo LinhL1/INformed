@@ -85,7 +85,7 @@ const LandingPage = () => (
           className="mt-4 max-w-lg text-lg leading-relaxed text-muted-foreground"
         >
           Disinformation doesn't just mislead, it threatens national security.
-          As a newly recruited analyst at INformed, begin your advanture to learning the best ways to
+          As a newly recruited analyst at INformed, begin your adventure to learning the best ways to
           nagivate the new era of digital media. 
         </motion.p>
       </div>

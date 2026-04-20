@@ -47,7 +47,7 @@ export const modules: Module[] = [
     id: "introduction",
     number: 1,
     title: "Introduction to Misinformation & Media Literacy",
-    description: "Your first task is deceptively simple, sort a pile of flagged posts into categories. Except nothing is labeled. And some of the false ones look more credible than the true ones. Not everything false is a lie. And not every lie is the same kind of lie.",
+    description: "Your first task is deceptively simple: Sort a pile of flagged posts into categories. Except nothing is labeled. And some of the false ones look more credible than the true ones. Not everything false is a lie. And not every lie is the same kind of lie.",
     color: "hsl(var(--module-1))",
     chapterTitle: "Chapter 1: Eye of the Analyst",
     storyIntro: "On your first day at INformed, you dive into the digital wilds, spotting patterns in what people share and realizing that mastering how information spreads is the only way to stay one step ahead of deception.",
@@ -57,7 +57,7 @@ export const modules: Module[] = [
         title: "What is Misinformation?",
         description: "Defining misinformation, disinformation, and malinformation.",
         estimatedMinutes: 8,
-        storyBriefing: "Your first task is deceptively simple, sort a pile of flagged posts into categories. Except nothing is labeled. And some of the false ones look more credible than the true ones. You begin to wonder if there is a disinction between the different types of false information? What defines misinformation? What is malinformation? Why should we care?",
+        storyBriefing: "Your first task is deceptively simple, sort a pile of flagged posts into categories. Except nothing is labeled. And some of the false ones look more credible than the true ones. You may begin to wonder, is there a distinction between the differentypes of false information? What defines misinformation? What is malinformation? Why should we care?",
         sections: [
           { type: "callout", content: "It's important to note that not all false information is the same. Understanding the distinctions is your first line of defense." },
           { type: "text", title: "Information", content: "Information is content that accurately represents facts or events as they are understood to be true." },
@@ -139,7 +139,7 @@ export const modules: Module[] = [
               situation: "You see a viral post claiming that a new city law will ban all personal vehicles by next month. The post has 50,000 shares and an emotional headline. What's your move, agent?",
               choices: [
                 { text: "Share it immediately to warn your friends and family", outcome: "By sharing unverified content, you've potentially amplified misinformation to your entire network. The claim turned out to be a distortion of a minor parking regulation change.", isOptimal: false },
-                { text: "Check the original source and cross-reference with local news", outcome: "Smart move. You traced the claim to a satirical blog. The real news was a minor update to downtown parking rules — nothing close to banning vehicles.", isOptimal: true },
+                { text: "Check the original source and cross-reference with local news", outcome: "Smart move. You traced the claim to a satirical blog. The real news was a minor update to downtown parking rules, nothing close to banning vehicles.", isOptimal: true },
                 { text: "Ignore it completely — it's probably fake", outcome: "While your instinct was right, simply ignoring misinformation without investigating means you can't help correct it when others share it.", isOptimal: false },
               ],
             },
@@ -227,7 +227,7 @@ export const modules: Module[] = [
         title: "Source Evaluation and Fake Media Overview",
         description: "Dive into how fabricated content mimics real sources.",
         estimatedMinutes: 8,
-        storyBriefing: "As an analyst, it's essential that you understand the importance of where you source and verify all of the news and information you encounter. Not all sources are created equal: some are deliberately misleading, some are biased, and others are simply incomplete. Developing a critical eye for source reliability is your first line of defense against misinformation.",
+        storyBriefing: "As an analyst, it is essential that you understand the importance of where you source and verify all of the news and information you encounter. Not all sources are created equal: some are deliberately misleading, some are biased, and others are simply incomplete. Developing a critical eye for source reliability is your first line of defense against misinformation.",
         sections: [
           { type: "text", title: "What is fake news?", content: "“Fake news” refers to information that is presented as legitimate news but is actually false, misleading, or lacks reliable evidence. Fake news can take many forms, including satire that is mistaken for real reporting, manipulated images or information, and entirely fabricated stories designed to deceive. It is often spread for reasons such as political influence, financial gain through clicks and advertising, propaganda, or entertainment. The rapid growth of social media, along with technologies like bots and artificial intelligence, has made it easier for fake news to spread quickly and widely, making it increasingly important for individuals to think critically and verify information before believing or sharing it." },
           { type: "bullets", title: "The Significance of Evaluating Where Your Information Comes From", content: "", items: [
@@ -390,7 +390,7 @@ export const modules: Module[] = [
     id: "visual-deception",
     number: 3,
     title: "Visual Deception",
-    description: "After getting familiar with the fundamentals of misinformation, source evaluation, and its significance in today’s world, you begin to look into visual deception and the role it can play in misinformation.",
+    description: "After getting familiar with the fundamentals of misinformation, source evaluation, and its significance in today’s world, You will begin to look into visual deception and the role it can play in misinformation.",
     color: "hsl(var(--module-3))",
     chapterTitle: "Chapter 3: The Visual Front",
     storyIntro: "Images and videos can be more convincing than words. They grab attention, trigger emotions, and shape beliefs almost instantly. But in a world of manipulated visuals, deepfakes, and misleading graphics, your eyes can’t always be trusted. As a junior analyst at INformed, your job is to learn not just to see, but to question what you see, and recognize when perception has been engineered.",
@@ -400,7 +400,7 @@ export const modules: Module[] = [
         title: "Manipulated Images and Deepfakes",
         description: "Your field manual for rapid source evaluation.",
         estimatedMinutes: 10,
-        storyBriefing: "A single image can tell a thousand lies. From subtly edited photos to AI-generated deepfakes, these manipulations can appear surprisingly real. As people are increasingly getting their news from social media, as an analyst you’re gonna learn ways to note the hallmarks of fakery, and accept that your instincts aren’t enough, what looks real can be fake. Recognizing these tricks early helps prevent misinformation from spreading unchecked.",
+        storyBriefing: "A single image can tell a thousand lies. From subtly edited photos to AI-generated deepfakes, these manipulations can appear surprisingly real. As people are increasingly getting their news from social media, as an analyst you are going to need to learn ways to note the hallmarks of fakery...and accept that your instincts aren’t enough, what looks real can be fake. Recognizing these tricks early helps prevent misinformation from spreading unchecked.",
         
         sections: [
           { type: "text", title: "What are Deepfakes?", content: "Deepfakes are videos, audio, or images that have been manipulated or created using artificial intelligence (AI) tools. These generated forms of media are often created to replace, alter faces, or synthesize speech. As AI has become more accessible and technologically advanced, deepfakes can seem authentic to the human eye and ear and are becoming more challenging to distinguish." },
@@ -771,7 +771,7 @@ export const modules: Module[] = [
             ]
           },
           
-          { type: "text", title: "In the Real World", content: "" },
+          { type: "text", title: "In the Real World", content: "One real-world example includes the spread of misinformation on the origins of COVID. Throughout the COVID-19 pandemic, various actors promoted conflicting narratives about vaccines, public health measures, and the origins of the virus, sometimes to advance political interests or undermine trust in institutions." },
           
           { type: "text", title: "Resources", content: (
                         <>
@@ -781,6 +781,10 @@ export const modules: Module[] = [
                           <br></br>
                            <a href="https://www.thebureauinvestigates.com/stories/2023-07-27/what-are-influence-operations-and-why-are-we-investigating-them" target="_blank" rel="noopener noreferrer">
                           What are influence operations and why are we investigating them?
+                          </a>
+                          <br></br>
+                           <a href="https://bipartisanpolicy.org/article/coordinated-influence-operations/" target="_blank" rel="noopener noreferrer">
+                          Coordinated Influence Operations—Fear, Uncertainty and Doubt
 
                           </a>
                         </>
@@ -788,29 +792,73 @@ export const modules: Module[] = [
           ), },
 
           {
-            type: "fill-blank",
-            title: "Decode the Psychology",
-            content: "",
-            fillBlankItems: [
-              { textBefore: "The tendency to adopt beliefs because others hold them is called the", textAfter: "effect.", correctAnswer: "bandwagon", hint: "jumping on the..." },
-              { textBefore: "High share counts and trending topics create", textAfter: ", making claims seem more credible.", correctAnswer: "social proof", acceptableAnswers: ["social proof"], hint: "type of proof" },
-              { textBefore: "Bot networks exploit this by creating artificial", textAfter: "around false content.", correctAnswer: "consensus", acceptableAnswers: ["consensus", "agreement", "popularity", "engagement"], hint: "fake agreement" },
-            ],
+            "type": "fill-blank",
+            "title": "Detect the Coordination",
+            "content": "",
+            "fillBlankItems": [
+              {
+                "textBefore": "When multiple accounts post the same message at the same time, it may indicate",
+                "textAfter": "behavior.",
+                "correctAnswer": "coordinated",
+                "acceptableAnswers": ["coordinated", "synchronized"],
+                "hint": "planned, not random"
+              },
+              {
+                "textBefore": "Groups of accounts working together to amplify content are often called",
+                "textAfter": ".",
+                "correctAnswer": "networks",
+                "acceptableAnswers": ["networks", "clusters"],
+                "hint": "connected group"
+              },
+              {
+                "textBefore": "When activity is designed to appear organic but is actually planned, it is considered",
+                "textAfter": "behavior.",
+                "correctAnswer": "inauthentic",
+                "acceptableAnswers": ["inauthentic", "coordinated inauthentic"],
+                "hint": "not genuine"
+              }
+            ]
           },
+
           {
-            type: "scenario",
-            title: "Crowd Control",
-            content: "",
-            scenarioData: {
-              situation: "A petition is going viral with '2 million signatures' demanding a policy change based on a claim you haven't verified. Your friends are signing it and pressuring you to do the same. What do you do?",
-              choices: [
-                { text: "Sign it — 2 million people can't all be wrong", outcome: "The number of supporters doesn't validate the underlying claim. Many viral petitions are based on misleading or false information, and signature counts can be inflated.", isOptimal: false },
-                { text: "Verify the claim behind the petition before deciding whether to sign", outcome: "Well done. A responsible agent verifies the facts before taking action, regardless of how many others have already acted on potentially false information.", isOptimal: true },
-                { text: "Refuse to sign just to be contrarian", outcome: "Being automatically contrarian isn't critical thinking — it's just the inverse of bandwagon thinking. The goal is to make informed decisions based on evidence.", isOptimal: false },
-              ],
-            },
+            "type": "scenario",
+            "title": "Coordinated Pressure",
+            "content": "",
+            "scenarioData": {
+              "situation": "A petition is rapidly going viral online claiming a major policy change is urgently needed. It shows 2 million signatures and is being widely shared by friends and accounts you do not recognize. Many posts repeat the same talking points and urge immediate action without providing sources. What do you do?",
+              "choices": [
+                {
+                  "text": "Sign it because the large number of signatures suggests it must be credible",
+                  "outcome": "High engagement or large signature counts can be artificially amplified. Influence operations often rely on perceived popularity to create false legitimacy.",
+                  "isOptimal": false
+                },
+                {
+                  "text": "Check who is sharing it, look for original sources, and evaluate whether the messaging appears coordinated or manipulated",
+                  "outcome": "Correct. Analysts assess both content and distribution patterns. Coordinated amplification can create false impressions of consensus.",
+                  "isOptimal": true
+                },
+                {
+                  "text": "Ignore it completely because viral content is always fake",
+                  "outcome": "Not all viral content is false. The key is evaluation and distinguishing organic engagement from coordinated manipulation.",
+                  "isOptimal": false
+                }
+              ]
+            }
           },
-          { type: "quiz", title: "Social Proof Test", content: "Why does the bandwagon effect make disinformation more dangerous on social media?", options: ["Social media is unregulated", "High engagement numbers create the illusion of credibility", "People don't use social media for news", "Algorithms block false content"], correctIndex: 1 },
+
+          {
+            "type": "quiz",
+            "title": "Social Proof and Manipulation",
+            "content": "Why does social proof make coordinated influence campaigns more effective on social media?",
+            "options": [
+              "Social media platforms automatically verify all popular content",
+              "High engagement signals like likes and shares can create a false sense of credibility and consensus",
+              "People only believe information from official government accounts",
+              "Algorithms prevent misleading content from spreading widely"
+            ],
+            "correctIndex": 1
+          }
+
         ],
       },
       {
@@ -820,32 +868,83 @@ export const modules: Module[] = [
         estimatedMinutes: 8,
         storyBriefing: "In a democracy, trust in the process is everything. Misinformation around elections and politics, whether about voting procedures, results, or security, can create confusion and discourage participation.",
         sections: [
-          { type: "text", title: "The Anchor Effect", content: "Anchoring bias occurs when the first piece of information you encounter about a topic disproportionately influences your thinking. Even if that first piece is wrong, it creates a mental anchor that's hard to move away from." },
-          { type: "text", title: "Framing in Media", content: "Framing is how information is presented — the words chosen, what's emphasized, and what's omitted. The same facts can be framed to tell very different stories. For example: '90% survival rate' vs '10% death rate' — same statistic, very different emotional impact." },
+          { type: "text", title: "How Misinformation Impacts Democracy", content: "Trust is a foundational element in democratic systems. When people believe elections are unfair or manipulated, even without evidence, it can reduce voter turnout, increase political polarization, and weaken the perceived legitimacy of elected leaders." },
+          { type: "text", content: "Research from the Brookings Institution shows that misinformation has become a major driver of declining trust in democratic systems. When individuals are repeatedly exposed to claims that elections are fraudulent or unreliable, it can create uncertainty about whether their vote matters or whether outcomes reflect the will of the people." },
+          
+          { 
+            type: "image", 
+            src: "/assets/demo.png", 
+            alt: "Photo asset representing information, media, and its impact", 
+            title: "",
+            content: "" 
+          },
+          
           {
+            "type": "bullets",
+            "title": "Stats from the research that highlight impacts of misinformation on elections...",
+            "content": "",
+            "items": [
+              "64% of Americans believe democracy is in crisis, reflecting growing concern fueled in part by widespread misinformation about elections",
+              "Over 70% say democracy is more at risk now than in previous years",
+              "56% of respondents report little or no confidence that elections reflect the will of the people",
+              "Only 20% feel very confident in the integrity of the election system",
+              "Misinformation about voter fraud has taken hold among large portions of the population, reinforcing doubt about election outcomes",
+              "42% of young people believe their vote does not make a difference",
+
+            ]
+          },
+
+          { type: "text", content: "Misinformation has also been amplified by both domestic and foreign actors. For instance, foreign campaigns have used social media to spread misleading claims about voting systems and candidates, aiming to increase division and distrust. These efforts often target specific communities or exploit existing political tensions." },
+
+          { type: "text", title: "Resources", content: (
+                        <>
+                          <a href="https://www.brookings.edu/articles/misinformation-is-eroding-the-publics-confidence-in-democracy/" target="_blank" rel="noopener noreferrer">
+                          Misinformation is eroding the public’s confidence in democracy
+                          </a>
+                          <br></br>
+                          
+                        </>
+                  
+          ), },
+          
+         {
             type: "sorting",
-            title: "Spot the Frame",
+            title: "Spot the Misinformation",
             content: "",
             sortingCategories: [
-              { name: "😊 Positive Frame" },
-              { name: "😨 Negative Frame" },
+              { name: "Verified / Accurate Information" },
+              { name: "Misleading / Misinformation" },
             ],
             sortingItems: [
-              { text: "\"9 out of 10 patients recover\"", correctCategory: 0 },
-              { text: "\"1 in 10 patients don't survive\"", correctCategory: 1 },
-              { text: "\"Unemployment drops to 4%\"", correctCategory: 0 },
-              { text: "\"1 in 25 workers still can't find jobs\"", correctCategory: 1 },
-              { text: "\"Community raises $50,000 for project\"", correctCategory: 0 },
-              { text: "\"Project still $200,000 short of goal\"", correctCategory: 1 },
+              { text: "\"Millions of illegal votes were counted, but there's no evidence\"", correctCategory: 1 },
+              { text: "\"You can verify your polling location on your state’s official website\"", correctCategory: 0 },
+              { text: "\"Mail-in ballots are tracked and verified through established procedures\"", correctCategory: 0 },
+              { text: "\"Mail-in voting automatically leads to massive fraud\"", correctCategory: 1 },
+              { text: "\"Election results are certified through a multi-step verification process\"", correctCategory: 0 },
+              { text: "\"If your candidate loses, it means the election was rigged\"", correctCategory: 1 },
+              { text: "\"Independent audits and recounts can be conducted to verify close election results\"", "correctCategory": 0 },
+              { "text": "\"Delays in reporting results are evidence that votes are being manipulated\"", "correctCategory": 1 }
             ],
           },
-          { type: "callout", content: "Next time you read a statistic, try to reframe it. If they say \"70% support this policy,\" also consider: \"30% oppose it.\" Both are true. Which one was chosen to present, and why?" },
-          { type: "quiz", title: "Framing Check", content: "A headline reads: 'New policy could cost taxpayers $2 billion.' An alternative headline for the same policy reads: 'New policy projected to generate $8 billion in economic growth.' What's happening here?", options: ["One headline is lying", "Both headlines are using framing to emphasize different aspects", "The first headline is always more accurate", "Headlines don't affect how people interpret news"], correctIndex: 1 },
+
+          {
+            "type": "quiz",
+            "title": "Misinformation Impact Check",
+            "content": "A post claims: 'Voting machines were hacked and results can’t be trusted.' Another source reports: 'No verified evidence of widespread voting machine tampering has been found.' What should you consider as an analyst?",
+            "options": [
+              "The first claim is automatically true because it sounds urgent",
+              "Both statements should be evaluated for evidence, sources, and potential impact on public trust",
+              "Election misinformation doesn’t affect real-world behavior",
+              "Only official sources can ever be misleading"
+            ],
+            "correctIndex": 1
+          },        
         ],
       },
       
     ],
   },
+
   {
     id: "social-media",
     number: 5,
