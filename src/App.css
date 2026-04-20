@@ -40,31 +40,3 @@
 .read-the-docs {
   color: #888;
 }
-
-/* Smooth + subtle scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Track blends into background */
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Thumb = your theme color with glow */
-::-webkit-scrollbar-thumb {
-  background: #646cff88;
-  border-radius: 999px;
-  transition: all 300ms ease;
-}
-
-/* Hover = same glow effect as your logo */
-::-webkit-scrollbar-thumb:hover {
-  background: #646cff;
-  box-shadow: 0 0 8px #646cffaa;
-}
-
-/* Optional: active click feel */
-::-webkit-scrollbar-thumb:active {
-  background: #4f56e0;
-}
