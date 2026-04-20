@@ -47,7 +47,7 @@ export const modules: Module[] = [
     id: "introduction",
     number: 1,
     title: "Introduction to Misinformation & Media Literacy",
-    description: "Your first task is deceptively simple, sort a pile of flagged posts into categories. Except nothing is labeled. And some of the false ones look more credible than the true ones. Not everything false is a lie. And not every lie is the same kind of lie.",
+    description: "Your first task is deceptively simple: Sort a pile of flagged posts into categories. Except nothing is labeled. And some of the false ones look more credible than the true ones. Not everything false is a lie. And not every lie is the same kind of lie.",
     color: "hsl(var(--module-1))",
     chapterTitle: "Chapter 1: Eye of the Analyst",
     storyIntro: "On your first day at INformed, you dive into the digital wilds, spotting patterns in what people share and realizing that mastering how information spreads is the only way to stay one step ahead of deception.",
@@ -57,7 +57,7 @@ export const modules: Module[] = [
         title: "What is Misinformation?",
         description: "Defining misinformation, disinformation, and malinformation.",
         estimatedMinutes: 8,
-        storyBriefing: "Your first task is deceptively simple, sort a pile of flagged posts into categories. Except nothing is labeled. And some of the false ones look more credible than the true ones. You begin to wonder if there is a disinction between the different types of false information? What defines misinformation? What is malinformation? Why should we care?",
+        storyBriefing: "Your first task is deceptively simple, sort a pile of flagged posts into categories. Except nothing is labeled. And some of the false ones look more credible than the true ones. You may begin to wonder, is there a distinction between the differentypes of false information? What defines misinformation? What is malinformation? Why should we care?",
         sections: [
           { type: "callout", content: "It's important to note that not all false information is the same. Understanding the distinctions is your first line of defense." },
           { type: "text", title: "Information", content: "Information is content that accurately represents facts or events as they are understood to be true." },
@@ -139,7 +139,7 @@ export const modules: Module[] = [
               situation: "You see a viral post claiming that a new city law will ban all personal vehicles by next month. The post has 50,000 shares and an emotional headline. What's your move, agent?",
               choices: [
                 { text: "Share it immediately to warn your friends and family", outcome: "By sharing unverified content, you've potentially amplified misinformation to your entire network. The claim turned out to be a distortion of a minor parking regulation change.", isOptimal: false },
-                { text: "Check the original source and cross-reference with local news", outcome: "Smart move. You traced the claim to a satirical blog. The real news was a minor update to downtown parking rules — nothing close to banning vehicles.", isOptimal: true },
+                { text: "Check the original source and cross-reference with local news", outcome: "Smart move. You traced the claim to a satirical blog. The real news was a minor update to downtown parking rules, nothing close to banning vehicles.", isOptimal: true },
                 { text: "Ignore it completely — it's probably fake", outcome: "While your instinct was right, simply ignoring misinformation without investigating means you can't help correct it when others share it.", isOptimal: false },
               ],
             },
@@ -227,7 +227,7 @@ export const modules: Module[] = [
         title: "Source Evaluation and Fake Media Overview",
         description: "Dive into how fabricated content mimics real sources.",
         estimatedMinutes: 8,
-        storyBriefing: "As an analyst, it's essential that you understand the importance of where you source and verify all of the news and information you encounter. Not all sources are created equal: some are deliberately misleading, some are biased, and others are simply incomplete. Developing a critical eye for source reliability is your first line of defense against misinformation.",
+        storyBriefing: "As an analyst, it is essential that you understand the importance of where you source and verify all of the news and information you encounter. Not all sources are created equal: some are deliberately misleading, some are biased, and others are simply incomplete. Developing a critical eye for source reliability is your first line of defense against misinformation.",
         sections: [
           { type: "text", title: "What is fake news?", content: "“Fake news” refers to information that is presented as legitimate news but is actually false, misleading, or lacks reliable evidence. Fake news can take many forms, including satire that is mistaken for real reporting, manipulated images or information, and entirely fabricated stories designed to deceive. It is often spread for reasons such as political influence, financial gain through clicks and advertising, propaganda, or entertainment. The rapid growth of social media, along with technologies like bots and artificial intelligence, has made it easier for fake news to spread quickly and widely, making it increasingly important for individuals to think critically and verify information before believing or sharing it." },
           { type: "bullets", title: "The Significance of Evaluating Where Your Information Comes From", content: "", items: [
@@ -390,7 +390,7 @@ export const modules: Module[] = [
     id: "visual-deception",
     number: 3,
     title: "Visual Deception",
-    description: "After getting familiar with the fundamentals of misinformation, source evaluation, and its significance in today’s world, you begin to look into visual deception and the role it can play in misinformation.",
+    description: "After getting familiar with the fundamentals of misinformation, source evaluation, and its significance in today’s world, You will begin to look into visual deception and the role it can play in misinformation.",
     color: "hsl(var(--module-3))",
     chapterTitle: "Chapter 3: The Visual Front",
     storyIntro: "Images and videos can be more convincing than words. They grab attention, trigger emotions, and shape beliefs almost instantly. But in a world of manipulated visuals, deepfakes, and misleading graphics, your eyes can’t always be trusted. As a junior analyst at INformed, your job is to learn not just to see, but to question what you see, and recognize when perception has been engineered.",
@@ -400,7 +400,7 @@ export const modules: Module[] = [
         title: "Manipulated Images and Deepfakes",
         description: "Your field manual for rapid source evaluation.",
         estimatedMinutes: 10,
-        storyBriefing: "A single image can tell a thousand lies. From subtly edited photos to AI-generated deepfakes, these manipulations can appear surprisingly real. As people are increasingly getting their news from social media, as an analyst you’re gonna learn ways to note the hallmarks of fakery, and accept that your instincts aren’t enough, what looks real can be fake. Recognizing these tricks early helps prevent misinformation from spreading unchecked.",
+        storyBriefing: "A single image can tell a thousand lies. From subtly edited photos to AI-generated deepfakes, these manipulations can appear surprisingly real. As people are increasingly getting their news from social media, as an analyst you are going to need to learn ways to note the hallmarks of fakery...and accept that your instincts aren’t enough, what looks real can be fake. Recognizing these tricks early helps prevent misinformation from spreading unchecked.",
         
         sections: [
           { type: "text", title: "What are Deepfakes?", content: "Deepfakes are videos, audio, or images that have been manipulated or created using artificial intelligence (AI) tools. These generated forms of media are often created to replace, alter faces, or synthesize speech. As AI has become more accessible and technologically advanced, deepfakes can seem authentic to the human eye and ear and are becoming more challenging to distinguish." },
