@@ -8,6 +8,8 @@ import mod1Bg from "@/assets/mod1-bg.png";
 import mod2Bg from "@/assets/mod2-bg.png"; 
 import mod3Bg from "@/assets/mod3-bg.png";
 import mod4Bg from "@/assets/mod4-bg.png";
+import mod5Bg from "@/assets/mod5-bg.png";
+
 
 
 
@@ -15,7 +17,8 @@ const moduleBackgrounds = {
   introduction: mod1Bg,
   "source-eval": mod2Bg,
   "visual-deception": mod3Bg,
-  "national-security": mod4Bg
+  "national-security": mod4Bg,
+  "social-media": mod5Bg,
 
 };
 
@@ -23,7 +26,8 @@ const moduleColorMap = {
   introduction: 1,
   "source-eval": 2,
   "visual-deception": 3,
-  "national-security": 4
+  "national-security": 4,
+  "social-media": 5
 };
 
 const ModulePage = () => {

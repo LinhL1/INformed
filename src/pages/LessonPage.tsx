@@ -13,6 +13,8 @@ import mod1Bg from "@/assets/submod1-bg.png";
 import mod2Bg from "@/assets/submod2-bg.png"; 
 import mod3Bg from "@/assets/submod3-bg.png"; 
 import mod4Bg from "@/assets/submod4-bg.png"; 
+import mod5Bg from "@/assets/submod5-bg.png"; 
+
 
 
 const moduleBgs: Record<string, { backgroundImage: string; backgroundSize: string; backgroundPosition: string }> = {
@@ -33,6 +35,11 @@ const moduleBgs: Record<string, { backgroundImage: string; backgroundSize: strin
   },
     "national-security": {
     backgroundImage: `url(${mod4Bg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
+  "social-media": {
+    backgroundImage: `url(${mod5Bg})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
   },

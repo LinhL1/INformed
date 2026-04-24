@@ -948,18 +948,18 @@ export const modules: Module[] = [
   {
     id: "social-media",
     number: 5,
-    title: "The Digital Battlefield",
-    description: "Social media and AI are reshaping the war on truth. Navigate the most complex terrain yet.",
+    title: "Social Media",
+    description: "Social media is one of the most powerful tools for communication today, but it is also essential to understand how it shapes what we think, see, and feel. Platforms are designed to capture attention, promote engagement, and influence decisions, sometimes in indirect ways. ",
     color: "hsl(var(--module-5))",
-    chapterTitle: "Chapter 5: Digital Battlefield",
-    storyIntro: "Welcome to the front lines, agent. Social media platforms and AI technologies have transformed the information landscape into a complex battlefield. Deepfakes, AI-generated text, and synthetic media are the new weapons. Prepare for the most advanced threats.",
+    chapterTitle: "Chapter 5: Social Media",
+    storyIntro: "Being “social media savvy” is more than just knowing how to use the apps; it's about understanding how the platform works to recognize manipulation tactics and think critically about the content you consume and share. As an analyst, you’ll explore how to navigate the social media environment, understand narratives, and how misinformation spreads through them.",
     subtopics: [
       {
-        id: "what-are-deepfakes",
-        title: "Deepfakes & Synthetic Media",
-        description: "Understanding AI-generated deception.",
+        id: "intro",
+        title: "Manipulation in Social Media Spaces",
+        description: "Understand how content and platform design are used to influence your behavior and decisions online.",
         estimatedMinutes: 9,
-        storyBriefing: "🎯 Mission Briefing: CRITICAL ALERT — enemy forces have deployed deepfake technology. They can make anyone appear to say anything. Your mission: learn to detect the undetectable.",
+        storyBriefing: "In the social media environment, content is often created with the intent to influence emotions, drive engagement, and shape opinions. From misleading posts and clickbait to deepfakes and other forms of synthetic media, these tactics can blur the line between what is real and what is manipulated, making it harder to evaluate information critically.",
         sections: [
           { type: "text", title: "What Are Deepfakes?", content: "Deepfakes are synthetic media where a person's likeness is replaced with someone else's using AI. The technology has advanced so rapidly that deepfakes can now fool even trained observers. They can be used to create fake speeches, fraudulent evidence, and manufactured scandals." },
           { type: "bullets", title: "Deepfake Detection Clues", content: "", items: [
@@ -985,51 +985,11 @@ export const modules: Module[] = [
         ],
       },
       {
-        id: "ai-generated-text",
-        title: "AI-Generated Text",
-        description: "When machines write the propaganda.",
-        estimatedMinutes: 8,
-        storyBriefing: "🎯 Mission Briefing: AI language models can now generate convincing articles, social media posts, and even academic-sounding papers at scale. Learn to spot machine-written content and understand the threat.",
-        sections: [
-          { type: "text", title: "The Rise of AI Writers", content: "Large language models can generate human-like text on any topic in seconds. This means disinformation can now be produced at industrial scale — thousands of unique articles, comments, and social media posts created automatically to flood the information space." },
-          { type: "bullets", title: "Signs of AI-Generated Text", content: "", items: [
-            "Overly smooth, generic writing without personal voice or quirks",
-            "Perfectly structured but lacking original insight or lived experience",
-            "Confident factual claims that sound plausible but are subtly wrong",
-            "Repetitive sentence structures or phrases",
-            "Lack of specific, verifiable details (names, dates, locations)",
-          ]},
-          {
-            type: "scenario",
-            title: "AI or Human?",
-            content: "",
-            scenarioData: {
-              situation: "You read a highly detailed article about a health crisis in a small town. The writing is polished and professional, but you notice: no specific town is named, no doctors are quoted by name, and no dates are given. The article appeared simultaneously on 12 different websites.",
-              choices: [
-                { text: "It's definitely AI-generated because it's well-written", outcome: "Good writing alone doesn't indicate AI authorship. However, you identified several valid red flags — the answer requires looking at the full picture, not one factor.", isOptimal: false },
-                { text: "The lack of specific details + appearing on many sites simultaneously suggests AI-generated content", outcome: "Strong analysis. The combination of vague details, no verifiable specifics, and simultaneous multi-platform publication is a hallmark of AI-generated disinformation campaigns.", isOptimal: true },
-                { text: "It must be real because it's about health — that's important", outcome: "The importance of a topic doesn't guarantee the authenticity of content about it. In fact, important topics are often targeted precisely because people are more likely to engage with and share them.", isOptimal: false },
-              ],
-            },
-          },
-          {
-            type: "fill-blank",
-            title: "AI Threat Assessment",
-            content: "",
-            fillBlankItems: [
-              { textBefore: "AI can generate thousands of unique articles at", textAfter: ", making human fact-checking nearly impossible to keep up.", correctAnswer: "scale", acceptableAnswers: ["scale", "industrial scale"], hint: "volume" },
-              { textBefore: "A key sign of AI text is confident claims that lack", textAfter: "details.", correctAnswer: "specific", acceptableAnswers: ["specific", "verifiable", "concrete"], hint: "exact or concrete" },
-            ],
-          },
-          { type: "quiz", title: "AI Detection", content: "What is the BIGGEST danger of AI-generated disinformation compared to human-created disinformation?", options: ["AI writing is always more convincing", "AI can produce unique content at massive scale", "AI content is harder to take down", "AI content spreads faster on social media"], correctIndex: 1 },
-        ],
-      },
-      {
         id: "synthetic-media",
-        title: "Platform Manipulation",
-        description: "How social media algorithms become weapons.",
+        title: "Echo Chambers and Synthetic Media ",
+        description: "Explore how filtered information and fake or altered media shape what you believe.",
         estimatedMinutes: 8,
-        storyBriefing: "🎯 Mission Briefing: The platforms themselves have become part of the battlefield. Algorithms designed for engagement are being exploited to amplify disinformation. Understand the system to defend against it.",
+        storyBriefing: "The structure of social media can limit the diversity of information you see. Over time, this can reinforce existing beliefs and make it harder to distinguish between real and manipulated content, creating a cycle where perspectives are narrowed and alternative viewpoints are less likely to be encountered or considered.",
         sections: [
           { type: "text", title: "The Algorithm Problem", content: "Social media algorithms are designed to maximize engagement — time spent on the platform. Unfortunately, false, outrageous, and emotionally triggering content generates more engagement than accurate, nuanced reporting. This means algorithms often become inadvertent amplifiers of disinformation." },
           { type: "bullets", title: "How Algorithms Are Exploited", content: "", items: [
@@ -1061,11 +1021,11 @@ export const modules: Module[] = [
         ],
       },
       {
-        id: "future-threats",
-        title: "The Evolving Threat",
-        description: "What's next on the horizon of information warfare.",
+        id: "social-algo",
+        title: "Algorithms and the Attention Economy",
+        description: "Learn how algorithms compete for your attention and control what you see in your feed, and why it matetrs.",
         estimatedMinutes: 7,
-        storyBriefing: "🎯 Mission Briefing: Intelligence suggests the enemy is developing new capabilities. Real-time deepfakes, AI agents that argue in forums, and hyper-personalized manipulation. Prepare for what's coming.",
+        storyBriefing: "Social media platforms are driven by algorithms that decide what content you see. These systems are designed to maximize engagement, often by capturing and holding your attention, prioritizing posts that are most likely to keep you scrolling and reacting, regardless of their accuracy or value. In this section, you’ll get a better understanding of how these algorithms work and recognize when your attention is being strategically targeted.",
         sections: [
           { type: "text", title: "The Next Generation of Threats", content: "The information warfare landscape is evolving rapidly. New technologies are emerging that will make current threats look primitive. Understanding these trends helps you prepare." },
           { type: "bullets", title: "Emerging Threats", content: "", items: [
