@@ -960,28 +960,83 @@ export const modules: Module[] = [
         description: "Understand how content and platform design are used to influence your behavior and decisions online.",
         estimatedMinutes: 9,
         storyBriefing: "In the social media environment, content is often created with the intent to influence emotions, drive engagement, and shape opinions. From misleading posts and clickbait to deepfakes and other forms of synthetic media, these tactics can blur the line between what is real and what is manipulated, making it harder to evaluate information critically.",
+        
         sections: [
-          { type: "text", title: "What Are Deepfakes?", content: "Deepfakes are synthetic media where a person's likeness is replaced with someone else's using AI. The technology has advanced so rapidly that deepfakes can now fool even trained observers. They can be used to create fake speeches, fraudulent evidence, and manufactured scandals." },
-          { type: "bullets", title: "Deepfake Detection Clues", content: "", items: [
-            "Unnatural blinking patterns or eye movements",
-            "Mismatched lip movements with audio",
-            "Inconsistent lighting on the face vs. background",
-            "Slight blurring around the hairline or jawline",
-            "Unnatural skin texture or 'waxy' appearance",
-            "Audio quality that doesn't match the visual setting",
+          { type: "text", title: "Social Media Enviroment", content: "In the social media environment, content is often created with the intent to influence emotions, drive engagement, and shape opinions. From misleading posts and clickbait to deepfakes and other forms of synthetic media, these tactics can blur the line between what is real and what is manipulated, making it harder to evaluate information critically." },
+          
+          { type: "bullets", title: "Manipulation on social media can happen both through content (what you see) and design (how platforms guide your behavior).", content: "", items: [
+            "Manipulative design: Platforms may use features like infinite scrolling, autoplay, notifications, or “like” systems to keep users engaged longer or push certain actions.",
+            "Emotional manipulation: Content that triggers anger, fear, or outrage is more likely to be shared and amplified.",
+            "Clickbait and misleading posts: Headlines or visuals designed to grab attention without accurately representing the content.",
+            "Dark patterns: Interface designs that nudge users toward decisions they might not otherwise make (e.g., making it harder to opt out of data tracking).",
           ]},
+
+          { type: "text", title: "In the Real World", content: "Research has shown that many platforms intentionally design features to maximize engagement, even when it leads to excessive use or exposure to harmful content. For example, autoplay videos and algorithmic recommendations can keep users watching longer than intended, increasing exposure to increasingly extreme or attention-grabbing material." },
+
+
+          { type: "callout", content: "Though most claim to verify information they read, they don’t always do it before sharing posts on social media. More than half of social media users who share news or political posts sometimes do so without verifying the facts." },
+
+          { type: "text", title: "Resources", content: (
+            <>
+              <a href="https://www.security.org/digital-security/misinformation-disinformation-survey/" target="_blank" rel="noopener noreferrer">
+                  90% of People Claim They Fact-Check News Stories As Trust in Media Plummets
+              </a>
+              <br></br>
+              <a href="https://www.americanbar.org/groups/law_national_security/publications/aba-standing-committee-on-law-and-national-security-60-th-anniversary-an-anthology/social-media-information-disorder-and-biometric-manipulation/" target="_blank" rel="noopener noreferrer">
+                  Social Media, Information Disorder, and Biometric Manipulation
+              </a>
+                          
+              </>
+                  
+          ), },
+
+
           {
-            type: "true-false",
-            title: "Deepfake Intel Drill",
-            content: "",
-            trueFalseItems: [
-              { statement: "Deepfakes require expensive equipment and expert knowledge to create.", isTrue: false, explanation: "Free and low-cost deepfake tools are widely available online. Anyone with a computer can create basic deepfakes." },
-              { statement: "Deepfake audio can clone someone's voice from just a few seconds of sample audio.", isTrue: true, explanation: "Modern AI voice cloning can create convincing replicas from very short audio samples — making phone scams and fake audio clips increasingly dangerous." },
-              { statement: "There are reliable tools that can detect all deepfakes with 100% accuracy.", isTrue: false, explanation: "Detection tools exist, but they're in an arms race with creation tools. No detection method is 100% reliable, and deepfakes continue to improve." },
-            ],
-          },
-          { type: "callout", content: "In 2024, a deepfake video call was used to trick a company into transferring $25 million. The attackers impersonated the company's CFO in a live video conference." },
-          { type: "quiz", title: "Deepfake Detection", content: "Which is the most reliable approach to verifying a suspicious video of a public figure making a controversial statement?", options: ["Check if the video looks realistic", "Look for the statement in official press releases or verified accounts", "Count the person's blinks", "Check the video's resolution"], correctIndex: 1 },
+          type: "true-false",
+          title: "Misinformation & Manipulation Intel Drill",
+          content: "",
+          trueFalseItems: [
+            {
+              statement: "Most people verify information before sharing it on social media.",
+              isTrue: false,
+              explanation: "While many people claim to fact-check, more than half of users sometimes share news or political posts without verifying the facts first."
+            },
+            {
+              statement: "Content that triggers strong emotions like anger or fear is more likely to spread online.",
+              isTrue: true,
+              explanation: "Emotionally charged content drives engagement and sharing, which is why misleading or manipulative posts often rely on outrage or fear."
+            },
+            {
+              statement: "Social media platforms are designed purely to show users accurate and balanced information.",
+              isTrue: false,
+              explanation: "Platforms are designed to maximize engagement using algorithms, which often prioritize attention-grabbing or extreme content over accuracy."
+            },
+            {
+              statement: "Manipulation on social media only happens through false information.",
+              isTrue: false,
+              explanation: "Manipulation also occurs through design features like autoplay, notifications, and infinite scroll that influence user behavior."
+            },
+            {
+              statement: "Seeing a video or image online guarantees that it reflects reality.",
+              isTrue: false,
+              explanation: "Visual content can be edited, taken out of context, or artificially generated, making it unreliable without verification."
+            }
+          ]
+        },
+
+        {
+          type: "quiz",
+          title: "Social Media Verification Challenge",
+          content: "Which is the MOST reliable way to evaluate whether a viral post or claim is trustworthy?",
+          options: [
+            "Trust it if it has many likes and shares",
+            "Rely on your first impression or gut feeling",
+            "Check multiple credible sources and verify the original context",
+            "Assume it’s true if a friend shared it"
+          ],
+          correctIndex: 2
+        },
+
         ],
       },
       {
@@ -991,33 +1046,93 @@ export const modules: Module[] = [
         estimatedMinutes: 8,
         storyBriefing: "The structure of social media can limit the diversity of information you see. Over time, this can reinforce existing beliefs and make it harder to distinguish between real and manipulated content, creating a cycle where perspectives are narrowed and alternative viewpoints are less likely to be encountered or considered.",
         sections: [
-          { type: "text", title: "The Algorithm Problem", content: "Social media algorithms are designed to maximize engagement — time spent on the platform. Unfortunately, false, outrageous, and emotionally triggering content generates more engagement than accurate, nuanced reporting. This means algorithms often become inadvertent amplifiers of disinformation." },
-          { type: "bullets", title: "How Algorithms Are Exploited", content: "", items: [
-            "Emotionally triggering content gets prioritized because it generates reactions",
-            "Filter bubbles trap users in echo chambers of reinforcing content",
-            "Recommendation systems can lead users from mild content to extremism",
-            "Engagement metrics (likes, shares) can be artificially inflated by bots",
-            "Content moderation can't keep pace with the volume of posts",
+          { type: "text", title: "Introduction", content: "The structure of social media can limit the diversity of information you see. Over time, this can reinforce existing beliefs and make it harder to distinguish between real and manipulated content, creating a cycle where perspectives are narrowed and alternative viewpoints are less likely to be encountered or considered." },
+          
+          { type: "bullets", title: "An echo chamber occurs when users are primarily exposed to information that reinforces their existing beliefs.", content: "", items: [
+            "Echo chamber effect: Algorithms and user behavior (likes, follows, shares) create feedback loops that filter out opposing viewpoints.",
+            "Confirmation bias: People are more likely to engage with content that aligns with their beliefs, strengthening the cycle.",
+            "Polarization: Over time, echo chambers can deepen divisions by limiting exposure to diverse perspectives.",
           ]},
-          {
-            type: "sorting",
-            title: "Defense Strategies",
-            content: "",
-            sortingCategories: [
-              { name: "✅ Effective Defense" },
-              { name: "❌ False Sense of Security" },
-            ],
-            sortingItems: [
-              { text: "Diversifying your news sources across the political spectrum", correctCategory: 0 },
-              { text: "Only following accounts that agree with your views", correctCategory: 1 },
-              { text: "Regularly checking fact-checking websites", correctCategory: 0 },
-              { text: "Assuming your platform filters out all false content", correctCategory: 1 },
-              { text: "Using browser extensions that flag unreliable sources", correctCategory: 0 },
-              { text: "Trusting content because it has many likes", correctCategory: 1 },
-            ],
-          },
-          { type: "callout", content: "Studies show that a user can go from a mainstream political video to extremist content in as few as 5-7 clicks through recommendation algorithms." },
-          { type: "quiz", title: "Algorithm Awareness", content: "Why do social media algorithms tend to amplify false information?", options: ["They're programmed to spread lies", "False content often generates more engagement, which algorithms reward", "Algorithms can't tell the difference between true and false", "Platform owners profit from disinformation"], correctIndex: 1 },
+          { type: "text", title: "In the Real World", content: "Studies have shown that echo chambers on social media can significantly influence political opinions and public discourse by reinforcing one-sided narratives. At the same time, synthetic media has been used in misinformation campaigns, making it increasingly difficult to tell what is authentic." },
+
+          { type: "bullets", title: "Advances in technology have made it easier to create convincing but false content...", content: "", items: [
+            "Deepfakes: Manipulated videos or audio that make it seem like someone said or did something they didn’t.",
+            "Synthetic media: AI-generated images, videos, or audio that appear real.",
+            "Edited or out-of-context media: Real content presented in misleading ways.",
+          ]},
+
+          
+          { type: "text", title: "Resources", content: (
+            <>
+              <a href="https://www.pnas.org/doi/10.1073/pnas.2023301118" target="_blank" rel="noopener noreferrer">
+                  The echo chamber effect on social media
+              </a>
+              <br></br>
+              <a href="https://www.ebsco.com/research-starters/communication-and-mass-media/echo-chamber-effect" target="_blank" rel="noopener noreferrer">
+                  Echo Chamber Effect
+              </a>              
+            </>
+                  
+          ), },
+
+
+        {
+  type: "sorting",
+  title: "Echo Chamber Defense Strategies",
+  content: "",
+  sortingCategories: [
+            { name: "✅ Effective Defense" },
+            { name: "❌ False Sense of Security" }
+          ],
+          sortingItems: [
+            {
+              text: "Actively seeking out viewpoints that challenge your beliefs",
+              correctCategory: 0
+            },
+            {
+              text: "Only engaging with content that aligns with your opinions",
+              correctCategory: 1
+            },
+            {
+              text: "Verifying whether images or videos are original or taken out of context",
+              correctCategory: 0
+            },
+            {
+              text: "Assuming a video is real because it looks convincing",
+              correctCategory: 1
+            },
+            {
+              text: "Following a diverse range of sources across perspectives",
+              correctCategory: 0
+            },
+            {
+              text: "Relying on your feed to show you a balanced view of issues",
+              correctCategory: 1
+            },
+            {
+              text: "Checking multiple sources before trusting a viral claim",
+              correctCategory: 0
+            },
+            {
+              text: "Trusting content more if it’s widely shared within your community",
+              correctCategory: 1
+            }
+          ]
+        },
+
+        {
+          type: "quiz",
+          title: "Echo Chamber & Algorithm Awareness",
+          content: "Why do echo chambers make misinformation and synthetic media more effective?",
+          options: [
+            "They expose users to a wide range of opposing viewpoints",
+            "They reduce the amount of content users see overall",
+            "They reinforce existing beliefs, making users less likely to question familiar narratives",
+            "They prevent emotional reactions to content"
+          ],
+          correctIndex: 2
+        },
+
         ],
       },
       {
@@ -1027,28 +1142,69 @@ export const modules: Module[] = [
         estimatedMinutes: 7,
         storyBriefing: "Social media platforms are driven by algorithms that decide what content you see. These systems are designed to maximize engagement, often by capturing and holding your attention, prioritizing posts that are most likely to keep you scrolling and reacting, regardless of their accuracy or value. In this section, you’ll get a better understanding of how these algorithms work and recognize when your attention is being strategically targeted.",
         sections: [
-          { type: "text", title: "The Next Generation of Threats", content: "The information warfare landscape is evolving rapidly. New technologies are emerging that will make current threats look primitive. Understanding these trends helps you prepare." },
-          { type: "bullets", title: "Emerging Threats", content: "", items: [
-            "Real-time deepfakes in video calls that can impersonate anyone",
-            "AI agents that autonomously create and spread tailored disinformation",
-            "Hyper-personalized manipulation using your digital footprint",
-            "Synthetic social networks with entirely AI-generated 'users'",
-            "Audio deepfakes for phone-based social engineering",
+          { type: "text", title: "Introduction", content: "Social media platforms are driven by algorithms that decide what content you see. These systems are designed to maximize engagement, often by capturing and holding your attention, prioritizing posts that are most likely to keep you scrolling and reacting, regardless of their accuracy or value. In this section, you’ll get a better understanding of how these algorithms work and recognize when your attention is being strategically targeted." },
+          
+          { type: "callout", content: "The attention economy refers to the competition between platforms to capture and keep your focus." },
+
+          { type: "bullets", title: "The attention economey is based on...", content: "", items: [
+            "Algorithmic curation: Platforms prioritize content likely to keep you engaged, not necessarily what is most accurate or important.",
+            "Engagement-driven design: Likes, shares, comments, and watch time influence what content is promoted.",
+            "Personalization: Feeds are tailored to your behavior, making content feel more relevant and harder to disengage from.",
+           
           ]},
+
+          { type: "bullets", title: "Recognizing when your attention is being exploited...", content: "", items: [
+            "Content that provokes strong emotional reactions",
+            "Endless feeds with no natural stopping point",
+            "Frequent notifications designed to pull you back in",
+            "Recommendations that become more extreme over time"           
+          ]},
+
+          { type: "text", title: "Resources", content: (
+            <>
+              <a href="https://www.humanetech.com/youth/the-attention-economy" target="_blank" rel="noopener noreferrer">
+                  The Attention Economy
+              </a>
+              <br></br>
+              <a href="https://globisinsights.com/career-skills/critical-thinking/tconsequences-of-the-attention-economy-and-how-to-regain-control/" target="_blank" rel="noopener noreferrer">
+                  What’s the deal with the attention economy and how can we regain control?
+              </a>              
+            </>
+                  
+          ), },
+
+
+
           {
             type: "scenario",
-            title: "Future Scenario",
+            title: "Attention Economy Scenario",
             content: "",
             scenarioData: {
-              situation: "It's 2026. You receive a video call from someone who looks and sounds exactly like your bank manager, asking you to confirm a transaction. They know your account details and recent purchases. But something feels slightly off. What do you do?",
+              situation: "It's 2026. You open a social media app to check one notification, but your feed quickly fills with highly engaging posts about a controversial issue. The content is emotional, widely shared, and seems to confirm what you already believe. You notice the recommendations are getting more extreme the longer you stay. You’re aware algorithms shape your feed, but the content still feels important and urgent. What do you do?",
               choices: [
-                { text: "Proceed with the transaction — they clearly know my details", outcome: "Real-time deepfakes combined with data breaches can create incredibly convincing impersonations. Having your personal details doesn't verify identity.", isOptimal: false },
-                { text: "Hang up and call your bank directly using the number on your card", outcome: "Perfect protocol. Never verify identity through the same channel that initiated contact. Always use an independent, verified communication channel.", isOptimal: true },
-                { text: "Ask them a security question to verify their identity", outcome: "If they've accessed your data, they may know your security answers too. The only reliable approach is to independently contact the institution through verified channels.", isOptimal: false },
-              ],
-            },
+                {
+                  text: "Engage thoughtfully by liking and commenting on posts you agree with while ignoring extreme ones",
+                  outcome: "Even selective engagement trains the algorithm. Interacting with similar content still signals interest, which can gradually push your feed toward more intense or one-sided material.",
+                  isOptimal: false
+                },
+                {
+                  text: "Search for the topic within the platform to get a broader range of perspectives",
+                  outcome: "Searching can help, but results are still influenced by platform algorithms and popularity signals. You may still be seeing a filtered version of the full picture.",
+                  isOptimal: false
+                },
+                {
+                  text: "Pause engagement, leave the app, and verify the topic using multiple external and credible sources",
+                  outcome: "Best choice. Stepping outside the platform breaks the engagement loop and reduces algorithmic influence, allowing you to evaluate information more independently and accurately.",
+                  isOptimal: true
+                },
+                {
+                  text: "Follow more accounts with different viewpoints to balance your feed",
+                  outcome: "This can help over time, but it doesn’t immediately counter how algorithms prioritize engagement. Without changing behavior, the platform may still favor content similar to what you interact with most.",
+                  isOptimal: false
+                }
+              ]
+            }
           },
-          { type: "callout", content: "The World Economic Forum has ranked misinformation and disinformation as the #1 global risk for the next two years. This isn't just a media problem — it's a civilizational challenge." },
         ],
       },
     ],
