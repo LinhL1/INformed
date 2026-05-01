@@ -24,21 +24,34 @@ interface Props {
 }
 
 const LessonPhaseIndicator = ({ currentPhase, activePhases, moduleColor }: Props) => {
-  const phases = PHASES.filter((p) => activePhases.includes(p.type));
+  // Collapse consecutive duplicate phases (e.g., multiple practice pages) into a single indicator step
+  const collapsed: { type: PhaseType; count: number; startIndex: number }[] = [];
+  activePhases.forEach((type, i) => {
+    const last = collapsed[collapsed.length - 1];
+    if (last && last.type === type) {
+      last.count += 1;
+    } else {
+      collapsed.push({ type, count: 1, startIndex: i });
+    }
+  });
 
   return (
     <div className="flex items-center gap-1">
-      {phases.map((phase, i) => {
-        const isActive = i === currentPhase;
-        const isCompleted = i < currentPhase;
+      {collapsed.map((group, i) => {
+        const phase = PHASES.find((p) => p.type === group.type);
+        if (!phase) return null;
+        const groupEndIndex = group.startIndex + group.count - 1;
+        const isActive = currentPhase >= group.startIndex && currentPhase <= groupEndIndex;
+        const isCompleted = currentPhase > groupEndIndex;
+        const subStep = isActive ? currentPhase - group.startIndex + 1 : 0;
 
         return (
-          <div key={phase.type} className="flex items-center gap-1">
+          <div key={`${phase.type}-${i}`} className="flex items-center gap-1">
             {i > 0 && (
               <div
                 className="h-0.5 w-4 rounded-full transition-colors duration-300"
                 style={{
-                  backgroundColor: isCompleted ? moduleColor : "hsl(var(--border))",
+                  backgroundColor: isCompleted || isActive ? moduleColor : "hsl(var(--border))",
                 }}
               />
             )}
@@ -55,7 +68,14 @@ const LessonPhaseIndicator = ({ currentPhase, activePhases, moduleColor }: Props
               transition={{ duration: 0.3 }}
             >
               {phase.icon}
-              <span className="hidden sm:inline">{phase.label}</span>
+              <span className="hidden sm:inline">
+                {phase.label}
+                {group.count > 1 && (
+                  <span className="ml-1 opacity-80">
+                    {isActive ? `${subStep}/${group.count}` : group.count > 1 ? `(${group.count})` : ""}
+                  </span>
+                )}
+              </span>
             </motion.div>
           </div>
         );

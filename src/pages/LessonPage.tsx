@@ -81,8 +81,9 @@ function buildPhases(sections: LessonSection[], hasStoryBriefing: boolean) {
   if (learnSections.length > 0) {
     phases.push({ type: "learn", sections: learnSections });
   }
-  if (practiceSections.length > 0) {
-    phases.push({ type: "practice", sections: practiceSections });
+  // Each practice activity gets its own phase/page
+  for (const practiceSection of practiceSections) {
+    phases.push({ type: "practice", sections: [practiceSection] });
   }
 
   // Always add complete phase
