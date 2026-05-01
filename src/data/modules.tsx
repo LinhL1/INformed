@@ -1210,17 +1210,17 @@ export const modules: Module[] = [
     ],
   },
   {
-    id: "building-resilience",
+    id: "digital-forensics",
     number: 6,
-    title: "Guardian Protocol",
-    description: "Your final mission: become a guardian of truth. Build lasting habits and empower your community.",
+    title: "Digital Forensics & Fact-Checking",
+    description: "In this module, you’ll learn how to trace digital content back to its origin and apply practical fact-checking workflows. Most importantly, you’ll develop judgment around when to act, when to verify further, and when misinformation should be contained rather than amplified.",
     color: "hsl(var(--module-6))",
-    chapterTitle: "Chapter 6: Guardian Protocol",
-    storyIntro: "Congratulations, agent. You've made it to the final chapter. Everything you've learned has prepared you for this: becoming a Guardian of Veritás. Your mission now extends beyond self-defense — it's time to protect your community and build lasting resilience against the tide of misinformation.",
+    chapterTitle: "Chapter 6: Digital Forensics",
+    storyIntro: "Congrats analyst on making it to the final module! With a deeper understanding of how misinformation is created, framed, and spread across digital spaces, you now turn toward the final stage of your training: verification and response. At this level, the challenge is no longer just recognizing misleading information, but systematically investigating its origins and testing its credibility.",
     subtopics: [
       {
-        id: "personal-habits",
-        title: "Building Your Shield",
+        id: "veri-workflows",
+        title: " Verification Workflows",
         description: "Daily habits that keep your defenses strong.",
         estimatedMinutes: 8,
         storyBriefing: "🎯 Mission Briefing: Every agent needs a daily routine to maintain peak readiness. These habits will keep your information defenses strong long after training ends.",
@@ -1260,8 +1260,8 @@ export const modules: Module[] = [
         ],
       },
       {
-        id: "conversation-skills",
-        title: "Ally Recruitment",
+        id: "verification",
+        title: "Hands-On Verification",
         description: "How to discuss misinformation without alienating others.",
         estimatedMinutes: 9,
         storyBriefing: "🎯 Mission Briefing: The most important mission isn't defending yourself — it's recruiting allies. Learn how to talk about misinformation in ways that bring people in, not push them away.",
@@ -1292,8 +1292,8 @@ export const modules: Module[] = [
         ],
       },
       {
-        id: "community-action",
-        title: "Community Defense",
+        id: "misinfo-response",
+        title: "Responding to Misinformation",
         description: "Scaling media literacy beyond yourself.",
         estimatedMinutes: 7,
         storyBriefing: "🎯 Mission Briefing: A single agent can't defend an entire city. Your final mission: build a network of informed citizens who can collectively resist the tide of misinformation.",
@@ -1319,48 +1319,8 @@ export const modules: Module[] = [
           { type: "activity", title: "Your Community Plan", content: "Identify three people in your life who could benefit from learning these skills. How would you introduce the topic? What's one resource from this course you could share with them? Write down your plan and commit to one conversation this week." },
         ],
       },
-      {
-        id: "staying-current",
-        title: "Staying Sharp",
-        description: "The threat evolves. So must you.",
-        estimatedMinutes: 6,
-        storyBriefing: "🎯 Mission Briefing: Training is ongoing, agent. The threat landscape changes daily. Here are the resources that will keep your skills current.",
-        sections: [
-          { type: "text", title: "Ongoing Intelligence", content: "The disinformation landscape is constantly evolving. New tactics, new technologies, and new platforms emerge regularly. Staying current is not optional — it's part of your duty as a Cyber Defense Guardian." },
-          { type: "bullets", title: "Resources for Ongoing Training", content: "", items: [
-            "First Draft News (firstdraftnews.org) — Research and training on misinformation",
-            "Media Literacy Now (medialiteracynow.org) — Policy and education advocacy",
-            "The News Literacy Project (newslit.org) — Educational resources and tools",
-            "Bellingcat (bellingcat.com) — Open-source investigation techniques",
-            "EUvsDisinfo (euvsdisinfo.eu) — Tracking pro-Kremlin disinformation",
-          ]},
-          { type: "callout", content: "Bookmark these resources and check them monthly. The 30 minutes you invest staying current could prevent you from falling for next month's new tactic." },
-        ],
-      },
-      {
-        id: "action-plan",
-        title: "Guardian Oath",
-        description: "Your final commitment as a defender of truth.",
-        estimatedMinutes: 10,
-        storyBriefing: "🎯 Final Mission Briefing: This is it, agent. Your training is complete. Take the Guardian Oath and commit to defending the truth — not just for yourself, but for everyone in your network.",
-        sections: [
-          { type: "text", title: "The Guardian Oath", content: "You've completed your training with the Cyber Defense Corps. You've learned to identify threats, evaluate sources, recognize manipulation, understand your own biases, and navigate the digital battlefield. Now it's time to make it official." },
-          { type: "key-term", term: "Guardian of Veritás", content: "a trained defender of truth who commits to verifying before sharing, thinking before reacting, and helping others develop critical media literacy skills" },
-          {
-            type: "fill-blank",
-            title: "Take the Oath",
-            content: "",
-            fillBlankItems: [
-              { textBefore: "I will", textAfter: "before I share.", correctAnswer: "verify", acceptableAnswers: ["verify", "check", "fact-check"], hint: "confirm it's true" },
-              { textBefore: "I will", textAfter: "before I react.", correctAnswer: "think", acceptableAnswers: ["think", "pause", "stop"], hint: "use my mind" },
-              { textBefore: "I will seek", textAfter: "perspectives, not just confirming ones.", correctAnswer: "diverse", acceptableAnswers: ["diverse", "different", "multiple", "opposing", "various"], hint: "varied" },
-              { textBefore: "I will help others become", textAfter: "of truth.", correctAnswer: "guardians", acceptableAnswers: ["guardians", "defenders", "protectors"], hint: "defenders" },
-            ],
-          },
-          { type: "callout", content: "🛡️ Congratulations, Guardian. The city of Veritás is safer because of you. But remember — the mission never truly ends. Stay sharp. Stay informed. Stay vigilant." },
-          { type: "activity", title: "Your Action Plan", content: "Write down three specific commitments you're making today: 1) One daily habit you'll adopt 2) One person you'll have a media literacy conversation with this week 3) One fact-checking tool you'll bookmark and use regularly." },
-        ],
-      },
+      
+      
     ],
   },
 ];
