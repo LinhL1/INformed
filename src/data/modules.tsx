@@ -1221,102 +1221,166 @@ export const modules: Module[] = [
       {
         id: "veri-workflows",
         title: " Verification Workflows",
-        description: "Daily habits that keep your defenses strong.",
+        description: "Focus on repeatable process and structured investigation beyond just tools",
         estimatedMinutes: 8,
-        storyBriefing: "🎯 Mission Briefing: Every agent needs a daily routine to maintain peak readiness. These habits will keep your information defenses strong long after training ends.",
+        storyBriefing: "Rather than relying on instinct or tools, learn to develop a reproducible verification workflow that emphasizes identifying claim types, selecting appropriate investigation methods, and efficiently cross-checking information.",
         sections: [
-          { type: "text", title: "Your Daily Defense Protocol", content: "Media literacy isn't a one-time skill — it's an ongoing practice. Like physical fitness, it requires regular exercise to stay sharp. Here are the habits that will keep your defenses strong." },
-          { type: "bullets", title: "The Guardian's Daily Habits", content: "", items: [
-            "Check at least two different news sources before forming an opinion on any story",
-            "Spend 5 minutes on a fact-checking site to learn about current false claims",
-            "Before sharing anything on social media, ask: Have I verified this? What's the source?",
-            "Notice when content triggers a strong emotional reaction — that's your cue to slow down",
-            "Periodically review your social media follows — are you in a filter bubble?",
+          { type: "text", title: "Selecting the Right Verification Path", content: "The mainidea here is to match the method to the claim instead of applying a one-size-fits-all approach." },
+          { type: "bullets", title: "Different medias:", content: "", items: [
+            "Visual content: Reverse image search, metadata checks, source tracing",
+            "Statistics: Trace back to original study or dataset",
+            "Quotes: Find primary source (speech, interview, transcript)",
+            "News events: Look for confirmation from multiple credible outlets",
           ]},
+          { type: "text", title: "", content: "When encountering a suspicious post, such as a viral claim or questionable piece of media, it is important to approach it with caution and awareness that it may be misleading or distort your perspective. Make it a habit to double-check and confirm information before sharing or reposting it. This can involve taking an extra minute to pause, look for the original source, and use basic verification tools or simple research to validate the claim." },
+          { type: "text", title: "", content: "While this process may seem tedious at first, simply being aware of these steps and applying them consistently helps build a stronger critical mindset, making it easier over time to evaluate information quickly and confidently." },
+
+          { type: "bullets", title: "Know When to Stop Investigating: One of the biggest pitfalls is falling into a verification rabbit hole.", content: "", items: [
+            "You may stop when you’ve reached credible primary sources",
+            "The claim remains unverifiable due to lack of evidence",
+            "Additional searching yields no new meaningful information",
+          ]},
+          { type: "text", title: "", content: "Not every claim can be fully confirmed, and recognizing uncertainty is part of good verification." },
+
+          { type: "bullets", title: "Basic Open Source Intelligence (OSINT) Mindset", content: "OSINT is less about tools and more about thinking:", items: [
+            "Be skeptical, not cynical",
+            "Look for context, origin, and intent",
+            "Assume content may be incomplete or manipulated",
+          ]},
+          { type: "text", title: "Key Takeaways", content: "Verification isn’t about finding an answer quickly, it’s about following a structured process that leads to reliable conclusions (or recognizing when a conclusion isn’t possible)." },
+
           {
             type: "scenario",
             title: "Morning Briefing",
             content: "",
             scenarioData: {
-              situation: "You wake up to 15 notifications about a 'breaking story' that feels alarming. Your group chats are buzzing. What's your morning protocol?",
+              situation: "You wake up to 15 notifications about a 'breaking story' spreading across your group chats. The posts include mixed claims, screenshots, and emotional reactions, but no clear original source.",
               choices: [
-                { text: "Read everything quickly and share the most important-looking article", outcome: "Morning urgency + social pressure is a classic recipe for spreading unverified content. Speed is the enemy of accuracy.", isOptimal: false },
-                { text: "Check one trusted news source first, then cross-reference before engaging with any of the messages", outcome: "Excellent protocol. Starting with a trusted source gives you a baseline of verified facts before engaging with potentially misleading content in your notifications.", isOptimal: true },
-                { text: "Ignore all notifications — if it's real, you'll hear about it eventually", outcome: "While not engaging with unverified content is better than amplifying it, complete disengagement means you can't help correct misinformation in your circles.", isOptimal: false },
+                { 
+                  text: "Quickly skim the messages and share the most alarming post to stay ahead of the story", 
+                  outcome: "Reacting based on urgency and emotion increases the risk of amplifying unverified or misleading information. Without identifying the claim type or checking sources, you bypass the verification workflow entirely.", 
+                  isOptimal: false 
+                },
+                { 
+                  text: "Identify the claim type first, then check a trusted news source and cross-reference other credible outlets before engaging", 
+                  outcome: "Strong approach. You correctly classify this as breaking news, then begin with reliable sources and cross-check across outlets, which aligns with a structured verification workflow and reduces exposure to misinformation.", 
+                  isOptimal: true 
+                },
+                { 
+                  text: "Ignore all notifications and assume it will be clarified later", 
+                  outcome: "Avoiding engagement prevents accidental sharing of misinformation, but it also skips the verification process entirely and does not allow you to assess credibility or context.", 
+                  isOptimal: false 
+                }
               ],
             },
-          },
-          {
-            type: "fill-blank",
-            title: "Protocol Check",
-            content: "",
-            fillBlankItems: [
-              { textBefore: "Before sharing content on social media, you should always verify the", textAfter: "first.", correctAnswer: "source", acceptableAnswers: ["source", "facts", "claim"], hint: "where it came from" },
-              { textBefore: "A strong emotional reaction to a headline is your cue to", textAfter: "down.", correctAnswer: "slow", hint: "opposite of speed up" },
-              { textBefore: "Checking at least", textAfter: "different sources helps prevent filter bubble effects.", correctAnswer: "two", acceptableAnswers: ["two", "2", "three", "3", "multiple"], hint: "a number" },
-            ],
-          },
-          { type: "activity", title: "Media Diet Audit", content: "Take 5 minutes right now: List the top 5 sources where you get your news. Are they diverse in perspective? Do any of them regularly get flagged by fact-checkers? Are you in a filter bubble? Write down one source you could add to diversify your information diet." },
+          }
+          
         ],
       },
-      {
-        id: "verification",
-        title: "Hands-On Verification",
-        description: "How to discuss misinformation without alienating others.",
-        estimatedMinutes: 9,
-        storyBriefing: "🎯 Mission Briefing: The most important mission isn't defending yourself — it's recruiting allies. Learn how to talk about misinformation in ways that bring people in, not push them away.",
-        sections: [
-          { type: "text", title: "The Art of the Conversation", content: "Telling someone they've been fooled is one of the hardest conversations to have. Done wrong, it triggers defensiveness and entrenches the belief further. Done right, it plants seeds of critical thinking that grow over time." },
-          { type: "bullets", title: "Effective Approaches", content: "", items: [
-            "Lead with curiosity, not correction: 'That's interesting — where did you first see that?'",
-            "Share your own experiences of being fooled — it normalizes the process",
-            "Focus on the tactics, not the person: 'This looks like it might be using emotional manipulation'",
-            "Offer to look into it together rather than lecturing",
-            "If they're resistant, plant a seed and move on — don't force it",
-          ]},
-          {
-            type: "scenario",
-            title: "Field Diplomacy",
-            content: "",
-            scenarioData: {
-              situation: "Your uncle shares a clearly false health claim at a family dinner. Other family members are nodding along. How do you handle this, agent?",
-              choices: [
-                { text: "Publicly fact-check him at the table and show everyone the debunking article", outcome: "Public correction at a social gathering often triggers defensiveness and can make the person double down on the false belief. It also creates social tension that associates media literacy with conflict.", isOptimal: false },
-                { text: "Later, privately share a relevant article and say 'I found something interesting about that topic — thought you might want to see it'", outcome: "Perfect technique. Private, non-confrontational sharing preserves the relationship while planting seeds of accurate information. It respects their dignity while still addressing the misinformation.", isOptimal: true },
-                { text: "Stay silent to keep the peace", outcome: "While avoiding conflict, complete silence means misinformation goes unchallenged. There are gentle ways to address it without creating a confrontation.", isOptimal: false },
-              ],
-            },
-          },
-          { type: "callout", content: "Research shows that empathetic, private corrections are 3x more effective at changing minds than public, aggressive fact-checking." },
-          { type: "quiz", title: "Best Response?", content: "What's the most effective way to respond to a friend sharing misinformation on social media?", options: ["Comment 'FAKE NEWS' on their post", "Send a private message with a fact-check link and a friendly tone", "Report their post to get it removed", "Share a counter-article publicly to embarrass them"], correctIndex: 1 },
-        ],
-      },
+    
       {
         id: "misinfo-response",
         title: "Responding to Misinformation",
-        description: "Scaling media literacy beyond yourself.",
+        description: "Deciding when to engage, how to correct without amplifying harm, and why these actions matter.",
         estimatedMinutes: 7,
-        storyBriefing: "🎯 Mission Briefing: A single agent can't defend an entire city. Your final mission: build a network of informed citizens who can collectively resist the tide of misinformation.",
+        storyBriefing: "Good work agent! You made it to the end of the training, this submodule shifts the focus from detection to response. Once misinformation is identified, the next challenge is deciding how to act in a way that reduces harm rather than unintentionally amplifying it.",
         sections: [
-          { type: "text", title: "From Agent to Leader", content: "Everything you've learned in this training can be shared with others. The most resilient communities are ones where multiple people have media literacy skills — creating a collective immune system against misinformation." },
-          { type: "bullets", title: "Community Defense Strategies", content: "", items: [
-            "Organize informal media literacy discussions with friends or colleagues",
-            "Share fact-checking resources in your group chats and social circles",
-            "Support local journalism — it's the foundation of an informed community",
-            "Mentor younger people in critical evaluation skills",
-            "Advocate for media literacy education in schools",
+          { type: "text", title: "Engage or Ignore?", content: "Not every piece of misinformation requires intervention. In many cases, responding can increase visibility of the false claim." },
+          { type: "bullets", title: "When to Engage:", content: "", items: [
+            "The misinformation is gaining traction in your immediate network or community",
+            "The claim could lead to real-world harm or urgent misunderstanding",
+            "You have access to credible, verifiable information that can clarify the issue",
+            "A trusted correction could meaningfully reduce confusion",
+          
           ]},
+
+          { type: "bullets", title: "Effective Correction:", content: "When correction is appropriate, how you respond matters as much as what you say.", items: [
+            "Corrections are more effective when they are calm, informative, and non-accusatory",
+            "Lack of trust can significantly reduce or eliminate correction impact",
+            "Focus on the corrected information instead of restating the falsehood in detail",
+            "Correcting misinformation is more effective when you replace it with a coherent factual explanation",
+          
+          ]},
+
+          { type: "text", title: "The Bigger Picture: Why Misinformation Response Matters in National Secuirty", content: "Misinformation is often treated as a communication problem or a social media issue, but at scale, it becomes a national security concern tied to trust, stability, and decision-making capacity within a society. The way individuals respond to false or misleading information plays a direct role in shaping that environment." },
+
+          { type: "text", title: "1. Information integrity as a security asset", content: "When misinformation spreads unchecked, it weakens the reliability of this shared information environment. Even small distortions can accumulate into system-wide confusion or mistrust." },
+          { type: "text", title: "2. Small actions scale into system-level effects", content: "Individual behavior, including what people share, does not stay isolated; it contributes either to accurate, stable information flow or to vulnerability and amplified confusion." },
+          { type: "text", title: "3. Trust is a strategic resource", content: "Misinformation can erode this trust by weakening confidence in institutions, increasing skepticism toward legitimate corrections, and fragmenting audiences into competing “truth systems." },
+
+          { type: "callout", content: "At a national security level, misinformation response is not about individual posts, it is about protecting the integrity of shared reality." },
+
+
+           { type: "text", title: "Resources", content: (
+            <>
+              <a href="https://www.sciencedirect.com/science/article/pii/S2352250X23001574?via%3Dihub" target="_blank" rel="noopener noreferrer">
+                  Effective correction of misinformation
+              </a>
+                         
+            </>
+                  
+          ), },
+
           {
             type: "true-false",
-            title: "Community Defense Check",
+            title: "Intelligence Response Drill",
             content: "",
             trueFalseItems: [
-              { statement: "Media literacy should only be taught in schools.", isTrue: false, explanation: "While school education is important, media literacy is needed at all ages. Adults are often the most active sharers of misinformation online." },
-              { statement: "Supporting local journalism helps fight misinformation.", isTrue: true, explanation: "Local journalists fact-check local claims, cover stories national outlets miss, and provide accountability that prevents misinformation from filling the void." },
-              { statement: "One person can't make a difference in fighting misinformation.", isTrue: false, explanation: "Every person who pauses before sharing, fact-checks a claim, or gently corrects a friend creates a ripple effect that strengthens the entire information ecosystem." },
-            ],
+              {
+                statement: "Every instance of misinformation should be corrected to prevent it from spreading.",
+                isTrue: false,
+                explanation: "Not all misinformation should be engaged with. In some cases, responding can increase visibility and unintentionally amplify the false claim."
+              },
+              {
+                statement: "A key factor in deciding whether to engage is whether the misinformation could lead to real-world harm or urgent misunderstanding.",
+                isTrue: true,
+                explanation: "Correct — engagement is recommended when the claim is gaining traction, poses potential harm, or could significantly impact understanding or behavior."
+              },
+              {
+                statement: "Effective corrections are most impactful when they repeat the false claim multiple times for clarity.",
+                isTrue: false,
+                explanation: "Corrections are more effective when they focus on accurate information and avoid unnecessary repetition of false claims, which can reinforce them."
+              },
+              {
+                statement: "Lack of trust in the correction source can reduce or eliminate the effectiveness of a correction.",
+                isTrue: true,
+                explanation: "Correct — trust is a key factor in whether corrections are accepted. Even accurate information may be rejected if the source is not trusted."
+              },
+              {
+                statement: "Individual decisions about sharing, ignoring, or correcting information can contribute to either information stability or system-wide confusion.",
+                isTrue: true,
+                explanation: "Correct — small actions scale. Collective behavior shapes whether the information environment becomes more resilient or more vulnerable to misinformation."
+              }
+            ]
           },
-          { type: "activity", title: "Your Community Plan", content: "Identify three people in your life who could benefit from learning these skills. How would you introduce the topic? What's one resource from this course you could share with them? Write down your plan and commit to one conversation this week." },
+
+          {
+            type: "scenario",
+            title: "Community Alert Feed",
+            content: "",
+            scenarioData: {
+              situation: "A local community page is flooded with posts claiming a nearby water supply has been ‘confirmed unsafe.’ The posts include screenshots of unclear documents, personal testimonies, and emotional warnings, but no official statement or verified source.",
+              choices: [
+                {
+                  text: "Share the warning immediately to protect others in case it’s true",
+                  outcome: "Sharing without verification may unintentionally amplify misinformation. Even well-intentioned actions can increase panic and spread unverified claims further.",
+                  isOptimal: false
+                },
+                {
+                  text: "Check for official updates from credible sources and assess whether the claim meets criteria for engagement before responding",
+                  outcome: "Strong response. You prioritize verification through trusted sources and apply the engage-or-ignore decision framework before contributing to the information flow.",
+                  isOptimal: true
+                },
+                {
+                  text: "Assume it is likely misinformation and dismiss it without checking further",
+                  outcome: "While this avoids amplification, it skips verification. If the claim were true, ignoring it could delay awareness and appropriate response.",
+                  isOptimal: false
+                }
+              ]
+            }
+          }
+
+
         ],
       },
       
