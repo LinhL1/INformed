@@ -951,7 +951,7 @@ export const modules: Module[] = [
     title: "Social Media",
     description: "Social media is one of the most powerful tools for communication today, but it is also essential to understand how it shapes what we think, see, and feel. Platforms are designed to capture attention, promote engagement, and influence decisions, sometimes in indirect ways. ",
     color: "hsl(var(--module-5))",
-    chapterTitle: "Chapter 5: Social Media",
+    chapterTitle: "Chapter 5: The Digital World",
     storyIntro: "Being “social media savvy” is more than just knowing how to use the apps; it's about understanding how the platform works to recognize manipulation tactics and think critically about the content you consume and share. As an analyst, you’ll explore how to navigate the social media environment, understand narratives, and how misinformation spreads through them.",
     subtopics: [
       {
@@ -1146,6 +1146,14 @@ export const modules: Module[] = [
           
           { type: "callout", content: "The attention economy refers to the competition between platforms to capture and keep your focus." },
 
+          { 
+            type: "image", 
+            src: "/assets/algor.png", 
+            alt: "Critical thinking process diagram", 
+            title: "",
+            content: "" 
+          },
+
           { type: "bullets", title: "The attention economey is based on...", content: "", items: [
             "Algorithmic curation: Platforms prioritize content likely to keep you engaged, not necessarily what is most accurate or important.",
             "Engagement-driven design: Likes, shares, comments, and watch time influence what content is promoted.",
@@ -1215,7 +1223,7 @@ export const modules: Module[] = [
     title: "Digital Forensics & Fact-Checking",
     description: "In this module, you’ll learn how to trace digital content back to its origin and apply practical fact-checking workflows. Most importantly, you’ll develop judgment around when to act, when to verify further, and when misinformation should be contained rather than amplified.",
     color: "hsl(var(--module-6))",
-    chapterTitle: "Chapter 6: Digital Forensics",
+    chapterTitle: "Chapter 6: From Instinct to Method",
     storyIntro: "Congrats analyst on making it to the final module! With a deeper understanding of how misinformation is created, framed, and spread across digital spaces, you now turn toward the final stage of your training: verification and response. At this level, the challenge is no longer just recognizing misleading information, but systematically investigating its origins and testing its credibility.",
     subtopics: [
       {
