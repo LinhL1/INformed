@@ -14,6 +14,7 @@ import mod2Bg from "@/assets/submod2-bg.png";
 import mod3Bg from "@/assets/submod3-bg.png"; 
 import mod4Bg from "@/assets/submod4-bg.png"; 
 import mod5Bg from "@/assets/submod5-bg.png"; 
+import mod6Bg from "@/assets/submod6-bg.png"; 
 
 
 
@@ -43,6 +44,12 @@ const moduleBgs: Record<string, { backgroundImage: string; backgroundSize: strin
     backgroundSize: "cover",
     backgroundPosition: "center",
   },
+  "digital-forensics": {
+    backgroundImage: `url(${mod6Bg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center 1px",
+  },
+
 };
 
 // Classify a section into a phase

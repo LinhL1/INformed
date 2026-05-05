@@ -4,7 +4,7 @@ import { ArrowLeft, Sun, Moon, Radio } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const tickerItems = [
-  "False information spreads faster, farther, deeper, and more broadly than true information",
+  "False information spreads faster, farther, and more broadly than true information",
   "On average, false news is ~70% more likely to be retweeted than true news",
   "False news spreads 6× faster on Twitter than truthful news"
 ];
