@@ -48,7 +48,7 @@ const ModulesPage = () => {
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-accent">
           </div>
           <h1 className="text-8xl font-bold sm:text-5xl">
-            Stay sharp. Stay <span className="text-blue-500">informed</span>.
+            Stay Sharp. Stay <span className="text-blue-500">Informed</span>.
           </h1>
           <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
             Complete each chapter to unlock the next mission. Build your skills, earn XP, and rise through the ranks.
