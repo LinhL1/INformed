@@ -44,38 +44,129 @@ const XP_PER_MODULE_COMPLETE = 50;
 
 
 export const LEVELS = [
-  { level: 1, title: "Recruit", xpRequired: 0, avatar: avatar1 },
-  { level: 2, title: "Field Agent", xpRequired: 75, avatar: avatar2 },
-  { level: 3, title: "Analyst", xpRequired: 200, avatar: avatar3 },
-  { level: 4, title: "Senior Operative", xpRequired: 400, avatar: avatar4 },
-  { level: 5, title: "Commander", xpRequired: 650, avatar: avatar5 },
-  { level: 6, title: "Guardian of Veritás", xpRequired: 1000, avatar: avatar6 },
+  { level: 1, title: "Junior Analyst", xpRequired: 0, avatar: avatar1 },
+  { level: 2, title: "Signal Observer", xpRequired: 75, avatar: avatar2 },
+  { level: 3, title: "Pattern Analyst", xpRequired: 200, avatar: avatar3 },
+  { level: 4, title: "Narrative Analyst", xpRequired: 400, avatar: avatar4 },
+  { level: 5, title: "Cognitive Defender", xpRequired: 650, avatar: avatar5 },
+  { level: 6, title: "INformed Operative", xpRequired: 1000, avatar: avatar6 },
 ];
 
 export const AVATAR_UPGRADES: AvatarUpgrade[] = [
-  { level: 1, name: "Recruit Badge", avatar: avatar1, description: "Your journey begins. Welcome to the Corps." },
-  { level: 2, name: "Agent Shades", avatar: avatar2, description: "You've earned your field agent disguise." },
-  { level: 3, name: "Satellite Uplink", avatar: avatar3, description: "Access to advanced intelligence tools." },
-  { level: 4, name: "Defense Shield", avatar: avatar4, description: "Your mental defenses are hardening." },
-  { level: 5, name: "Commander's Sword", avatar: avatar5, description: "Leading the fight against misinformation." },
-  { level: 6, name: "Guardian Crown", avatar: avatar6, description: "You are the Guardian of Veritás." },
+  { 
+    level: 1, 
+    name: "Junior Analyst Badge", 
+    avatar: avatar1, 
+    description: "Fresh out of university, you’ve been flagged for your potential. Your first assignment begins." 
+  },
+  { 
+    level: 2, 
+    name: "Signal Tracker", 
+    avatar: avatar2, 
+    description: "You start noticing subtle patterns across platforms—small signals most would ignore." 
+  },
+  { 
+    level: 3, 
+    name: "Pattern Mapper", 
+    avatar: avatar3, 
+    description: "Connections emerge. What once looked random now reveals coordinated behavior." 
+  },
+  { 
+    level: 4, 
+    name: "Narrative Analyst", 
+    avatar: avatar4, 
+    description: "You begin to understand how stories are shaped, amplified, and weaponized." 
+  },
+  { 
+    level: 5, 
+    name: "Cognitive Defender", 
+    avatar: avatar5, 
+    description: "You recognize the real target isn’t systems—it’s people. You work to protect how they think." 
+  },
+  { 
+    level: 6, 
+    name: "INformed Operative", 
+    avatar: avatar6, 
+    description: "You see the bigger picture. Not just content, but influence. Not just posts, but impact." 
+  },
 ];
 
 export const STORY_UNLOCKS: StoryUnlock[] = [
-  { level: 2, title: "Classified Dossier: The Origins", icon: "📁", content: "Veritás was founded in 2019 after the Great Disinfo Wave. A coalition of journalists, researchers, and technologists came together to build a city where truth is the highest value." },
-  { level: 3, title: "Agent Profile: The Architect", icon: "🧠", content: "The Architect is the mysterious figure who designed Veritás's information defenses. No one knows their true identity, but their protocols have protected millions." },
-  { level: 4, title: "Intel Report: The Shadow Network", icon: "🌐", content: "Intelligence suggests a coordinated network of troll farms, AI content generators, and amplification bots operating across 47 countries. Codename: ECHO." },
-  { level: 5, title: "Secret File: Operation Looking Glass", icon: "🔮", content: "Operation Looking Glass is Veritás's counter-disinformation program. It uses the same tools as the enemy — AI, social networks, virality — but in service of truth." },
-  { level: 6, title: "The Guardian's Archive", icon: "📜", content: "Welcome to the inner sanctum. As a Guardian, you now have access to the complete archive of every disinformation campaign ever detected and neutralized by the Corps." },
+  { 
+    level: 2, 
+    title: "Internal Memo: Why You Were Flagged", 
+    icon: "📁", 
+    content: "You weren’t recruited by accident. A professor flagged your work—pattern recognition, skepticism, curiosity. Traits that are becoming harder to find, and more valuable." 
+  },
+  { 
+    level: 3, 
+    title: "Briefing Note: Early Signals", 
+    icon: "🧠", 
+    content: "Individually, the posts seem harmless. A headline here, a comment there. But across platforms, the same narratives begin to repeat—slightly altered, optimized for engagement." 
+  },
+  { 
+    level: 4, 
+    title: "Intel Summary: Coordinated Behavior", 
+    icon: "🌐", 
+    content: "Analysis suggests these patterns are not organic. Networks of accounts—some human, some automated—are amplifying the same ideas across multiple communities." 
+  },
+  { 
+    level: 5, 
+    title: "Restricted File: Narrative Engineering", 
+    icon: "🔍", 
+    content: "The objective isn’t to convince—it’s to overwhelm. Repetition builds familiarity. Familiarity builds belief. Over time, trust erodes—not in one source, but in everything." 
+  },
+  { 
+    level: 6, 
+    title: "Final Briefing: The Real Target", 
+    icon: "📜", 
+    content: "These operations don’t target systems or servers. They target perception. What people believe, what they doubt, and how they decide what’s true. That’s where the real impact is." 
+  },
 ];
 
 export const BADGES: Badge[] = [
-  // { id: "first-clue", title: "First Contact", icon: "🔎", description: "Complete your first lesson", requiredLevel: 1 },
-  // { id: "sharp-eye", title: "Sharp Eye", icon: "👁️", description: "Get 3 quizzes correct on first try", requiredLevel: 2 },
-  // { id: "fact-checker", title: "Fact Checker", icon: "✅", description: "Reach Analyst rank", requiredLevel: 3 },
-  // { id: "truth-seeker", title: "Truth Seeker", icon: "🔦", description: "Reach Senior Operative rank", requiredLevel: 4 },
-  // { id: "media-guardian", title: "Cyber Sentinel", icon: "🛡️", description: "Reach Commander rank", requiredLevel: 5 },
-  // { id: "master-decoder", title: "Guardian of Veritás", icon: "🏆", description: "Reach Guardian rank", requiredLevel: 6 },
+  { 
+    id: "first-pattern", 
+    title: "First Pattern", 
+    icon: "🔎", 
+    description: "Complete your first lesson and identify a misleading signal", 
+    requiredLevel: 1 
+  },
+  { 
+    id: "signal-spotter", 
+    title: "Signal Spotter", 
+    icon: "👁️", 
+    description: "Correctly identify 3 misleading cues on the first attempt", 
+    requiredLevel: 2 
+  },
+  { 
+    id: "context-builder", 
+    title: "Context Builder", 
+    icon: "🧩", 
+    description: "Recognize how information changes meaning across contexts", 
+    requiredLevel: 3 
+  },
+  { 
+    id: "narrative-breaker", 
+    title: "Narrative Breaker", 
+    icon: "🔦", 
+    description: "Identify repeated narratives across multiple scenarios", 
+    requiredLevel: 4 
+  },
+  { 
+    id: "cognitive-guard", 
+    title: "Cognitive Guard", 
+    icon: "🛡️", 
+    description: "Consistently detect manipulation without relying on obvious signals", 
+    requiredLevel: 5 
+  },
+  { 
+    id: "pattern-analyst", 
+    title: "Pattern Analyst", 
+    icon: "📊", 
+    description: "Demonstrate mastery in recognizing coordinated information patterns", 
+    requiredLevel: 6 
+  },
 ];
 
 function loadXP(): XPState {
