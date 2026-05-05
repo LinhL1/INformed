@@ -45,11 +45,11 @@ const XP_PER_MODULE_COMPLETE = 50;
 
 export const LEVELS = [
   { level: 1, title: "Recruit", xpRequired: 0, avatar: avatar1 },
-  { level: 2, title: "Field Agent", xpRequired: 75, avatar: avatar2 },
-  { level: 3, title: "Analyst", xpRequired: 200, avatar: avatar3 },
-  { level: 4, title: "Senior Operative", xpRequired: 400, avatar: avatar4 },
-  { level: 5, title: "Commander", xpRequired: 650, avatar: avatar5 },
-  { level: 6, title: "Guardian of Veritás", xpRequired: 1000, avatar: avatar6 },
+  { level: 2, title: "Field Agent", xpRequired: 100, avatar: avatar2 },
+  { level: 3, title: "Analyst", xpRequired: 265, avatar: avatar3 },
+  { level: 4, title: "Senior Operative", xpRequired: 530, avatar: avatar4 },
+  { level: 5, title: "Commander", xpRequired: 860, avatar: avatar5 },
+  { level: 6, title: "Guardian of Veritás", xpRequired: 1320, avatar: avatar6 },
 ];
 
 export const AVATAR_UPGRADES: AvatarUpgrade[] = [
