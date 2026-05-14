@@ -61,8 +61,8 @@ export const modules: Module[] = [
         sections: [
           { type: "callout", content: "It's important to note that not all false information is the same. Understanding the distinctions is your first line of defense." },
           { type: "text", title: "Information", content: "Information is content that accurately represents facts or events as they are understood to be true." },
-          { type: "text", title: "Misinformation", content: "is incorrect (or false information) but shared unintentionally. The person spreading it may genuinely believe it is true." },
-          { type: "text", title: "Disinformation", content: "is false information spread deliberately, with the intent to deceive. When disinformation is coordinated by foreign actors to interfere with democratic processes like elections, it is called foreign information manipulation and interference." },
+          { type: "text", title: "Misinformation", content: "Is incorrect (or false information) but shared unintentionally. The person spreading it may genuinely believe it is true." },
+          { type: "text", title: "Disinformation", content: "Is false information spread deliberately, with the intent to deceive. When disinformation is coordinated by foreign actors to interfere with democratic processes like elections, it is called foreign information manipulation and interference." },
           { type: "text", title: "How Does Misinformation Spread?", content: "Misinformation spreads easily because it often feels credible. It can come from sources we trust, align with things we already believe, or trigger strong emotional reactions that make us less likely to stop and question it. Understanding this is key to catching it." },
           { type: "key-term", term: "Debunking", content: "showing that a piece of information is untrue and showing what is true" },
           { type: "bullets", title: "Key Takeaways", content: "", items: [
@@ -105,13 +105,13 @@ export const modules: Module[] = [
       {
         id: "critical-thinking",
         title: "Importance of Critical Thinking",
-        description: "How to develop the mental firewall every agent needs.",
+        description: "Developing critical thinking habits",
         estimatedMinutes: 10,
         storyBriefing: "Our analysts have detected a new wave of sophisticated attacks. Your standard training isn't enough, you need to develop critical thinking, the mental firewall that protects against manipulation.",
         sections: [
           { type: "callout", content: "\"The point of modern propaganda isn't only to misinform or push an agenda. It is to exhaust your critical thinking, to annihilate truth.\" — Garry Kasparov" },
           { type: "text", title: "Critical thinking...What is it?", content: "Critical thinking is the ability to think clearly and independently." },
-          { type: "text", title: "Why It Matters", content: "The danger of these types is heightened by the extinction of local news; as of 2023, daily local newspapers were disappearing at a rate of two per week, leaving over 200 counties with no local news outlets at all. This lack of access, particularly in high-poverty areas, allows nearly 1,300 biased websites to fill the gap by masquerading as local news while pushing specific political agendas." },
+          { type: "text", title: "Why It Matters", content: "The danger is heightened by the extinction of local news; as of 2023, daily local newspapers were disappearing at a rate of two per week, leaving over 200 counties with no local news outlets at all. This lack of access, particularly in high-poverty areas, allows nearly 1,300 biased websites to fill the gap by masquerading as local news while pushing specific political agendas." },
           { type: "bullets", title: "It isn't just thinking hard; it is a structured process of:", content: "", items: [
             "Considering multiple perspectives",
             "Being mindful and actively checking your own biases",
@@ -140,7 +140,7 @@ export const modules: Module[] = [
               choices: [
                 { text: "Share it immediately to warn your friends and family", outcome: "By sharing unverified content, you've potentially amplified misinformation to your entire network. The claim turned out to be a distortion of a minor parking regulation change.", isOptimal: false },
                 { text: "Check the original source and cross-reference with local news", outcome: "Smart move. You traced the claim to a satirical blog. The real news was a minor update to downtown parking rules, nothing close to banning vehicles.", isOptimal: true },
-                { text: "Ignore it completely — it's probably fake", outcome: "While your instinct was right, simply ignoring misinformation without investigating means you can't help correct it when others share it.", isOptimal: false },
+                { text: "Ignore it completely, it's probably fake", outcome: "While your instinct was right, simply ignoring misinformation without investigating means you can't help correct it when others share it.", isOptimal: false },
               ],
             },
           },
@@ -158,13 +158,13 @@ export const modules: Module[] = [
       {
         id: "emotional-manipulation",
         title: "Emotional Manipulation",
-        description: "How emotions are weaponized to bypass your defenses.",
+        description: "How emotions are utilized to bypass your defenses",
         estimatedMinutes: 8,
         storyBriefing: "Alert! A post crosses your feed. It's about something that affects your community directly. You’re hit with a huge emotional wave of anger. Then you stop. And you ask: why did that hit so fast? Why did I stop thinking and start feeling?",
         sections: [
           { type: "callout", content: "If a headline makes you feel a strong emotion before you've even read the article, that's intentional. Emotional reactions are a feature, not a bug, of manipulative content." },
           { type: "text", title: "What Is Emotional Manipulation in Media?", content: "Emotional manipulation occurs when content is designed to trigger a strong feeling (fear, outrage, pride, or sympathy) in order to bypass your rational thinking. When we're flooded with emotion, we're less likely to stop and ask: Is this true? Where did this come from? What's missing from this story?" },
-          { type: "key-term", term: "Emotional Override", content: "when an emotional response is so strong that it short-circuits critical evaluation of information, making us more likely to accept and share content without verifying it" },
+          { type: "key-term", term: "Emotional Override", content: "When an emotional response is so strong that it short-circuits critical evaluation of information, making us more likely to accept and share content without verifying it" },
           { type: "bullets", title: "Common Emotional Manipulation Tactics", content: "", items: [
             "Fear-mongering: Exaggerating threats to make an issue feel urgent and dangerous",
             "Outrage bait: Framing stories to provoke anger and increase sharing",
@@ -172,7 +172,7 @@ export const modules: Module[] = [
             "Us vs. Them framing: Portraying issues as a battle between groups",
             "False urgency: Creating pressure to act before you can think critically",
           ]},
-          { type: "text", title: "Why It Works", content: "Our brains are wired to prioritize emotional information — it helped our ancestors survive real threats. Manipulators exploit this by packaging false or misleading content in emotionally charged language, images, and headlines." },
+          { type: "text", title: "Why It Works", content: "Our brains are wired to prioritize emotional information, it helped our ancestors survive real threats. Manipulators exploit this by packaging false or misleading content in emotionally charged language, images, and headlines." },
           {
             type: "sorting",
             title: "Classify the Threat",
