@@ -48,8 +48,8 @@ export const LEVELS = [
   { level: 2, title: "Field Agent", xpRequired: 100, avatar: avatar2 },
   { level: 3, title: "Analyst", xpRequired: 265, avatar: avatar3 },
   { level: 4, title: "Senior Operative", xpRequired: 530, avatar: avatar4 },
-  { level: 5, title: "Commander", xpRequired: 860, avatar: avatar5 },
-  { level: 6, title: "Guardian of Veritás", xpRequired: 1320, avatar: avatar6 },
+  // { level: 5, title: "Commander", xpRequired: 860, avatar: avatar5 },
+  // { level: 6, title: "Guardian of Veritás", xpRequired: 1320, avatar: avatar6 },
 ];
 
 export const AVATAR_UPGRADES: AvatarUpgrade[] = [
@@ -77,18 +77,18 @@ export const AVATAR_UPGRADES: AvatarUpgrade[] = [
     avatar: avatar4, 
     description: "You begin to understand how stories are shaped, amplified, and weaponized." 
   },
-  { 
-    level: 5, 
-    name: "Cognitive Defender", 
-    avatar: avatar5, 
-    description: "You recognize the real target isn’t systems—it’s people. You work to protect how they think." 
-  },
-  { 
-    level: 6, 
-    name: "INformed Operative", 
-    avatar: avatar6, 
-    description: "You see the bigger picture. Not just content, but influence. Not just posts, but impact." 
-  },
+  // { 
+  //   level: 5, 
+  //   name: "Cognitive Defender", 
+  //   avatar: avatar5, 
+  //   description: "You recognize the real target isn’t systems—it’s people. You work to protect how they think." 
+  // },
+  // { 
+  //   level: 6, 
+  //   name: "INformed Operative", 
+  //   avatar: avatar6, 
+  //   description: "You see the bigger picture. Not just content, but influence. Not just posts, but impact." 
+  // },
 ];
 
 export const STORY_UNLOCKS: StoryUnlock[] = [
@@ -110,18 +110,18 @@ export const STORY_UNLOCKS: StoryUnlock[] = [
     icon: "🌐", 
     content: "Analysis suggests these patterns are not organic. Networks of accounts—some human, some automated—are amplifying the same ideas across multiple communities." 
   },
-  { 
-    level: 5, 
-    title: "Restricted File: Narrative Engineering", 
-    icon: "🔍", 
-    content: "The objective isn’t to convince—it’s to overwhelm. Repetition builds familiarity. Familiarity builds belief. Over time, trust erodes—not in one source, but in everything." 
-  },
-  { 
-    level: 6, 
-    title: "Final Briefing: The Real Target", 
-    icon: "📜", 
-    content: "These operations don’t target systems or servers. They target perception. What people believe, what they doubt, and how they decide what’s true. That’s where the real impact is." 
-  },
+  // { 
+  //   level: 5, 
+  //   title: "Restricted File: Narrative Engineering", 
+  //   icon: "🔍", 
+  //   content: "The objective isn’t to convince—it’s to overwhelm. Repetition builds familiarity. Familiarity builds belief. Over time, trust erodes—not in one source, but in everything." 
+  // },
+  // { 
+  //   level: 6, 
+  //   title: "Final Briefing: The Real Target", 
+  //   icon: "📜", 
+  //   content: "These operations don’t target systems or servers. They target perception. What people believe, what they doubt, and how they decide what’s true. That’s where the real impact is." 
+  // },
 ];
 
 export const BADGES: Badge[] = [
@@ -153,20 +153,20 @@ export const BADGES: Badge[] = [
     description: "Identify repeated narratives across multiple scenarios", 
     requiredLevel: 4 
   },
-  { 
-    id: "cognitive-guard", 
-    title: "Cognitive Guard", 
-    icon: "🛡️", 
-    description: "Consistently detect manipulation without relying on obvious signals", 
-    requiredLevel: 5 
-  },
-  { 
-    id: "pattern-analyst", 
-    title: "Pattern Analyst", 
-    icon: "📊", 
-    description: "Demonstrate mastery in recognizing coordinated information patterns", 
-    requiredLevel: 6 
-  },
+  // { 
+  //   id: "cognitive-guard", 
+  //   title: "Cognitive Guard", 
+  //   icon: "🛡️", 
+  //   description: "Consistently detect manipulation without relying on obvious signals", 
+  //   requiredLevel: 5 
+  // },
+  // { 
+  //   id: "pattern-analyst", 
+  //   title: "Pattern Analyst", 
+  //   icon: "📊", 
+  //   description: "Demonstrate mastery in recognizing coordinated information patterns", 
+  //   requiredLevel: 6 
+  // },
 ];
 
 function loadXP(): XPState {
