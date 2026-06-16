@@ -1,4 +1,6 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/context/AuthContext";
 
 interface Progress {
   [moduleId: string]: {
@@ -6,48 +8,71 @@ interface Progress {
   };
 }
 
-const STORAGE_KEY = "ms-informed-progress";
-
-function loadProgress(): Progress {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : {};
-  } catch {
-    return {};
-  }
-}
-
-function saveProgress(progress: Progress) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-}
-
 export function useProgress() {
-  const [progress, setProgress] = useState<Progress>(loadProgress);
+  const { user } = useAuth();
+  const [progress, setProgress] = useState<Progress>({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  const markComplete = useCallback((moduleId: string, subtopicId: string) => {
-    setProgress((prev) => {
-      const next = {
+  useEffect(() => {
+    if (!user) {
+      setProgress({});
+      setIsLoading(false);
+      return;
+    }
+    setIsLoading(true);
+    supabase
+      .from("user_progress")
+      .select("module_id, subtopic_id")
+      .eq("user_id", user.id)
+      .eq("completed", true)
+      .then(({ data }) => {
+        const shaped: Progress = {};
+        for (const row of data ?? []) {
+          if (!shaped[row.module_id]) shaped[row.module_id] = {};
+          shaped[row.module_id][row.subtopic_id] = true;
+        }
+        setProgress(shaped);
+        setIsLoading(false);
+      });
+  }, [user?.id]);
+
+  const markComplete = useCallback(
+    (moduleId: string, subtopicId: string) => {
+      if (!user) return;
+      setProgress((prev) => ({
         ...prev,
         [moduleId]: { ...prev[moduleId], [subtopicId]: true },
-      };
-      saveProgress(next);
-      return next;
-    });
-  }, []);
+      }));
+      void supabase.from("user_progress").upsert(
+        {
+          user_id: user.id,
+          module_id: moduleId,
+          subtopic_id: subtopicId,
+          completed: true,
+          completed_at: new Date().toISOString(),
+        },
+        { onConflict: "user_id,module_id,subtopic_id" }
+      );
+    },
+    [user]
+  );
 
   const isComplete = useCallback(
-    (moduleId: string, subtopicId: string) =>
-      !!progress[moduleId]?.[subtopicId],
+    (moduleId: string, subtopicId: string) => !!progress[moduleId]?.[subtopicId],
     [progress]
   );
 
   const getModuleProgress = useCallback(
     (moduleId: string, totalSubtopics: number) => {
       const completed = Object.values(progress[moduleId] || {}).filter(Boolean).length;
-      return { completed, total: totalSubtopics, percent: totalSubtopics > 0 ? Math.round((completed / totalSubtopics) * 100) : 0 };
+      return {
+        completed,
+        total: totalSubtopics,
+        percent: totalSubtopics > 0 ? Math.round((completed / totalSubtopics) * 100) : 0,
+      };
     },
     [progress]
   );
 
-  return { markComplete, isComplete, getModuleProgress };
+  return { markComplete, isComplete, getModuleProgress, isLoading };
 }

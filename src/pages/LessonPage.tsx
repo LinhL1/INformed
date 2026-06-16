@@ -313,12 +313,12 @@ const handleNext = () => {
                     index={index}
                     onQuizCorrect={
                       section.type === "quiz"
-                        ? () => handleQuizCorrect(`${module.id}-${subtopic.id}-${currentPhaseIndex}-${index}`)
+                        ? () => handleQuizCorrect(`${module.id}-${subtopic.id}-${section.title || section.type}-${index}`)
                         : undefined
                     }
                     onActivityComplete={
                       ["true-false", "sorting", "fill-blank", "scenario"].includes(section.type)
-                        ? () => handleActivityComplete(`${module.id}-${subtopic.id}-${currentPhaseIndex}-${index}`)
+                        ? () => handleActivityComplete(`${module.id}-${subtopic.id}-${section.title || section.type}-${index}`)
                         : undefined
                     }
                   />
