@@ -1,5 +1,5 @@
 import { useState, useEffect, type FormEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '@/context/AuthContext'
 import { Button } from '@/components/ui/button'
@@ -12,6 +12,8 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 export default function SignIn() {
   const { signIn, signUp, session, loading: authLoading } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = (location.state as { from?: { pathname: string } } | null)?.from?.pathname ?? '/modules'
 
   const [mode, setMode] = useState<'signin' | 'signup'>('signin')
   const [email, setEmail] = useState('')
@@ -22,9 +24,10 @@ export default function SignIn() {
 
   useEffect(() => {
     if (!authLoading && session) {
-      navigate('/', { replace: true })
+      // Post-auth lands on the onboarding sequence; it forwards `from` on skip/complete
+      navigate('/onboarding', { replace: true, state: { from } })
     }
-  }, [session, authLoading, navigate])
+  }, [session, authLoading, navigate, from])
 
   const validate = (): string | null => {
     if (!email.trim() || !password) return 'Email and password are required.'
@@ -49,7 +52,7 @@ export default function SignIn() {
       const { error } = await signIn(email, password)
       setSubmitting(false)
       if (error) { setError(error.message); return }
-      navigate('/', { replace: true })
+      navigate('/onboarding', { replace: true, state: { from } })
     }
   }
 

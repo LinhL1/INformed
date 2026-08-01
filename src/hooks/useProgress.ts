@@ -37,13 +37,13 @@ export function useProgress() {
   }, [user?.id]);
 
   const markComplete = useCallback(
-    (moduleId: string, subtopicId: string) => {
+    async (moduleId: string, subtopicId: string) => {
       if (!user) return;
       setProgress((prev) => ({
         ...prev,
         [moduleId]: { ...prev[moduleId], [subtopicId]: true },
       }));
-      void supabase.from("user_progress").upsert(
+      const { error } = await supabase.from("user_progress").upsert(
         {
           user_id: user.id,
           module_id: moduleId,
@@ -53,6 +53,16 @@ export function useProgress() {
         },
         { onConflict: "user_id,module_id,subtopic_id" }
       );
+      if (error) {
+        // Write failed — undo the optimistic update so local state doesn't
+        // claim progress that was never persisted (a subsequent fetch would
+        // not find it either).
+        setProgress((prev) => {
+          const moduleProgress = { ...prev[moduleId] };
+          delete moduleProgress[subtopicId];
+          return { ...prev, [moduleId]: moduleProgress };
+        });
+      }
     },
     [user]
   );

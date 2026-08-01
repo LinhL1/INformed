@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CheckCircle2, Clock, ChevronRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
+import SceneRenderer from "@/components/story/SceneRenderer";
 import { modules } from "@/data/modules";
+import { storyBeats, getCaseFileEntry, type SceneBeat } from "@/data/storyBeats";
 import { useProgress } from "@/hooks/useProgress";
+import { useStoryState } from "@/hooks/useStoryState";
 import mod1Bg from "@/assets/mod1-bg.png";
 import mod2Bg from "@/assets/mod2-bg.png"; 
 import mod3Bg from "@/assets/mod3-bg.png";
@@ -35,11 +39,108 @@ const moduleColorMap = {
 const ModulePage = () => {
   const { moduleId } = useParams<{ moduleId: string }>();
   const module = modules.find((m) => m.id === moduleId);
-  const { isComplete, getModuleProgress } = useProgress();
+  const story = module ? storyBeats[module.id] : undefined;
+  const { isComplete, getModuleProgress, isLoading } = useProgress();
+  const { hasSeen, markSeen, recordChoice } = useStoryState();
+  // Replay state (module already finished, story already watched once): which
+  // half of the arc is currently playing, and whether the player skipped out.
+  // openingShown/closingShown track whether each scene has already played
+  // *during this page visit* — without this, marking a scene seen for the
+  // first time (markSeen) flips hasSeen() reactively mid-visit, which would
+  // otherwise make the replay condition immediately true again and re-show
+  // the same scene the player just finished. All four reset naturally on
+  // remount, i.e. every fresh navigation into the module.
+  const [replayStep, setReplayStep] = useState<"opening" | "closing">(() =>
+    story?.opening ? "opening" : "closing"
+  );
+  const [skipReplay, setSkipReplay] = useState(false);
+  const [openingShown, setOpeningShown] = useState(false);
+  const [closingShown, setClosingShown] = useState(false);
 
   if (!module) return <Navigate to="/" replace />;
 
   const progress = getModuleProgress(module.id, module.subtopics.length);
+
+  // Story scenes — opening plays before any lesson is complete, closing plays
+  // once all are. Both are once-per-user the first time (seen-flags in
+  // user_metadata) and wait for the progress fetch so they don't mis-fire on
+  // stale zeros. After that first time, clicking back into the module always
+  // offers a skippable replay of whatever scene(s) have already unlocked —
+  // this doesn't require the module to be fully complete: if you've only
+  // seen the opening so far, revisiting replays just the opening; once
+  // you've also seen the closing, revisiting replays the full arc.
+  const openingKey = `${module.id}:opening`;
+  const closingKey = `${module.id}:closing`;
+  const moduleComplete = progress.total > 0 && progress.completed === progress.total;
+  const closingBeats: SceneBeat[] = story
+    ? [...(story.closing ?? []), { speaker: "system", text: `ENTRY LOGGED — ${getCaseFileEntry(module.id)}` }]
+    : [];
+  const canReplayOpening = !!story?.opening && hasSeen(openingKey) && !openingShown;
+  const canReplayClosing = !!story && hasSeen(closingKey) && !closingShown;
+
+  if (!isLoading && story?.opening && !hasSeen(openingKey) && progress.completed === 0 && !openingShown) {
+    return (
+      <PageTransition>
+        <SceneRenderer
+          beats={story.opening}
+          onComplete={() => {
+            markSeen(openingKey);
+            setOpeningShown(true);
+          }}
+          onChoice={(choiceId, optionId) => recordChoice(`${module.id}:${choiceId}`, optionId)}
+        />
+      </PageTransition>
+    );
+  }
+
+  if (!isLoading && story && !hasSeen(closingKey) && moduleComplete && !closingShown) {
+    return (
+      <PageTransition>
+        <SceneRenderer
+          beats={closingBeats}
+          onComplete={() => {
+            markSeen(closingKey);
+            setClosingShown(true);
+          }}
+          onChoice={(choiceId, optionId) => recordChoice(`${module.id}:${choiceId}`, optionId)}
+        />
+      </PageTransition>
+    );
+  }
+
+  if (!isLoading && story && (canReplayOpening || canReplayClosing) && !skipReplay) {
+    const replayingOpening = replayStep === "opening" && canReplayOpening;
+    const beats = replayingOpening ? story.opening! : closingBeats;
+    return (
+      <PageTransition>
+        <div className="relative">
+          <button
+            onClick={() => setSkipReplay(true)}
+            className="absolute right-5 top-5 z-10 rounded-full border border-border bg-card/80 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur transition-colors hover:text-foreground"
+          >
+            Skip replay
+          </button>
+          <SceneRenderer
+            beats={beats}
+            onComplete={() => {
+              if (replayingOpening) {
+                setOpeningShown(true);
+                // Only continue into the closing replay if it's actually
+                // unlocked — otherwise this would leak closing/case-file
+                // content for a module that isn't finished yet.
+                if (canReplayClosing) setReplayStep("closing");
+                else setSkipReplay(true);
+              } else {
+                setClosingShown(true);
+                setSkipReplay(true);
+              }
+            }}
+            onChoice={(choiceId, optionId) => recordChoice(`${module.id}:${choiceId}`, optionId)}
+          />
+        </div>
+      </PageTransition>
+    );
+  }
 
   return (
     <PageTransition>

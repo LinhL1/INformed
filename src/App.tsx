@@ -12,6 +12,7 @@ import LessonPage from "./pages/LessonPage";
 import NotFound from "./pages/NotFound";
 import SignIn from "./pages/SignIn";
 import ProfilePage from "./pages/ProfilePage";
+import OnboardingPage from "./pages/OnboardingPage";
 
 function AppShell() {
   const location = useLocation();
@@ -34,9 +35,15 @@ const App = () => (
       <AuthProvider>
         <Routes>
           <Route path="/signin" element={<SignIn />} />
+          {/* Public routes — landing page is accessible without auth */}
+          <Route element={<AppShell />}>
+            <Route path="/" element={<LandingPage />} />
+          </Route>
+          {/* Protected routes — redirect to /signin if not authenticated */}
           <Route element={<ProtectedRoute />}>
+            {/* Full-screen, chromeless (no Header) — like /signin but auth-required */}
+            <Route path="/onboarding" element={<OnboardingPage />} />
             <Route element={<AppShell />}>
-              <Route path="/" element={<LandingPage />} />
               <Route path="/modules" element={<ModulesPage />} />
               <Route path="/module/:moduleId" element={<ModulePage />} />
               <Route path="/module/:moduleId/lesson/:lessonId" element={<LessonPage />} />
