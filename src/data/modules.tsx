@@ -93,9 +93,9 @@ export const modules: Module[] = [
             title: "Threat Classification Drill",
             content: "",
             trueFalseItems: [
-              { statement: "Sharing a rumor you believe is true counts as disinformation.", isTrue: false, explanation: "If you genuinely believe it's true, it's misinformation — the intent to deceive is what makes something disinformation." },
-              { statement: "Malinformation uses real facts but presents them in a misleading way.", isTrue: true, explanation: "Correct — malinformation is true information weaponized or taken out of context to cause harm." },
-              { statement: "Disinformation is always created by foreign governments.", isTrue: false, explanation: "Disinformation can be created by anyone — individuals, groups, companies, or governments — as long as the intent is to deceive." },
+              { statement: "Sharing a rumor you believe is true counts as disinformation.", isTrue: false, explanation: "If you genuinely believe it's true, it's misinformation; the intent to deceive is what makes something disinformation." },
+              { statement: "Malinformation uses real facts but presents them in a misleading way.", isTrue: true, explanation: "Correct: malinformation is true information weaponized or taken out of context to cause harm." },
+              { statement: "Disinformation is always created by foreign governments.", isTrue: false, explanation: "Disinformation can be created by anyone (individuals, groups, companies, or governments) as long as the intent is to deceive." },
               { statement: "A satirical news article shared as real news becomes misinformation.", isTrue: true, explanation: "When satire is shared without context and people believe it's real, it functions as misinformation." },
             ],
           },
@@ -109,7 +109,7 @@ export const modules: Module[] = [
         estimatedMinutes: 10,
         storyBriefing: "Our analysts have detected a new wave of sophisticated attacks. Your standard training isn't enough, you need to develop critical thinking, the mental firewall that protects against manipulation.",
         sections: [
-          { type: "callout", content: "\"The point of modern propaganda isn't only to misinform or push an agenda. It is to exhaust your critical thinking, to annihilate truth.\" — Garry Kasparov" },
+          { type: "callout", content: "\"The point of modern propaganda isn't only to misinform or push an agenda. It is to exhaust your critical thinking, to annihilate truth.\" - Garry Kasparov" },
           { type: "text", title: "Critical thinking...What is it?", content: "Critical thinking is the ability to think clearly and independently." },
           { type: "text", title: "Why It Matters", content: "The danger is heightened by the extinction of local news; as of 2023, daily local newspapers were disappearing at a rate of two per week, leaving over 200 counties with no local news outlets at all. This lack of access, particularly in high-poverty areas, allows nearly 1,300 biased websites to fill the gap by masquerading as local news while pushing specific political agendas." },
           { type: "bullets", title: "It isn't just thinking hard; it is a structured process of:", content: "", items: [
@@ -326,7 +326,7 @@ export const modules: Module[] = [
             scenarioData: {
               situation: "You receive a message from a colleague sharing a link to a story about a major corporation secretly poisoning water supplies. The article looks professional but you've never heard of the website. Your colleague is urging you to share it before 'they take it down.'",
               choices: [
-                { text: "Share it immediately — your colleague is trustworthy", outcome: "Even trustworthy people can be fooled. You've now amplified a story from an unknown source to your entire network without verification.", isOptimal: false },
+                { text: "Share it immediately; your colleague is trustworthy", outcome: "Even trustworthy people can be fooled. You've now amplified a story from an unknown source to your entire network without verification.", isOptimal: false },
                 { text: "Search for the story on established news outlets and fact-checking sites", outcome: "Excellent protocol. You found that no major outlet is reporting this, and a fact-checking site has already debunked the claim as originating from a known disinformation network.", isOptimal: true },
                 { text: "Reply telling your colleague it's obviously fake", outcome: "Without investigating first, you can't be certain. Dismissing without evidence can also damage trust and prevent productive conversations about media literacy.", isOptimal: false },
               ],
@@ -687,7 +687,7 @@ export const modules: Module[] = [
             "title": "Narratives in Action",
             "content": "",
             "scenarioData": {
-              "situation": "You come across a well-produced short video discussing protests in another country. It includes real footage, interviews, and statistics, but frames the situation as either a fight for freedom or evidence of instability—depending on interpretation. The video is shared by an account with unclear affiliations. What do you do?",
+              "situation": "You come across a well-produced short video discussing protests in another country. It includes real footage, interviews, and statistics, but frames the situation as either a fight for freedom or evidence of instability, depending on interpretation. The video is shared by an account with unclear affiliations. What do you do?",
               "choices": [
                 { 
                   "text": "Accept the video’s framing since the footage and data appear real and credible", 
@@ -725,7 +725,7 @@ export const modules: Module[] = [
               { 
                 "statement": "Information warfare can aim to create confusion and distrust rather than persuade people of a single viewpoint.", 
                 "isTrue": true, 
-                "explanation": "Some strategies—like flooding the information space with conflicting claims—are designed to erode trust in objective reality itself." 
+                "explanation": "Some strategies, like flooding the information space with conflicting claims, are designed to erode trust in objective reality itself."
               }
             ]
           },
@@ -784,7 +784,7 @@ export const modules: Module[] = [
                           </a>
                           <br></br>
                            <a href="https://bipartisanpolicy.org/article/coordinated-influence-operations/" target="_blank" rel="noopener noreferrer">
-                          Coordinated Influence Operations—Fear, Uncertainty and Doubt
+                          Coordinated Influence Operations: Fear, Uncertainty and Doubt
 
                           </a>
                         </>
@@ -1342,7 +1342,7 @@ export const modules: Module[] = [
               {
                 statement: "A key factor in deciding whether to engage is whether the misinformation could lead to real-world harm or urgent misunderstanding.",
                 isTrue: true,
-                explanation: "Correct — engagement is recommended when the claim is gaining traction, poses potential harm, or could significantly impact understanding or behavior."
+                explanation: "Correct: engagement is recommended when the claim is gaining traction, poses potential harm, or could significantly impact understanding or behavior."
               },
               {
                 statement: "Effective corrections are most impactful when they repeat the false claim multiple times for clarity.",
@@ -1352,12 +1352,12 @@ export const modules: Module[] = [
               {
                 statement: "Lack of trust in the correction source can reduce or eliminate the effectiveness of a correction.",
                 isTrue: true,
-                explanation: "Correct — trust is a key factor in whether corrections are accepted. Even accurate information may be rejected if the source is not trusted."
+                explanation: "Correct: trust is a key factor in whether corrections are accepted. Even accurate information may be rejected if the source is not trusted."
               },
               {
                 statement: "Individual decisions about sharing, ignoring, or correcting information can contribute to either information stability or system-wide confusion.",
                 isTrue: true,
-                explanation: "Correct — small actions scale. Collective behavior shapes whether the information environment becomes more resilient or more vulnerable to misinformation."
+                explanation: "Correct: small actions scale. Collective behavior shapes whether the information environment becomes more resilient or more vulnerable to misinformation."
               }
             ]
           },

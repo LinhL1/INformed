@@ -7,8 +7,11 @@ import LessonSectionComponent from "@/components/LessonSection";
 import XPNotification from "@/components/XPNotification";
 import LessonPhaseIndicator, { type PhaseType } from "@/components/LessonPhaseIndicator";
 import { modules, type LessonSection } from "@/data/modules";
+import { storyBeats } from "@/data/storyBeats";
 import { useProgress } from "@/hooks/useProgress";
+import { useStoryState } from "@/hooks/useStoryState";
 import { useXP } from "@/hooks/useXP";
+import SceneRenderer from "@/components/story/SceneRenderer";
 import mod1Bg from "@/assets/submod1-bg.png"; 
 import mod2Bg from "@/assets/submod2-bg.png"; 
 import mod3Bg from "@/assets/submod3-bg.png"; 
@@ -117,9 +120,16 @@ const LessonPage = () => {
   const { moduleId, lessonId } = useParams<{ moduleId: string; lessonId: string }>();
   const navigate = useNavigate();
   const { markComplete, isComplete } = useProgress();
+  const { hasSeen, markSeen, recordChoice } = useStoryState();
   const { awardLessonXP, awardQuizXP, awardActivityXP, totalXP, level } = useXP();
   const [xpNotification, setXpNotification] = useState<{ amount: number; message: string } | null>(null);
   const [currentPhaseIndex, setCurrentPhaseIndex] = useState(0);
+  // Pre-lesson scene tracking, same pattern as ModulePage's opening/closing
+  // replay: preLessonShown guards against markSeen flipping hasSeen() mid-visit
+  // and immediately re-triggering the replay branch below; both reset on
+  // remount, i.e. every fresh navigation into the lesson.
+  const [preLessonShown, setPreLessonShown] = useState(false);
+  const [skipStoryReplay, setSkipStoryReplay] = useState(false);
 
   const module = modules.find((m) => m.id === moduleId);
   const subtopicIndex = module ? module.subtopics.findIndex((s) => s.id === lessonId) : -1;
@@ -132,6 +142,48 @@ const LessonPage = () => {
 
   if (!module) return <Navigate to="/" replace />;
   if (!subtopic) return <Navigate to={`/module/${moduleId}`} replace />;
+
+  // Story scene before this lesson's content. First time is forced (no
+  // skip); every visit after that replays it with a skippable button, same
+  // as the module-level opening/closing replay.
+  const preLessonBeats = storyBeats[module.id]?.beforeLesson?.[subtopic.id];
+  const preLessonKey = `${module.id}:before:${subtopic.id}`;
+  const preLessonSeen = hasSeen(preLessonKey);
+
+  if (preLessonBeats && !preLessonSeen && !preLessonShown) {
+    return (
+      <PageTransition>
+        <SceneRenderer
+          beats={preLessonBeats}
+          onComplete={() => {
+            markSeen(preLessonKey);
+            setPreLessonShown(true);
+          }}
+          onChoice={(choiceId, optionId) => recordChoice(`${module.id}:${choiceId}`, optionId)}
+        />
+      </PageTransition>
+    );
+  }
+
+  if (preLessonBeats && preLessonSeen && !preLessonShown && !skipStoryReplay) {
+    return (
+      <PageTransition>
+        <div className="relative">
+          <button
+            onClick={() => setSkipStoryReplay(true)}
+            className="absolute right-5 top-5 z-10 rounded-full border border-border bg-card/80 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur transition-colors hover:text-foreground"
+          >
+            Skip replay
+          </button>
+          <SceneRenderer
+            beats={preLessonBeats}
+            onComplete={() => setPreLessonShown(true)}
+            onChoice={(choiceId, optionId) => recordChoice(`${module.id}:${choiceId}`, optionId)}
+          />
+        </div>
+      </PageTransition>
+    );
+  }
 
   const completed = isComplete(module.id, subtopic.id);
   const nextSubtopic = module.subtopics[subtopicIndex + 1];
@@ -156,13 +208,17 @@ const LessonPage = () => {
     if (xp > 0) showXPNotification(xp, "Activity mastered!");
   };
 
-const handleNext = () => {
+const handleNext = async () => {
   if (isLastPhase) {
     // Complete the lesson
     if (!completed) {
-      markComplete(module.id, subtopic.id);
       const xp = awardLessonXP();
       showXPNotification(xp, "Mission complete!");
+      // Wait for the write to land in Supabase before navigating — the next
+      // page mounts its own useProgress() and re-fetches from scratch, so if
+      // we navigate before this commits, it can read stale (incomplete) data
+      // and the next module won't unlock.
+      await markComplete(module.id, subtopic.id);
     }
     setTimeout(() => {
       const isLastLesson = subtopicIndex === module.subtopics.length - 1;
@@ -313,12 +369,12 @@ const handleNext = () => {
                     index={index}
                     onQuizCorrect={
                       section.type === "quiz"
-                        ? () => handleQuizCorrect(`${module.id}-${subtopic.id}-${currentPhaseIndex}-${index}`)
+                        ? () => handleQuizCorrect(`${module.id}-${subtopic.id}-${section.title || section.type}-${index}`)
                         : undefined
                     }
                     onActivityComplete={
                       ["true-false", "sorting", "fill-blank", "scenario"].includes(section.type)
-                        ? () => handleActivityComplete(`${module.id}-${subtopic.id}-${currentPhaseIndex}-${index}`)
+                        ? () => handleActivityComplete(`${module.id}-${subtopic.id}-${section.title || section.type}-${index}`)
                         : undefined
                     }
                   />

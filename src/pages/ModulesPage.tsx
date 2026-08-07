@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Lock, CheckCircle2, ChevronRight, Star, BookOpen } from "lucide-react";
+import { Lock, CheckCircle2, ChevronRight, Star } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
-import { useXP, getLevel, LEVELS, BADGES, AVATAR_UPGRADES, STORY_UNLOCKS } from "@/hooks/useXP";
+import { useXP, BADGES, AVATAR_UPGRADES } from "@/hooks/useXP";
 import modulesBg from "@/assets/modules-bg.png";
-import welcomeImg from '../assets/welcome.png'
 
 
 
@@ -26,8 +25,6 @@ const ModulesPage = () => {
     const prog = getModuleProgress(mod.id, mod.subtopics.length);
     return prog.completed === prog.total && prog.total > 0;
   };
-
-  const unlockedStory = STORY_UNLOCKS.filter((s) => level.level >= s.level);
 
   return (
     <PageTransition>
@@ -229,7 +226,7 @@ const ModulesPage = () => {
                             {/* Progress */}
                             <div className="pt-2 space-y-1.5">
                               <div className="flex items-center justify-between text-xs text-muted-foreground">
-                                <span><h1>{module.subtopics.length} missions</h1></span>
+                                <span>{module.subtopics.length} missions</span>
                                 <span>{progress.percent}%</span>
                               </div>
                               <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">

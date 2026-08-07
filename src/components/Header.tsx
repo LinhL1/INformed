@@ -1,7 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowLeft, Sun, Moon, Radio } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useState, useRef, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, Radio, LogOut, User } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 const tickerItems = [
   "False information spreads faster, farther, and more broadly than true information",
@@ -11,9 +12,25 @@ const tickerItems = [
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === "/";
   const isModules = location.pathname === "/modules";
-  const { theme, setTheme } = useTheme();
+  const { signOut, user } = useAuth();
+  const [profileOpen, setProfileOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const emailInitial = (user?.email?.[0] ?? "?").toUpperCase();
+
+  useEffect(() => {
+    if (!profileOpen) return;
+    const onMouseDown = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setProfileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onMouseDown);
+    return () => document.removeEventListener("mousedown", onMouseDown);
+  }, [profileOpen]);
 
   const getBackPath = () => {
     if (location.pathname.includes("/lesson/")) {
@@ -25,13 +42,19 @@ const Header = () => {
     return "/";
   };
 
+  const handleSignOut = async () => {
+    setProfileOpen(false);
+    await signOut();
+    navigate("/signin");
+  };
+
   const items = [...tickerItems, ...tickerItems];
   const duration = tickerItems.length * 7;
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Ticker + theme toggle row */}
-      <div className="relative flex h-11 items-center overflow-hidden border-b border-border bg-accent/10 backdrop-blur-md">
+      {/* Ticker + profile row */}
+      <div className="relative flex h-11 items-center border-b border-border bg-accent/10 backdrop-blur-md">
 
         {/* DID YOU KNOW label */}
         <div className="relative z-10 flex shrink-0 items-center gap-2 border-r border-border bg-accent px-4 h-full">
@@ -41,7 +64,7 @@ const Header = () => {
           </span>
         </div>
 
-        {/* Scrolling track — fade-out on right before the button */}
+        {/* Scrolling track */}
         <div className="flex-1 overflow-hidden">
           <motion.div
             className="flex items-center whitespace-nowrap"
@@ -57,23 +80,71 @@ const Header = () => {
           </motion.div>
         </div>
 
-        {/* Right-edge fade overlay so text disappears cleanly before the button */}
+        {/* Right-edge fade overlay */}
         <div className="pointer-events-none absolute top-0 h-full w-16 bg-gradient-to-r from-transparent to-background/60" />
 
-        {/* Theme toggle — pinned to far right
-        <div className="relative z-10 shrink-0 border-l border-border bg-background/80 px-3 h-full flex items-center">
-          <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="flex h-7 w-7 items-center justify-center rounded-full border border-border bg-secondary text-muted-foreground transition-colors hover:text-foreground hover:bg-muted"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
-          </motion.button>
-        </div> */}
+        {/* Profile button (authenticated) or Sign in link (unauthenticated) */}
+        <div ref={menuRef} className="relative z-10 shrink-0 border-l border-border bg-background/80 px-3 h-full flex items-center">
+          {user ? (
+            <>
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setProfileOpen(v => !v)}
+                aria-label="Profile menu"
+                aria-expanded={profileOpen}
+                className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-[11px] font-bold text-accent-foreground hover:opacity-80 transition-opacity"
+              >
+                {emailInitial}
+              </motion.button>
+
+              <AnimatePresence>
+                {profileOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
+                    className="absolute right-0 top-full mt-2 w-56 rounded-lg border border-border bg-card shadow-lg overflow-hidden"
+                  >
+                    <div className="px-4 py-3 border-b border-border">
+                      <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                        Signed in as
+                      </p>
+                      <p className="mt-0.5 text-sm font-medium text-foreground truncate">
+                        {user.email}
+                      </p>
+                    </div>
+                    <Link
+                      to="/profile"
+                      onClick={() => setProfileOpen(false)}
+                      className="flex w-full items-center gap-2.5 px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                    >
+                      <User className="h-3.5 w-3.5" />
+                      View profile
+                    </Link>
+                    <button
+                      onClick={handleSignOut}
+                      className="flex w-full items-center gap-2.5 px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                    >
+                      <LogOut className="h-3.5 w-3.5" />
+                      Sign out
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </>
+          ) : (
+            <Link
+              to="/signin"
+              className="text-xs font-semibold text-accent hover:opacity-80 transition-opacity px-1"
+            >
+              Sign in
+            </Link>
+          )}
+        </div>
       </div>
 
-      {/* Back nav — only shown on inner pages, slim */}
+      {/* Back nav — only shown on inner pages */}
       {!isHome && !isModules && (
         <div className="border-b border-border bg-background/80 backdrop-blur-md">
           <div className="mx-auto flex h-12 max-w-3xl items-center px-4">

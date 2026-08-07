@@ -1,10 +1,10 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/context/AuthContext";
 import avatar1 from "@/assets/avatars/1.png";
 import avatar2 from "@/assets/avatars/2.png";
 import avatar3 from "@/assets/avatars/3.png";
 import avatar4 from "@/assets/avatars/4.png";
-import avatar5 from "@/assets/avatars/5.png";
-import avatar6 from "@/assets/avatars/6.png";
 
 export interface Badge {
   id: string;
@@ -35,12 +35,9 @@ export interface XPState {
   activityBonuses: { [key: string]: boolean };
 }
 
-const STORAGE_KEY = "ms-informed-xp";
-
 const XP_PER_LESSON = 25;
 const XP_PER_QUIZ_CORRECT = 15;
 const XP_PER_ACTIVITY = 20;
-const XP_PER_MODULE_COMPLETE = 50;
 
 
 export const LEVELS = [
@@ -53,134 +50,121 @@ export const LEVELS = [
 ];
 
 export const AVATAR_UPGRADES: AvatarUpgrade[] = [
-  { 
-    level: 1, 
-    name: "Junior Analyst Badge", 
-    avatar: avatar1, 
-    description: "Fresh out of university, you’ve been flagged for your potential. Your first assignment begins." 
+  {
+    level: 1,
+    name: "Junior Analyst Badge",
+    avatar: avatar1,
+    description: "Fresh out of university, you've been flagged for your potential. Your first assignment begins."
   },
-  { 
-    level: 2, 
-    name: "Signal Tracker", 
-    avatar: avatar2, 
-    description: "You start noticing subtle patterns across platforms—small signals most would ignore." 
+  {
+    level: 2,
+    name: "Signal Tracker",
+    avatar: avatar2,
+    description: "You start noticing subtle patterns across platforms—small signals most would ignore."
   },
-  { 
-    level: 3, 
-    name: "Pattern Mapper", 
-    avatar: avatar3, 
-    description: "Connections emerge. What once looked random now reveals coordinated behavior." 
+  {
+    level: 3,
+    name: "Pattern Mapper",
+    avatar: avatar3,
+    description: "Connections emerge. What once looked random now reveals coordinated behavior."
   },
-  { 
-    level: 4, 
-    name: "Narrative Analyst", 
-    avatar: avatar4, 
-    description: "You begin to understand how stories are shaped, amplified, and weaponized." 
+  {
+    level: 4,
+    name: "Narrative Analyst",
+    avatar: avatar4,
+    description: "You begin to understand how stories are shaped, amplified, and weaponized."
   },
-  // { 
-  //   level: 5, 
-  //   name: "Cognitive Defender", 
-  //   avatar: avatar5, 
-  //   description: "You recognize the real target isn’t systems—it’s people. You work to protect how they think." 
+  // {
+  //   level: 5,
+  //   name: "Cognitive Defender",
+  //   avatar: avatar5,
+  //   description: "You recognize the real target isn't systems—it's people. You work to protect how they think."
   // },
-  // { 
-  //   level: 6, 
-  //   name: "INformed Operative", 
-  //   avatar: avatar6, 
-  //   description: "You see the bigger picture. Not just content, but influence. Not just posts, but impact." 
+  // {
+  //   level: 6,
+  //   name: "INformed Operative",
+  //   avatar: avatar6,
+  //   description: "You see the bigger picture. Not just content, but influence. Not just posts, but impact."
   // },
 ];
 
 export const STORY_UNLOCKS: StoryUnlock[] = [
-  { 
-    level: 2, 
-    title: "Internal Memo: Why You Were Flagged", 
-    icon: "📁", 
-    content: "You weren’t recruited by accident. A professor flagged your work—pattern recognition, skepticism, curiosity. Traits that are becoming harder to find, and more valuable." 
+  {
+    level: 2,
+    title: "Internal Memo: Why You Were Flagged",
+    icon: "📁",
+    content: "You weren't recruited by accident. A professor flagged your work—pattern recognition, skepticism, curiosity. Traits that are becoming harder to find, and more valuable."
   },
-  { 
-    level: 3, 
-    title: "Briefing Note: Early Signals", 
-    icon: "🧠", 
-    content: "Individually, the posts seem harmless. A headline here, a comment there. But across platforms, the same narratives begin to repeat—slightly altered, optimized for engagement." 
+  {
+    level: 3,
+    title: "Briefing Note: Early Signals",
+    icon: "🧠",
+    content: "Individually, the posts seem harmless. A headline here, a comment there. But across platforms, the same narratives begin to repeat—slightly altered, optimized for engagement."
   },
-  { 
-    level: 4, 
-    title: "Intel Summary: Coordinated Behavior", 
-    icon: "🌐", 
-    content: "Analysis suggests these patterns are not organic. Networks of accounts—some human, some automated—are amplifying the same ideas across multiple communities." 
+  {
+    level: 4,
+    title: "Intel Summary: Coordinated Behavior",
+    icon: "🌐",
+    content: "Analysis suggests these patterns are not organic. Networks of accounts—some human, some automated—are amplifying the same ideas across multiple communities."
   },
-  // { 
-  //   level: 5, 
-  //   title: "Restricted File: Narrative Engineering", 
-  //   icon: "🔍", 
-  //   content: "The objective isn’t to convince—it’s to overwhelm. Repetition builds familiarity. Familiarity builds belief. Over time, trust erodes—not in one source, but in everything." 
+  // {
+  //   level: 5,
+  //   title: "Restricted File: Narrative Engineering",
+  //   icon: "🔍",
+  //   content: "The objective isn't to convince—it's to overwhelm. Repetition builds familiarity. Familiarity builds belief. Over time, trust erodes—not in one source, but in everything."
   // },
-  // { 
-  //   level: 6, 
-  //   title: "Final Briefing: The Real Target", 
-  //   icon: "📜", 
-  //   content: "These operations don’t target systems or servers. They target perception. What people believe, what they doubt, and how they decide what’s true. That’s where the real impact is." 
+  // {
+  //   level: 6,
+  //   title: "Final Briefing: The Real Target",
+  //   icon: "📜",
+  //   content: "These operations don't target systems or servers. They target perception. What people believe, what they doubt, and how they decide what's true. That's where the real impact is."
   // },
 ];
 
 export const BADGES: Badge[] = [
-  { 
-    id: "first-pattern", 
-    title: "First Pattern", 
-    icon: "🔎", 
-    description: "Complete your first lesson and identify a misleading signal", 
-    requiredLevel: 1 
+  {
+    id: "first-pattern",
+    title: "First Pattern",
+    icon: "🔎",
+    description: "Complete your first lesson and identify a misleading signal",
+    requiredLevel: 1
   },
-  { 
-    id: "signal-spotter", 
-    title: "Signal Spotter", 
-    icon: "👁️", 
-    description: "Correctly identify 3 misleading cues on the first attempt", 
-    requiredLevel: 2 
+  {
+    id: "signal-spotter",
+    title: "Signal Spotter",
+    icon: "👁️",
+    description: "Correctly identify 3 misleading cues on the first attempt",
+    requiredLevel: 2
   },
-  { 
-    id: "context-builder", 
-    title: "Context Builder", 
-    icon: "🧩", 
-    description: "Recognize how information changes meaning across contexts", 
-    requiredLevel: 3 
+  {
+    id: "context-builder",
+    title: "Context Builder",
+    icon: "🧩",
+    description: "Recognize how information changes meaning across contexts",
+    requiredLevel: 3
   },
-  { 
-    id: "narrative-breaker", 
-    title: "Narrative Breaker", 
-    icon: "🔦", 
-    description: "Identify repeated narratives across multiple scenarios", 
-    requiredLevel: 4 
+  {
+    id: "narrative-breaker",
+    title: "Narrative Breaker",
+    icon: "🔦",
+    description: "Identify repeated narratives across multiple scenarios",
+    requiredLevel: 4
   },
-  // { 
-  //   id: "cognitive-guard", 
-  //   title: "Cognitive Guard", 
-  //   icon: "🛡️", 
-  //   description: "Consistently detect manipulation without relying on obvious signals", 
-  //   requiredLevel: 5 
+  // {
+  //   id: "cognitive-guard",
+  //   title: "Cognitive Guard",
+  //   icon: "🛡️",
+  //   description: "Consistently detect manipulation without relying on obvious signals",
+  //   requiredLevel: 5
   // },
-  // { 
-  //   id: "pattern-analyst", 
-  //   title: "Pattern Analyst", 
-  //   icon: "📊", 
-  //   description: "Demonstrate mastery in recognizing coordinated information patterns", 
-  //   requiredLevel: 6 
+  // {
+  //   id: "pattern-analyst",
+  //   title: "Pattern Analyst",
+  //   icon: "📊",
+  //   description: "Demonstrate mastery in recognizing coordinated information patterns",
+  //   requiredLevel: 6
   // },
 ];
-
-function loadXP(): XPState {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : { totalXP: 0, earnedBadges: [], quizBonuses: {}, activityBonuses: {} };
-  } catch {
-    return { totalXP: 0, earnedBadges: [], quizBonuses: {}, activityBonuses: {} };
-  }
-}
-
-function saveXP(state: XPState) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
 
 export function getLevel(xp: number) {
   let current = LEVELS[0];
@@ -196,78 +180,131 @@ export function getLevel(xp: number) {
 }
 
 export function useXP() {
-  const [state, setState] = useState<XPState>(loadXP);
+  const { user } = useAuth();
+  const [state, setState] = useState<XPState>({
+    totalXP: 0,
+    earnedBadges: [],
+    quizBonuses: {},
+    activityBonuses: {},
+  });
 
-  const addXP = useCallback((amount: number): number => {
-    let gained = amount;
-    setState((prev) => {
-      const next = { ...prev, totalXP: prev.totalXP + amount };
-      const level = getLevel(next.totalXP);
-      const newBadges = BADGES.filter(
-        (b) => level.level >= b.requiredLevel && !prev.earnedBadges.includes(b.id)
+  useEffect(() => {
+    if (!user) {
+      setState({ totalXP: 0, earnedBadges: [], quizBonuses: {}, activityBonuses: {} });
+      return;
+    }
+    supabase
+      .from("user_xp")
+      .select("total_xp, earned_badges, quiz_bonuses, activity_bonuses")
+      .eq("user_id", user.id)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data) {
+          setState({
+            totalXP: data.total_xp ?? 0,
+            earnedBadges: data.earned_badges ?? [],
+            quizBonuses: Object.fromEntries(
+              (data.quiz_bonuses ?? []).map((k: string) => [k, true as const])
+            ),
+            activityBonuses: Object.fromEntries(
+              (data.activity_bonuses ?? []).map((k: string) => [k, true as const])
+            ),
+          });
+        } else {
+          void supabase.from("user_xp").insert({ user_id: user.id });
+        }
+      });
+  }, [user?.id]);
+
+  const syncToSupabase = useCallback(
+    (next: XPState) => {
+      if (!user) return;
+      void supabase.from("user_xp").upsert(
+        {
+          user_id: user.id,
+          total_xp: next.totalXP,
+          earned_badges: next.earnedBadges,
+          quiz_bonuses: Object.keys(next.quizBonuses),
+          activity_bonuses: Object.keys(next.activityBonuses),
+        },
+        { onConflict: "user_id" }
       );
-      if (newBadges.length > 0) {
-        next.earnedBadges = [...prev.earnedBadges, ...newBadges.map((b) => b.id)];
-      }
-      saveXP(next);
-      return next;
-    });
-    return gained;
-  }, []);
+    },
+    [user]
+  );
 
-  const awardLessonXP = useCallback(() => {
-    return addXP(XP_PER_LESSON);
-  }, [addXP]);
+  const addXP = useCallback(
+    (amount: number): number => {
+      setState((prev) => {
+        const next = { ...prev, totalXP: prev.totalXP + amount };
+        const level = getLevel(next.totalXP);
+        const newBadges = BADGES.filter(
+          (b) => level.level >= b.requiredLevel && !prev.earnedBadges.includes(b.id)
+        );
+        if (newBadges.length > 0) {
+          next.earnedBadges = [...prev.earnedBadges, ...newBadges.map((b) => b.id)];
+        }
+        syncToSupabase(next);
+        return next;
+      });
+      return amount;
+    },
+    [syncToSupabase]
+  );
 
-  const awardQuizXP = useCallback((quizKey: string) => {
-    let gained = 0;
-    setState((prev) => {
-      if (prev.quizBonuses[quizKey]) return prev;
-      gained = XP_PER_QUIZ_CORRECT;
-      const next = {
-        ...prev,
-        totalXP: prev.totalXP + XP_PER_QUIZ_CORRECT,
-        quizBonuses: { ...prev.quizBonuses, [quizKey]: true },
-      };
-      const level = getLevel(next.totalXP);
-      const newBadges = BADGES.filter(
-        (b) => level.level >= b.requiredLevel && !prev.earnedBadges.includes(b.id)
-      );
-      if (newBadges.length > 0) {
-        next.earnedBadges = [...prev.earnedBadges, ...newBadges.map((b) => b.id)];
-      }
-      saveXP(next);
-      return next;
-    });
-    return gained;
-  }, []);
+  const awardLessonXP = useCallback(() => addXP(XP_PER_LESSON), [addXP]);
 
-  const awardActivityXP = useCallback((activityKey: string) => {
-    let gained = 0;
-    setState((prev) => {
-      if (prev.activityBonuses?.[activityKey]) return prev;
-      gained = XP_PER_ACTIVITY;
-      const next = {
-        ...prev,
-        totalXP: prev.totalXP + XP_PER_ACTIVITY,
-        activityBonuses: { ...prev.activityBonuses, [activityKey]: true },
-      };
-      const level = getLevel(next.totalXP);
-      const newBadges = BADGES.filter(
-        (b) => level.level >= b.requiredLevel && !prev.earnedBadges.includes(b.id)
-      );
-      if (newBadges.length > 0) {
-        next.earnedBadges = [...prev.earnedBadges, ...newBadges.map((b) => b.id)];
-      }
-      saveXP(next);
-      return next;
-    });
-    return gained;
-  }, []);
+  const awardQuizXP = useCallback(
+    (quizKey: string) => {
+      let gained = 0;
+      setState((prev) => {
+        if (prev.quizBonuses[quizKey]) return prev;
+        gained = XP_PER_QUIZ_CORRECT;
+        const next = {
+          ...prev,
+          totalXP: prev.totalXP + XP_PER_QUIZ_CORRECT,
+          quizBonuses: { ...prev.quizBonuses, [quizKey]: true },
+        };
+        const level = getLevel(next.totalXP);
+        const newBadges = BADGES.filter(
+          (b) => level.level >= b.requiredLevel && !prev.earnedBadges.includes(b.id)
+        );
+        if (newBadges.length > 0) {
+          next.earnedBadges = [...prev.earnedBadges, ...newBadges.map((b) => b.id)];
+        }
+        syncToSupabase(next);
+        return next;
+      });
+      return gained;
+    },
+    [syncToSupabase]
+  );
 
-  const awardModuleCompleteXP = useCallback(() => {
-    return addXP(XP_PER_MODULE_COMPLETE);
-  }, [addXP]);
+  const awardActivityXP = useCallback(
+    (activityKey: string) => {
+      let gained = 0;
+      setState((prev) => {
+        if (prev.activityBonuses?.[activityKey]) return prev;
+        gained = XP_PER_ACTIVITY;
+        const next = {
+          ...prev,
+          totalXP: prev.totalXP + XP_PER_ACTIVITY,
+          activityBonuses: { ...prev.activityBonuses, [activityKey]: true },
+        };
+        const level = getLevel(next.totalXP);
+        const newBadges = BADGES.filter(
+          (b) => level.level >= b.requiredLevel && !prev.earnedBadges.includes(b.id)
+        );
+        if (newBadges.length > 0) {
+          next.earnedBadges = [...prev.earnedBadges, ...newBadges.map((b) => b.id)];
+        }
+        syncToSupabase(next);
+        return next;
+      });
+      return gained;
+    },
+    [syncToSupabase]
+  );
 
   const level = getLevel(state.totalXP);
 
@@ -278,7 +315,6 @@ export function useXP() {
     awardLessonXP,
     awardQuizXP,
     awardActivityXP,
-    awardModuleCompleteXP,
     addXP,
   };
 }
