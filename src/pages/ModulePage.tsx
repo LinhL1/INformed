@@ -50,9 +50,17 @@ const ModulePage = () => {
   // otherwise make the replay condition immediately true again and re-show
   // the same scene the player just finished. All four reset naturally on
   // remount, i.e. every fresh navigation into the module.
-  const [replayStep, setReplayStep] = useState<"opening" | "closing">(() =>
-    story?.opening ? "opening" : "closing"
-  );
+  //
+  // Default step prefers closing over opening whenever closing has already
+  // been seen: a returning visitor to a finished module wants the current
+  // state of the case, not the intro replayed first. Previously this always
+  // started at "opening" whenever one existed, which meant "Skip replay"
+  // (a single button, exits the whole replay) aborted before the closing
+  // ever played — closing effectively never showed for a finished module.
+  const [replayStep, setReplayStep] = useState<"opening" | "closing">(() => {
+    if (story?.closing && module && hasSeen(`${module.id}:closing`)) return "closing";
+    return story?.opening ? "opening" : "closing";
+  });
   const [skipReplay, setSkipReplay] = useState(false);
   const [openingShown, setOpeningShown] = useState(false);
   const [closingShown, setClosingShown] = useState(false);
@@ -66,9 +74,10 @@ const ModulePage = () => {
   // user_metadata) and wait for the progress fetch so they don't mis-fire on
   // stale zeros. After that first time, clicking back into the module always
   // offers a skippable replay of whatever scene(s) have already unlocked —
-  // this doesn't require the module to be fully complete: if you've only
-  // seen the opening so far, revisiting replays just the opening; once
-  // you've also seen the closing, revisiting replays the full arc.
+  // this doesn't require the module to be fully complete. If the closing has
+  // already been seen, revisiting replays just the closing (see replayStep
+  // above); if only the opening has been seen so far, revisiting replays
+  // just the opening.
   const openingKey = `${module.id}:opening`;
   const closingKey = `${module.id}:closing`;
   const moduleComplete = progress.total > 0 && progress.completed === progress.total;

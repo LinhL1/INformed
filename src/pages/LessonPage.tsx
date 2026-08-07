@@ -124,6 +124,12 @@ const LessonPage = () => {
   const { awardLessonXP, awardQuizXP, awardActivityXP, totalXP, level } = useXP();
   const [xpNotification, setXpNotification] = useState<{ amount: number; message: string } | null>(null);
   const [currentPhaseIndex, setCurrentPhaseIndex] = useState(0);
+  // Pre-lesson scene tracking, same pattern as ModulePage's opening/closing
+  // replay: preLessonShown guards against markSeen flipping hasSeen() mid-visit
+  // and immediately re-triggering the replay branch below; both reset on
+  // remount, i.e. every fresh navigation into the lesson.
+  const [preLessonShown, setPreLessonShown] = useState(false);
+  const [skipStoryReplay, setSkipStoryReplay] = useState(false);
 
   const module = modules.find((m) => m.id === moduleId);
   const subtopicIndex = module ? module.subtopics.findIndex((s) => s.id === lessonId) : -1;
@@ -137,17 +143,44 @@ const LessonPage = () => {
   if (!module) return <Navigate to="/" replace />;
   if (!subtopic) return <Navigate to={`/module/${moduleId}`} replace />;
 
-  // Story scene before this lesson's content, played once per user
+  // Story scene before this lesson's content. First time is forced (no
+  // skip); every visit after that replays it with a skippable button, same
+  // as the module-level opening/closing replay.
   const preLessonBeats = storyBeats[module.id]?.beforeLesson?.[subtopic.id];
   const preLessonKey = `${module.id}:before:${subtopic.id}`;
-  if (preLessonBeats && !hasSeen(preLessonKey)) {
+  const preLessonSeen = hasSeen(preLessonKey);
+
+  if (preLessonBeats && !preLessonSeen && !preLessonShown) {
     return (
       <PageTransition>
         <SceneRenderer
           beats={preLessonBeats}
-          onComplete={() => markSeen(preLessonKey)}
+          onComplete={() => {
+            markSeen(preLessonKey);
+            setPreLessonShown(true);
+          }}
           onChoice={(choiceId, optionId) => recordChoice(`${module.id}:${choiceId}`, optionId)}
         />
+      </PageTransition>
+    );
+  }
+
+  if (preLessonBeats && preLessonSeen && !preLessonShown && !skipStoryReplay) {
+    return (
+      <PageTransition>
+        <div className="relative">
+          <button
+            onClick={() => setSkipStoryReplay(true)}
+            className="absolute right-5 top-5 z-10 rounded-full border border-border bg-card/80 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur transition-colors hover:text-foreground"
+          >
+            Skip replay
+          </button>
+          <SceneRenderer
+            beats={preLessonBeats}
+            onComplete={() => setPreLessonShown(true)}
+            onChoice={(choiceId, optionId) => recordChoice(`${module.id}:${choiceId}`, optionId)}
+          />
+        </div>
       </PageTransition>
     );
   }

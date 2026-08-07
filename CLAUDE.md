@@ -73,8 +73,8 @@ separate from `modules.tsx` (which was not modified). A `ModuleStory` has three
 optional scene positions:
 
 - `opening` — plays on `ModulePage` when 0 lessons complete and unseen.
-- `beforeLesson[subtopicId]` — plays on first entry to that lesson in `LessonPage`,
-  before the lesson content.
+- `beforeLesson[subtopicId]` — plays on entry to that lesson in `LessonPage`, before
+  the lesson content.
 - `closing` — plays on `ModulePage` when all lessons complete and unseen; an
   `ENTRY LOGGED` system beat is always appended (see case-file entries below).
 
@@ -83,10 +83,67 @@ terminal card, `"vale"`/`"player"` = dialogue (registry: `CHARACTERS`). **Choice
 never gate progress**: every option's `response` beats splice in and converge on the
 same next beat; the picked option id is recorded for flavor callbacks only.
 
+**Seen-once vs. replay:** every scene position (`opening`, `closing`,
+`beforeLesson[subtopicId]`) is forced and unskippable exactly once per user (tracked
+by `story_seen`, see Persistence below). Every visit after that first time, the scene
+plays again automatically but with a "Skip replay" button in the corner — same
+grammar as the onboarding sequence's "Skip intro." This applies independently per
+scene key: e.g. revisiting a module you've only seen the opening of (not yet
+finished) replays just the opening; once you've also seen the closing, revisiting
+replays just the closing — `ModulePage`'s `replayStep` defaults to `"closing"`
+whenever `hasSeen(closingKey)` is already true, specifically so a returning visitor
+to a finished module lands on the current state of the case, not the intro (fixed
+2026-08-07: it previously always defaulted to `"opening"`, so the single "Skip
+replay" button — which exits the whole replay, not just the current scene — could
+abort before the closing ever played; effectively the closing never showed for a
+finished module). `LessonPage` mirrors this same forced-then-skippable-replay shape
+for `beforeLesson` (`preLessonShown`/`skipStoryReplay`) but only ever has one scene
+per key, so it isn't exposed to this ordering bug. Both pages track an in-visit
+"shown" boolean alongside `hasSeen()` — needed because `markSeen` flips `hasSeen()`
+reactively mid-visit, which would otherwise immediately satisfy the replay condition
+again and re-show the scene the player just finished; it resets naturally on remount
+(every fresh navigation into the page).
+
 **Component:** `src/components/story/SceneRenderer.tsx` — plays beats click-by-click
 (same interaction grammar as onboarding; reuses `PulsingCue`). Used in exactly two
 places: `ModulePage` (opening/closing) and `LessonPage` (beforeLesson), both as
 early-return full screens ahead of normal page content.
+
+**Layout & styling:** everything renders inside `DesktopFrame` (`shared.tsx`) — the
+title-bar-and-surface "monitor" chrome shared with onboarding. `SceneRenderer` itself
+only decides *which* beat variant to render inside that frame; each variant is a
+self-contained block gated by `beat.speaker` / `beat.choice` / `beat.notifications`,
+so a styling change to one variant (e.g. dialogue text size) can't leak into the
+others:
+
+- No `speaker` → centered italic narration.
+- `speaker: "system"` → bordered/tinted card, "Signal Desk" label + body.
+- `speaker: "vale" | "player"` → left-aligned label (name via `CHARACTERS`, color
+  distinguishes Vale from the player) + larger body text.
+- `beat.choice` (while unanswered) → pill buttons, `flex flex-wrap`. Row alignment
+  is `justify-start` (left-aligned); switch to `justify-center`/`justify-end` here
+  to change it globally, since every choice beat renders through this one block.
+- `beat.notifications` (while unanswered) → prompt line, then the notification
+  stack. Stack alignment is controlled by the wrapping `<div className="flex
+  flex-col items-start gap-2 pt-2">` around line 181 — `items-start` is the
+  left-align; `pt-2` is the breathing room below the prompt line. The individual
+  popup look (icon dot, app label, headline, detail, shake animation, flagged vs.
+  neutral tone color) lives in `NotificationPopup` (`shared.tsx`), not here — restyle
+  the card itself there, restyle its position/alignment/spacing on the page here.
+
+Each beat gets a fresh top-level `motion.div` keyed by `index` inside
+`AnimatePresence mode="wait"`, so the fade/slide transition between beats is a
+single shared setting (`initial`/`animate`/`exit`/`transition` on that wrapper,
+~line 97) rather than something each variant reimplements. `PulsingCue` (also
+`shared.tsx`) is the only element outside `DesktopFrame`, shown whenever the beat
+isn't blocking on a choice/notification pick.
+
+**To adjust spacing/alignment/typography across all scenes:** edit the relevant
+variant block in `SceneRenderer.tsx` (it's the single render path for every module's
+beats — no per-module or per-scene style overrides exist). **To adjust the shared
+chrome** (frame border/shadow, notification card shape, pulsing cue, stagger/typewriter
+text effects): edit `shared.tsx`, which is also consumed by the onboarding screens, so
+check both call sites before changing shared component internals.
 
 **Persistence:** `src/hooks/useStoryState.ts` — seen-flags (`story_seen`) and choice
 records (`story_choices`) in auth `user_metadata`, same pattern and rationale as
@@ -109,18 +166,36 @@ beat of closing scenes; surfacing them in a persistent case-file UI is deferred 
 | visual-deception (3) | Approved draft — **revisit after the rev-img lesson's content fix** (its body copy is currently URL-literacy text pasted under a reverse-image-search heading) |
 | national-security (4) | Approved draft — election beat (`misinfo-demo`) is deliberately joke-free; keep it that way |
 | social-media (5) | Approved draft |
-| digital-forensics (6) | Approved draft — ending is deliberately unresolved (origin logged UNVERIFIABLE, per the module's own "know when to stop" lesson) |
+| digital-forensics (6) | Approved draft — ending resolves with attribution (updated 2026-08-07, see below) |
 
 **Throughline (Modules 2–6):** the 3,400-share post from onboarding/Module 1 is a
-photo of brown tap water captioned "THEY KNOW. They're just not telling you." Each
-module advances the case using that module's actual lesson mechanics: M2 traces it to
-a five-week-old ad-mill "news" site via lateral reading; M3 reverse-image-searches
-the photo to a 2019 hydrant flush in another state; M4 reveals coordinated
-amplification (41 accounts, six-minute window) and the narrative migrating to
-institutional distrust; M5 shows the debunk losing to echo chambers and engagement
-mechanics; M6 runs the full verification workflow, hits a dead end (deleted account
-past log retention), and closes with a response memo instead of an attribution.
-Known resonance: M6's real lesson scenario is also a water-supply panic — intentional.
+dramatic photo of a power substation lit up by a bright electrical explosion against
+the night sky, captioned "THEY'RE CALLING IT 'MAINTENANCE.' IT WAS A HACK." — claiming
+a cyberattack disabled the grid and the utility is covering it up (swapped from an
+earlier brown-tap-water-conspiracy
+version on 2026-08-07 — author wanted the throughline more national-security-flavored;
+Module 1's separate reservoir-drone case, see below, was intentionally left
+unchanged). Each module advances the case using that module's actual lesson
+mechanics: M2 traces it to a five-week-old ad-mill "news" site (`PowerGridWatch.net`)
+via lateral reading; M3 reverse-image-searches the photo to a 2019 equipment fault
+(wildlife contact) in another state; M4 reveals coordinated amplification (41
+accounts, six-minute window) and the narrative migrating to institutional distrust;
+M5 shows the debunk losing to echo chambers and engagement mechanics; M6 runs the
+full verification workflow — the original account's trail is a genuine dead end
+(deleted, past log retention), but a stylometric match on a still-active account from
+M4's coordinated cluster leads to the registrant behind `PowerGridWatch.net`: "Lakeshore
+Digital Media," a small paid engagement-farming operation running a standing campaign
+(twelve manufactured "crises" logged this year), not a hacker or state actor (updated
+2026-08-07 — a fully unresolved ending read as unsatisfying; keeps the tone bible's
+"boring reveal" instinct by making the attribution mundane/commercial rather than
+dramatic). The response stays proportionate: correction issued publicly, attribution
+filed privately with the platform, no public naming — Vale's reasoning is that naming
+them publicly would just hand them a bigger post than the one that started the case.
+**The case file doesn't close** (revised same day — a flat "case closed" undercut the
+campaign reveal): status ends on `WATCHLIST — ACTIVE`, registrant flagged so a future
+post from the same operation surfaces immediately. Explicitly contrasted against
+Module 1's drone case in Vale's closing line, which *is* actually finished — this one
+is "a different kind of done."
 
 **Cast:** Vale, the player, and narration/system only. **Priya is permanently out of
 the plot** (author decision, twice confirmed) — do not reintroduce her or invent

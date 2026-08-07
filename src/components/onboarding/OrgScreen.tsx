@@ -33,10 +33,9 @@ export default function OrgScreen() {
         lines={[
           <>Welcome to the Desk. I&rsquo;m {MENTOR_NAME}.</>,
           <>
-            You&rsquo;re not here to catch liars — you&rsquo;re here to{" "}
+            You&rsquo;re not here to catch liars, you&rsquo;re here to{" "}
             <span className="text-accent">see clearly</span>.
           </>,
-          <span className="text-muted-foreground">That&rsquo;s harder than it sounds.</span>,
         ]}
       />
     </div>

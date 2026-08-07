@@ -139,7 +139,7 @@ export default function SceneRenderer({ beats, onComplete, onChoice }: SceneRend
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.4 }}
-                className="mt-8 flex flex-wrap justify-center gap-3"
+                className="mt-8 flex flex-wrap justify-start gap-3"
               >
                 {beat.choice.options.map((option) => (
                   <button
@@ -178,7 +178,7 @@ export default function SceneRenderer({ beats, onComplete, onChoice }: SceneRend
                     {missFlash ?? beat.notifications.prompt}
                   </motion.p>
                 </AnimatePresence>
-                <div className="flex flex-col items-center gap-2 sm:items-end">
+                <div className="flex flex-col items-start gap-2 pt-2">
                   <AnimatePresence>
                     {visibleNotifications.map((item, i) => (
                       <div key={item.id} className="w-full max-w-xs">

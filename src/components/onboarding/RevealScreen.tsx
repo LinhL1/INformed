@@ -13,7 +13,7 @@ const FEED = [
 export default function RevealScreen() {
   return (
     <DesktopFrame>
-      <div className="flex h-full min-h-[26rem] flex-col items-center justify-between gap-6 sm:items-end">
+      <div className="flex h-full min-h-[26rem] flex-col items-center justify-between gap-6 sm:items-start">
         <div className="flex w-full max-w-xs flex-col gap-2">
           {FEED.map((alert) => (
             <AlertCard key={alert.headline} {...alert} />
@@ -23,7 +23,7 @@ export default function RevealScreen() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.7, duration: 0.8 }}
-          className="text-center text-xl text-foreground"
+          className="text-left text-xl text-foreground"
         >
           This happens every day.{" "}
           <span className="text-muted-foreground">Most of it, no one ever traces.</span>

@@ -129,7 +129,7 @@ const module1: ModuleStory = {
       },
       {
         speaker: "vale",
-        text: "It’s disinformation. The drones are real — the community college flies them over the reservoir for a water-quality study. The guy who captioned them “foreign surveillance” knew exactly that.",
+        text: "It’s disinformation. The drones are real: the community college flies them over the reservoir for a water-quality study. The guy who captioned them “foreign surveillance” knew exactly that.",
       },
       {
         speaker: "vale",
@@ -137,10 +137,10 @@ const module1: ModuleStory = {
       },
       {
         speaker: "vale",
-        text: "Point is — you can’t always tell by looking at the claim. Sometimes you have to know the person behind it. Which you don’t. Yet.",
+        text: "Point is, you can’t always tell by looking at the claim. Sometimes you have to know the person behind it. Which you don’t. Yet.",
       },
       {
-        text: "On the second monitor, the share counter on the original post — the 3,400 one — ticks up. Vale doesn’t look at it. Just taps the desk next to it on the way out.",
+        text: "On the second monitor, the share counter on the original post (the 3,400 one) ticks up. Vale doesn’t look at it. Just taps the desk next to it on the way out.",
       },
       {
         speaker: "vale",
@@ -183,7 +183,7 @@ const module1: ModuleStory = {
       { speaker: "player", text: "Why’d it hit three forums at the same time, though?" },
       { speaker: "vale", text: "Good question. Wrong module. Ask me again in twenty minutes." },
       {
-        text: "New flagged item — not the drone post. A post claiming a well-liked professor is being quietly let go. Dropped the same week as course registration. Phrased to maximize outrage on the professor’s behalf.",
+        text: "New flagged item, not the drone post. A post claiming a well-liked professor is being quietly let go. Dropped the same week as course registration. Phrased to maximize outrage on the professor’s behalf.",
       },
       {
         text: "You notice your own reaction before you finish reading. Not anger, exactly. Something closer to protectiveness.",
@@ -205,7 +205,12 @@ const module1: ModuleStory = {
   // Doc: "End of Module 1" — recap adjusted to omit the missing bias lesson.
   closing: [
     {
-      text: "Vale pulls up what you’ve established about the original post on the shared screen — a recap, not a ceremony: what kind of claim it is, what a rushed correction costs, and exactly which nerve it was built to hit.",
+      speaker: "system",
+      text: "And that's a wrap, nice work, that should've given you an introduction of what misinformation entails...",
+    },
+    {
+      speaker: "vale",
+      text: "Let's take a look at this recent flagged posting.",
     },
     {
       speaker: "vale",
@@ -216,30 +221,28 @@ const module1: ModuleStory = {
       speaker: "vale",
       text: "There it is. That’s not a Module 1 problem anymore. That’s Monday.",
     },
-    {
-      speaker: "vale",
-      text: "Go home. Seriously. The post’ll still be unverified tomorrow.",
-    },
   ],
   caseFileEntry:
     "CASE 01 — Reservoir drone post: disinformation, domestic, motive confirmed (grounding a neighbor’s drone). Drones: real, municipal, boring. Original 3,400-share post: classified, emotionally engineered, origin still unverified. Carried forward.",
 };
 
 /* ─────────────────────────────────────────────────────────────────────────
- * MODULES 2–6 — REAL CONTENT (content-aligned drafts approved 2026-07-16)
- * Throughline: the 3,400-share post is a photo of brown tap water captioned
- * "THEY KNOW. They're just not telling you." Each module's beats are built
- * on that module's actual lesson content (see CLAUDE.md). No Priya — the
- * cast is Vale, the player, and narration only, per author instruction.
- * Tone bible: module-1-storyline-v2.md. Module 4's election beat is
- * deliberately joke-free; everywhere else the humor stays.
+ * MODULES 2–6 — REAL CONTENT (content-aligned drafts approved 2026-07-16;
+ * throughline swapped from water conspiracy to grid/cyberattack 2026-08-07)
+ * Throughline: the 3,400-share post is a photo of a power substation lit up
+ * by a bright electrical explosion against the night sky, captioned
+ * "THEY'RE CALLING IT 'MAINTENANCE.' IT WAS A HACK."
+ * Each module's beats are built on that module's actual lesson content (see
+ * CLAUDE.md). No Priya — the cast is Vale, the player, and narration only,
+ * per author instruction. Tone bible: module-1-storyline-v2.md. Module 4's
+ * election beat is deliberately joke-free; everywhere else the humor stays.
  * ──────────────────────────────────────────────────────────────────────── */
 
 // Module 2 — Examining Sources. Pays off M1's "That's Monday."
 const module2: ModuleStory = {
   placeholder: false,
   opening: [
-    { speaker: "system", text: "MONDAY — 08:14" },
+    { speaker: "system", text: "MONDAY, 08:14" },
     {
       text: "Your desktop wakes up before you do.",
       // "Spot it" rep: the actual signal (the case, escalating overnight)
@@ -260,7 +263,7 @@ const module2: ModuleStory = {
           {
             id: "standup",
             app: "Calendar",
-            headline: "9:00 AM — Standup",
+            headline: "9:00 AM, Standup",
             detail: "In 46 minutes",
             tone: "neutral",
             missNote: "Also not it. You still have time. Barely.",
@@ -268,7 +271,7 @@ const module2: ModuleStory = {
           {
             id: "signal",
             app: "Signal Monitor",
-            headline: "Reservoir post now at 11,000 shares.",
+            headline: "Substation post now at 11,000 shares.",
             detail: "Origin: still unverified. Status: still spreading.",
             tone: "flagged",
             isTarget: true,
@@ -276,7 +279,7 @@ const module2: ModuleStory = {
         ],
         response: [
           {
-            text: "The photo again — brown water in a glass, captioned “THEY KNOW. They’re just not telling you.” Yesterday it had four digits. Today it has five.",
+            text: "The photo again, a power substation lit up by a bright electrical explosion against the night sky, captioned “THEY’RE CALLING IT ‘MAINTENANCE.’ IT WAS A HACK.” Yesterday it had four digits. Today it has five.",
           },
           { speaker: "vale", text: "Morning. Your post got ambitious over the weekend." },
           {
@@ -290,7 +293,7 @@ const module2: ModuleStory = {
   beforeLesson: {
     "idenitfy-sources": [
       {
-        text: "The “news site” surfaces: CityWaterWatch.net. Clean template, stock photo of a newsroom, articles going back years.",
+        text: "The “news site” surfaces: PowerGridWatch.net. Clean template, stock photo of a newsroom, articles going back years.",
       },
       {
         speaker: "vale",
@@ -315,7 +318,7 @@ const module2: ModuleStory = {
     ],
     "lateral-reading": [
       {
-        text: "An hour inside CityWaterWatch.net. Every article checks out — against other CityWaterWatch.net articles.",
+        text: "An hour inside PowerGridWatch.net. Every article checks out against other PowerGridWatch.net articles.",
       },
       { speaker: "player", text: "The site keeps confirming itself." },
       { speaker: "vale", text: "It’ll do that all day. Get out of it. Open a tab." },
@@ -324,7 +327,7 @@ const module2: ModuleStory = {
       },
       {
         speaker: "vale",
-        text: "Five weeks. Covering water infrastructure “since 2011,” per the footer.",
+        text: "Five weeks. Covering grid infrastructure “since 2011,” per the footer.",
       },
       { speaker: "player", text: "The footer’s lying?" },
       { speaker: "vale", text: "The footer’s marketing." },
@@ -332,7 +335,7 @@ const module2: ModuleStory = {
   },
   closing: [
     {
-      text: "The file on CityWaterWatch.net: five weeks old, no named staff, articles scraped from elsewhere, ads between every paragraph.",
+      text: "The file on PowerGridWatch.net: five weeks old, no named staff, articles scraped from elsewhere, ads between every paragraph.",
     },
     {
       speaker: "vale",
@@ -341,7 +344,7 @@ const module2: ModuleStory = {
     { speaker: "player", text: "So they didn’t start it. They just picked it up." },
     {
       speaker: "vale",
-      text: "Which means the origin’s still out there. Also — the photo’s bugging me. Water isn’t usually that committed to being brown.",
+      text: "Which means the origin’s still out there. Also, the photo’s bugging me. Substations don’t usually throw sparks like that for no reason.",
     },
     {
       speaker: "vale",
@@ -349,7 +352,7 @@ const module2: ModuleStory = {
     },
   ],
   caseFileEntry:
-    "CASE 02 — “CityWaterWatch.net”: content mill. Registered five weeks ago, no named authors, monetized via ads. Amplifier, not origin. Post photo flagged for visual review. Origin: still unverified.",
+    "CASE 02 — “PowerGridWatch.net”: content mill. Registered five weeks ago, no named authors, monetized via ads. Amplifier, not origin. Post photo flagged for visual review. Origin: still unverified.",
 };
 
 // Module 3 — The Visual Front. The photo gets its day in court.
@@ -357,11 +360,19 @@ const module3: ModuleStory = {
   placeholder: false,
   opening: [
     {
-      text: "The photo, enlarged on Vale’s monitor: a glass of brown water on a kitchen counter.",
+      text: "The photo, enlarged on Vale’s monitor: a bright electrical explosion lighting up the night sky over a power substation.",
     },
     {
       speaker: "vale",
-      text: "Before you ask — no, I can’t tell if it’s fake by squinting at it. Neither can you. That’s the whole problem.",
+      text: "Before you ask, no, I can’t tell if it’s fake by squinting at it. Neither can you. That’s the whole problem.",
+    },
+     {
+      speaker: "player",
+      text: "So how can we tell?",
+    },
+    {
+      speaker: "vale",
+      text: "Let's learn just that.",
     },
   ],
   beforeLesson: {
@@ -372,7 +383,7 @@ const module3: ModuleStory = {
       },
       {
         speaker: "vale",
-        text: "Agreed. So it’s a real photo of real brown water.",
+        text: "Agreed. So it’s a real photo of a real arc flash.",
         choice: {
           id: "real-photo",
           options: [
@@ -383,12 +394,11 @@ const module3: ModuleStory = {
       },
       {
         speaker: "vale",
-        text: "It’s a real photo of brown water somewhere, sometime. The post says it’s here, now. That’s two different claims wearing one caption.",
+        text: "It’s a real photo of a substation somewhere, sometime, doing what substations occasionally do. The post says it’s here, now, and it was a hack. That’s two different claims wearing one caption.",
       },
       {
-        text: "Meanwhile, a supporting post is circulating: a chart titled “Contamination reports up 400%.” The y-axis starts at 96.",
+        text: "Meanwhile, a supporting post is circulating: a chart titled “Grid intrusion reports up 400%.” The y-axis starts at 96.",
       },
-      { speaker: "vale", text: "The y-axis starts at 96. I want that on a mug." },
     ],
     "rev-img": [
       { speaker: "player", text: "So how do I find where the photo’s actually from?" },
@@ -400,11 +410,11 @@ const module3: ModuleStory = {
   },
   closing: [
     {
-      text: "TinEye: fourteen matches. Oldest — a 2019 local news story from a town 800 miles away. Scheduled fire-hydrant flush, two days of brown water, city apologized, water was fine.",
+      text: "TinEye: fourteen matches. Oldest is a 2019 local news story from a town 800 miles away. Routine equipment test, a squirrel on the wrong wire, one very photogenic arc flash, utility apologized, grid was fine.",
     },
     {
       speaker: "vale",
-      text: "Real photo. Real brown water. Wrong year, wrong state, wrong everything.",
+      text: "Real photo. Real arc flash. Wrong year, wrong state, wrong everything.",
     },
     { speaker: "player", text: "So whoever posted it knew." },
     {
@@ -413,11 +423,11 @@ const module3: ModuleStory = {
     },
     {
       speaker: "vale",
-      text: "Log it. And find out who ran that hydrant flush — I want to send them a fruit basket for keeping the original online.",
+      text: "Log it. And find out who filed that incident report, I want to send them a fruit basket for keeping the original online.",
     },
   ],
   caseFileEntry:
-    "CASE 03 — Post photo: authentic. 2019 hydrant flush, different state, recycled as current-local. Supporting “400%” chart: truncated axis. Reclassified: constructed, not mistaken. Origin: still unverified.",
+    "CASE 03 — Post photo: authentic. 2019 equipment fault (wildlife contact), different state, recycled as current-local. Supporting “400%” chart: truncated axis. Reclassified: constructed, not mistaken. Origin: still unverified.",
 };
 
 // Module 4 — The Big Picture. Quieter register; the election beat is
@@ -426,25 +436,25 @@ const module4: ModuleStory = {
   placeholder: false,
   opening: [
     {
-      text: "The post’s spread, mapped on the wall monitor. Three forums, same hour — the question Vale deferred in week one.",
+      text: "The post’s spread, mapped on the wall monitor. Three forums, same hour: the question Vale deferred in week one.",
     },
     {
       speaker: "vale",
-      text: "You asked why it hit three places at once. Twenty minutes turned into a few weeks — sorry. Here’s the answer, and I want you to be a little underwhelmed by it: nothing spreads like that on its own.",
+      text: "You asked why it hit three places at once. Twenty minutes turned into a few weeks, sorry. Here’s the answer, and I want you to be a little underwhelmed by it: nothing spreads like that on its own.",
     },
   ],
   beforeLesson: {
     "influence-ops": [
       {
         speaker: "player",
-        text: "The caption never actually lies about the water. It just says “THEY KNOW” and lets you fill in the rest.",
+        text: "The caption never actually lies about the hack. It just says “THEY’RE CALLING IT ‘MAINTENANCE’” and lets you fill in the rest.",
       },
       {
         speaker: "vale",
         text: "Write that down. Cleanest description of the genre I’ve heard all year.",
       },
       {
-        text: "The spread map, annotated: forty-one accounts posted the photo within a six-minute window. Nine used identical wording. Six had been dormant for a year — then woke up that morning.",
+        text: "The spread map, annotated: forty-one accounts posted the photo within a six-minute window. Nine used identical wording. Six had been dormant for a year, then woke up that morning.",
       },
       {
         speaker: "vale",
@@ -453,12 +463,12 @@ const module4: ModuleStory = {
     ],
     "misinfo-demo": [
       {
-        text: "One of the three forums is a local election board’s community page. The water post is pinned there under a new caption: “If they lie about the water, what else are they lying about?”",
+        text: "One of the three forums is a local election board’s community page. The substation post is pinned there under a new caption: “If they lie about the grid, what else are they lying about?”",
       },
-      { speaker: "player", text: "It’s not even about the water anymore." },
+      { speaker: "player", text: "It’s not even about the substation anymore." },
       {
         speaker: "vale",
-        text: "No. It’s about whether anything official can be trusted. Water today. Ballots in November.",
+        text: "No. It’s about whether anything official can be trusted. The grid today. Ballots in November.",
       },
       { text: "She’s quiet a second longer than usual." },
       { speaker: "vale", text: "This part I don’t have jokes for. Let’s just do it well." },
@@ -466,7 +476,7 @@ const module4: ModuleStory = {
   },
   closing: [
     {
-      text: "End of week, on the case wall: the first big push wasn’t organic. A coordinated cluster — some automated, some not — seeded three communities and let real people carry it from there. Operator: unknown. Motive: unknown. Effect: measurable.",
+      text: "End of week, on the case wall: the first big push wasn’t organic. A coordinated cluster (some automated, some not) seeded three communities and let real people carry it from there. Operator: unknown. Motive: unknown. Effect: measurable.",
     },
     { speaker: "player", text: "Do we ever find out who?" },
     {
@@ -479,7 +489,7 @@ const module4: ModuleStory = {
     },
   ],
   caseFileEntry:
-    "CASE 04 — Initial spread: coordinated. 41 accounts / six-minute window / shared templates / dormancy anomalies. Attribution: not established. Narrative has migrated from water quality to institutional distrust. Origin: still unverified.",
+    "CASE 04 — Initial spread: coordinated. 41 accounts / six-minute window / shared templates / dormancy anomalies. Attribution: not established. Narrative has migrated from grid security to institutional distrust. Origin: still unverified.",
 };
 
 // Module 5 — The Digital World. Humor returns.
@@ -487,9 +497,9 @@ const module5: ModuleStory = {
   placeholder: false,
   opening: [
     {
-      text: "You open the app to check one notification about the case. Forty minutes later you’re eleven posts deep in a thread about water filters.",
+      text: "You open the social media to check one notification about the case. Forty minutes later you’re eleven posts deep in a thread about backup generators.",
     },
-    { speaker: "vale", text: "Yeah. That’s the module." },
+    { speaker: "vale", text: "Yeah. social media plays a major role in all of this, let's find out more." },
   ],
   beforeLesson: {
     "synthetic-media": [
@@ -500,12 +510,12 @@ const module5: ModuleStory = {
       { speaker: "vale", text: "Where’d the sixty thousand happen?" },
       { speaker: "player", text: "Mostly three community groups." },
       { speaker: "vale", text: "How many of those groups ever saw the debunk?" },
-      { text: "You check. One. A moderator removed it — for “arguing.”" },
+      { text: "You check. One. A moderator removed it for “arguing.”" },
       { speaker: "vale", text: "For arguing." },
     ],
     "social-algo": [
       {
-        text: "Platform analytics on the water post: average view time, 1.4 seconds. Shares made without opening the article: 71%.",
+        text: "Platform analytics on the substation post: average view time, 1.4 seconds. Shares made without opening the article: 71%.",
       },
       { speaker: "player", text: "Seventy-one percent shared it without reading it." },
       {
@@ -517,7 +527,7 @@ const module5: ModuleStory = {
   },
   closing: [
     {
-      text: "The post has stopped growing — not because anyone won. The feeds moved on. Something about a celebrity’s parking ticket.",
+      text: "The post has stopped growing, not because anyone won. The feeds moved on. Something about a celebrity’s parking ticket.",
     },
     {
       speaker: "vale",
@@ -527,56 +537,65 @@ const module5: ModuleStory = {
     { speaker: "vale", text: "It’s Tuesday." },
     {
       speaker: "vale",
-      text: "Don’t relax, though. Dormant isn’t dead, and we still owe the file an origin — or an honest “we can’t know.” Last module. It’s the one where you stop asking me and I start watching you.",
+      text: "Don’t relax, though. Dormant isn’t dead, and we still owe the file an origin, or an honest “we can’t know.” Last module. It’s the one where you stop asking me and I start watching you.",
     },
   ],
   caseFileEntry:
-    "CASE 05 — Reach: engagement-driven; 71% shared unread; corrections filtered out of origin communities. Spread decaying — displaced, not defeated. Origin: still unverified.",
+    "CASE 05 — Reach: engagement-driven; 71% shared unread; corrections filtered out of origin communities. Spread decaying, displaced, not defeated. Origin: still unverified.",
 };
 
-// Module 6 — From Instinct to Method. Capstone; the origin stays honestly
-// unverifiable, per the module's own "know when to stop" lesson.
+// Module 6 — From Instinct to Method. Capstone; the verification workflow
+// succeeds — a stylometric/registrant match traces the case to a paid
+// engagement-farming operation running a standing campaign, not a one-off
+// post. Resolution is attribution, not closure: the file ends on an active
+// watchlist (registrant flagged for future activity) instead of a public
+// callout or a flat "case closed."
 const module6: ModuleStory = {
   placeholder: false,
   opening: [
     {
-      text: "Everything the case has produced, on one screen: the classification, the content mill, the 2019 photo, the six-minute window, the 1.4 seconds. At the top, the field that’s been blank since day one — ORIGIN: UNVERIFIED.",
+      text: "Everything the case has produced is all on one screen: the classification, the content mill, the recycled arc-flash photo, the six-minute window, the 1.4 seconds. At the top, the field that’s been blank since day one: ORIGIN: UNVERIFIED.",
     },
     {
       speaker: "vale",
-      text: "Last stretch. This time you drive. I’ll be here, drinking coffee at a judgmental volume.",
+      text: "Last stretch. This time you drive. I’ll be here, drinking coffee.",
     },
   ],
   beforeLesson: {
     "misinfo-response": [
       {
-        text: "You run the workflow. Photo: sourced, 2019. Claim: no dataset, no named official, no primary anything. First appearance: a since-deleted account, on a platform that keeps deletion logs for ninety days. It’s been two hundred and six.",
+        text: "You run the workflow. Photo: sourced, 2019. Claim: no incident report, no named official, no primary anything. First appearance: a since-deleted account, on a platform that keeps deletion logs for ninety days. It’s been two hundred and six.",
       },
       { speaker: "player", text: "The trail ends at a deleted account." },
       {
         speaker: "vale",
-        text: "So you’ve got credible primary sources on everything except the one thing, and the one thing is out of reach. What does the workflow say?",
+        text: "Does it. Or did it just end for that one account.",
+      },
+      {
+        text: "You pull the Module 4 list, the six accounts that came out of a year of dormancy the same morning. Five went quiet again after the push. One didn’t.",
+      },
+      {
+        speaker: "vale",
+        text: "It’s been posting in a private group ever since. Different topics. Same tics: same broken em dash, same refusal to use a single contraction.",
         choice: {
-          id: "when-to-stop",
+          id: "stylometry-lead",
           options: [
             {
-              id: "dig",
-              label: "“Keep digging.”",
+              id: "same-tics",
+              label: "“Same tics as what, exactly?”",
               response: [
                 {
-                  speaker: "vale",
-                  text: "You can. People do. There’s a name for the folder where those investigations live, and it’s “open forever.”",
+                  text: "Vale pulls up three other “crisis” posts from this year: a school-lockdown rumor, a food-recall panic, a city-council scandal. Same broken em dash in all three.",
                 },
-                { text: "You log it." },
               ],
             },
             {
-              id: "stop",
-              label: "“Stop. Log it as unverifiable.”",
+              id: "coincidence",
+              label: "“Could be a coincidence.”",
               response: [
                 {
                   speaker: "vale",
-                  text: "Correct. Only took you six modules to say that without flinching.",
+                  text: "Could be. Three separate coincidences, same broken em dash, same three-day posting rhythm. I’d take that bet to a casino.",
                 },
               ],
             },
@@ -584,34 +603,63 @@ const module6: ModuleStory = {
         },
       },
       {
+        text: "The account’s bio links to a scrubbed portfolio site. A cached version, from before it got scrubbed, reads “growth marketing for local news and civic brands.” Same registrant as PowerGridWatch.net.",
+      },
+      { speaker: "player", text: "That’s not one post. That’s a campaign." },
+      {
         speaker: "vale",
-        text: "Now the real question. It’s still pinned in two groups. What do we do about that?",
+        text: "That’s the word. A standing operation, a new manufactured “crisis” every few weeks, whichever angle is trending that quarter. The grid was just this one’s turn.",
+      },
+      {
+        speaker: "vale",
+        text: "It was never about the grid. Wrong headline sells as well as the right one, and it’s cheaper to make.",
+      },
+      {
+        speaker: "vale",
+        text: "Now the real question. What do we actually do with a name.",
       },
     ],
   },
   closing: [
     {
-      text: "The response memo, drafted and sent: a correction for the two groups where the post is still active — calm, short, leads with what’s true (the water’s fine; the city publishes test results monthly), doesn’t restate the scary claim. No reply to the dormant threads. Nothing that gives it new oxygen.",
+      text: "The response memo, drafted and sent: a correction for the two groups where the post is still active, calm, short, leads with what’s true (the grid’s fine; the utility publishes incident reports monthly), doesn’t restate the scary claim. Attached separately, not posted anywhere public: an attribution report, filed with the platform’s trust-and-safety team.",
     },
     {
       speaker: "vale",
-      text: "You know what I like about this memo? It’s boring. Eight weeks ago you’d have written a thriller.",
+      text: "You know what I like about this memo? It’s boring. Eight weeks ago you’d have written a thriller, and a press release naming names.",
     },
-    { speaker: "player", text: "The file’s still open, though. We never got the origin." },
+    { speaker: "player", text: "Don’t we want people to know who did this?" },
     {
       speaker: "vale",
-      text: "The drone post, we got the origin in a week — a guy who wanted his neighbor’s drone grounded. This one, maybe never. Both of those are how it actually goes.",
+      text: "We want it to stop working. Naming them publicly just hands them a bigger post than the one we started with. Report it, get the account and the site down, keep the receipts.",
     },
     {
-      text: "She signs off on the case file. Under ORIGIN, the status finally changes — not to a name. To UNVERIFIABLE — CLOSED, MONITORING.",
+      text: "She updates the case file. Under ORIGIN, the status finally changes, not to a headline, but to a name: “Lakeshore Digital Media.” Twelve manufactured stories logged this year. This was inventory item six.",
+    },
+    { speaker: "player", text: "So that’s it. Case closed." },
+    {
+      speaker: "vale",
+      text: "Attribution, sure. Closed, no. A shop that’s done this twelve times isn’t finished, it’s between jobs. We don’t close files on standing operations. We keep a tab open on them.",
+    },
+    {
+      text: "Under STATUS, she doesn’t type CLOSED. She types WATCHLIST — ACTIVE, and flags the registrant so the next post anywhere near it lands straight on someone’s desk.",
     },
     {
       speaker: "vale",
-      text: "Right. There’s a new pile on your desk. It’s been there since Thursday, and it is not getting funnier.",
+      text: "The drone post, we got the origin in a week, a guy grounding his neighbor’s drone. That one’s actually finished. This one, we just learned it’s not a post, it’s a pattern. Different kind of done.",
+    },
+    {
+      speaker: "player",
+      text: "Cool we have the case labeled and on tabs, what now?"
+
+    },
+    {
+      speaker: "vale",
+      text: "There's a new pile on your desk. It's been there since Thursday, and it is not getting done anytime soon. You know what kind of pile it is now, at least. Step on it.",
     },
   ],
   caseFileEntry:
-    "CASE 06 — CLOSED (MONITORING). Origin: unverifiable — trail ends at a deleted account past log retention. Response issued: targeted correction, no amplification. The water was always fine.",
+    "CASE 06 — ATTRIBUTED. WATCHLIST: ACTIVE. Origin: “Lakeshore Digital Media,” a paid engagement-farming operation also behind PowerGridWatch.net and eleven other manufactured stories this year — a standing pattern, not a one-off. Response issued: targeted correction + platform report, no public naming. Registrant flagged for ongoing monitoring.",
 };
 
 export const storyBeats: Record<string, ModuleStory> = {
