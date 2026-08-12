@@ -12,6 +12,7 @@
 
     --card: 0 0% 100%;
     --card-foreground: 222 47% 10%;
+    --card-signup: 172 45% 93%; /* Light teal tint for the sign-up card, vs. sign-in's plain white */
 
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 10%;
@@ -27,6 +28,7 @@
 
     --accent: 213 94% 50%;
     --accent-foreground: 0 0% 100%;
+    --accent-signup: 172 75% 38%; /* Teal, distinguishes sign-up from sign-in's blue --accent */
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
@@ -65,6 +67,7 @@
 
     --card: 222 40% 9%;
     --card-foreground: 210 40% 94%;
+    --card-signup: 172 28% 12%; /* Subtly teal-tinted surface for the sign-up card in dark mode */
 
     --popover: 222 40% 9%;
     --popover-foreground: 210 40% 94%;
@@ -80,6 +83,7 @@
 
     --accent: 213 94% 60%;
     --accent-foreground: 222 47% 6%;
+    --accent-signup: 172 70% 55%; /* Teal, distinguishes sign-up from sign-in's blue --accent */
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
@@ -122,10 +126,18 @@
 }
 
 @layer utilities {
- 
+
 
   .font-body {
     font-family: 'Inter', sans-serif;
+  }
+
+  /* Scopes the sign-up flow to its own accent shade (see --accent-signup) so
+     it reads as visually distinct from sign-in, which keeps --accent. */
+  .auth-signup {
+    --accent: var(--accent-signup);
+    --ring: var(--accent-signup);
+    --card: var(--card-signup);
   }
 }
 

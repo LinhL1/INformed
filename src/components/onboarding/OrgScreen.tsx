@@ -31,7 +31,7 @@ export default function OrgScreen() {
         className="space-y-4"
         lineClassName="text-lg leading-relaxed text-foreground"
         lines={[
-          <>Welcome to the Desk. I&rsquo;m {MENTOR_NAME}.</>,
+          <>Welcome to the Desk. I&rsquo;m {MENTOR_NAME}, here to guide you.</>,
           <>
             You&rsquo;re not here to catch liars, you&rsquo;re here to{" "}
             <span className="text-accent">see clearly</span>.
