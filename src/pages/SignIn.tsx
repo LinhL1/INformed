@@ -68,7 +68,7 @@ export default function SignIn() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
-        className="w-full max-w-md rounded-lg border border-border bg-card p-8 shadow-sm"
+        className={`w-full max-w-md rounded-lg border border-border bg-card p-8 shadow-sm transition-colors ${mode === 'signup' ? 'auth-signup' : ''}`}
       >
         <AnimatePresence mode="wait">
           {verificationSent ? (
@@ -156,7 +156,11 @@ export default function SignIn() {
                   </p>
                 )}
 
-                <Button type="submit" className="mt-2 w-full" disabled={submitting}>
+                <Button
+                  type="submit"
+                  className="mt-2 w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                  disabled={submitting}
+                >
                   {submitting
                     ? mode === 'signin' ? 'Signing in…' : 'Creating account…'
                     : mode === 'signin' ? 'Sign in' : 'Create account'}

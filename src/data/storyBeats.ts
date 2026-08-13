@@ -106,10 +106,10 @@ const module1: ModuleStory = {
     // proportionality rule — the real coordinated-ops material is Module 4's.
     "what-is-disinfo": [
       {
-        text: "Open item on your desk: a post claiming unmarked drones have been circling the reservoir at night. One dark, grainy photo of three lights in the sky. The comments have already decided whose drones they are.",
+        text: "OPEN ITEM ON YOUR DESK: a post claiming unmarked drones have been circling the reservoir at night. One dark, grainy photo of three lights in the sky. The comments have already decided whose drones they are.",
       },
       {
-        text: "Three analysts filed it three different ways. As of this morning, it’s yours.",
+        text: "Three analysts filed it three different ways. Now it's your turn to investigate.",
       },
     ],
 

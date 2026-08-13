@@ -12,7 +12,7 @@ export default function DeskScreen() {
         className="space-y-2 text-center"
         lineClassName="text-lg text-foreground"
         lines={[
-          <span className="text-accent">There are six core areas in misonformation. </span>,
+          <span className="text-accent">There are six core areas in misinformation. </span>,
           <>
           Misinformation doesn't spread because people are foolish.
           It spreads because it exploits how we think, who we trust, and what we fear.
