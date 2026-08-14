@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 // Canon per module-1-storyline-v2.md; character data lives in src/data/storyBeats.ts.
+// Also the name/persona of the Vale chat widget (src/components/vale) — same character, two surfaces.
 export const MENTOR_NAME = "Vale";
 
 /** Pulsing "..." advance cue shown at the bottom of onboarding screens. */
