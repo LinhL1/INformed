@@ -74,7 +74,6 @@ const Header = () => {
             {items.map((item, i) => (
               <span key={i} className="inline-flex items-center gap-3 px-6 text-sm font-medium text-foreground/80">
                 {item}
-                <span className="text-accent opacity-60">◆</span>
               </span>
             ))}
           </motion.div>

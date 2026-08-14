@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import type { ValeMessage } from "@/hooks/useValeChat";
 
-const GREETING = "Vale. I cover misinformation, sources, manipulated media — that kind of thing. What's on your mind?";
+const GREETING = "Vale here. I'm your mentor to understanding misinformation, sources, manipulated media...What's on your mind?";
 
 interface ValeChatPopupProps {
   messages: ValeMessage[];

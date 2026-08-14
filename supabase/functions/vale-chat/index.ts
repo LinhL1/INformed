@@ -9,7 +9,12 @@ import { GENERAL_SUMMARY, MODULE_SUMMARIES } from "./grounding.ts";
 // "-latest" alias avoids per-account entitlement walls on pinned snapshots
 // (e.g. "gemini-2.5-flash" 404s as "no longer available to new users" on
 // some newer API keys even though it's still listed by ListModels).
-const GEMINI_MODEL = Deno.env.get("GEMINI_MODEL") ?? "gemini-flash-latest";
+// Using the *lite* tier specifically: "gemini-flash-latest" (the newest,
+// heaviest release) was returning frequent 503 "high demand" errors under
+// real-world load; gemini-flash-lite-latest is lighter-weight, comfortably
+// enough for Vale's short chat replies, and was reliably fast (~0.5s) with
+// zero failures across repeated real-persona test calls.
+const GEMINI_MODEL = Deno.env.get("GEMINI_MODEL") ?? "gemini-flash-lite-latest";
 const DAILY_LIMIT = Number(Deno.env.get("VALE_DAILY_LIMIT") ?? "40");
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_TURNS = 12;
@@ -142,9 +147,9 @@ Deno.serve(async (req) => {
       // just headroom against occasional overshoot, not the target length.
       maxOutputTokens: 500,
       temperature: 0.9,
-      // Vale's replies are short chat turns, not reasoning tasks — thinking
-      // tokens were eating the output budget and truncating replies mid-word.
-      thinkingConfig: { thinkingBudget: 0 },
+      // No thinkingConfig: gemini-flash-lite-latest 400s on that param entirely,
+      // and testing showed it doesn't spend output budget on hidden reasoning
+      // tokens by default anyway, so there's nothing to disable here.
     },
   });
   const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${geminiApiKey}`;
