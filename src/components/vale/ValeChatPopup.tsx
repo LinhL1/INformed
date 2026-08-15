@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import type { ValeMessage } from "@/hooks/useValeChat";
 
@@ -16,19 +16,44 @@ interface ValeChatPopupProps {
   onClose: () => void;
 }
 
+const MAX_TEXTAREA_HEIGHT = 88; // px, roughly 3-4 lines before it scrolls internally
+
 const ValeChatPopup = ({ messages, isSending, error, onSend, onClose }: ValeChatPopupProps) => {
   const [draft, setDraft] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages, isSending, error]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    const overflowing = el.scrollHeight > MAX_TEXTAREA_HEIGHT;
+    el.style.height = `${Math.min(el.scrollHeight, MAX_TEXTAREA_HEIGHT)}px`;
+    // Only reveal the scrollbar once content actually exceeds the cap —
+    // overflow-y-auto alone can still reserve a gutter on some platforms.
+    el.style.overflowY = overflowing ? "auto" : "hidden";
+  }, [draft]);
+
+  const submitDraft = () => {
     if (!draft.trim() || isSending) return;
     onSend(draft);
     setDraft("");
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    submitDraft();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      submitDraft();
+    }
   };
 
   return (
@@ -80,14 +105,18 @@ const ValeChatPopup = ({ messages, isSending, error, onSend, onClose }: ValeChat
       </ScrollArea>
 
       {/* Input */}
-      <form onSubmit={handleSubmit} className="flex items-center gap-2 border-t border-border p-3">
-        <Input
+      <form onSubmit={handleSubmit} className="flex items-end gap-2 border-t border-border p-3">
+        <Textarea
+          ref={textareaRef}
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Ask Vale something..."
           maxLength={1000}
           disabled={isSending}
-          className="h-9"
+          rows={1}
+          className="min-h-9 resize-none overflow-y-hidden py-2 leading-relaxed"
+          style={{ maxHeight: MAX_TEXTAREA_HEIGHT }}
         />
         <Button type="submit" size="icon" className="h-9 w-9 shrink-0" disabled={isSending || !draft.trim()}>
           <Send className="h-4 w-4" />
