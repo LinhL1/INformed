@@ -5,6 +5,7 @@ import PageTransition from "@/components/PageTransition";
 import { modules } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
 import { useXP, BADGES, AVATAR_UPGRADES } from "@/hooks/useXP";
+import ValeWidget from "@/components/vale/ValeWidget";
 import modulesBg from "@/assets/modules-bg.png";
 
 
@@ -27,6 +28,7 @@ const ModulesPage = () => {
   };
 
   return (
+    <>
     <PageTransition>
     <div
       className="min-h-screen"
@@ -273,6 +275,8 @@ const ModulesPage = () => {
       </div>
       </div>
     </PageTransition>
+    <ValeWidget />
+    </>
   );
 };
 
