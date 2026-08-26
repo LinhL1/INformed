@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Brain, Eye, Lightbulb } from "lucide-react";
 import mentorImage from "@/assets/ms-informed-mentor.png";
-import bg from "@/assets/informed-bg.png";
+import bg from "@/assets/landing-bg.png";
 import lightbulbImage from "@/assets/lightbulb.png"; 
 
 const LandingPage = () => (
   <div
     className="relative min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center overflow-hidden px-4 bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: `url(${bg})` }}
   >
     {/* Hanging wire */}
     <motion.div
