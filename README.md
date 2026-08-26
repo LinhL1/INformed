@@ -7,14 +7,14 @@ skills: telling misinformation from disinformation, evaluating sources,
 spotting deepfakes and manipulated images, recognizing propaganda and
 coordinated social media manipulation, and fact-checking.
 
-Each module unlocks narrative "case" scenes and lessons made of interactive
+Each module unlocks narrative case scenes and lessons made of interactive
 activities (quizzes, true/false drills, sorting, fill-in-the-blank,
 scenario-based decisions). Progress and XP earned along the way are saved
 per-user and persist across devices.
 
 ## Features
 
-- **Story-driven modules** — six modules, each opening/closing with narrative
+- **Story-driven modules** — six modules (as of Aug 2026), each opening/closing with narrative
   scenes, building on a single running "case" across the whole course.
 - **Interactive lessons** — quizzes, true/false, sorting, fill-in-the-blank,
   and scenario activities, each awarding XP.
