@@ -44,7 +44,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     email: string,
     password: string,
   ): Promise<{ error: AuthError | null }> => {
-    const { error } = await supabase.auth.signUp({ email, password })
+    // Send the verification link back to the origin the user signed up from (dev or prod),
+    // landing on /signin, which forwards an active session on to /onboarding.
+    // The URL must be in the Supabase dashboard's Redirect URLs allow-list, or Supabase
+    // falls back to the project's Site URL.
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo: `${window.location.origin}/signin` },
+    })
     return { error }
   }
 

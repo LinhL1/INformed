@@ -342,8 +342,11 @@ create table vale_chat_usage (
 );
 ```
 
-Every table: `enable row level security`, with three near-identical policies
-(`select`/`insert`/`update` all gated on `auth.uid() = user_id`). `on delete cascade` means
+Every table: `enable row level security`. `user_progress` and `user_xp` have three
+near-identical policies (`select`/`insert`/`update` all gated on `auth.uid() = user_id`);
+`vale_chat_usage` is `select`-only for clients — its single write path is the
+`increment_vale_chat_usage()` SECURITY DEFINER function, so users can't reset their own
+rate-limit counter. `on delete cascade` means
 deleting an `auth.users` row automatically deletes all of that user's rows in every child
 table — no orphaned data, no manual cleanup job needed.
 
@@ -690,8 +693,10 @@ generic toast text, which is a small but deliberate UX-consistency decision.
    bypass key — it can only read/write the `vale_chat_usage` rows the *calling user* is allowed
    to touch, same trust model as the client.
 2. **Rate limiting — fixed-window counter algorithm.** One row per `(user_id, usage_date)`
-   in `vale_chat_usage`, incremented on every request; if `request_count >= DAILY_LIMIT` (40),
-   reject with 429. This is the simplest rate-limiting algorithm that exists (compare: sliding
+   in `vale_chat_usage`, atomically incremented on every request via the
+   `increment_vale_chat_usage()` RPC; if the returned count exceeds `DAILY_LIMIT` (40), reject
+   with 429. Clients can only read that table, never write it — otherwise the counter they're
+   limited by would be theirs to reset. This is the simplest rate-limiting algorithm that exists (compare: sliding
    window log, sliding window counter, token bucket, leaky bucket) — it resets hard at
    midnight rather than smoothing usage over a rolling window, which means a user could send 40
    requests at 11:59pm and another 40 at 12:01am. That's an accepted tradeoff for a

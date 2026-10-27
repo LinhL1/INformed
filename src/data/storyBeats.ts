@@ -113,8 +113,7 @@ const module1: ModuleStory = {
       },
     ],
 
-    // Doc: "Closing beat — into Submod 2" + the Submod 2 correction scene
-    // (correction reassigned from Priya to the player's own draft).
+    // Doc: "Closing beat — into Submod 2" 
     "critical-thinking": [
       {
         speaker: "vale",
@@ -144,7 +143,7 @@ const module1: ModuleStory = {
       },
       {
         speaker: "vale",
-        text: "That one’s still yours too. Don’t forget about it just because I found a funnier one.",
+        text: "That one’s still yours too. Don’t forget about it just because there are newer posts.",
       },
       {
         text: "The original post is now spreading in three forums at once. You have a correction drafted. It’s decent. Your cursor is on “post.”",
@@ -156,7 +155,7 @@ const module1: ModuleStory = {
               label: "Post the correction",
               response: [
                 {
-                  text: "Forty replies in ten minutes. Thirty-one are from people who hadn’t seen the original post. Now they have.",
+                  text: "A flood of replies comes in, most are from people who hadn’t seen the original post. The comments spark controversy.",
                 },
                 { speaker: "player", text: "Oh no. I just fed it, didn’t I." },
               ],
@@ -165,7 +164,7 @@ const module1: ModuleStory = {
               id: "hold",
               label: "Hold off",
               response: [
-                { text: "You close the draft. It physically hurts a little." },
+                { text: "You close the draft. It physically hurts a little but you know more work needs to be done first." },
                 {
                   speaker: "vale",
                   text: "If it hits five figures before we do anything, that’s on you specifically.",
@@ -177,8 +176,7 @@ const module1: ModuleStory = {
       },
     ],
 
-    // Doc: "Transition to Submod 3" + the Submod 4 professor-post scene
-    // (Priya's confession becomes a player choice; Vale's line kept verbatim).
+    // Doc: "Transition to Submod 3"
     "emotional-manipulation": [
       { speaker: "player", text: "Why’d it hit three forums at the same time, though?" },
       { speaker: "vale", text: "Good question. Wrong module. Ask me again in twenty minutes." },
@@ -219,7 +217,7 @@ const module1: ModuleStory = {
     { speaker: "player", text: "Who posted it first." },
     {
       speaker: "vale",
-      text: "There it is. That’s not a Module 1 problem anymore. That’s Monday.",
+      text: "There it is. That’s not a Module 1 problem anymore. That's a Module problem.",
     },
   ],
   caseFileEntry:
@@ -238,7 +236,7 @@ const module1: ModuleStory = {
  * election beat is deliberately joke-free; everywhere else the humor stays.
  * ──────────────────────────────────────────────────────────────────────── */
 
-// Module 2 — Examining Sources. Pays off M1's "That's Monday."
+// Module 2 — Examining Sources
 const module2: ModuleStory = {
   placeholder: false,
   opening: [
@@ -431,7 +429,6 @@ const module3: ModuleStory = {
 };
 
 // Module 4 — The Big Picture. Quieter register; the election beat is
-// deliberately joke-free per the tone guardrail.
 const module4: ModuleStory = {
   placeholder: false,
   opening: [
@@ -492,7 +489,7 @@ const module4: ModuleStory = {
     "CASE 04 — Initial spread: coordinated. 41 accounts / six-minute window / shared templates / dormancy anomalies. Attribution: not established. Narrative has migrated from grid security to institutional distrust. Origin: still unverified.",
 };
 
-// Module 5 — The Digital World. Humor returns.
+// Module 5 
 const module5: ModuleStory = {
   placeholder: false,
   opening: [

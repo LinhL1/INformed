@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/context/AuthContext";
+import { isSafeInternalPath } from "@/lib/utils";
 import { PulsingCue } from "@/components/onboarding/shared";
 import PrologueScreen from "@/components/onboarding/PrologueScreen";
 import AssignmentScreen from "@/components/onboarding/AssignmentScreen";
@@ -35,7 +36,9 @@ export default function OnboardingPage() {
   const [step, setStep] = useState(0);
   // Captured once on mount so the skip button never appears mid-sequence for first-timers.
   const [seenBefore] = useState(() => !!user?.user_metadata?.onboarding_seen);
-  const from = (location.state as { from?: string } | null)?.from ?? "/modules";
+  // `from` originates from whatever URL the user first hit; only follow it if it stays on-site.
+  const requestedFrom = (location.state as { from?: string } | null)?.from;
+  const from = requestedFrom && isSafeInternalPath(requestedFrom) ? requestedFrom : "/modules";
   const canSkip = seenBefore && step >= 1;
 
   const markSeen = useCallback(() => {
