@@ -5,6 +5,7 @@ import { createClient } from "jsr:@supabase/supabase-js@2";
 import { corsHeaders } from "../_shared/cors.ts";
 import { VALE_PERSONA } from "./persona.ts";
 import { GENERAL_SUMMARY, MODULE_SUMMARIES } from "./grounding.ts";
+import { parseChatRequest } from "./validate.ts";
 
 // "-latest" alias avoids per-account entitlement walls on pinned snapshots
 // (e.g. "gemini-2.5-flash" 404s as "no longer available to new users" on
@@ -16,19 +17,6 @@ import { GENERAL_SUMMARY, MODULE_SUMMARIES } from "./grounding.ts";
 // zero failures across repeated real-persona test calls.
 const GEMINI_MODEL = Deno.env.get("GEMINI_MODEL") ?? "gemini-flash-lite-latest";
 const DAILY_LIMIT = Number(Deno.env.get("VALE_DAILY_LIMIT") ?? "40");
-const MAX_MESSAGE_LENGTH = 1000;
-const MAX_HISTORY_TURNS = 12;
-
-interface ChatTurn {
-  role: "user" | "model";
-  content: string;
-}
-
-interface ChatRequestBody {
-  message: string;
-  history?: ChatTurn[];
-  moduleId?: string;
-}
 
 function jsonResponse(body: unknown, status: number) {
   return new Response(JSON.stringify(body), {
@@ -75,37 +63,35 @@ Deno.serve(async (req) => {
     return jsonResponse({ error: "unauthorized" }, 401);
   }
 
-  let body: ChatRequestBody;
+  let rawBody: unknown;
   try {
-    body = await req.json();
+    rawBody = await req.json();
   } catch {
     return jsonResponse({ error: "invalid_body" }, 400);
   }
 
-  const message = body.message?.trim();
-  if (!message) {
-    return jsonResponse({ error: "empty_message" }, 400);
+  const parsed = parseChatRequest(rawBody);
+  if (!parsed.ok) {
+    return jsonResponse({ error: parsed.error, message: parsed.message }, 400);
   }
-  if (message.length > MAX_MESSAGE_LENGTH) {
+  const { message, history, moduleId } = parsed;
+
+  // Rate limit: one row per user per day. The increment is a single atomic
+  // SECURITY DEFINER call (see migration 20261027000000) — clients have no
+  // insert/update access to vale_chat_usage, so the counter can't be reset
+  // from the browser, and concurrent requests can't race past the limit.
+  // Fails closed: if the counter can't be updated, no Gemini call is made.
+  const { data: requestCount, error: usageError } = await supabaseClient.rpc(
+    "increment_vale_chat_usage",
+  );
+  if (usageError || typeof requestCount !== "number") {
+    console.error("vale_chat_usage increment failed", usageError?.message);
     return jsonResponse(
-      { error: "message_too_long", message: "Shorter version, please. I'm not reading a novel." },
-      400,
+      { error: "server_misconfigured", message: "Vale's offline. Not your fault — try again later." },
+      500,
     );
   }
-
-  const history = Array.isArray(body.history) ? body.history.slice(-MAX_HISTORY_TURNS) : [];
-
-  // Rate limit: one row per user per day, incremented on every request.
-  const today = new Date().toISOString().slice(0, 10);
-  const { data: usageRow } = await supabaseClient
-    .from("vale_chat_usage")
-    .select("request_count")
-    .eq("user_id", user.id)
-    .eq("usage_date", today)
-    .maybeSingle();
-
-  const currentCount = usageRow?.request_count ?? 0;
-  if (currentCount >= DAILY_LIMIT) {
+  if (requestCount > DAILY_LIMIT) {
     return jsonResponse(
       {
         error: "rate_limited",
@@ -115,16 +101,11 @@ Deno.serve(async (req) => {
     );
   }
 
-  await supabaseClient
-    .from("vale_chat_usage")
-    .upsert(
-      { user_id: user.id, usage_date: today, request_count: currentCount + 1 },
-      { onConflict: "user_id,usage_date" },
-    );
-
   // Assemble grounding: module-scoped if we have a summary for that module,
-  // otherwise fall back to the general (all-modules) summary.
-  const moduleGrounding = body.moduleId ? MODULE_SUMMARIES[body.moduleId] : undefined;
+  // otherwise fall back to the general (all-modules) summary. hasOwn keeps
+  // client-supplied ids like "constructor" from resolving to prototype members.
+  const moduleGrounding =
+    moduleId && Object.hasOwn(MODULE_SUMMARIES, moduleId) ? MODULE_SUMMARIES[moduleId] : undefined;
   const groundingBlock = moduleGrounding
     ? `CURRENT SCOPE: The user is on the "${moduleGrounding.title}" module page. Focus on this module's material below. If they ask about a different module, give a short dry redirect back to this one.\n\n${moduleGrounding.summary}`
     : `CURRENT SCOPE: The user is on the general modules overview page (not a specific module). You can discuss misinformation literacy across the whole course.\n\n${GENERAL_SUMMARY}`;
@@ -152,7 +133,9 @@ Deno.serve(async (req) => {
       // tokens by default anyway, so there's nothing to disable here.
     },
   });
-  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${geminiApiKey}`;
+  // Key goes in a header, not the query string: Deno's fetch errors embed the
+  // full request URL, which the catch below writes to the function logs.
+  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
   // Gemini's Flash endpoint returns transient 503s ("high demand") fairly
   // often — worth one quick retry before surfacing an error to the user.
@@ -162,7 +145,7 @@ Deno.serve(async (req) => {
     try {
       geminiRes = await fetch(geminiUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "x-goog-api-key": geminiApiKey },
         body: geminiRequestBody,
       });
     } catch (err) {

@@ -132,10 +132,11 @@ required to run the app. To enable it:
 1. Install the [Supabase CLI](https://supabase.com/docs/guides/cli) and link
    it to your project: `supabase link`.
 2. Set the function secret: `supabase secrets set GEMINI_API_KEY=your-key`.
-3. Deploy the function: `supabase functions deploy vale-chat`.
-4. Run the `supabase/migrations` SQL against your project (via
+3. Run the `supabase/migrations` SQL against your project (via
    `supabase db push` or the SQL editor) to create the `vale_chat_usage`
-   rate-limiting table.
+   rate-limiting table and its `increment_vale_chat_usage()` function. The
+   function refuses to call Gemini until these exist.
+4. Deploy the function: `supabase functions deploy vale-chat`.
 
 ## Project structure
 

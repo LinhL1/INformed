@@ -18,7 +18,17 @@ export default function SignIn() {
   const [mode, setMode] = useState<'signin' | 'signup'>('signin')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState<string | null>(null)
+  // A failed email-verification redirect (expired / already-used link) lands here with
+  // error params in the URL hash, e.g. #error_code=otp_expired&error_description=...
+  // Only fixed copy is shown — the hash is attacker-controllable via a crafted link, so
+  // error_description is never rendered.
+  const [error, setError] = useState<string | null>(() => {
+    const params = new URLSearchParams(window.location.hash.slice(1))
+    if (!params.get('error')) return null
+    return params.get('error_code') === 'otp_expired'
+      ? 'That verification link is invalid or has expired. Try signing in, or sign up again to get a new link.'
+      : 'Something went wrong verifying your email. Please try again.'
+  })
   const [submitting, setSubmitting] = useState(false)
   const [verificationSent, setVerificationSent] = useState(false)
 

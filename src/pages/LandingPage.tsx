@@ -10,12 +10,19 @@ const LandingPage = () => (
     className="relative min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center overflow-hidden px-4 bg-cover bg-center bg-no-repeat"
     style={{ backgroundImage: `url(${bg})` }}
   >
-    {/* Hanging wire */}
+    {/* Hanging wire and lightbulb both anchor on left-[57%] -translate-x-1/2
+        against this same full-width container. That idiom centers each
+        element on the 57% mark regardless of the element's own width, so
+        the two stay aligned to each other at any viewport width — unlike
+        two independently-tuned right-% offsets, which only line up at one
+        width, or nesting them in a shared wrapper, which (since both
+        children are position:absolute) collapses to a zero-width box and
+        breaks centering and image sizing alike. */}
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="absolute top-0 right-[43.3%] transform -translate-x-1/2 w-0.5 h-[150px] bg-primary z-20"
+      className="absolute top-0 left-[57%] translate-x-[calc(-50%-1px)] w-0.5 h-[150px] bg-primary z-20"
       style={{ transformOrigin: "top" }}
     />
 
@@ -23,13 +30,14 @@ const LandingPage = () => (
     <motion.div
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ 
-        duration: 0.8, 
+      transition={{
+        duration: 0.8,
         delay: 0.3,
         type: "spring",
         bounce: 0.4
       }}
-      className="absolute top-[150px] right-[39.5%] transform -translate-x-1/2 z-20 cursor-pointer group"
+      style={{ x: "-50%" }}
+      className="absolute top-[150px] left-[57%] z-20 cursor-pointer group"
     >
       <Link to="/modules">
         <motion.div
@@ -48,10 +56,10 @@ const LandingPage = () => (
           transition={{ duration: 0.25 }}
           className="absolute inset-0 rounded-full bg-accent/60 blur-2xl"
         />
-             
+
           {/* Image instead of icon */}
-          <img 
-            src={lightbulbImage} 
+          <img
+            src={lightbulbImage}
             alt="Click to explore modules"
             className="w-24 h-24 drop-shadow-lg group-hover:drop-shadow-2xl transition-all duration-300"
           />
